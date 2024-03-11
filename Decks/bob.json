@@ -1,0 +1,311 @@
+{
+  "cards": [
+    {
+      "name": "Benevolent Bodyguard",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Creature — Human Cleric",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Sacrifice Benevolent Bodyguard: Target creature you control gains protection from the color of your choice until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/7/1736d2b1-97aa-40b7-b01e-3d9b91abf55c.jpg?1562899654"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dauntless Bodyguard",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Creature — Human Knight",
+        "power": "2",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "As Dauntless Bodyguard enters the battlefield, choose another creature you control.\nSacrifice Dauntless Bodyguard: The chosen creature gains indestructible until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/a/3/a3f82012-5c33-47bc-a3c8-56ae2eea1fb9.jpg?1562740636"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Kami of False Hope",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Creature — Spirit",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Sacrifice Kami of False Hope: Prevent all combat damage that would be dealt this turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/4/44e4f5e6-935e-429f-89b4-4571376f442e.jpg?1562876719"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Llanowar Augur",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Creature — Elf Shaman",
+        "power": "0",
+        "toughness": "3",
+        "cmc": 1,
+        "oracle_text": "Sacrifice Llanowar Augur: Target creature gets +3/+3 and gains trample until end of turn. Activate only during your upkeep.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/c/1c8c9473-97f4-4875-8f06-d3a70d4cbe6d.jpg?1562900665"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Selfless Savior",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Creature — Dog",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Sacrifice Selfless Savior: Another target creature you control gains indestructible until end of turn. (Damage and effects that say \"destroy\" don't destroy it.)",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/7/276b4316-e5f2-40a4-8d7a-a7d7059ebfad.jpg?1684336811"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Branchloft Pathway // Boulderloft Pathway",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/0511e232-2a72-40f5-a400-4f7ebc442d17.jpg?1669839380"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Swamp",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B}.)",
+        "colors": [],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00030770-5e99-4943-819d-8d807c24cc14.jpg?1600716281"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Island",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Island",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {U}.)",
+        "colors": [],
+        "color_identity": [
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/000f1f50-08e5-4d83-8159-98f06a0e2279.jpg?1572491305"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    }
+  ]
+}

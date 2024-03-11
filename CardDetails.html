@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons Example</title>
+    <link rel="stylesheet" href="/css/CardDetails.css">
+</head>
+<body>
+    <h1></h1>
+    
+    <button id="BacktoGame">Back To Game</button>
+    
+    <div id="LoadCards">
+        <button id="importCards">Import Cards</button>
+        <button id="importDeck">Import Deck</button>
+        <button id="AddCard">Add Card</button>
+        <button id="RemoveCard">Remove Card</button>
+        <button id="saveDetails">Save Details</button>
+        <button id="clearCardDetails">Clear Card Details</button>
+        <button id="clearDeckDetails">Clear Deck Details</button>
+    </div>
+
+    <!-- Hidden Container for Text Input and Load Cards Button -->
+    <div id="cardInputContainer" style="display: none;">
+        <textarea id="cardTextInput" rows="4" cols="50"></textarea>
+        <button id="loadCards">Load Cards</button>
+        <!-- New deck name input added here -->
+        <input type="text" id="deckNameInput" placeholder="Enter new deck name" style="display: none;"/>
+    </div>
+
+    <!-- Container for Add Card Text Input -->
+    <div id="addCardContainer" style="display: none;">
+        <textarea id="addCardTextInput" rows="4" cols="50"></textarea>
+    </div>
+
+    <!-- Container for Add Cards Button -->
+    <div id="addCardsButtonContainer" style="display: none;">
+        <button id="addCardsButton">Add Cards</button>
+    </div>
+
+    <div id="cardImageContainer"></div>
+
+    <div class="deck-Image-Container">
+        <div id="deckSection" class="deck-section"></div>
+    </div>
+
+    <div id="deckTabsContainer"></div>
+
+    <div id="LanddataContainer"><label>Land Data</label><br>
+        <label><input type="checkbox" name="options" value="returnLand"> Return Land</label><br>
+        <label><input type="checkbox" name="options" value="entersTapped"> Enters Tapped</label><br>
+        <label><input type="checkbox" name="options" value="search"> Search</label><br>
+        <label><input type="checkbox" name="options" value="and"> And</label><br>
+        <label><input type="checkbox" name="options" value="or"> Or</label>
+    </div>
+
+    <div id="manaCounter">
+        <label for="whiteMana"></label>
+        <input type="number" id="whiteMana" name="whiteMana" value="0"><br>
+    
+        <label for="blueMana"></label>
+        <input type="number" id="blueMana" name="blueMana" value="0"><br>
+    
+        <label for="blackMana"></label>
+        <input type="number" id="blackMana" name="blackMana" value="0"><br>
+    
+        <label for="redMana"></label>
+        <input type="number" id="redMana" name="redMana" value="0"><br>
+    
+        <label for="greenMana"></label>
+        <input type="number" id="greenMana" name="greenMana" value="0"><br>
+    
+        <label for="colorlessMana"></label>
+        <input type="number" id="colorlessMana" name="colorlessMana" value="0"><br>
+
+    </div>
+
+    <div id="deckPopup" class="popup-container" style="display:none;">
+        <div class="popup-content">
+            <span id="closePopup" class="close-btn">&times;</span>
+            <p>Decks:</p>
+            <!-- Adding the Load Decks button here -->
+            <button id="loadDeckButton" style="display: none;">Load Deck</button>
+        </div>
+    </div>
+
+    <div class="mana-container">
+        <img src="css/white.jpg" alt="White Mana" class="mana-image">
+        <img src="css/blue.jpg" alt="Blue Mana" class="mana-image">
+        <img src="css/black.jpg" alt="Black Mana" class="mana-image">
+        <img src="css/red.jpg" alt="Red Mana" class="mana-image">
+        <img src="css/green.jpg" alt="Green Mana" class="mana-image">
+        <img src="css/colorless.jpg" alt="Colorless Mana" class="mana-image">
+    </div>
+
+    <div id="searchContainer">
+        <div id="tabsContainer"></div> <!-- Container for tabs -->
+        <p>Search:</p>
+        <ul id="cardList"></ul>
+    </div>
+
+    <button id="commanderButton">Set Commander</button>
+
+    
+    <div id="selectedCardImageContainer">
+        <!-- The selected card's image will be displayed here -->
+    </div>
+
+    <script src="js/CardDetails.js"></script>
+</body>
+</html>

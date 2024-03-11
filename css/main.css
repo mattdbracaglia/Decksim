@@ -1,0 +1,594 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Minimize unnecessary space */
+    padding: 0; /* Minimize unnecessary space */
+    background-color: #f0f0f0;
+}
+
+input, button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+/* Popup content */
+.popup-container {
+    position: fixed;
+    left: 50%; /* Start from the middle of the screen horizontally */
+    top: 50%; /* Start from the middle of the screen vertically */
+    width: 50%; /* Set the width to 50% of the viewport */
+    height: 50%; /* Set the height to 50% of the viewport */
+    background-color: rgba(0, 0, 0, 0.727);
+    display: none;
+    justify-content: center;
+    align-items: center; /* Center content vertically within the popup */
+    transform: translate(-50%, -50%); /* Shift back to perfectly center */
+    z-index: 1000;
+    
+}
+
+.popup-content {
+    /* Other styles remain unchanged */
+    color: #FFFFFF; /* Sets the text color to white */
+    
+}
+
+.popup-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+/* The Close Button */
+.close-btn {
+    color: #e25a5a;
+    float: right; /* Align to the top-right corner of the popup */
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.player-labels {
+    display: flex;
+    gap: 20px; /* Adjust the value as needed */
+    margin-bottom: 10px;
+}
+
+.player-label {
+    color: #FFFFFF;
+}
+
+.arrow-button {
+    background: #f23131;
+    border: none;
+    color: #FFFFFF;
+    font-size: 8px;
+    cursor: pointer;
+    padding: 0 5px;
+    display: flex;
+    align-items: center;
+}
+
+.arrow-button:hover {
+    color: #CCCCCC;
+}
+
+.left-arrow,
+.right-arrow {
+    padding: 0 2px;
+}
+
+#playerButtons {
+    position: fixed;
+    top: 10px; /* Move to the top to utilize space efficiently */
+    right: 100px; /* Adjusted to reduce space from the right */
+    display: flex;
+    gap: 80px; /* Reduced gap to save space */
+}
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* General style for horizontally scrolling sections */
+#library, #hand, #land, #battlefield {
+    position: absolute;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 600px; /* Custom width */
+    height: 100px; /* Custom height, adjust as needed */
+    box-sizing: border-box;
+    display: flex;
+
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    white-space: nowrap; /* Ensure items line up horizontally */
+
+
+}
+
+#library img, #hand img, #land img, #battlefield img {
+    max-height: 100%; /* Adapt to the section height */
+    margin-right: 5px; /* Space between images */
+    flex: 0 0 auto; /* Prevent images from stretching or shrinking */
+    display: inline-block; /* Align images horizontally */
+    z-index: 1000;
+}
+
+#graveyard img, #exile img, #commander img, #move img {
+    max-width: 100%; /* Ensure images fit within the section width */
+    object-fit: contain; /* Prevent image distortion */
+    margin-bottom: 5px; /* Space between images */
+    z-index: 1000;
+}
+
+/* Specific styles for sections with unique dimensions */
+#graveyard, #exile, #commander, #move {
+    position: absolute;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 200px; /* Adjusted width for these sections */
+    height: 100px; /* Consistent height, adjust as needed */
+    margin: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Enable vertical scrolling if needed */
+    overflow-y: hidden; /* Hide horizontal scrollbar */
+
+
+}
+/* General style for horizontally scrolling sections */
+#info {
+    position: absolute;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 200px; /* Custom width */
+    height: 300px; /* Custom height, adjust as needed */
+    box-sizing: border-box;
+    display: flex;
+
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    white-space: nowrap; /* Ensure items line up horizontally */
+
+
+}
+
+
+
+.player-section-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+    padding-top: -60px; /* Space for the top buttons */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.player-section {
+    position: absolute;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 125px; /* Section width */
+    height: 560px; /* Section height */
+    box-sizing: border-box;
+    overflow-y: auto; /* Adds vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.player-section img {
+    max-width: 120%; /* Ensures the image width does not exceed the section width */
+    max-height: 150px; /* Further reduce the max height to make images smaller */
+    object-fit: contain; /* Ensures the full image is visible, might add letterboxing */
+    display: block; /* Display block to allow margin auto to center the image */
+    margin: 2px auto; /* Center the image within the section with minimal margin */
+    z-index: 1000;
+}
+
+/* Example of re-positioning */
+#playerSection1 { top: 50px; right: 535px; }
+#playerSection2 { top: 50px; right: 380px; }
+#playerSection3 { top: 50px; right: 225px; }
+#playerSection4 { top: 50px; right: 75px; }
+
+
+
+#info { top: 15px; left: 630px; }
+#library { top: 605px; left: 20px; }
+#hand { top: 475px; left: 20px; } /* Adjusted for spacing */
+#land { top: 345px; left: 20px; } /* Continue spacing adjustments */
+#battlefield { top: 215px; left: 20px; } /* Staggering vertically */
+#graveyard { top: 470px; left: 625px; }
+#exile { top: 600px; left: 625px; }
+#commander { top: 340px; left: 625px; } /* Further down if more space is needed */
+#move { top: 90px; left: 415px; }
+
+/* Wrapper for both sets of sections */
+.sections-wrapper {
+    display: flex;
+    justify-content: space-between; /* Positions children on opposite ends */
+    width: 100%;
+    min-height: 100vh; /* Ensures it covers the full viewport height */
+}
+
+#gameControls {
+    position: fixed; /* Or 'absolute', depending on your layout needs */
+    top: 20px; /* Adjust as needed for your layout */
+    left: 10px; /* Adjust as needed */
+    display: flex;
+    flex-direction: row; /* Stack buttons vertically */
+    gap: 10px; /* Space between buttons */
+}
+
+#gameControls button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#gameControls button:hover {
+    background-color: #0056b3;
+}
+
+
+#loadDecksButton {
+    padding: 10px 20px;
+    background-color: #007bff; /* Example blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Spacing from the list */
+}
+
+#loadDecksButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#navContainer { /* This matches the ID in the HTML */
+    position: absolute;
+    top: 200px;
+    left: 325px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+#navigation {
+    position: absolute;
+    top: -140px;
+    left: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+
+}
+
+#navigation button {
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#navigation span {
+    min-width: 100px; /* Ensure the display doesn't jump sizes when changing text */
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .player-section {
+        position: static;
+        width: 90%; /* Slightly less than full width for margins */
+        height: auto;
+        margin: 10px auto; /* Centered horizontally */
+    }
+    .player-section-container {
+        padding-top: 50px; /* Adjust for smaller screens */
+        flex-direction: column;
+    }
+    #playerButtons {
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+
+
+#manaCounter {
+    display: flex;
+    justify-content: space-around; /* You can adjust this for different spacing effects */
+    gap: 20px; /* Adjust this value to increase or decrease the space between counters */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-top: 10px;    
+    position: fixed;
+    Top: 130px; /* Distance from the bottom of the viewport */
+    Left: 20px; /* Distance from the right side of the viewport */
+}
+
+#manaCounter span {
+    font-weight: bold;
+}
+
+#editDecksButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: fixed; /* Make the button fixed relative to the viewport */
+    top: 75px; /* Distance from the top of the viewport */
+    left: 15px; /* Distance from the left of the viewport */
+    z-index: 1000;
+}
+
+#editDecksButton:hover {
+    background-color: #0056b3;
+}
+
+#editDecksButton:active {
+    background-color: #004c9c;
+}
+
+
+
+html, body {
+    overflow: hidden; /* Prevents scrolling on the entire webpage */
+    height: 100%; /* Ensures the body takes up the full viewport height */
+    margin: 0; /* Removes the default margin */
+    padding: 0; /* Removes the default padding */
+}
+
+#tabsContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    outline: none;
+}
+
+.tab.active {
+    background-color: #664eee;
+    color: white;
+}
+
+#sectionButtons {
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+#sectionButtons button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+#sectionButtons button:hover {
+    background-color: #45a049;
+}
+
+#libraryBtn {    position: absolute;    top: 575px;    left: 20px;}
+
+#handBtn {    position: absolute;    top: 445px;    left: 20px;}
+
+#landBtn {    position: absolute;    top: 315px;    left: 20px;}
+
+#battlefieldBtn {    position: absolute;    top: 185px;    left: 20px;}
+
+#graveyardBtn {    position: absolute;    top: 445px;    left: 630px;}
+
+#exileBtn {    position: absolute;    top: 575px;    left: 630px;}
+
+#commanderBtn {    position: absolute;    top: 315px;    left: 630px;}
+
+.mana-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 148px;
+    left: 13px;
+    z-index: 1000;
+}
+
+.mana-image {
+    width: 20px;
+    height: auto;
+    margin: 0 15.7px;
+}
+
+#scrollboxContainer {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    height: 25px; /* Adjust the height as needed */
+}
+
+.scrollbox {
+    position: absolute;
+}
+
+.scrollbox label {
+    margin-right: 5px;
+}
+
+.scrollbox input {
+    width: 50px;
+    padding: 5px;
+}
+
+#player1Scrollbox {
+    top: 25px;
+    right: 590px;
+}
+
+#player2Scrollbox {
+    top: 25px;
+    right: 415px;
+}
+
+#player3Scrollbox {
+    top: 25px;
+    right: 265px;
+}
+
+#player4Scrollbox {
+    top: 25px;
+    right: 115px;
+}
+
+.switch-container {
+    position: absolute;
+    top: 65px; /* Adjust the top position as needed */
+    left: 960px; /* Adjust the left position as needed */
+}
+  
+.switch {
+position: relative;
+display: inline-block;
+width: 60px;
+height: 34px;
+}
+
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #2196F3;
+transition: .4s;
+border-radius: 34px;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+
+input:checked + .slider {
+background-color: #2196F3;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+
+.label {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+font-size: 12px;
+font-weight: bold;
+color: rgb(0, 0, 0);
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.label-left {
+left: 70px;
+}
+
+.label-right {
+right: 70px;
+}
+
+.marked {
+    border: 2px solid red;
+}
+
+#mulliganButtons {
+    position: fixed;
+    top: 95px; /* Move to the top to utilize space efficiently */
+    right: 73px; /* Adjusted to reduce space from the right */
+    display: flex;
+    gap: 120px; /* Reduced gap to save space */
+}
+
+#cycleButtons {
+    position: fixed;
+    bottom: 110px; /* Move to the top to utilize space efficiently */
+    left: 100px; /* Adjusted to reduce space from the right */
+    display: flex;
+    gap: 80px; /* Reduced gap to save space */
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 16px;
+}
+

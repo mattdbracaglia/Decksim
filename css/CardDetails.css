@@ -1,0 +1,473 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Minimize unnecessary space */
+    padding: 0; /* Minimize unnecessary space */
+    background-color: #f0f0f0;
+}
+
+input, button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+#LoadCards {
+    position: fixed; /* Or 'absolute', depending on your layout needs */
+    top: 80px; /* Adjust as needed for your layout */
+    left: 10px; /* Adjust as needed */
+    display: flex;
+    flex-direction: row; /* Stack buttons horizontally */
+    gap: 10px; /* Space between buttons */
+}
+
+#LoadCards button {
+    padding: 8px 12px; /* Slightly larger padding for better touch */
+    font-size: 16px; /* Clear readability */
+    cursor: pointer; /* Visual cue for interactiveness */
+    background-color: #4CAF50; /* A green shade for action buttons */
+    color: white; /* Contrast for readability */
+    border: none; /* Clean, modern look */
+    border-radius: 5px; /* Softened edges */
+    z-index: 1000; /* Ensure visibility over other elements */
+}
+
+#LoadCards button:hover {
+    background-color: #45a049; /* Darker shade on hover for feedback */
+}
+
+#BacktoGame {
+    position: fixed; /* Or 'absolute', depending on your layout needs */
+    top: 20px; /* Adjust as needed for your layout */
+    left: 10px; /* Adjust as needed */
+    display: flex;
+    background-color: #4CAF50; /* A green shade for action buttons */
+    color: white; /* Contrast for readability */
+    flex-direction: row; /* Stack buttons horizontally */
+    border: none; /* Clean, modern look */
+    border-radius: 5px; /* Softened edges */
+    gap: 10px; /* Space between buttons */
+}
+
+
+#BacktoGame:hover {
+    background-color: #45a049; /* Darker shade on hover for feedback */
+}
+
+
+
+#clearDetails {
+    background-color: #f44336; /* Red for caution */
+}
+
+#clearDetails:hover {
+    background-color: #d32f2f; /* Darker red on hover */
+}
+
+
+
+
+#cardInputContainer {
+    position: fixed; /* Fix the element's position on the screen */
+    top: 150px; /* Distance from the top */
+    left: 78%; /* Centered horizontally, adjust as needed */
+    transform: translateX(-50%); /* Adjust horizontally to truly center based on its own width */
+    margin-top: 20px;
+    text-align: center; /* Center the contents */
+    z-index: 1000; /* Ensure visibility over other elements */
+}
+
+#cardTextInput {
+    resize: none; /* Prevent resizing */
+    width: 300px; /* Manually set the width */
+    height: 100px; /* Manually set the height */
+    margin-bottom: 10px; /* Space between the textarea and the button */
+}
+
+#deckNameInput {
+    position: absolute; /* or 'fixed' depending on your needs */
+    top: -70px; /* Adjust this value to move it up or down */
+    left: 50%; /* Adjust this value to move it left or right */
+    transform: translateX(-50%); /* Centers the input based on its own width */
+    /* Add any additional styling you need */
+}
+
+#addCardContainer {
+    position: fixed;
+    top: 150px;
+    left: 75%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+    text-align: center;
+    z-index: 1000;
+}
+
+#addCardTextInput {
+    resize: none;
+    width: 200px;
+    height: 100px;
+    margin-bottom: 10px;
+}
+
+#addCardsButtonContainer {
+    position: fixed;
+    top: 300px; /* Adjust this value to position the button vertically */
+    left: 75%; /* Adjust this value to position the button horizontally */
+    transform: translateX(-50%);
+    z-index: 1000;
+}
+
+#addCardsButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+#addCardsButton:hover {
+    background-color: #45a049;
+}
+
+#cardImageContainer {
+    position: absolute; /* Or 'fixed' depending on your needs */
+    top: 100px; /* Adjust as needed */
+    left: 950px; /* Adjust as needed */
+    width: 425px; /* Set a specific width */
+    height: 625px; /* Set a specific height */
+    overflow: hidden; /* Hide overflow */
+    display: flex; /* Use flexbox to center images */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#cardImageContainer img {
+    max-width: 100%; /* Make image fully contained within the container */
+    max-height: 100%; /* Adjust height to be within container without stretching */
+}
+
+.cardNavigation {
+    position: absolute; /* Allows you to position the buttons specifically */
+    top: 10px; /* Distance from the bottom of the viewport */
+    background-color: #007bff; /* Button background color */
+    color: white; /* Button text color */
+    border: none; /* Removes border */
+    border-radius: 5px; /* Rounded corners */
+    padding: 10px 20px; /* Padding inside the buttons */
+    cursor: pointer; /* Changes cursor to pointer on hover */
+    font-size: 16px; /* Text size */
+}
+
+#navigateLeft {
+    left: 1150px; /* Distance from the left of the viewport */
+}
+
+#navigateRight {
+    left: 1375px; /* Distance from the right of the viewport */
+}
+
+#LanddataContainer {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    position: absolute; /* Or 'fixed' depending on your needs */
+    top: 170px; /* Distance from the top of the viewport or its relative container */
+    left: 20px; /* Distance from the left of the viewport or its relative container */
+    width: 150px; /* Set a specific width */
+}
+
+#manaCounter {
+    position: absolute; /* Or 'fixed' depending on your needs */
+    top: 600px; /* Adjust based on where you want it */
+    left: 10px; /* Adjust based on where you want it */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 17px; /* Space between inputs */
+}
+
+#manaCounter label {
+    display: flex;
+    align-items: center;
+}
+
+#manaCounter input {
+    width: 50px; /* Adjust input field width */
+    margin-left: 5px;
+}
+
+.popup-container {
+    position: fixed;
+    left: 50%; /* Start from the middle of the screen horizontally */
+    top: 50%; /* Start from the middle of the screen vertically */
+    width: 50%; /* Set the width to 50% of the viewport */
+    height: 50%; /* Set the height to 50% of the viewport */
+    background-color: rgba(0, 0, 0, 0.727);
+    display: none;
+    justify-content: center;
+    align-items: center; /* Center content vertically within the popup */
+    transform: translate(-50%, -50%); /* Shift back to perfectly center */
+    z-index: 1000;
+    
+}
+
+.popup-content {
+    /* Other styles remain unchanged */
+    color: #FFFFFF; /* Sets the text color to white */
+    
+}
+
+.popup-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+/* The Close Button */
+.close-btn {
+    color: #e25a5a;
+    float: right; /* Align to the top-right corner of the popup */
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+#loadDeckButton {
+    padding: 10px 20px;
+    background-color: #007bff; /* Example blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Spacing from the list */
+}
+
+#loadDeckButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+#searchContainer {
+    position: absolute;
+    top: 150px; /* Distance from the top of the nearest positioned ancestor */
+    left: 200px; /* Distance from the left of the nearest positioned ancestor */
+    width: 300px; /* Adjust the width as needed */
+    margin: 20px; /* Adjust for positioning */
+    padding: 10px;
+    background-color: #f9f9f9; /* Light background color */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 5px; /* Rounded corners */
+}
+
+#searchContainer p {
+    margin: 0 0 10px 0; /* Space between the label and the list */
+    font-weight: bold;
+}
+
+#cardList {
+    list-style-type: none; /* Remove default list bullet points */
+    margin: 0;
+    padding: 0;
+    max-height: 200px; /* Maximum height before scroll */
+    overflow-y: auto; /* Enable vertical scroll */
+}
+
+#cardList li {
+    padding: 5px; /* Padding for each list item */
+    border-bottom: 1px solid #eee; /* Separator for items */
+}
+
+#cardList li:last-child {
+    border-bottom: none; /* Remove bottom border for the last item */
+}
+
+.highlighted {
+    background-color: #664eee; /* Light gray background for highlighting */
+    cursor: pointer; /* Change cursor to pointer to indicate clickable */
+}
+
+#selectedCardImageContainer {
+    position: absolute; /* Or 'fixed' depending on your needs */
+    top: 160px; /* Adjust as needed */
+    left: 550px; /* Adjust as needed */
+    width: 200px; /* Set a specific width */
+    height: 300px; /* Set a specific height */
+    overflow: hidden; /* Hide overflow */
+    display: flex; /* Use flexbox to center images */
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+}
+
+#selectedCardImageContainer img {
+    max-width: 100%; /* Ensure the image fits within the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Remove any inline-block spacing */
+    margin: 0 auto; /* Center the image if the container is wider */
+}
+/* Container for the tabs */
+#tabsContainer {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+    padding: 10px 0;
+    background-color: #f2f2f2;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Style for each tab */
+.tab {
+    padding: 2px 5px;
+    margin: 0 5px;
+    cursor: pointer;
+    font-size: 16px;
+    background-color: #e9e9e9;
+    border: none;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover effect for tabs */
+.tab:hover {
+    background-color: #dcdcdc;
+}
+
+/* Active tab style */
+.tab.active {
+    background-color: #664eee;
+    color: white;
+    font-weight: bold;
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+    .tab {
+        padding: 8px 10px;
+        font-size: 14px;
+        margin: 5px 2px;
+    }
+
+    #tabsContainer {
+        padding: 5px 0;
+    }
+}
+
+
+.deck-Image-Container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+    padding-top: -60px; /* Space for the top buttons */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.deck-section {
+    position: absolute;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 125px; /* Section width */
+    height: 600px; /* Section height */
+    box-sizing: border-box;
+    overflow-y: auto; /* Adds vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.deck-section img {
+    max-width: 120%; /* Ensures the image width does not exceed the section width */
+    max-height: 150px; /* Further reduce the max height to make images smaller */
+    object-fit: contain; /* Ensures the full image is visible, might add letterboxing */
+    display: block; /* Display block to allow margin auto to center the image */
+    margin: 2px auto; /* Center the image within the section with minimal margin */
+    z-index: 1000;
+}
+
+/* Example of re-positioning */
+#deckSection { top: 75px; right: 25px; }
+
+/* Adjusted Container for the tabs to change its location */
+#deckTabsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Changed to flex-start to align items to the start; use 'center' if you want them centered */
+    margin-bottom: 20px; /* Maintain space below the tabs container */
+    position: relative; /* Change to absolute if you need it positioned relative to the first non-static parent */
+    top: 0px; /* Adjust this value to move down the container from its original position */
+    left: 1000px; /* Adjust if you need to move the container to the left */
+    width: 500px; /* Set the width of the tabs container */
+    /* Adjust 'width' as necessary to fit your layout */
+}
+
+/* Style for each tab */
+.deck-tab {
+    padding: 5px 10px; /* Padding inside each tab for spacing */
+    margin: 5px; /* Margin around tabs to separate them */
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #dcdcdc; /* Light border for each tab */
+    border-radius: 5px; /* Rounded corners for tabs */
+    cursor: pointer; /* Change mouse cursor to indicate clickable */
+    text-align: center; /* Center text inside the tab */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for tabs */
+.deck-tab:hover {
+    background-color: #e9e9e9; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Active tab style */
+.deck-tab.active {
+    background-color: #007bff; /* Active tab has a distinct color */
+    color: white; /* White text color for better contrast */
+    border-color: #0056b3; /* Darker border color for active tab */
+}
+#commanderButton {
+    padding: 8px 16px;
+    font-size: 14px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Adjust based on your layout */
+    position: fixed; /* Or 'absolute', depending on your layout needs */
+    top: 55px; /* Adjust as needed for your layout */
+    left: 950px; /* Adjust as needed */
+}
+
+#commanderButton:hover {
+    background-color: #0056b3;
+}
+
+.mana-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 590px;
+    left: 15px;
+
+}
+
+.mana-image {
+    width: 20px;
+    height: auto;
+    margin: 0 54px;
+}

@@ -1,0 +1,3767 @@
+{
+  "cards": [
+    {
+      "name": "Edgar Markov",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{R}{W}{B}",
+        "type_line": "Legendary Creature — Vampire Knight",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 6,
+        "oracle_text": "Eminence — Whenever you cast another Vampire spell, if Edgar Markov is in the command zone or on the battlefield, create a 1/1 black Vampire creature token.\nFirst strike, haste\nWhenever Edgar Markov attacks, put a +1/+1 counter on each Vampire you control.",
+        "colors": [
+          "B",
+          "R",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "R",
+          "W"
+        ],
+        "keywords": [
+          "First strike",
+          "Haste",
+          "Eminence"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/1/61cbfcac-11ea-4c18-acfb-4a3ce11b739a.jpg?1561757283"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": true
+      }
+    },
+    {
+      "name": "Agadeem's Awakening // Agadeem, the Undercrypt",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Sorcery // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/9/499c2b20-e83e-40ff-919e-1d134ad50c0a.jpg?1608522104"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Anguished Unmaking",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{W}{B}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Exile target nonland permanent. You lose 3 life.",
+        "colors": [
+          "B",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/6/16de91dc-5d82-43ec-84ad-67bae644795a.jpg?1673148273"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Anointed Procession",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "If an effect would create one or more tokens under your control, it creates twice that many of those tokens instead.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/e/8e89f936-38ba-45f7-9c9b-d2d5055a4377.jpg?1597076321"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Arcane Signet",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01b186af-8825-4257-80fd-9c1ecdb21414.jpg?1625978253"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Arid Mesa",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Arid Mesa: Search your library for a Mountain or Plains card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/6/16c8d2fa-54a7-46e8-980c-905258497c90.jpg?1562610110"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Blood Crypt",
+          "Mountain",
+          "Sacred Foundry",
+          "Savai Triome",
+          "Godless Shrine",
+          "Plains"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Ashnod's Altar",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Sacrifice a creature: Add {C}{C}.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0f2d0ee5-3173-4a03-be45-2fe9ea49cdc3.jpg?1674091784"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Blackcleave Cliffs",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Blackcleave Cliffs enters the battlefield tapped unless you control two or fewer other lands.\n{T}: Add {B} or {R}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/4/1441fba4-fe06-4b5f-a103-aa6cf59a3859.jpg?1675957263"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Blightstep Pathway // Searstep Pathway",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/022c7fe3-45bb-4efe-9b0c-2e4807d607b8.jpg?1681084592"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Blood Artist",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}",
+        "type_line": "Creature — Vampire",
+        "power": "0",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "Whenever Blood Artist or another creature dies, target player loses 1 life and you gain 1 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/9/1937d14f-d993-4027-9eaa-26cbbaeb231f.jpg?1681136485"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Blood Crypt",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Swamp Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B} or {R}.)\nAs Blood Crypt enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/0994aef4-b341-45f4-8881-523565a5956e.jpg?1702429795"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Bloodline Keeper // Lord of Lineage",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Creature — Vampire // Creature — Vampire",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Transform"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/3/13896468-e3d0-4bcb-b09e-b5c187aecb03.jpg?1562826506"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Bojuka Bog",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Bojuka Bog enters the battlefield tapped.\nWhen Bojuka Bog enters the battlefield, exile target player's graveyard.\n{T}: Add {B}.",
+        "colors": [],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01769b12-4841-4a1a-a089-e061442203ed.jpg?1591321823"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Boros Charm",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{R}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Choose one —\n• Boros Charm deals 4 damage to target player or planeswalker.\n• Permanents you control gain indestructible until end of turn.\n• Target creature gains double strike until end of turn.",
+        "colors": [
+          "R",
+          "W"
+        ],
+        "color_identity": [
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/5/152458a4-bd3c-43d2-b74a-d2d5341325ba.jpg?1675905753"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Brightclimb Pathway // Grimclimb Pathway",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/c/1c773f3a-50dc-447c-b2db-e122168732e9.jpg?1607364770"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Captivating Vampire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Creature — Vampire",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Other Vampire creatures you control get +1/+1.\nTap five untapped Vampires you control: Gain control of target creature. It becomes a Vampire in addition to its other types.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/b/1b825bd1-9cbc-45a8-bfbe-fc3e8fdc575e.jpg?1562601552"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cathars' Crusade",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Whenever a creature enters the battlefield under your control, put a +1/+1 counter on each creature you control.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/6/264ea67b-c796-4ecd-a71b-85d67b980056.jpg?1562272926"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Caves of Koilos",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{T}: Add {W} or {B}. Caves of Koilos deals 1 damage to you.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/4/144dd08e-451e-4438-b572-7a138e1a15f3.jpg?1562899887"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cemetery Gatekeeper",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{R}",
+        "type_line": "Creature — Vampire",
+        "power": "2",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "First strike\nWhen Cemetery Gatekeeper enters the battlefield, exile a card from a graveyard.\nWhenever a player plays a land or casts a spell, if it shares a card type with the exiled card, Cemetery Gatekeeper deals 2 damage to that player.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "First strike"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/5/457086c4-1b4e-4f79-8f2a-10b16174c8bb.jpg?1643590978"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Champion of Dusk",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Creature — Vampire Knight",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 5,
+        "oracle_text": "When Champion of Dusk enters the battlefield, you draw X cards and you lose X life, where X is the number of Vampires you control.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/4/24961417-0a22-4eb3-8b90-e26cd2b738ba.jpg?1641602464"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Command Tower",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/09e008b9-c27c-40ad-9242-d7da52a2a0a8.jpg?1562896932"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cordial Vampire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{B}",
+        "type_line": "Creature — Vampire",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "Whenever Cordial Vampire or another creature dies, put a +1/+1 counter on each Vampire you control.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d91e61d-e3bf-4ddc-9f01-18b1abe35a61.jpg?1698988230"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Crib Swap",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Tribal Instant — Shapeshifter",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Changeling (This card is every creature type.)\nExile target creature. Its controller creates a 1/1 colorless Shapeshifter creature token with changeling.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Changeling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/a/5a3df85a-21c8-45fc-a7fc-f9fed1e735f0.jpg?1562274065"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cruel Celebrant",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}{B}",
+        "type_line": "Creature — Vampire",
+        "power": "1",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "Whenever Cruel Celebrant or another creature or planeswalker you control dies, each opponent loses 1 life and you gain 1 life.",
+        "colors": [
+          "B",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/7/87ead6ac-b1c5-4852-8413-7fa43c6cfc57.jpg?1557577084"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Damn",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Destroy target creature. A creature destroyed this way can't be regenerated.\nOverload {2}{W}{W} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [
+          "Overload"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/3/138d9df8-ab9a-4d00-b6cc-320100dbaaaa.jpg?1669836858"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Demonic Tutor",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a card, put that card into your hand, then shuffle.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/8/085ed548-a8c8-40b3-8183-51c060bc95cb.jpg?1664927814"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dominating Vampire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{R}{R}",
+        "type_line": "Creature — Vampire",
+        "power": "3",
+        "toughness": "3",
+        "cmc": 3,
+        "oracle_text": "When Dominating Vampire enters the battlefield, gain control of target creature with mana value less than or equal to the number of Vampires you control until end of turn. Untap that creature. It gains haste until end of turn.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/1/213112df-439b-454e-ade4-90e4176411c5.jpg?1645055101"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dragonskull Summit",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Dragonskull Summit enters the battlefield tapped unless you control a Swamp or a Mountain.\n{T}: Add {B} or {R}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/1/11b5408a-0fde-48d4-bcbf-b949a20b79c0.jpg?1562451039"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Drana, Liberator of Malakir",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Legendary Creature — Vampire Ally",
+        "power": "2",
+        "toughness": "3",
+        "cmc": 3,
+        "oracle_text": "Flying, first strike\nWhenever Drana, Liberator of Malakir deals combat damage to a player, put a +1/+1 counter on each attacking creature you control.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "First strike"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/8/0850b41d-3589-40cd-ae22-cc5b4ddee1c4.jpg?1698988238"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Edgar, Charmed Groom // Edgar Markov's Coffin",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Legendary Creature — Vampire Noble // Legendary Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [
+          "Transform"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/10732397-68eb-4f1d-a2e6-10479f66805f.jpg?1645228915"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Eldrazi Monument",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Creatures you control get +1/+1 and have flying and indestructible.\nAt the beginning of your upkeep, sacrifice a creature. If you can't, sacrifice Eldrazi Monument.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/7/07ee3b07-3e4d-4cc6-9286-05bdc20827bd.jpg?1573517059"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Elenda, the Dusk Rose",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}{B}",
+        "type_line": "Legendary Creature — Vampire Knight",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 4,
+        "oracle_text": "Lifelink\nWhenever another creature dies, put a +1/+1 counter on Elenda, the Dusk Rose.\nWhen Elenda dies, create X 1/1 white Vampire creature tokens with lifelink, where X is Elenda's power.",
+        "colors": [
+          "B",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [
+          "Lifelink"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/7/07f80199-16f9-4190-af96-f07ac9a22363.jpg?1681411601"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Fetid Heath",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{W/B}, {T}: Add {W}{W}, {W}{B}, or {B}{B}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0fbb9790-3744-4dcb-881a-452573298822.jpg?1562898273"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Florian, Voldaren Scion",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{R}",
+        "type_line": "Legendary Creature — Vampire Noble",
+        "power": "3",
+        "toughness": "3",
+        "cmc": 3,
+        "oracle_text": "First strike\nAt the beginning of your postcombat main phase, look at the top X cards of your library, where X is the total amount of life your opponents lost this turn. Exile one of those cards and put the rest on the bottom of your library in a random order. You may play the exiled card this turn.",
+        "colors": [
+          "B",
+          "R"
+        ],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [
+          "First strike"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/7/37fd06c9-0656-43b3-93ab-ca378f3065a7.jpg?1673160826"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Forerunner of the Legion",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Creature — Vampire Knight",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "When Forerunner of the Legion enters the battlefield, you may search your library for a Vampire card, reveal it, then shuffle and put that card on top.\nWhenever another Vampire enters the battlefield under your control, target creature gets +1/+1 until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/10718d37-63d4-44b7-9450-5d49cffce944.jpg?1555039699"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Godless Shrine",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Plains Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W} or {B}.)\nAs Godless Shrine enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0f1296cc-59aa-412d-9115-99fdc9ada754.jpg?1676121768"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Grave Pact",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Whenever a creature you control dies, each other player sacrifices a creature.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0fe474af-55bb-4732-abaa-350984d5d7e5.jpg?1592713293"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Graven Cairns",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{B/R}, {T}: Add {B}{B}, {B}{R}, or {R}{R}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/0127d42f-bf40-48f4-a3a0-1a1c4039f432.jpg?1599710528"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Indulgent Aristocrat",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Creature — Vampire Noble",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Lifelink\n{2}, Sacrifice a creature: Put a +1/+1 counter on each Vampire you control.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Lifelink"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/9/296e4dc6-6997-4c4a-8137-c0835b44a1c9.jpg?1698988261"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Isolated Chapel",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Isolated Chapel enters the battlefield tapped unless you control a Plains or a Swamp.\n{T}: Add {W} or {B}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/8/087a3535-7897-4db9-a9b5-35447cde8d9a.jpg?1566582653"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Knight of the Ebon Legion",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Creature — Vampire Knight",
+        "power": "1",
+        "toughness": "2",
+        "cmc": 1,
+        "oracle_text": "{2}{B}: Knight of the Ebon Legion gets +3/+3 and gains deathtouch until end of turn.\nAt the beginning of your end step, if a player lost 4 or more life this turn, put a +1/+1 counter on Knight of the Ebon Legion. (Damage causes loss of life.)",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/9/29425426-7bf2-4872-aa35-c12c22801edd.jpg?1592516712"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Legion Lieutenant",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}{B}",
+        "type_line": "Creature — Vampire Knight",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "Other Vampires you control get +1/+1.",
+        "colors": [
+          "B",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/3/33f7ff99-65d6-4e97-bdfa-b6e6eac0588f.jpg?1555040877"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Legion's Landing // Adanto, the First Fort",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Legendary Enchantment // Legendary Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Transform"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/05e2a5e6-3aaa-4096-bdd0-fcc1afe5a36c.jpg?1562550045"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Lethal Scheme",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}{B}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Convoke (Your creatures can help cast this spell. Each creature you tap while casting this spell pays for {1} or one mana of that creature's color.)\nDestroy target creature or planeswalker. Each creature that convoked Lethal Scheme connives. (Draw a card, then discard a card. If you discarded a nonland card, put a +1/+1 counter on that creature.)",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Connive",
+          "Convoke"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/5/65864680-9520-4eb3-9774-fa478e54a290.jpg?1673481988"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Luxury Suite",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Luxury Suite enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {B} or {R}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00e40c64-58fa-421e-9d01-93b0642f7d8b.jpg?1604195651"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Malakir Bloodwitch",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Creature — Vampire Shaman",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 5,
+        "oracle_text": "Flying, protection from white\nWhen Malakir Bloodwitch enters the battlefield, each opponent loses life equal to the number of Vampires you control. You gain life equal to the life lost this way.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Protection"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/6/865ac36f-4c61-468b-a2ed-ed2d1bbbf4e3.jpg?1562614036"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mavren Fein, Dusk Apostle",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Legendary Creature — Vampire Cleric",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Whenever one or more nontoken Vampires you control attack, create a 1/1 white Vampire creature token with lifelink.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/6/667c1052-9eba-45c8-a178-771bdb5c1883.jpg?1562913956"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mondrak, Glory Dominus",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}{W}",
+        "type_line": "Legendary Creature — Phyrexian Horror",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 4,
+        "oracle_text": "If one or more tokens would be created under your control, twice that many of those tokens are created instead.\n{1}{W/P}{W/P}, Sacrifice two other artifacts and/or creatures: Put an indestructible counter on Mondrak, Glory Dominus. ({W/P} can be paid with either {W} or 2 life.)",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/09381c85-d38d-4a5b-9d6c-526d10f1f722.jpg?1675701255"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mountain",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R}.)",
+        "colors": [],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/005a993c-5111-4364-9fba-75b3d94a8296.jpg?1559591904"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "New Blood",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "As an additional cost to cast this spell, tap an untapped Vampire you control.\nGain control of target creature. Change the text of that creature by replacing all instances of one creature type with Vampire.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/e/6ee669ab-0ae6-43e5-86fd-f0dcb621e478.jpg?1698988263"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Nighthawk Scavenger",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Creature — Vampire Rogue",
+        "power": "1+*",
+        "toughness": "3",
+        "cmc": 3,
+        "oracle_text": "Flying, deathtouch, lifelink\nNighthawk Scavenger's power is equal to 1 plus the number of card types among cards in your opponents' graveyards. (Cards in graveyards have only the characteristics of their front face.)",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Deathtouch",
+          "Flying",
+          "Lifelink"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/3/63cf5e98-9d40-4cb0-83de-043751b1382f.jpg?1674141722"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Nomad Outpost",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Nomad Outpost enters the battlefield tapped.\n{T}: Add {R}, {W}, or {B}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d354e2c-b83d-47f2-a8c4-0234ea9ef5bf.jpg?1649270252"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Oathsworn Vampire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}",
+        "type_line": "Creature — Vampire Knight",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "Oathsworn Vampire enters the battlefield tapped.\nYou may cast Oathsworn Vampire from your graveyard if you gained life this turn.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/04099735-bc73-40ae-bc28-0ad5c96feb12.jpg?1675645156"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Olivia Voldaren",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}{R}",
+        "type_line": "Legendary Creature — Vampire",
+        "power": "3",
+        "toughness": "3",
+        "cmc": 4,
+        "oracle_text": "Flying\n{1}{R}: Olivia Voldaren deals 1 damage to another target creature. That creature becomes a Vampire in addition to its other types. Put a +1/+1 counter on Olivia Voldaren.\n{3}{B}{B}: Gain control of target Vampire for as long as you control Olivia Voldaren.",
+        "colors": [
+          "B",
+          "R"
+        ],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/7/f/7f9c5b9d-71f2-45e4-a177-494c231c79fd.jpg?1682339509"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Orzhov Signet",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "{1}, {T}: Add {W}{B}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0f0d3c9c-7b3d-4dd1-bf0a-41652e2e1f94.jpg?1698988527"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Pact of the Serpent",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Choose a creature type. Target player draws X cards and loses X life, where X is the number of creatures they control of the chosen type.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/8/481d268a-848c-4ccd-95ff-eed77dc20776.jpg?1698988275"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Path of Ancestry",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Path of Ancestry enters the battlefield tapped.\n{T}: Add one mana of any color in your commander's color identity. When that mana is spent to cast a creature spell that shares a creature type with your commander, scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [
+          "Scry"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/04f35c75-4ede-4c23-867b-58d367f75fc8.jpg?1631236093"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Patriarch's Bidding",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Each player chooses a creature type. Each player returns all creature cards of a type chosen this way from their graveyard to the battlefield.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d7bb46e-430f-4e59-80d0-0ea4f315d540.jpg?1562540226"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Patron of the Vein",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{B}{B}",
+        "type_line": "Creature — Vampire Shaman",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 6,
+        "oracle_text": "Flying\nWhen Patron of the Vein enters the battlefield, destroy target creature an opponent controls.\nWhenever a creature an opponent controls dies, exile it and put a +1/+1 counter on each Vampire you control.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a403dbd-c127-4e3f-892f-f0950d92228a.jpg?1641602814"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Pawn of Ulamog",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Creature — Vampire Shaman",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Whenever Pawn of Ulamog or another nontoken creature you control dies, you may create a 0/1 colorless Eldrazi Spawn creature token. It has \"Sacrifice this creature: Add {C}.\"",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/5/85f4d77d-e0de-48fe-899b-5718cee779e2.jpg?1562705878"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Phyrexian Altar",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Sacrifice a creature: Add one mana of any color.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/043de2ce-9ee9-414f-9385-6e5260173988.jpg?1674097578"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Phyrexian Arena",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "At the beginning of your upkeep, you draw a card and you lose 1 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/c/0c25e492-2862-405b-ba1d-f58cb63294dd.jpg?1675829290"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Phyrexian Reclamation",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "{1}{B}, Pay 2 life: Return target creature card from your graveyard to your hand.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/2/228a2bb7-d9f0-47b5-a0d9-2adf1b33e995.jpg?1562862334"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Phyrexian Tower",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Legendary Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{T}, Sacrifice a creature: Add {B}{B}.",
+        "colors": [],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/05b2cc68-1d20-421f-9800-af0996071554.jpg?1601081190"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Plains",
+      "quantity": 2,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W}.)",
+        "colors": [],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00293ce4-3475-4064-8510-9e8c02faf3bf.jpg?1592674050"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Purphoros, God of the Forge",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{R}",
+        "type_line": "Legendary Enchantment Creature — God",
+        "power": "6",
+        "toughness": "5",
+        "cmc": 4,
+        "oracle_text": "Indestructible\nAs long as your devotion to red is less than five, Purphoros isn't a creature.\nWhenever another creature enters the battlefield under your control, Purphoros deals 2 damage to each opponent.\n{2}{R}: Creatures you control get +1/+0 until end of turn.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Indestructible"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/c/2c89261c-fff8-4145-9448-247a1f924409.jpg?1588680949"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Rakish Heir",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{R}",
+        "type_line": "Creature — Vampire",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Whenever a Vampire you control deals combat damage to a player, put a +1/+1 counter on it.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0da15652-8207-4be1-b821-3fb3dad66e37.jpg?1641603262"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Rugged Prairie",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{R/W}, {T}: Add {R}{R}, {R}{W}, or {W}{W}.",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/2/225cd301-7d04-480d-94ed-52537d944c6f.jpg?1599710606"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Ruinous Ultimatum",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{R}{R}{W}{W}{W}{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 7,
+        "oracle_text": "Destroy all nonland permanents your opponents control.",
+        "colors": [
+          "B",
+          "R",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/0/50c1d6ca-7789-46b5-bc89-85cc3915cb85.jpg?1681500691"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sacred Foundry",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Mountain Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R} or {W}.)\nAs Sacred Foundry enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a26d900-c652-4f9c-8681-a35c5f8b1937.jpg?1561815185"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sanctum Seeker",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}{B}",
+        "type_line": "Creature — Vampire Knight",
+        "power": "3",
+        "toughness": "4",
+        "cmc": 4,
+        "oracle_text": "Whenever a Vampire you control attacks, each opponent loses 1 life and you gain 1 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/8/28da9211-13f4-4500-98f9-58c260c01e18.jpg?1641602842"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Savai Triome",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Mountain Plains Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R}, {W}, or {B}.)\nSavai Triome enters the battlefield tapped.\nCycling {3} ({3}, Discard this card: Draw a card.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R",
+          "W"
+        ],
+        "keywords": [
+          "Cycling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/d/5d24f4bc-e0a4-4838-bf26-3e87c715e3bb.jpg?1591310643"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Shared Animosity",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{R}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Whenever a creature you control attacks, it gets +1/+0 until end of turn for each other attacking creature that shares a creature type with it.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/b/1bd77ae9-c5ba-44af-80e9-7c852722ef6c.jpg?1698988336"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sign in Blood",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Target player draws two cards and loses 2 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/b/0bc5b585-6bff-4027-88fa-3eecc6d598f6.jpg?1673301757"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Skullclamp",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}",
+        "type_line": "Artifact — Equipment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Equipped creature gets +1/-1.\nWhenever equipped creature dies, draw two cards.\nEquip {1}",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [
+          "Equip"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/005dae9a-dddc-4a11-95bb-cce319edcce4.jpg?1561930373"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sol Ring",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "{T}: Add {C}{C}.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06be8262-4636-4a2c-a0c8-de741cf45aed.jpg?1696638321"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": true,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 2
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sorin, Imperious Bloodlord",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}",
+        "type_line": "Legendary Planeswalker — Sorin",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "+1: Target creature you control gains deathtouch and lifelink until end of turn. If it's a Vampire, put a +1/+1 counter on it.\n+1: You may sacrifice a Vampire. When you do, Sorin, Imperious Bloodlord deals 3 damage to any target and you gain 3 life.\n−3: You may put a Vampire creature card from your hand onto the battlefield.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/2/42636f16-c886-4bca-80ab-7c311e38a547.jpg?1564189014"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Spectator Seating",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Spectator Seating enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {R} or {W}.",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/a/2ad21db5-5189-4d57-b399-0d1c415c0922.jpg?1690001923"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Stromkirk Captain",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{R}",
+        "type_line": "Creature — Vampire Soldier",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "First strike\nOther Vampire creatures you control get +1/+1 and have first strike.",
+        "colors": [
+          "B",
+          "R"
+        ],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [
+          "First strike"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/f/2f053406-d2e4-4443-81f1-025e3b27c65a.jpg?1641603512"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Swamp",
+      "quantity": 4,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B}.)",
+        "colors": [],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00030770-5e99-4943-819d-8d807c24cc14.jpg?1600716281"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Swords to Plowshares",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Exile target creature. Its controller gains life equal to its power.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/04e0738b-b856-401e-8b41-096e2c48cf96.jpg?1562895965"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Teferi's Protection",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Until your next turn, your life total can't change and you gain protection from everything. All permanents you control phase out. (While they're phased out, they're treated as though they don't exist. They phase in before you untap during your untap step.)\nExile Teferi's Protection.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/8/1802943c-07cc-48bb-a861-f18cb5f2b0ae.jpg?1681721125"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Twilight Prophet",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}{B}",
+        "type_line": "Creature — Vampire Cleric",
+        "power": "2",
+        "toughness": "4",
+        "cmc": 4,
+        "oracle_text": "Flying\nAscend (If you control ten or more permanents, you get the city's blessing for the rest of the game.)\nAt the beginning of your upkeep, if you have the city's blessing, reveal the top card of your library and put it into your hand. Each opponent loses X life and you gain X life, where X is that card's mana value.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Ascend"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/1/41f90e2b-cdbb-4a7c-aba0-c72055b414ed.jpg?1698988288"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Unclaimed Territory",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "As Unclaimed Territory enters the battlefield, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/053ce80a-1f32-4982-8d23-d1e313e925a4.jpg?1637632712"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Urborg, Tomb of Yawgmoth",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Legendary Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Each land is a Swamp in addition to its other land types.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/02e17705-739e-409f-a6fd-7bab22120b22.jpg?1559959336"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Vampire Hexmage",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{B}",
+        "type_line": "Creature — Vampire Shaman",
+        "power": "2",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "First strike\nSacrifice Vampire Hexmage: Remove all counters from target permanent.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "First strike"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/10d538dc-4cba-4233-80ce-80541cfce75d.jpg?1573510784"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Vampire Socialite",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{R}",
+        "type_line": "Creature — Vampire Noble",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "Menace (This creature can't be blocked except by two or more creatures.)\nWhen Vampire Socialite enters the battlefield, if an opponent lost life this turn, put a +1/+1 counter on each other Vampire you control.\nAs long as an opponent lost life this turn, each other Vampire you control enters the battlefield with an additional +1/+1 counter on it.",
+        "colors": [
+          "B",
+          "R"
+        ],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [
+          "Menace"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/b/6/b6d7adfe-0356-4d5a-b13b-5dce5f163b9e.jpg?1673161076"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Vampiric Tutor",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Search your library for a card, then shuffle and put that card on top. You lose 2 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a07cba3-2e8d-48ec-a6f8-4d2edfcd833d.jpg?1562276960"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Vault of Champions",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Vault of Champions enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {W} or {B}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/b/0be7c23e-312d-4b20-9bb7-0344a73acac9.jpg?1690002474"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Vault of the Archangel",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{2}{W}{B}, {T}: Creatures you control gain deathtouch and lifelink until end of turn.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/03a91bc2-bf45-45f3-8a14-911b6148720b.jpg?1698988663"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Viscera Seer",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Creature — Vampire Wizard",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Sacrifice a creature: Scry 1. (Look at the top card of your library. You may put that card on the bottom of your library.)",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Scry"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/4/24277de8-7412-496c-bd44-61d9629a3473.jpg?1583453541"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Voldaren Estate",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{T}, Pay 1 life: Add one mana of any color. Spend this mana only to cast a Vampire spell.\n{5}, {T}: Create a Blood token. This ability costs {1} less to activate for each Vampire you control. (It's an artifact with \"{1}, {T}, Discard a card, Sacrifice this artifact: Draw a card.\")",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/9/1966fb02-c5e8-4f24-a1e9-03d974f38390.jpg?1681084375"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Welcoming Vampire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Creature — Vampire",
+        "power": "2",
+        "toughness": "3",
+        "cmc": 3,
+        "oracle_text": "Flying\nWhenever one or more other creatures with power 2 or less enter the battlefield under your control, draw a card. This ability triggers only once each turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/10369eee-c364-4796-ae5a-aeab9188a510.jpg?1673161737"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Westvale Abbey // Ormendahl, Profane Prince",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Legendary Creature — Demon",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Lifelink",
+          "Indestructible",
+          "Transform",
+          "Haste"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/0/20c2c22f-5115-4a66-bcad-e70619d43448.jpg?1678945864"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Windbrisk Heights",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Hideaway 4 (When this land enters the battlefield, look at the top four cards of your library, exile one face down, then put the rest on the bottom in a random order.)\nWindbrisk Heights enters the battlefield tapped.\n{T}: Add {W}.\n{W}, {T}: You may play the exiled card without paying its mana cost if you attacked with three or more creatures this turn.",
+        "colors": [],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Hideaway"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/047f2401-d2dc-4bfd-a7fa-83ef1d825219.jpg?1698988669"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Yahenni, Undying Partisan",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}",
+        "type_line": "Legendary Creature — Aetherborn Vampire",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Haste\nWhenever a creature an opponent controls dies, put a +1/+1 counter on Yahenni, Undying Partisan.\nSacrifice another creature: Yahenni gains indestructible until end of turn.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Haste"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/09c810eb-1402-428b-850a-72d81f880d8f.jpg?1681411229"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    }
+  ]
+}

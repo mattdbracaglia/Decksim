@@ -1,0 +1,4058 @@
+{
+  "cards": [
+    {
+      "name": "The Ur-Dragon",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{W}{U}{B}{R}{G}",
+        "type_line": "Legendary Creature — Dragon Avatar",
+        "power": "10",
+        "toughness": "10",
+        "cmc": 9,
+        "oracle_text": "Eminence — As long as The Ur-Dragon is in the command zone or on the battlefield, other Dragon spells you cast cost {1} less to cast.\nFlying\nWhenever one or more Dragons you control attack, draw that many cards, then you may put a permanent card from your hand onto the battlefield.",
+        "colors": [
+          "B",
+          "G",
+          "R",
+          "U",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "G",
+          "R",
+          "U",
+          "W"
+        ],
+        "keywords": [
+          "Flying",
+          "Eminence"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/10d42b35-844f-4a64-9981-c6118d45e826.jpg?1689999317"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": true
+      }
+    },
+    {
+      "name": "Arcane Signet",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01b186af-8825-4257-80fd-9c1ecdb21414.jpg?1625978253"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Arid Mesa",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Arid Mesa: Search your library for a Mountain or Plains card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/6/16c8d2fa-54a7-46e8-980c-905258497c90.jpg?1562610110"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Indatha Triome",
+          "Sacred Foundry",
+          "Plateau",
+          "Savannah",
+          "Scrubland",
+          "Tundra",
+          "Badlands",
+          "Blood Crypt",
+          "Ketria Triome",
+          "Steam Vents",
+          "Stomping Ground",
+          "Volcanic Island",
+          "Taiga"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Assassin's Trophy",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{G}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Destroy target permanent an opponent controls. Its controller may search their library for a basic land card, put it onto the battlefield, then shuffle.",
+        "colors": [
+          "B",
+          "G"
+        ],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06aeb042-1e20-48cc-9afb-6ffc336270ca.jpg?1681136760"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Badlands",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Swamp Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B} or {R}.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/6/268c3e1d-2d75-4504-964a-d185ac599fcd.jpg?1562904126"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Balefire Dragon",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{R}{R}",
+        "type_line": "Creature — Dragon",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 7,
+        "oracle_text": "Flying\nWhenever Balefire Dragon deals combat damage to a player, it deals that much damage to each creature that player controls.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/7/0782653e-9d8c-485b-b152-9353cd4f6ec8.jpg?1690002786"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Bayou",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Swamp Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B} or {G}.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/7/17db2b6a-eaa8-4a08-9e86-370bbd058574.jpg?1559591871"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Beledros Witherbloom",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{B}{G}",
+        "type_line": "Legendary Creature — Elder Dragon",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 7,
+        "oracle_text": "Flying\nAt the beginning of each upkeep, create a 1/1 black and green Pest creature token with \"When this creature dies, you gain 1 life.\"\nPay 10 life: Untap all lands you control. Activate only once each turn.",
+        "colors": [
+          "B",
+          "G"
+        ],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/0057bac8-7600-422e-88ef-accf1d0bb4ef.jpg?1628271863"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Birds of Paradise",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Creature — Bird",
+        "power": "0",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Flying\n{T}: Add one mana of any color.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/0003aa31-d42e-4972-9fb9-086aefe29a2c.jpg?1675536851"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Blood Crypt",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Swamp Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B} or {R}.)\nAs Blood Crypt enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/0994aef4-b341-45f4-8881-523565a5956e.jpg?1702429795"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Bloodstained Mire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Bloodstained Mire: Search your library for a Swamp or Mountain card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/1/212f9fbc-ebb9-474a-b3c4-cbde8e69af77.jpg?1562902013"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Ketria Triome",
+          "Plateau",
+          "Sacred Foundry",
+          "Steam Vents",
+          "Stomping Ground",
+          "Taiga",
+          "Volcanic Island",
+          "Badlands",
+          "Bayou",
+          "Blood Crypt",
+          "Indatha Triome",
+          "Overgrown Tomb",
+          "Scrubland",
+          "Underground Sea"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Bloom Tender",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Creature — Elf Druid",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "{T}: For each color among permanents you control, add one mana of that color.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/0/200693d6-7164-4b24-8cff-c1f3e407fea9.jpg?1674097343"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Boseiju, Who Endures",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Legendary Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {G}.\nChannel — {1}{G}, Discard Boseiju, Who Endures: Destroy target artifact, enchantment, or nonbasic land an opponent controls. That player may search their library for a land card with a basic land type, put it onto the battlefield, then shuffle. This ability costs {1} less to activate for each legendary creature you control.",
+        "colors": [],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Channel"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/0055ea30-20fb-4324-a632-8fed87628f05.jpg?1647145068"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Carpet of Flowers",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "At the beginning of each of your main phases, if you haven't added mana with this ability this turn, you may add X mana of any one color, where X is the number of Islands target opponent controls.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/6/86e6f8f9-c17c-4f96-9283-a8a4d27b4746.jpg?1696638297"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cavern of Souls",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "As Cavern of Souls enters the battlefield, choose a creature type.\n{T}: Add {C}.\n{T}: Add one mana of any color. Spend this mana only to cast a creature spell of the chosen type, and that spell can't be countered.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/09f9b3b8-090e-4152-8d44-52d92375905b.jpg?1699045136"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Chromatic Lantern",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Lands you control have \"{T}: Add one mana of any color.\"\n{T}: Add one mana of any color.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0de8874b-478a-4b8c-928e-862e52e43aa3.jpg?1674092334"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "City of Brass",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Whenever City of Brass becomes tapped, it deals 1 damage to you.\n{T}: Add one mana of any color.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/03220cab-fc78-4323-bd34-b8dbebe35597.jpg?1562895605"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Command Tower",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/09e008b9-c27c-40ad-9242-d7da52a2a0a8.jpg?1562896932"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Crux of Fate",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Choose one —\n• Destroy all Dragon creatures.\n• Destroy all non-Dragon creatures.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/1/11721b88-2654-482c-b9d4-80e54efdbf63.jpg?1562600485"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cyclonic Rift",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{U}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Return target nonland permanent you don't control to its owner's hand.\nOverload {6}{U} (You may cast this spell for its overload cost. If you do, change \"target\" in its text to \"each.\")",
+        "colors": [
+          "U"
+        ],
+        "color_identity": [
+          "U"
+        ],
+        "keywords": [
+          "Overload"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/f/1fadf1e3-4f4f-4f58-b8a9-11e14bb550f8.jpg?1561935676"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Demonic Tutor",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a card, put that card into your hand, then shuffle.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/8/085ed548-a8c8-40b3-8183-51c060bc95cb.jpg?1664927814"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dockside Extortionist",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{R}",
+        "type_line": "Creature — Goblin Pirate",
+        "power": "1",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "When Dockside Extortionist enters the battlefield, create X Treasure tokens, where X is the number of artifacts and enchantments your opponents control. (Treasure tokens are artifacts with \"{T}, Sacrifice this artifact: Add one mana of any color.\")",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Treasure"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/7/47fdac35-d709-4078-8205-ad7c79b6644c.jpg?1674097298"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dragon Tempest",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{R}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Whenever a creature with flying enters the battlefield under your control, it gains haste until end of turn.\nWhenever a Dragon enters the battlefield under your control, it deals X damage to any target, where X is the number of Dragons you control.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/3/13ad7bb2-e58b-4cd1-9b32-38c7f8589214.jpg?1674675114"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dragonborn Champion",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{R}{G}",
+        "type_line": "Creature — Dragon Warrior",
+        "power": "5",
+        "toughness": "3",
+        "cmc": 4,
+        "oracle_text": "Trample\nWhenever a source you control deals 5 or more damage to a player, draw a card.",
+        "colors": [
+          "G",
+          "R"
+        ],
+        "color_identity": [
+          "G",
+          "R"
+        ],
+        "keywords": [
+          "Trample"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/9/f/9f6e43a7-84b9-4e89-bfe1-442d08df34d8.jpg?1631585505"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dragonlord Dromoka",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{G}{W}",
+        "type_line": "Legendary Creature — Elder Dragon",
+        "power": "5",
+        "toughness": "7",
+        "cmc": 6,
+        "oracle_text": "This spell can't be countered.\nFlying, lifelink\nYour opponents can't cast spells during your turn.",
+        "colors": [
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [
+          "Flying",
+          "Lifelink"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/2/22562492-f77e-4505-81cd-84e473822cdb.jpg?1681411567"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dragonlord Kolaghan",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{B}{R}",
+        "type_line": "Legendary Creature — Elder Dragon",
+        "power": "6",
+        "toughness": "5",
+        "cmc": 6,
+        "oracle_text": "Flying, haste\nOther creatures you control have haste.\nWhenever an opponent casts a creature or planeswalker spell with the same name as a card in their graveyard, that player loses 10 life.",
+        "colors": [
+          "B",
+          "R"
+        ],
+        "color_identity": [
+          "B",
+          "R"
+        ],
+        "keywords": [
+          "Flying",
+          "Haste"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a0b6be9-edea-4494-909d-34c7d6bcfffd.jpg?1562875761"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Drakuseth, Maw of Flames",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{R}{R}{R}",
+        "type_line": "Legendary Creature — Dragon",
+        "power": "7",
+        "toughness": "7",
+        "cmc": 7,
+        "oracle_text": "Flying\nWhenever Drakuseth, Maw of Flames attacks, it deals 4 damage to any target and 3 damage to each of up to two other targets.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/c/0c44510f-03f6-4a26-a034-f7117700f6fc.jpg?1673301881"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dryad of the Ilysian Grove",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Enchantment Creature — Nymph Dryad",
+        "power": "2",
+        "toughness": "4",
+        "cmc": 3,
+        "oracle_text": "You may play an additional land on each of your turns.\nLands you control are every basic land type in addition to their other types.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a155b60-8aff-4492-8cfd-299a53f5cf1b.jpg?1588681010"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Eureka",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Starting with you, each player may put a permanent card from their hand onto the battlefield. Repeat this process until no one puts a card onto the battlefield.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/2/520db5fb-d961-45a3-af74-6f054b8be3ab.jpg?1562858733"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Farseek",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/061f0032-eb14-4c63-8231-aa61472396c2.jpg?1568004554"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Fellwar Stone",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/7/07be53ef-c7b7-44fe-9754-b76871c6b55f.jpg?1631588964"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Flooded Strand",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Flooded Strand: Search your library for a Plains or Island card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0df37cc8-3703-406a-adaf-ee0bb9d7aa61.jpg?1562636672"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Ketria Triome",
+          "Steam Vents",
+          "Tropical Island",
+          "Tundra",
+          "Underground Sea",
+          "Volcanic Island",
+          "Indatha Triome",
+          "Plateau",
+          "Sacred Foundry",
+          "Savannah",
+          "Scrubland"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Forbidden Orchard",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add one mana of any color.\nWhenever you tap Forbidden Orchard for mana, target opponent creates a 1/1 colorless Spirit creature token.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/7/17db644c-1acf-477d-9c20-f72221f1108a.jpg?1673149497"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Galazeth Prismari",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{U}{R}",
+        "type_line": "Legendary Creature — Elder Dragon",
+        "power": "3",
+        "toughness": "4",
+        "cmc": 4,
+        "oracle_text": "Flying\nWhen Galazeth Prismari enters the battlefield, create a Treasure token.\nArtifacts you control have \"{T}: Add one mana of any color. Spend this mana only to cast an instant or sorcery spell.\"",
+        "colors": [
+          "R",
+          "U"
+        ],
+        "color_identity": [
+          "R",
+          "U"
+        ],
+        "keywords": [
+          "Flying",
+          "Treasure"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06c9158c-064b-4d12-b860-d2c1450d1897.jpg?1627429083"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Genesis Ultimatum",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}{G}{U}{U}{U}{R}{R}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 7,
+        "oracle_text": "Look at the top five cards of your library. Put any number of permanent cards from among them onto the battlefield and the rest into your hand. Exile Genesis Ultimatum.",
+        "colors": [
+          "G",
+          "R",
+          "U"
+        ],
+        "color_identity": [
+          "G",
+          "R",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/c/0caa6b4c-23ae-4a09-9d04-5c17ca3f8c7c.jpg?1630630801"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Goldspan Dragon",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{R}{R}",
+        "type_line": "Creature — Dragon",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 5,
+        "oracle_text": "Flying, haste\nWhenever Goldspan Dragon attacks or becomes the target of a spell, create a Treasure token.\nTreasures you control have \"{T}, Sacrifice this artifact: Add two mana of any one color.\"",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying",
+          "Treasure",
+          "Haste"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/c/0c67a683-4e1d-4a64-952d-a1c27a34ed1d.jpg?1675650542"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Hellkite Courser",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{R}{R}",
+        "type_line": "Creature — Dragon",
+        "power": "6",
+        "toughness": "5",
+        "cmc": 6,
+        "oracle_text": "Flying\nWhen Hellkite Courser enters the battlefield, you may put a commander you own from the command zone onto the battlefield. It gains haste. Return it to the command zone at the beginning of the next end step.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/4/84328cd1-be46-456e-9839-1ae99c329e48.jpg?1630637149"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Ignoble Hierarch",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Creature — Goblin Shaman",
+        "power": "0",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Exalted (Whenever a creature you control attacks alone, that creature gets +1/+1 until end of turn.)\n{T}: Add {B}, {R}, or {G}.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "B",
+          "G",
+          "R"
+        ],
+        "keywords": [
+          "Exalted"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/1/3139cce8-3467-4c50-add2-5b78fb33b90a.jpg?1626101780"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Incarnation Technique",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Demonstrate (When you cast this spell, you may copy it. If you do, choose an opponent to also copy it.)\nMill five cards, then return a creature card from your graveyard to the battlefield.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Mill",
+          "Demonstrate"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/3/43cabf97-0e52-43ac-9ecf-049456b83a7c.jpg?1625982619"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Indatha Triome",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Plains Swamp Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W}, {B}, or {G}.)\nIndatha Triome enters the battlefield tapped.\nCycling {3} ({3}, Discard this card: Draw a card.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G",
+          "W"
+        ],
+        "keywords": [
+          "Cycling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/6/2628d3f1-e0b3-46f1-804d-7b4519e4b249.jpg?1687689133"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Jeweled Lotus",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{0}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Sacrifice Jeweled Lotus: Add three mana of any one color. Spend this mana only to cast your commander.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1af70720-ba91-41b0-ba4a-ff2035afdb0e.jpg?1690001856"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": true,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 3
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Junji, the Midnight Sky",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Legendary Creature — Dragon Spirit",
+        "power": "5",
+        "toughness": "5",
+        "cmc": 5,
+        "oracle_text": "Flying, menace\nWhen Junji, the Midnight Sky dies, choose one —\n• Each opponent discards two cards and loses 2 life.\n• Put target non-Dragon creature card from a graveyard onto the battlefield under your control. You lose 2 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Menace"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/2/12e4acd4-e707-4260-99c9-94804bd35d36.jpg?1681084827"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Ketria Triome",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Forest Island Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {G}, {U}, or {R}.)\nKetria Triome enters the battlefield tapped.\nCycling {3} ({3}, Discard this card: Draw a card.)",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "R",
+          "U"
+        ],
+        "keywords": [
+          "Cycling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/091cf2b6-bd04-40f9-895d-af4dc486fbd9.jpg?1591310665"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 1,
+          "B": 0,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Klauth, Unrivaled Ancient",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{R}{G}",
+        "type_line": "Legendary Creature — Dragon",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 7,
+        "oracle_text": "Flying, haste\nWhenever Klauth, Unrivaled Ancient attacks, add X mana in any combination of colors, where X is the total power of attacking creatures. Spend this mana only to cast spells. Until end of turn, you don't lose this mana as steps and phases end.",
+        "colors": [
+          "G",
+          "R"
+        ],
+        "color_identity": [
+          "G",
+          "R"
+        ],
+        "keywords": [
+          "Flying",
+          "Haste"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/8/58698134-8e01-462b-93b7-3cf7357f3c7e.jpg?1632099414"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Lightning Greaves",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}",
+        "type_line": "Artifact — Equipment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Equipped creature has haste and shroud. (It can't be the target of spells or abilities.)\nEquip {0}",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [
+          "Equip"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/047de2fe-6fc1-40c5-98d4-6203b4a83445.jpg?1592673627"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mana Confluence",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life: Add one mana of any color.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/c/4cb8d03e-e1d2-451e-97a8-141082f92501.jpg?1608925226"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mana Drain",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{U}{U}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Counter target spell. At the beginning of your next main phase, add an amount of {C} equal to that spell's mana value.",
+        "colors": [
+          "U"
+        ],
+        "color_identity": [
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/021a63ea-7473-4f1a-89bd-970cf7fb2a54.jpg?1630637874"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Marsh Flats",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Marsh Flats: Search your library for a Plains or Swamp card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/b/2b076441-b770-4a06-97ac-34a52822f4c0.jpg?1669836315"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Indatha Triome",
+          "Plateau",
+          "Sacred Foundry",
+          "Savannah",
+          "Scrubland",
+          "Tundra",
+          "Badlands",
+          "Bayou",
+          "Blood Crypt",
+          "Overgrown Tomb",
+          "Underground Sea"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Misty Rainforest",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Misty Rainforest: Search your library for a Forest or Island card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/f/1f47bd65-b37c-4b7e-a271-8d67e0c90deb.jpg?1562901555"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Bayou",
+          "Indatha Triome",
+          "Ketria Triome",
+          "Overgrown Tomb",
+          "Savannah",
+          "Stomping Ground",
+          "Taiga",
+          "Tropical Island",
+          "Steam Vents",
+          "Tundra",
+          "Underground Sea",
+          "Volcanic Island"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Moonveil Regent",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{R}",
+        "type_line": "Creature — Dragon",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 4,
+        "oracle_text": "Flying\nWhenever you cast a spell, you may discard your hand. If you do, draw a card for each of that spell's colors.\nWhen Moonveil Regent dies, it deals X damage to any target, where X is the number of colors among permanents you control.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/e/3eff73df-e69a-4abf-900e-85b95106a17e.jpg?1641169787"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Morophon, the Boundless",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{7}",
+        "type_line": "Legendary Creature — Shapeshifter",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 7,
+        "oracle_text": "Changeling (This card is every creature type.)\nAs Morophon, the Boundless enters the battlefield, choose a creature type.\nSpells of the chosen type you cast cost {W}{U}{B}{R}{G} less to cast. This effect reduces only the amount of colored mana you pay.\nOther creatures you control of the chosen type get +1/+1.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G",
+          "R",
+          "U",
+          "W"
+        ],
+        "keywords": [
+          "Changeling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/a/5a089eb9-2034-423a-862c-d96e2d280972.jpg?1632848175"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Nature's Lore",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a Forest card, put that card onto the battlefield, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00a4ffc1-7731-42d9-b970-2a8d84cba14d.jpg?1562588736"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Nicol Bolas, the Ravager // Nicol Bolas, the Arisen",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{U}{B}{R}",
+        "type_line": "Legendary Creature — Elder Dragon // Legendary Planeswalker — Bolas",
+        "power": 4,
+        "toughness": 4,
+        "cmc": 4,
+        "oracle_text": "When Nicol Bolas, the Ravager enters the battlefield, each opponent discards a card. {4}{U}{B}{R}: Exile Nicol Bolas, the Ravager, then return him to the battlefield transformed under his owner's control. Activate only as a sorcery.",
+        "colors": [
+          "B",
+          "R",
+          "U"
+        ],
+        "color_identity": [
+          "B",
+          "R",
+          "U"
+        ],
+        "keywords": [
+          "Flying",
+          "Transform"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a77fabf-481d-4fff-be8f-faf35af9160b.jpg?1664172570"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Noble Hierarch",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Creature — Human Druid",
+        "power": "0",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Exalted (Whenever a creature you control attacks alone, that creature gets +1/+1 until end of turn.)\n{T}: Add {G}, {W}, or {U}.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G",
+          "U",
+          "W"
+        ],
+        "keywords": [
+          "Exalted"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/02b642ff-eb7d-4c10-9d5b-477af2e52e59.jpg?1561756581"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Old Gnawbone",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{G}{G}",
+        "type_line": "Legendary Creature — Dragon",
+        "power": "7",
+        "toughness": "7",
+        "cmc": 7,
+        "oracle_text": "Flying\nWhenever a creature you control deals combat damage to a player, create that many Treasure tokens.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Flying",
+          "Treasure"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/5/15214795-47ab-4676-91e0-7b1a27247a8d.jpg?1681082902"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Omniscience",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{7}{U}{U}{U}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 10,
+        "oracle_text": "You may cast spells from your hand without paying their mana costs.",
+        "colors": [
+          "U"
+        ],
+        "color_identity": [
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/1088f33e-cb5f-4248-ae8e-280c4e41f291.jpg?1562550472"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Overgrown Tomb",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Swamp Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B} or {G}.)\nAs Overgrown Tomb enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/5/15c1114f-5f7c-4ecf-8aac-e48853df008b.jpg?1702416379"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Patriarch's Bidding",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Each player chooses a creature type. Each player returns all creature cards of a type chosen this way from their graveyard to the battlefield.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d7bb46e-430f-4e59-80d0-0ea4f315d540.jpg?1562540226"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Plateau",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Mountain Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R} or {W}.)",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/8/0829af6e-7dd9-4bce-bf14-1c5d509556cb.jpg?1680800960"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Polluted Delta",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Polluted Delta: Search your library for an Island or Swamp card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0f7585c8-9e21-4eef-afc1-2852de23db2f.jpg?1562898596"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Ketria Triome",
+          "Steam Vents",
+          "Tropical Island",
+          "Tundra",
+          "Underground Sea",
+          "Volcanic Island",
+          "Badlands",
+          "Bayou",
+          "Blood Crypt",
+          "Indatha Triome",
+          "Overgrown Tomb",
+          "Scrubland"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Reanimate",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Put target creature card from a graveyard onto the battlefield under your control. You lose life equal to its mana value.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/04fc99dc-bfbe-4567-b791-6b1db96471ec.jpg?1547516995"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Rejuvenating Springs",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Rejuvenating Springs enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {G} or {U}.",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/026041e3-822c-491b-8647-8035526d9bc3.jpg?1630636717"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 1,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Rhystic Study",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{U}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Whenever an opponent casts a spell, you may draw a card unless that player pays {1}.",
+        "colors": [
+          "U"
+        ],
+        "color_identity": [
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/03ac9b21-8c79-49ec-a0df-0fd22e4a0ed7.jpg?1592487897"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Rhythm of the Wild",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{R}{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Creature spells you control can't be countered.\nNontoken creatures you control have riot. (They enter the battlefield with your choice of a +1/+1 counter or haste.)",
+        "colors": [
+          "G",
+          "R"
+        ],
+        "color_identity": [
+          "G",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/b/1b64fa50-1a11-412f-a827-d8e49ec472e8.jpg?1702416280"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sacred Foundry",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Mountain Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R} or {W}.)\nAs Sacred Foundry enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a26d900-c652-4f9c-8681-a35c5f8b1937.jpg?1561815185"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Savannah",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Forest Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {G} or {W}.)",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/e/0e9aeaa8-9a75-4719-992f-cbb316f72175.jpg?1559591729"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Scalding Tarn",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Scalding Tarn: Search your library for an Island or Mountain card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/7/17c6ba55-2470-4dde-a7fa-137a60716c96.jpg?1626103911"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Steam Vents",
+          "Ketria Triome",
+          "Tropical Island",
+          "Tundra",
+          "Underground Sea",
+          "Volcanic Island",
+          "Badlands",
+          "Blood Crypt",
+          "Plateau",
+          "Sacred Foundry",
+          "Stomping Ground",
+          "Taiga"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Scalelord Reckoner",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}{W}",
+        "type_line": "Creature — Dragon",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 5,
+        "oracle_text": "Flying\nWhenever a Dragon you control becomes the target of a spell or ability an opponent controls, destroy target nonland permanent that player controls.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/c/4ce3aff9-0d67-48e8-a319-68fc084a8493.jpg?1562253900"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Scion of Draco",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{12}",
+        "type_line": "Artifact Creature — Dragon",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 12,
+        "oracle_text": "Domain — This spell costs {2} less to cast for each basic land type among lands you control.\nFlying\nEach creature you control has vigilance if it's white, hexproof if it's blue, lifelink if it's black, first strike if it's red, and trample if it's green.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [
+          "Flying",
+          "Domain"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/4/24b3983d-93aa-4a33-a064-23c87ab6ed51.jpg?1626103706"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Scrubland",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Plains Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W} or {B}.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d5cd12b-8d23-4d46-980e-2ef276265a66.jpg?1562898077"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Selvala's Stampede",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{G}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 6,
+        "oracle_text": "Council's dilemma — Starting with you, each player votes for wild or free. Reveal cards from the top of your library until you reveal a creature card for each wild vote. Put those creature cards onto the battlefield, then shuffle the rest into your library. You may put a permanent card from your hand onto the battlefield for each free vote.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Council's dilemma"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/3/2344d20d-542a-4fd6-9876-0f35beb1cd5c.jpg?1562253430"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Show and Tell",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{U}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Each player may put an artifact, creature, enchantment, or land card from their hand onto the battlefield.",
+        "colors": [
+          "U"
+        ],
+        "color_identity": [
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1a580a3f-36cf-4015-b358-613f1b11a03c.jpg?1562543199"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Smothering Tithe",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Whenever an opponent draws a card, that player may pay {2}. If the player doesn't, you create a Treasure token. (It's an artifact with \"{T}, Sacrifice this artifact: Add one mana of any color.\")",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Treasure"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/3/2309fb66-3aa0-4ec5-9a8e-5a0caa19c270.jpg?1690000420"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sneak Attack",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{R}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "{R}: You may put a creature card from your hand onto the battlefield. That creature gains haste. Sacrifice the creature at the beginning of the next end step.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/019edeac-ce93-4969-8dcb-787f0bfd9ae7.jpg?1692933528"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sol Ring",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "{T}: Add {C}{C}.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06be8262-4636-4a2c-a0c8-de741cf45aed.jpg?1696638321"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": true,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 2
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Spire Garden",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Spire Garden enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {R} or {G}.",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a2b3911-40f2-4a05-9eb7-57a29a35109d.jpg?1675618634"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Steam Vents",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Island Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {U} or {R}.)\nAs Steam Vents enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/054f2276-2dd5-43da-bb26-c57c560861fe.jpg?1593273017"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 1,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Stomping Ground",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Mountain Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R} or {G}.)\nAs Stomping Ground enters the battlefield, you may pay 2 life. If you don't, it enters the battlefield tapped.",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/a/4acf970d-d2d7-413d-aba7-587ee53d8d5c.jpg?1641594524"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sunbird's Invocation",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{R}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 6,
+        "oracle_text": "Whenever you cast a spell from your hand, reveal the top X cards of your library, where X is that spell's mana value. You may cast a spell with mana value X or less from among cards revealed this way without paying its mana cost. Put the rest on the bottom of your library in a random order.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0ad288a7-321d-41a5-a66e-fd984b922bea.jpg?1566582054"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Swords to Plowshares",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Exile target creature. Its controller gains life equal to its power.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/4/04e0738b-b856-401e-8b41-096e2c48cf96.jpg?1562895965"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Taiga",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Mountain Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {R} or {G}.)",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01006833-6007-4c16-9ebb-20d31c60a57a.jpg?1559592223"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Teferi's Protection",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Until your next turn, your life total can't change and you gain protection from everything. All permanents you control phase out. (While they're phased out, they're treated as though they don't exist. They phase in before you untap during your untap step.)\nExile Teferi's Protection.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/8/1802943c-07cc-48bb-a861-f18cb5f2b0ae.jpg?1681721125"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Temur Ascendancy",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}{U}{R}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Creatures you control have haste.\nWhenever a creature with power 4 or greater enters the battlefield under your control, you may draw a card.",
+        "colors": [
+          "G",
+          "R",
+          "U"
+        ],
+        "color_identity": [
+          "G",
+          "R",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/1/11746bf1-d813-4ade-8ce4-9935cebef856.jpg?1562782711"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Terror of the Peaks",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{R}{R}",
+        "type_line": "Creature — Dragon",
+        "power": "5",
+        "toughness": "4",
+        "cmc": 5,
+        "oracle_text": "Flying\nSpells your opponents cast that target Terror of the Peaks cost an additional 3 life to cast.\nWhenever another creature enters the battlefield under your control, Terror of the Peaks deals damage equal to that creature's power to any target.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06728070-b888-4a57-9248-2a9615a4cda0.jpg?1596311682"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "The Great Henge",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{7}{G}{G}",
+        "type_line": "Legendary Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 9,
+        "oracle_text": "This spell costs {X} less to cast, where X is the greatest power among creatures you control.\n{T}: Add {G}{G}. You gain 2 life.\nWhenever a nontoken creature enters the battlefield under your control, put a +1/+1 counter on it and draw a card.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/064efadf-fdba-41fb-bf2f-ef42b274e934.jpg?1686966994"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": true,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 2,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "The World Tree",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "The World Tree enters the battlefield tapped.\n{T}: Add {G}.\nAs long as you control six or more lands, lands you control have \"{T}: Add one mana of any color.\"\n{W}{W}{U}{U}{B}{B}{R}{R}{G}{G}, {T}, Sacrifice The World Tree: Search your library for any number of God cards, put them onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G",
+          "R",
+          "U",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/4/34fc25b4-046a-4893-9041-6a00df53fe12.jpg?1628379810"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Three Visits",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a Forest card, put it onto the battlefield, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1a515b75-0adf-4f33-a33a-2ddf524b14d9.jpg?1696638308"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Tiamat",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}{U}{B}{R}{G}",
+        "type_line": "Legendary Creature — Dragon God",
+        "power": "7",
+        "toughness": "7",
+        "cmc": 7,
+        "oracle_text": "Flying\nWhen Tiamat enters the battlefield, if you cast it, search your library for up to five Dragon cards not named Tiamat that each have different names, reveal them, put them into your hand, then shuffle.",
+        "colors": [
+          "B",
+          "G",
+          "R",
+          "U",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "G",
+          "R",
+          "U",
+          "W"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/9/492fe79b-7af2-4911-8497-cbee8d529d18.jpg?1627773050"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Tropical Island",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Forest Island",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {G} or {U}.)",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/6/2674e6d9-51b9-405c-ab01-75474abcf690.jpg?1588360231"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 1,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Tundra",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Plains Island",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W} or {U}.)",
+        "colors": [],
+        "color_identity": [
+          "U",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/05ab141b-ba27-4127-a973-ff0cd72d2c64.jpg?1664929543"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Ugin, the Spirit Dragon",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{8}",
+        "type_line": "Legendary Planeswalker — Ugin",
+        "power": null,
+        "toughness": null,
+        "cmc": 8,
+        "oracle_text": "+2: Ugin, the Spirit Dragon deals 3 damage to any target.\n−X: Exile each permanent with mana value X or less that's one or more colors.\n−10: You gain 7 life, draw seven cards, then put up to seven permanent cards from your hand onto the battlefield.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/02c596b7-67d2-40dd-bb57-4a7640d88145.jpg?1596311993"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Underground Sea",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Island Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {U} or {B}.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/068bb15a-fc2d-42a2-859b-837b946d23c0.jpg?1559592872"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 1,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Urza's Incubator",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}",
+        "type_line": "Artifact",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "As Urza's Incubator enters the battlefield, choose a creature type.\nCreature spells of the chosen type cost {2} less to cast.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/9/4/94e10277-a935-4c78-b45f-52ab5ea0f95c.jpg?1562275045"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Utvara Hellkite",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{6}{R}{R}",
+        "type_line": "Creature — Dragon",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 8,
+        "oracle_text": "Flying\nWhenever a Dragon you control attacks, create a 6/6 red Dragon creature token with flying.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/05145c58-8317-4629-8573-9dff02e62c94.jpg?1702429878"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Vaevictis Asmadi, the Dire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{R}{G}",
+        "type_line": "Legendary Creature — Elder Dragon",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 6,
+        "oracle_text": "Flying\nWhenever Vaevictis Asmadi, the Dire attacks, for each player, choose target permanent that player controls. Those players sacrifice those permanents. Each player who sacrificed a permanent this way reveals the top card of their library, then puts it onto the battlefield if it's a permanent card.",
+        "colors": [
+          "B",
+          "G",
+          "R"
+        ],
+        "color_identity": [
+          "B",
+          "G",
+          "R"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/5/85f99ec3-5ab9-43a6-ae92-2501f04d6b6c.jpg?1662076582"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Verdant Catacombs",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Verdant Catacombs: Search your library for a Swamp or Forest card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/5/15faa763-b897-4e86-b094-73f3236291a9.jpg?1593815136"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Badlands",
+          "Bayou",
+          "Indatha Triome",
+          "Blood Crypt",
+          "Overgrown Tomb",
+          "Scrubland",
+          "Underground Sea",
+          "Ketria Triome",
+          "Savannah",
+          "Stomping Ground",
+          "Taiga",
+          "Tropical Island"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Volcanic Island",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Island Mountain",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {U} or {R}.)",
+        "colors": [],
+        "color_identity": [
+          "R",
+          "U"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/0324641d-af55-4c53-b4dc-c8262e967da5.jpg?1559591893"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 1,
+          "B": 0,
+          "R": 1,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Wheel of Fortune",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{R}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Each player discards their hand, then draws seven cards.",
+        "colors": [
+          "R"
+        ],
+        "color_identity": [
+          "R"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/5/2597050f-6b1b-474e-aa16-33fd154628ca.jpg?1562902580"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Windswept Heath",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Windswept Heath: Search your library for a Forest or Plains card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/6/16f6ba7d-76fd-4f98-a41e-fde9a6f3ab64.jpg?1562900544"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Bayou",
+          "Indatha Triome",
+          "Ketria Triome",
+          "Overgrown Tomb",
+          "Savannah",
+          "Stomping Ground",
+          "Taiga",
+          "Tropical Island",
+          "Plateau",
+          "Sacred Foundry",
+          "Scrubland",
+          "Tundra"
+        ],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Wooded Foothills",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}, Pay 1 life, Sacrifice Wooded Foothills: Search your library for a Mountain or Forest card, put it onto the battlefield, then shuffle.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/0/1066a94a-8e4f-4d77-820b-7a77a18116f0.jpg?1604195216"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": true,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [
+          "Badlands",
+          "Blood Crypt",
+          "Ketria Triome",
+          "Plateau",
+          "Sacred Foundry",
+          "Steam Vents",
+          "Stomping Ground",
+          "Taiga",
+          "Volcanic Island",
+          "Bayou",
+          "Indatha Triome",
+          "Overgrown Tomb",
+          "Savannah",
+          "Tropical Island"
+        ],
+        "Commander": false
+      }
+    }
+  ]
+}

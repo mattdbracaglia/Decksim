@@ -1,0 +1,3295 @@
+{
+  "cards": [
+    {
+      "name": "Akroma's Will",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Choose one. If you control a commander as you cast this spell, you may choose both.\n• Creatures you control gain flying, vigilance, and double strike until end of turn.\n• Creatures you control gain lifelink, indestructible, and protection from all colors until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/0/608cdbdb-6f7e-438a-bab0-0e7782435f0f.jpg?1698988079"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Alseid of Life's Bounty",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Enchantment Creature — Nymph",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Lifelink\n{1}, Sacrifice Alseid of Life's Bounty: Target creature or enchantment you control gains protection from the color of your choice until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Lifelink"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06dbfdac-059c-411c-aeac-6d849ee54212.jpg?1681728841"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Anikthea, Hand of Erebos",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}{B}{G}",
+        "type_line": "Legendary Enchantment Creature — Demigod",
+        "power": "4",
+        "toughness": "4",
+        "cmc": 5,
+        "oracle_text": "Menace\nOther enchantment creatures you control have menace.\nWhenever Anikthea enters the battlefield or attacks, exile up to one target non-Aura enchantment card from your graveyard. Create a token that's a copy of that card, except it's a 3/3 black Zombie creature in addition to its other types.",
+        "colors": [
+          "B",
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "G",
+          "W"
+        ],
+        "keywords": [
+          "Menace"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/b/8b796a56-1611-4835-ac5b-48b4e9263685.jpg?1691500693"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": true
+      }
+    },
+    {
+      "name": "Arachnogenesis",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Create X 1/2 green Spider creature tokens with reach, where X is the number of creatures attacking you. Prevent all combat damage that would be dealt this turn by non-Spider creatures.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/7/9/7967cb69-1868-45c0-92d1-39dabe30f2a2.jpg?1562706128"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Arasta of the Endless Web",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}{G}",
+        "type_line": "Legendary Enchantment Creature — Spider",
+        "power": "3",
+        "toughness": "5",
+        "cmc": 4,
+        "oracle_text": "Reach\nWhenever an opponent casts an instant or sorcery spell, create a 1/2 green Spider creature token with reach.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Reach"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/03b9304c-9993-4539-9165-48568eb81db1.jpg?1580256120"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Archon of Sun's Grace",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}{W}",
+        "type_line": "Creature — Archon",
+        "power": "3",
+        "toughness": "4",
+        "cmc": 4,
+        "oracle_text": "Flying, lifelink\nPegasus creatures you control have lifelink.\nConstellation — Whenever an enchantment enters the battlefield under your control, create a 2/2 white Pegasus creature token with flying.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Flying",
+          "Lifelink",
+          "Constellation"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/3/235e5999-e8e5-4093-adff-9d47aec70d10.jpg?1581478942"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Argothian Enchantress",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Creature — Human Druid",
+        "power": "0",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "Shroud (This creature can't be the target of spells or abilities.)\nWhenever you cast an enchantment spell, draw a card.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Shroud"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/b/5b3847f1-5dda-463f-b898-ea2a879313a1.jpg?1562544993"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Aura Mutation",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Destroy target enchantment. Create X 1/1 green Saproling creature tokens, where X is that enchantment's mana value.",
+        "colors": [
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/0526debc-6eca-413e-b68c-50aa70927058.jpg?1562386662"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Awaken the Woods",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{X}{G}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Create X 1/1 green Forest Dryad land creature tokens. (They're affected by summoning sickness.)",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/c/1c95f8b8-faba-4412-8d8f-093e2ec903f0.jpg?1674421417"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Beastmaster Ascension",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Whenever a creature you control attacks, you may put a quest counter on Beastmaster Ascension.\nAs long as Beastmaster Ascension has seven or more quest counters on it, creatures you control get +5/+5.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/009521db-a4e5-43d7-9ef0-710c69a4f797.jpg?1561930380"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Birds of Paradise",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Creature — Bird",
+        "power": "0",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Flying\n{T}: Add one mana of any color.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/0003aa31-d42e-4972-9fb9-086aefe29a2c.jpg?1675536851"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Blot Out the Sky",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{X}{W}{B}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Create X tapped 2/1 white and black Inkling creature tokens with flying. If X is 6 or more, destroy all noncreature, nonland permanents.",
+        "colors": [
+          "B",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/0141312f-4b68-4c56-b1dc-5b7e6afbb96c.jpg?1627428247"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Bountiful Promenade",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Bountiful Promenade enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {G} or {W}.",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/1/21865ed6-5edd-41f4-9ae0-f501872d91dc.jpg?1598638996"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Burgeoning",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Whenever an opponent plays a land, you may put a land card from your hand onto the battlefield.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/0961e7f0-a6c2-46b4-9069-d5e2068171b4.jpg?1576382996"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Canopy Vista",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Forest Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {G} or {W}.)\nCanopy Vista enters the battlefield tapped unless you control two or more basic lands.",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/091556d0-c8d3-44a9-9aee-1be624832bd3.jpg?1689354030"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Carpet of Flowers",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "At the beginning of each of your main phases, if you haven't added mana with this ability this turn, you may add X mana of any one color, where X is the number of Islands target opponent controls.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/8/6/86e6f8f9-c17c-4f96-9283-a8a4d27b4746.jpg?1696638297"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cast Out",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Flash\nWhen Cast Out enters the battlefield, exile target nonland permanent an opponent controls until Cast Out leaves the battlefield.\nCycling {W} ({W}, Discard this card: Draw a card.)",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Flash",
+          "Cycling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/b/1bf09533-3849-4756-8ccf-143196cc17d9.jpg?1591319916"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Cemetery Tampering",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Hideaway 5 (When this enchantment enters the battlefield, look at the top five cards of your library, exile one face down, then put the rest on the bottom in a random order.)\nAt the beginning of your upkeep, you may mill three cards. Then if there are twenty or more cards in your graveyard, you may play the exiled card without paying its mana cost.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Mill",
+          "Hideaway"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0f9a3c20-5112-43dc-a8d0-dde23e8b2328.jpg?1681136130"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Command Tower",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add one mana of any color in your commander's color identity.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/9/09e008b9-c27c-40ad-9242-d7da52a2a0a8.jpg?1562896932"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Composer of Spring",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Creature — Satyr Bard",
+        "power": "1",
+        "toughness": "3",
+        "cmc": 2,
+        "oracle_text": "Constellation — Whenever an enchantment enters the battlefield under your control, you may put a land card from your hand onto the battlefield tapped. If you control six or more enchantments, instead you may put a creature or land card from your hand onto the battlefield tapped.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Constellation"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/2/42bb4ab9-386f-4099-a3aa-87dab8611164.jpg?1690003531"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Craterhoof Behemoth",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{G}{G}{G}",
+        "type_line": "Creature — Beast",
+        "power": "5",
+        "toughness": "5",
+        "cmc": 8,
+        "oracle_text": "Haste\nWhen Craterhoof Behemoth enters the battlefield, creatures you control gain trample and get +X/+X until end of turn, where X is the number of creatures you control.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Haste"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/036f9ba6-6bd1-4be8-b584-f67308e8c60d.jpg?1690001278"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dawn of a New Age",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Dawn of a New Age enters the battlefield with a hope counter on it for each creature you control.\nAt the beginning of your end step, remove a hope counter from Dawn of a New Age. If you do, draw a card. Then if Dawn of a New Age has no hope counters on it, sacrifice it and you gain 4 life.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01a4a36a-f10a-411b-9558-cbbb62e8b4ae.jpg?1701081584"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Doom Whisperer",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{B}{B}",
+        "type_line": "Creature — Nightmare Demon",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 5,
+        "oracle_text": "Flying, trample\nPay 2 life: Surveil 2. (Look at the top two cards of your library, then put any number of them into your graveyard and the rest on top of your library in any order.)",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Surveil",
+          "Trample"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a11ee0d-ff8d-4648-8b4e-29440c135c30.jpg?1572892944"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Dryad of the Ilysian Grove",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Enchantment Creature — Nymph Dryad",
+        "power": "2",
+        "toughness": "4",
+        "cmc": 3,
+        "oracle_text": "You may play an additional land on each of your turns.\nLands you control are every basic land type in addition to their other types.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/a/0a155b60-8aff-4492-8cfd-299a53f5cf1b.jpg?1588681010"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Eidolon of Blossoms",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}{G}",
+        "type_line": "Enchantment Creature — Spirit",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 4,
+        "oracle_text": "Constellation — Whenever Eidolon of Blossoms or another enchantment enters the battlefield under your control, draw a card.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Constellation"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d82f171-b1f6-4e80-996a-c579a1be252c.jpg?1592710863"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Enchantress's Presence",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Whenever you cast an enchantment spell, draw a card.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/f/3f50538b-f866-4e75-8856-2ad8af635011.jpg?1690004818"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Entomb",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Search your library for a card, put that card into your graveyard, then shuffle.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/06c0c35d-a26e-473a-9206-8fbda7191700.jpg?1562896336"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Ephemerate",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Exile target creature you control, then return it to the battlefield under its owner's control.\nRebound (If you cast this spell from your hand, exile it as it resolves. At the beginning of your next upkeep, you may cast this card from exile without paying its mana cost.)",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Rebound"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/05578e28-2258-492d-9637-4f1ab7091247.jpg?1675614210"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Evolutionary Leap",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "{G}, Sacrifice a creature: Reveal cards from the top of your library until you reveal a creature card. Put that card into your hand and the rest on the bottom of your library in a random order.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/d/4d007d3c-3356-4394-9bcd-2b2c1031c20b.jpg?1673484550"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Exotic Orchard",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add one mana of any color that a land an opponent controls could produce.",
+        "colors": [],
+        "color_identity": [],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0de15320-485c-4191-8f15-12f9d1b340ba.jpg?1674142902"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 1,
+          "B": 1,
+          "R": 1,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Exploration",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "You may play an additional land on each of your turns.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/c/1c3fc61c-c26e-47f3-a1eb-f6f10f8469e2.jpg?1599711165"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Farseek",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a Plains, Island, Swamp, or Mountain card, put it onto the battlefield tapped, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/6/061f0032-eb14-4c63-8231-aa61472396c2.jpg?1568004554"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Felidar Retreat",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 4,
+        "oracle_text": "Landfall — Whenever a land enters the battlefield under your control, choose one —\n• Create a 2/2 white Cat Beast creature token.\n• Put a +1/+1 counter on each creature you control. Those creatures gain vigilance until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Landfall"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/4/34b3b925-743d-4f88-97d6-d0847c0d7d6a.jpg?1675646601"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Fetid Heath",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{W/B}, {T}: Add {W}{W}, {W}{B}, or {B}{B}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0fbb9790-3744-4dcb-881a-452573298822.jpg?1562898273"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Flawless Maneuver",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "If you control a commander, you may cast this spell without paying its mana cost.\nCreatures you control gain indestructible until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/c/3c3bf400-31c0-4ae4-8429-0f6fb92cbe9e.jpg?1690002727"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Flowering of the White Tree",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}{W}",
+        "type_line": "Legendary Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Legendary creatures you control get +2/+1 and have ward {1}.\nNonlegendary creatures you control get +1/+1.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/4/14f11a55-9fbf-4fd1-a703-cac259ca446e.jpg?1687888161"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Forest",
+      "quantity": 7,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {G}.)",
+        "colors": [],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/0031d026-9e9a-46f6-8204-1acfee8b8809.jpg?1561894880"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Grand Crescendo",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{X}{W}{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Create X 1/1 green and white Citizen creature tokens. Creatures you control gain indestructible until end of turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1a485510-6a19-4c16-bd41-551204818624.jpg?1681136192"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Grasp of Fate",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{W}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "When Grasp of Fate enters the battlefield, for each opponent, exile up to one target nonland permanent that player controls until Grasp of Fate leaves the battlefield. (Those permanents return under their owners' control.)",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1ad46a46-4221-4e0e-8b46-49f517c231c1.jpg?1696638253"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Greater Auramancy",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Other enchantments you control have shroud. (A permanent with shroud can't be the target of spells or abilities.)\nEnchanted creatures you control have shroud.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/1/1177787f-bf1e-438b-9615-97d03b04128c.jpg?1562826899"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Grisly Salvage",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}{G}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Reveal the top five cards of your library. You may put a creature or land card from among them into your hand. Put the rest into your graveyard.",
+        "colors": [
+          "B",
+          "G"
+        ],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/3/03240882-c797-458d-b92d-8d8f0d9952dc.jpg?1562497075"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Guardian of Faith",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{W}{W}",
+        "type_line": "Creature — Spirit Knight",
+        "power": "3",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Flash\nVigilance\nWhen Guardian of Faith enters the battlefield, any number of other target creatures you control phase out. (Treat them and anything attached to them as though they don't exist until their controller's next turn.)",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Vigilance",
+          "Flash"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/02f093c0-135f-4e92-8baa-353b49ad4b5a.jpg?1627953527"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Hermit Druid",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Creature — Human Druid",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 2,
+        "oracle_text": "{G}, {T}: Reveal cards from the top of your library until you reveal a basic land card. Put that card into your hand and all other cards revealed this way into your graveyard.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/b/0b1a1814-2793-489b-bb1d-a676e613fb57.jpg?1562542809"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Heroic Intervention",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Permanents you control gain hexproof and indestructible until end of turn.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/9/394f2394-628a-437f-9513-58ab5f39cf9c.jpg?1605328692"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Indatha Triome",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land — Plains Swamp Forest",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W}, {B}, or {G}.)\nIndatha Triome enters the battlefield tapped.\nCycling {3} ({3}, Discard this card: Draw a card.)",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G",
+          "W"
+        ],
+        "keywords": [
+          "Cycling"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/6/2628d3f1-e0b3-46f1-804d-7b4519e4b249.jpg?1687689133"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Infernal Sovereign",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{4}{B}{B}",
+        "type_line": "Creature — Demon",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 6,
+        "oracle_text": "Flying, trample\nSkip your draw step.\nWhenever you play a land or cast a spell, you draw a card and you lose 1 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Flying",
+          "Trample"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/b/2bd80e18-3d2e-443f-8476-de6f7fd8136e.jpg?1682207716"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Inkshield",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{W}{B}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Prevent all combat damage that would be dealt to you this turn. For each 1 damage prevented this way, create a 2/1 white and black Inkling creature token with flying.",
+        "colors": [
+          "B",
+          "W"
+        ],
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/5/55da1378-89aa-42b3-9323-0842d4831a58.jpg?1625983656"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Land Tax",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "At the beginning of your upkeep, if an opponent controls more lands than you, you may search your library for up to three basic land cards, reveal them, put them into your hand, then shuffle.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/3/1301e203-7d9a-4735-8db3-7882ad70d343.jpg?1559604176"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mesa Enchantress",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{W}{W}",
+        "type_line": "Creature — Human Druid",
+        "power": "0",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Whenever you cast an enchantment spell, you may draw a card.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/d/0d1a5ae6-b620-44dd-b62f-068b1b42b9d1.jpg?1562701222"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mirari's Wake",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{3}{G}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 5,
+        "oracle_text": "Creatures you control get +1/+1.\nWhenever you tap a land for mana, add one mana of any type that land produced.",
+        "colors": [
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/2/02747420-c635-4f0f-9888-81cf4f7dfc91.jpg?1590118136"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Mirri's Guile",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "At the beginning of your upkeep, you may look at the top three cards of your library, then put them back in any order.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/7/3/73d51a3c-95c0-4810-b847-4b8afd12fd64.jpg?1562054490"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Moonshaker Cavalry",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{W}{W}{W}",
+        "type_line": "Creature — Spirit Knight",
+        "power": "6",
+        "toughness": "6",
+        "cmc": 8,
+        "oracle_text": "Flying\nWhen Moonshaker Cavalry enters the battlefield, creatures you control gain flying and get +X/+X until end of turn, where X is the number of creatures you control.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Flying"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/8/08e06198-b96a-4b52-ba86-3df8278c0785.jpg?1692940674"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Nature's Lore",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a Forest card, put that card onto the battlefield, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00a4ffc1-7731-42d9-b970-2a8d84cba14d.jpg?1562588736"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Out of the Tombs",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "At the beginning of your upkeep, put two eon counters on Out of the Tombs, then mill cards equal to the number of eon counters on it.\nIf you would draw a card while your library has no cards in it, instead return a creature card from your graveyard to the battlefield. If you can't, you lose the game.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Mill"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/8/68e8f389-9323-49b8-84c9-f79c2c231eb0.jpg?1674058759"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Overgrown Farmland",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Overgrown Farmland enters the battlefield tapped unless you control two or more other lands.\n{T}: Add {G} or {W}.",
+        "colors": [],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/c/0c341a10-392e-4d99-99e9-b0fb18098489.jpg?1673161229"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Pest Infestation",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{X}{X}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "Destroy up to X target artifacts and/or enchantments. Create twice X 1/1 black and green Pest creature tokens with \"When this creature dies, you gain 1 life.\"",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/c/3c252d55-2b1f-407a-9b4e-c0fa2a60e538.jpg?1681080688"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Phyrexian Arena",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "At the beginning of your upkeep, you draw a card and you lose 1 life.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/c/0c25e492-2862-405b-ba1d-f58cb63294dd.jpg?1675829290"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Plains",
+      "quantity": 7,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Plains",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {W}.)",
+        "colors": [],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00293ce4-3475-4064-8510-9e8c02faf3bf.jpg?1592674050"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Putrid Imp",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{B}",
+        "type_line": "Creature — Zombie Imp",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 1,
+        "oracle_text": "Discard a card: Putrid Imp gains flying until end of turn.\nThreshold — As long as seven or more cards are in your graveyard, Putrid Imp gets +1/+1 and can't block.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Threshold"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/b/1b9e6c5c-4bc4-4f41-8c2c-f5b8c97c53c5.jpg?1562628793"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Rampant Growth",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a basic land card, put that card onto the battlefield tapped, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01d56cde-e186-41e7-bcb2-80736a989678.jpg?1562895330"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sanctum Weaver",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Enchantment Creature — Dryad",
+        "power": "0",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "{T}: Add X mana of any one color, where X is the number of enchantments you control.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/2/12089acb-81f5-4d49-89f4-1f207f3b92fd.jpg?1692935585"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sandsteppe Citadel",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Sandsteppe Citadel enters the battlefield tapped.\n{T}: Add {W}, {B}, or {G}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0ff48ba1-1a91-4189-a24f-7a1a792fd9b0.jpg?1684198596"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Satyr Enchanter",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}{W}",
+        "type_line": "Creature — Satyr Druid",
+        "power": "2",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Whenever you cast an enchantment spell, draw a card.",
+        "colors": [
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/f/4f910c5b-3de9-40e8-a1d5-dfe6b3725404.jpg?1573515624"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Scute Swarm",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Creature — Insect",
+        "power": "1",
+        "toughness": "1",
+        "cmc": 3,
+        "oracle_text": "Landfall — Whenever a land enters the battlefield under your control, create a 1/1 green Insect creature token. If you control six or more lands, create a token that's a copy of Scute Swarm instead.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Landfall"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/a/2ac27853-fe5a-4402-9872-1fc98d083277.jpg?1607365161"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Setessan Champion",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{G}",
+        "type_line": "Creature — Human Warrior",
+        "power": "1",
+        "toughness": "3",
+        "cmc": 3,
+        "oracle_text": "Constellation — Whenever an enchantment enters the battlefield under your control, put a +1/+1 counter on Setessan Champion and draw a card.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Constellation"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/2/6/261deceb-38fe-4f22-8771-b665b1d36c33.jpg?1692935600"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Shigeki, Jukai Visionary",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Legendary Enchantment Creature — Snake Druid",
+        "power": "1",
+        "toughness": "3",
+        "cmc": 2,
+        "oracle_text": "{1}{G}, {T}, Return Shigeki, Jukai Visionary to its owner's hand: Reveal the top four cards of your library. You may put a land card from among them onto the battlefield tapped. Put the rest into your graveyard.\nChannel — {X}{X}{G}{G}, Discard Shigeki: Return X target nonlegendary cards from your graveyard to your hand.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [
+          "Channel"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/b/4b3e689b-17e6-45b1-b7c6-c012867b34cc.jpg?1675617321"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Song of Freyalise",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Enchantment — Saga",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "(As this Saga enters and after your draw step, add a lore counter. Sacrifice after III.)\nI, II — Until your next turn, creatures you control gain \"{T}: Add one mana of any color.\"\nIII — Put a +1/+1 counter on each creature you control. Those creatures gain vigilance, trample, and indestructible until end of turn.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/a/4/a45b534b-8442-4074-a8d2-f38e83f24868.jpg?1562740656"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sterling Grove",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Other enchantments you control have shroud. (They can't be the targets of spells or abilities.)\n{1}, Sacrifice Sterling Grove: Search your library for an enchantment card, reveal it, then shuffle and put that card on top.",
+        "colors": [
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1a8a3e70-fd01-4aa3-8e95-2fe3f436bf71.jpg?1562900231"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Surge of Salvation",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{W}",
+        "type_line": "Instant",
+        "power": null,
+        "toughness": null,
+        "cmc": 1,
+        "oracle_text": "You and permanents you control gain hexproof until end of turn. Prevent all damage that black and/or red sources would deal to creatures you control this turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/4/1/41d25ee5-0348-4206-bb6a-ccb0a599ac87.jpg?1682202925"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Swamp",
+      "quantity": 6,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Basic Land — Swamp",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "({T}: Add {B}.)",
+        "colors": [],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/0/00030770-5e99-4943-819d-8d807c24cc14.jpg?1600716281"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Sythis, Harvest's Hand",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{G}{W}",
+        "type_line": "Legendary Enchantment Creature — Nymph",
+        "power": "1",
+        "toughness": "2",
+        "cmc": 2,
+        "oracle_text": "Whenever you cast an enchantment spell, you gain 1 life and draw a card.",
+        "colors": [
+          "G",
+          "W"
+        ],
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/b/0babfe00-9bad-48fc-b3b1-df8280242fd2.jpg?1681729369"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Takenuma, Abandoned Mire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Legendary Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {B}.\nChannel — {3}{B}, Discard Takenuma, Abandoned Mire: Mill three cards, then return a creature or planeswalker card from your graveyard to your hand. This ability costs {1} less to activate for each legendary creature you control.",
+        "colors": [],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [
+          "Mill",
+          "Channel"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/3/13410bd5-acee-4cc9-90e3-dbcf8415bcaf.jpg?1647809511"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Three Visits",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}",
+        "type_line": "Sorcery",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Search your library for a Forest card, put it onto the battlefield, then shuffle.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/a/1a515b75-0adf-4f33-a33a-2ddf524b14d9.jpg?1696638308"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Tocasia's Welcome",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "Whenever one or more creatures with mana value 3 or less enter the battlefield under your control, draw a card. This ability triggers only once each turn.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/f/0ff5902d-c140-42e9-b426-767f82559846.jpg?1675621777"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Touch the Spirit Realm",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{2}{W}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 3,
+        "oracle_text": "When Touch the Spirit Realm enters the battlefield, exile up to one target artifact or creature until Touch the Spirit Realm leaves the battlefield.\nChannel — {1}{W}, Discard Touch the Spirit Realm: Exile target artifact or creature. Return it to the battlefield under its owner's control at the beginning of the next end step.",
+        "colors": [
+          "W"
+        ],
+        "color_identity": [
+          "W"
+        ],
+        "keywords": [
+          "Channel"
+        ],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/d/5d02afc8-0192-4e7d-9d10-60a4434ed8db.jpg?1691107494"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Twilight Mire",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "{T}: Add {C}.\n{B/G}, {T}: Add {B}{B}, {B}{G}, or {G}{G}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/5/1524face-5843-4fca-823b-0e9eaf9be96f.jpg?1673486235"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 1
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Undergrowth Stadium",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "",
+        "type_line": "Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": "Undergrowth Stadium enters the battlefield tapped unless you have two or more opponents.\n{T}: Add {B} or {G}.",
+        "colors": [],
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/3/5/35bd7a70-0cd1-48f2-96b6-7869c003a8c7.jpg?1608919164"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Verduran Enchantress",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{G}{G}",
+        "type_line": "Creature — Human Druid",
+        "power": "0",
+        "toughness": "2",
+        "cmc": 3,
+        "oracle_text": "Whenever you cast an enchantment spell, you may draw a card.",
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/1/01114884-50d2-434e-905f-20dad4b8dfbd.jpg?1675829984"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Zombie Infestation",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{1}{B}",
+        "type_line": "Enchantment",
+        "power": null,
+        "toughness": null,
+        "cmc": 2,
+        "oracle_text": "Discard two cards: Create a 2/2 black Zombie creature token.",
+        "colors": [
+          "B"
+        ],
+        "color_identity": [
+          "B"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/b/e/be524227-8adc-4b01-808f-5ec4ab9dc09c.jpg?1568004322"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Branchloft Pathway // Boulderloft Pathway",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "G",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/0/5/0511e232-2a72-40f5-a400-4f7ebc442d17.jpg?1669839380"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Brightclimb Pathway // Grimclimb Pathway",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B",
+          "W"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/1/c/1c773f3a-50dc-447c-b2db-e122168732e9.jpg?1607364770"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 1,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Virtue of Strength // Garenbrig Growth",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": "{5}{G}{G} // {G}",
+        "type_line": "Enchantment // Sorcery — Adventure",
+        "power": null,
+        "toughness": null,
+        "cmc": 7,
+        "oracle_text": null,
+        "colors": [
+          "G"
+        ],
+        "color_identity": [
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/6/8/684f8568-390f-426f-ba71-e4be5fdaceee.jpg?1692940255"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": false
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 0,
+          "R": 0,
+          "G": 0,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    },
+    {
+      "name": "Darkbore Pathway // Slitherbore Pathway",
+      "quantity": 1,
+      "settings": {
+        "mana_cost": null,
+        "type_line": "Land // Land",
+        "power": null,
+        "toughness": null,
+        "cmc": 0,
+        "oracle_text": null,
+        "colors": null,
+        "color_identity": [
+          "B",
+          "G"
+        ],
+        "keywords": [],
+        "normal_image_url": "https://cards.scryfall.io/large/front/5/0/501ceec3-c196-4db4-980d-31edf6232acf.jpg?1681355941"
+      },
+      "uiState": {
+        "checkboxes": {
+          "returnLand": false,
+          "entersTapped": false,
+          "search": false,
+          "and": false,
+          "or": true
+        },
+        "manaCounter": {
+          "W": 0,
+          "U": 0,
+          "B": 1,
+          "R": 0,
+          "G": 1,
+          "C": 0
+        },
+        "highlightedCards": [],
+        "Commander": false
+      }
+    }
+  ]
+}
