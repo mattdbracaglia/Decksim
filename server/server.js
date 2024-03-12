@@ -128,13 +128,14 @@ app.get('/load-deck-data', (req, res) => {
         return res.status(400).json({ error: 'Deck name is required.' });
     }
 
-    const deckPath = path.join(__dirname, '..', 'public_html', 'Decks', `${name}.json`);
+    console.log(`Loading deck with name: ${req.query.name}`);
+    const deckPath = path.join(__dirname, '..', 'public_html', 'Decks', `${req.query.name}.json`);
+    console.log(`Deck path: ${deckPath}`);
 
-    fs.readFile(deckPath, 'utf8', (err, data) => {
+    fs.readFile(deckPath, (err, data) => {
         if (err) {
-            console.error(`Failed to read deck file for ${name}:`, err);
-            // Make sure to return JSON even in case of error
-            return res.status(500).json({ error: `Error loading deck: ${name}` });
+            console.error(`Error reading deck file: ${err.message}`);
+            return res.status(500).json({ error: "Failed to load deck data" });
         }
 
         try {
