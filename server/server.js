@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public_html')));
+app.use(express.static(path.join(__dirname, '..', '/')));
 
 // Middleware for parsing JSON bodies. This replaces bodyParser.json()
 app.use(express.json());
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 // Serve the main.html as the root page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public_html', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
 // Route to list names of .json files in the Decks directory
@@ -171,7 +171,7 @@ app.post('/api/signup', (req, res) => {
     };
 
     // Save the user to a file or database (replace with your own storage logic)
-    const usersPath = path.join(__dirname, '..', 'public_html', 'users.json');
+    const usersPath = path.join(__dirname, '..', 'user.json');
 
     // Read existing users from the file
     fs.readFile(usersPath, (err, data) => {
