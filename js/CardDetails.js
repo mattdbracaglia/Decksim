@@ -365,11 +365,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
         const deckName = selectedCheckbox.value;
         currentDeckName = deckName;
-        fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`, {
-            method: 'GET',
-        })
-        .then(response => response.json())
-        .then(deckData => {
+        fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+                }
+                return response.json();
+            })
+            .then(deckData => {
             // Update the deck data with any missing UI state properties
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
             if (currentCards && currentCards.length > 0) {
