@@ -365,18 +365,18 @@ document.addEventListener('DOMContentLoaded', function() {
     
         const deckName = selectedCheckbox.value;
         currentDeckName = deckName;
-        fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Failed to load deck data');
-                }
-                return response.json();
-            })
-            .then(deckData => {
-                if (!deckData.cards) {
-                    console.error('Deck data is missing cards property:', deckData);
-                    return; // Early return if the expected property is missing
-            // Update the deck data with any missing UI state properties
+        fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`, { method: 'GET', })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(deckData => {
+            if (!deckData.cards) {
+                throw new Error('Received deck data does not include cards');
+            }
+            // Assuming deckData.cards is the expected array
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0; // Reset index to show the first card
@@ -395,8 +395,7 @@ document.addEventListener('DOMContentLoaded', function() {
             addCardContainer.style.display = 'none';
             addCardsButtonContainer.style.display = 'none';
         })
-        .catch(error => {
-            console.error('Error loading deck:', error);
+        .catch(error => console.error('Error loading deck:', error));
     }
 
     function updateLoadedDeckDataWithUIState(cards) {
