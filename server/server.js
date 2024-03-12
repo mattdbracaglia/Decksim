@@ -24,6 +24,7 @@ app.get('/', (req, res) => {
 // Route to list names of .json files in the Decks directory
 app.get('/get-deck-names', (req, res) => {
     const decksPath = path.join(__dirname, '..', 'Decks');
+    console.log(`Looking for decks in: ${decksPath}`);
     fs.readdir(decksPath, (err, files) => {
         if (err) {
             console.error("Failed to list decks:", err);
