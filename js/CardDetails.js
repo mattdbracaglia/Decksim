@@ -365,19 +365,26 @@ document.addEventListener('DOMContentLoaded', function() {
     
         const deckName = selectedCheckbox.value;
         currentDeckName = deckName;
-        fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`, { method: 'GET', })
+    
+        // Update the URL to directly access the JSON file within the Decks directory
+        const url = `/Decks/${encodeURIComponent(deckName)}.json`;
+    
+        console.log(`Fetching deck data from: ${url}`); // Log the URL being fetched for debugging
+    
+        fetch(url)
         .then(response => {
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error(`HTTP error! Status: ${response.status}`);
             }
             return response.json();
         })
         .then(deckData => {
-            if (!deckData.cards) {
-                throw new Error('Received deck data does not include cards');
-            }
-            // Assuming deckData.cards is the expected array
+            console.log(`Received deck data for ${deckName}:`, deckData); // Log the fetched deck data for debugging
+            
+            // Assuming updateLoadedDeckDataWithUIState function correctly prepares the deck data,
+            // including assigning default UI states if missing.
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
+    
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0; // Reset index to show the first card
                 updateCardImage(currentCardIndex); // Update the main card image display
@@ -388,12 +395,9 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById("deckPopup").style.display = "none";
     
             // Hide the import card container and add card container
-            var cardInputContainer = document.getElementById('cardInputContainer');
-            var addCardContainer = document.getElementById('addCardContainer');
-            var addCardsButtonContainer = document.getElementById('addCardsButtonContainer');
-            cardInputContainer.style.display = 'none';
-            addCardContainer.style.display = 'none';
-            addCardsButtonContainer.style.display = 'none';
+            document.getElementById('cardInputContainer').style.display = 'none';
+            document.getElementById('addCardContainer').style.display = 'none';
+            document.getElementById('addCardsButtonContainer').style.display = 'none';
         })
         .catch(error => console.error('Error loading deck:', error));
     }
