@@ -368,11 +368,14 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+                    throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(deckData => {
+                if (!deckData.cards) {
+                    console.error('Deck data is missing cards property:', deckData);
+                    return; // Early return if the expected property is missing
             // Update the deck data with any missing UI state properties
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
             if (currentCards && currentCards.length > 0) {
@@ -392,7 +395,8 @@ document.addEventListener('DOMContentLoaded', function() {
             addCardContainer.style.display = 'none';
             addCardsButtonContainer.style.display = 'none';
         })
-        .catch(error => console.error('Error loading deck:', error));
+        .catch(error => {
+            console.error('Error loading deck:', error);
     }
 
     function updateLoadedDeckDataWithUIState(cards) {
