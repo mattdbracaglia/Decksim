@@ -122,30 +122,28 @@ app.post('/save-deck', (req, res) => {
 
 // Route to load a specific deck by name
 app.get('/load-deck-data', (req, res) => {
-    const { name } = req.query; // Get the deck name from query parameters
-
-    // Validate the provided name
+    const { name } = req.query;
     if (!name) {
-        return res.status(400).send('Deck name is required.');
+        // Respond with an error in JSON format
+        return res.status(400).json({ error: 'Deck name is required.' });
     }
 
     const deckPath = path.join(__dirname, '..', 'public_html', 'Decks', `${name}.json`);
 
-    fs.readFile(deckPath, (err, data) => {
+    fs.readFile(deckPath, 'utf8', (err, data) => {
         if (err) {
             console.error(`Failed to read deck file for ${name}:`, err);
-            return res.status(500).send(`Error loading deck: ${name}`);
+            // Make sure to return JSON even in case of error
+            return res.status(500).json({ error: `Error loading deck: ${name}` });
         }
 
-        let deckData;
         try {
-            deckData = JSON.parse(data);
+            const deckData = JSON.parse(data);
+            res.json(deckData);
         } catch (parseError) {
             console.error(`Error parsing deck file for ${name}:`, parseError);
-            return res.status(500).send(`Error parsing deck data for ${name}`);
+            res.status(500).json({ error: `Error parsing deck data for ${name}` });
         }
-
-        res.json(deckData); // Send the parsed deck data back to the client
     });
 });
 
