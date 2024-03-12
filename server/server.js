@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, '..', 'Decksim')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Middleware for parsing JSON bodies. This replaces bodyParser.json()
 app.use(express.json());
@@ -18,7 +18,7 @@ app.use((req, res, next) => {
 
 // Serve the main.html as the root page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, '..', 'public', 'signin.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
 // Route to list names of .json files in the Decks directory
