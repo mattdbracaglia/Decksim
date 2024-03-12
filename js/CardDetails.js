@@ -368,7 +368,7 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`)
             .then(response => {
                 if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+                    throw new Error('Failed to load deck data');
                 }
                 return response.json();
             })
