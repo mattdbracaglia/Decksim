@@ -5,7 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware to serve static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public_html')));
 
 // Middleware for parsing JSON bodies. This replaces bodyParser.json()
 app.use(express.json());
@@ -18,12 +18,12 @@ app.use((req, res, next) => {
 
 // Serve the main.html as the root page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public_html', 'index.html'));
 });
 
 // Route to list names of .json files in the Decks directory
 app.get('/get-deck-names', (req, res) => {
-    const decksPath = path.join(__dirname, '..', 'public', 'Decks');
+    const decksPath = path.join(__dirname, '..', 'public_html', 'Decks');
     fs.readdir(decksPath, (err, files) => {
         if (err) {
             console.error("Failed to list decks:", err);
@@ -47,7 +47,7 @@ app.post('/import-cards', (req, res) => {
         return res.status(400).send('No card names provided.');
     }
 
-    const cardDetailsPath = path.join(__dirname, '..', 'public', 'card-details.json');
+    const cardDetailsPath = path.join(__dirname, '..', 'public_html', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
 
     fs.readFile(cardDetailsPath, (err, data) => {
@@ -109,7 +109,7 @@ app.post('/save-deck', (req, res) => {
     // The entire card array including uiState is directly saved
     const dataToSave = { cards }; // Preserving the entire card structure including uiState
 
-    const filePath = path.join(__dirname, '..', 'public', 'decks', `${deckName}.json`);
+    const filePath = path.join(__dirname, '..', 'public_html', 'decks', `${deckName}.json`);
     fs.writeFile(filePath, JSON.stringify(dataToSave, null, 2), err => {
         if (err) {
             console.error('Error saving the deck file:', err);
@@ -128,7 +128,7 @@ app.get('/load-deck-data', (req, res) => {
         return res.status(400).send('Deck name is required.');
     }
 
-    const deckPath = path.join(__dirname, '..', 'public', 'Decks', `${name}.json`);
+    const deckPath = path.join(__dirname, '..', 'public_html', 'Decks', `${name}.json`);
 
     fs.readFile(deckPath, (err, data) => {
         if (err) {
@@ -171,7 +171,7 @@ app.post('/api/signup', (req, res) => {
     };
 
     // Save the user to a file or database (replace with your own storage logic)
-    const usersPath = path.join(__dirname, '..', 'public', 'users.json');
+    const usersPath = path.join(__dirname, '..', 'public_html', 'users.json');
 
     // Read existing users from the file
     fs.readFile(usersPath, (err, data) => {
@@ -214,7 +214,7 @@ app.post('/api/signin', (req, res) => {
     }
 
     // Read existing users from the file
-    const usersPath = path.join(__dirname, '..', 'public', 'users.json');
+    const usersPath = path.join(__dirname, '..', 'public_html', 'users.json');
     fs.readFile(usersPath, (err, data) => {
         if (err) {
             console.error('Error reading users file:', err);
