@@ -1,6 +1,6 @@
 const express = require('express');
 const path = require('path');
-const fs = require('fs');
+const fs = require('fs').promises; // This line is crucial for using the promise-based APIs
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -39,47 +39,36 @@ app.get('/get-deck-names', (req, res) => {
 });
 
 // Route to process card names and filter data from Card-Details.json
-app.post('/import-cards', (req, res) => {
+app.post('/import-cards', async (req, res) => {
     console.log('Received request on /import-cards with body:', req.body);
 
-    const cardRequests = req.body.cardNames; // Expecting an array of objects with name and quantity
+    const cardRequests = req.body.cardNames;
     if (!cardRequests || cardRequests.length === 0) {
         console.error('No card names provided in the request body.');
-        return res.status(400).send('No card names provided.');
+        return res.status(400).json({ error: 'No card names provided.' });
     }
 
     const cardDetailsPath = path.join(__dirname, '..', 'public_html', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
 
-    fs.readFile(cardDetailsPath, (err, data) => {
-        if (err) {
-            console.error('Error reading Card-Details.json:', err);
-            return res.status(500).send('Error reading card details');
-        }
-
+    try {
+        const data = await fs.readFile(cardDetailsPath, 'utf8');
         console.log('Successfully read Card-Details.json');
 
-        let cards;
-        try {
-            cards = JSON.parse(data);
-            console.log('Successfully parsed Card-Details.json');
-        } catch (parseError) {
-            console.error('Error parsing Card-Details.json:', parseError);
-            return res.status(500).send('Error parsing card details');
-        }
+        const cards = JSON.parse(data);
+        console.log('Successfully parsed Card-Details.json');
 
-        // Filter and map the cards based on the provided names and quantities
         const filteredCards = cardRequests.filter(req => req.name).map(req => {
             const card = cards.find(c => c.name.toLowerCase().includes(req.name.toLowerCase()));
             return { ...card, quantity: req.quantity };
-        }).filter(card => card); // Remove undefined entries in case a card wasn't found
+        }).filter(card => card);
 
         console.log(`Filtered ${filteredCards.length} cards from the provided names.`);
 
         const transformedData = {
             cards: filteredCards.map(card => ({
                 name: card.name,
-                quantity: card.quantity, // Include quantity in the response
+                quantity: card.quantity,
                 settings: {
                     mana_cost: card.mana_cost,
                     type_line: card.type_line,
@@ -97,7 +86,10 @@ app.post('/import-cards', (req, res) => {
 
         console.log('Sending transformed data back to the client.');
         res.json(transformedData);
-    });
+    } catch (err) {
+        console.error('Error processing import-cards request:', err.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
 });
 
 app.post('/save-deck', (req, res) => {
