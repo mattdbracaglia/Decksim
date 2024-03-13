@@ -133,7 +133,7 @@ input, button {
 #cardImageContainer {
     position: absolute; /* Or 'fixed' depending on your needs */
     top: 100px; /* Adjust as needed */
-    left: 950px; /* Adjust as needed */
+    left: 938px; /* Adjust as needed */
     width: 425px; /* Set a specific width */
     height: 625px; /* Set a specific height */
     overflow: hidden; /* Hide overflow */
@@ -399,7 +399,7 @@ input, button {
 }
 
 /* Example of re-positioning */
-#deckSection { top: 75px; right: 25px; }
+#deckSection { top: 75px; right: 5px; }
 
 /* Adjusted Container for the tabs to change its location */
 #deckTabsContainer {
@@ -409,7 +409,7 @@ input, button {
     margin-bottom: 20px; /* Maintain space below the tabs container */
     position: relative; /* Change to absolute if you need it positioned relative to the first non-static parent */
     top: 0px; /* Adjust this value to move down the container from its original position */
-    left: 1000px; /* Adjust if you need to move the container to the left */
+    left: 1050px; /* Adjust if you need to move the container to the left */
     width: 500px; /* Set the width of the tabs container */
     /* Adjust 'width' as necessary to fit your layout */
 }
