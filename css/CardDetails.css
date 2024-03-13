@@ -12,8 +12,8 @@ input, button {
 }
 
 #LoadCards {
-    position: fixed; /* Or 'absolute', depending on your layout needs */
-    top: 80px; /* Adjust as needed for your layout */
+    position: relative; /* Or 'absolute', depending on your layout needs */
+    top: 10px; /* Adjust as needed for your layout */
     left: 10px; /* Adjust as needed */
     display: flex;
     flex-direction: row; /* Stack buttons horizontally */
@@ -36,8 +36,8 @@ input, button {
 }
 
 #BacktoGame {
-    position: fixed; /* Or 'absolute', depending on your layout needs */
-    top: 20px; /* Adjust as needed for your layout */
+    position: relative; /* Or 'absolute', depending on your layout needs */
+    top: 0px; /* Adjust as needed for your layout */
     left: 10px; /* Adjust as needed */
     display: flex;
     background-color: #4CAF50; /* A green shade for action buttons */
@@ -399,7 +399,7 @@ input, button {
 }
 
 /* Example of re-positioning */
-#deckSection { top: 75px; right: 5px; }
+#deckSection { top: -10px; right: 5px; }
 
 /* Adjusted Container for the tabs to change its location */
 #deckTabsContainer {
@@ -408,7 +408,7 @@ input, button {
     justify-content: center; /* Changed to flex-start to align items to the start; use 'center' if you want them centered */
     margin-bottom: 20px; /* Maintain space below the tabs container */
     position: relative; /* Change to absolute if you need it positioned relative to the first non-static parent */
-    top: 0px; /* Adjust this value to move down the container from its original position */
+    top: -90px; /* Adjust this value to move down the container from its original position */
     left: 1050px; /* Adjust if you need to move the container to the left */
     width: 500px; /* Set the width of the tabs container */
     /* Adjust 'width' as necessary to fit your layout */
@@ -447,8 +447,8 @@ input, button {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px; /* Adjust based on your layout */
-    position: fixed; /* Or 'absolute', depending on your layout needs */
-    top: 55px; /* Adjust as needed for your layout */
+    position: relative; /* Or 'absolute', depending on your layout needs */
+    top: -155px; /* Adjust as needed for your layout */
     left: 950px; /* Adjust as needed */
 }
 
