@@ -1854,7 +1854,6 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.log("Close button not found");
     }
-    btn.addEventListener('click', fetchAndDisplayDeckNames);
     close.addEventListener('click', function() { popup.style.display = "none"; });
 
 
