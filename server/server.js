@@ -224,8 +224,6 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 // Ensure your password is correctly encoded if it contains special characters
 const uri = "mongodb+srv://mattbracaglia:<Decksim815>@decksim.8wd39qs.mongodb.net/decksim?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
   serverApi: ServerApiVersion.v1
 });
 
