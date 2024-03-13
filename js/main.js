@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var btn = document.getElementById("chooseDecksButton");
+    var btn = document.getElementById("chooseDecks");
     var popup = document.getElementById("deckPopup");
     var close = document.getElementById("closePopup");
     let currentPlayerId = 'Player1';  // Default to Player1
