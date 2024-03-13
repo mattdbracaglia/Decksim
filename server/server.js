@@ -22,19 +22,18 @@ app.get('/', (req, res) => {
 });
 
 // Route to list names of .json files in the Decks directory
-app.get('/get-deck-names', (req, res) => {
+app.get('/get-deck-names', async (req, res) => {
     const decksPath = path.join(__dirname, '..', 'Decks');
-    fs.readdir(decksPath, (err, files) => {
-        if (err) {
-            console.error("Failed to list decks:", err);
-            // Respond with a JSON error message
-            return res.status(500).json({ error: 'Error listing deck files' });
-        }
+    try {
+        const files = await fs.readdir(decksPath);
         const deckNamesWithoutExtension = files
             .filter(file => file.endsWith('.json'))
             .map(file => file.replace('.json', ''));
         res.json(deckNamesWithoutExtension);
-    });
+    } catch (err) {
+        console.error("Failed to list decks:", err);
+        return res.status(500).json({ error: 'Error listing deck files' });
+    }
 });
 
 // Route to process card names and filter data from Card-Details.json
