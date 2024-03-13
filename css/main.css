@@ -300,17 +300,20 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    z-index: 1000;
 
 }
 
 #navigation button {
     padding: 5px 10px;
     cursor: pointer;
+    z-index: 1000;
 }
 
 #navigation span {
     min-width: 100px; /* Ensure the display doesn't jump sizes when changing text */
     text-align: center;
+    z-index: 1000;
 }
 
 @media (max-width: 600px) {
