@@ -134,61 +134,56 @@ app.get('/load-deck-data', (req, res) => {
     });
 });
 
-app.post('/api/signup', (req, res) => {
+app.post('/api/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
     // Perform validation
     if (!username || !email || !password) {
-        return res.status(400).json({ success: false, message: 'Please provide all required fields' });
+        return res.status(400).json({ success: false, message: 'Please provide all required fields.' });
     }
 
-    // Check if the user already exists (you can replace this with your own logic)
-    const userExists = users.some(user => user.username === newUser.username);
-
-    if (userExists) {
-        return res.status(409).json({ success: false, message: 'User already exists' });
-    }
-
-    // Create a new user object
-    const newUser = {
-        username,
-        email,
-        password
-    };
-
-    // Save the user to a file or database (replace with your own storage logic)
     const usersPath = path.join(__dirname, 'users.json');
 
-    // Read existing users from the file
-    fs.readFile(usersPath, (err, data) => {
-        if (err && err.code !== 'ENOENT') {
-            console.error('Error reading users file:', err);
-            return res.status(500).json({ success: false, message: 'Internal server error' });
-        }
-
-        let users = [];
-        if (!err) {
-            try {
-                users = JSON.parse(data);
-            } catch (parseError) {
-                console.error('Error parsing users file:', parseError);
-                return res.status(500).json({ success: false, message: 'Internal server error' });
+    try {
+        // Attempt to read the existing users file
+        let data;
+        try {
+            data = await fs.readFile(usersPath, 'utf-8');
+        } catch (err) {
+            if (err.code === 'ENOENT') {
+                // File doesn't exist, so we'll start with an empty users array
+                console.log('No existing users file found, creating a new one.');
+                data = '[]';
+            } else {
+                throw err; // An error other than 'file not found' occurred
             }
         }
+
+        let users = JSON.parse(data);
+
+        // Check if the user already exists
+        const userExists = users.some(user => user.username === username);
+        if (userExists) {
+            return res.status(409).json({ success: false, message: 'User already exists.' });
+        }
+
+        // Create a new user object
+        const newUser = {
+            username,
+            email,
+            password // Note: In a real application, the password should be hashed before being stored.
+        };
 
         // Add the new user to the array
         users.push(newUser);
 
         // Write the updated users array back to the file
-        fs.writeFile(usersPath, JSON.stringify(users, null, 2), (writeError) => {
-            if (writeError) {
-                console.error('Error writing users file:', writeError);
-                return res.status(500).json({ success: false, message: 'Internal server error' });
-            }
-
-            res.status(201).json({ success: true, message: 'User created successfully' });
-        });
-    });
+        await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
+        res.status(201).json({ success: true, message: 'User created successfully.' });
+    } catch (error) {
+        console.error('Error handling the signup process:', error);
+        res.status(500).json({ success: false, message: 'Internal server error.' });
+    }
 });
 
 // Sign-in route
