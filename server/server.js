@@ -221,7 +221,7 @@ app.post('/api/signin', async (req, res) => {
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // Ensure your password is correctly encoded if it contains special characters
-const uri = "mongodb+srv://mattbracaglia:<Decksim815>@decksim.8wd39qs.mongodb.net/decksim?retryWrites=true&w=majority";
+const uri = "mongodb+srv://mattbracaglia:Decksim815@decksim.8wd39qs.mongodb.net/decksim?retryWrites=true&w=majority";
 const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1
 });
