@@ -2,9 +2,8 @@
 const signupForm = document.querySelector('form');
 
 // Add event listener to the form submission
-signupForm.addEventListener('submit', function(event) {
+signupForm.addEventListener('submit', async function(event) {
     event.preventDefault(); // Prevent the default form submission
-    console.log('Form submission intercepted.');
 
     // Get the form values
     const username = document.getElementById('username').value;
@@ -12,47 +11,39 @@ signupForm.addEventListener('submit', function(event) {
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirm-password').value;
 
-    console.log(`Form values - Username: ${username}, Email: ${email}, Password: [hidden], Confirm Password: [hidden]`);
-
     // Perform validation
     if (username === '' || email === '' || password === '' || confirmPassword === '') {
-        console.log('Validation failed: One or more fields are empty.');
         alert('Please fill in all fields.');
         return;
     }
 
     if (password !== confirmPassword) {
-        console.log('Validation failed: Passwords do not match.');
         alert('Passwords do not match.');
         return;
     }
 
-    // Check if user already exists in local storage
-    const users = JSON.parse(localStorage.getItem('users') || '[]');
-    console.log(`Loaded ${users.length} users from local storage.`);
-
-    const userExists = users.some(user => user.username === username || user.email === email);
-    console.log(`User exists check: ${userExists ? 'User found in local storage.' : 'No matching user in local storage.'}`);
-
-    if (userExists) {
-        alert('User already exists');
-        return;
-    }
-
     // Create a new user object
-    const newUser = {
-        username: username,
-        email: email,
-        password: password // Note: Storing passwords in local storage like this is not secure
-    };
-    console.log('New user object created:', newUser);
+    const newUser = { username, email, password };
 
-    // Save the new user to local storage
-    users.push(newUser);
-    localStorage.setItem('users', JSON.stringify(users));
-    console.log('New user added to local storage.');
+    // Send POST request to server for signup
+    try {
+        const response = await fetch('/api/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(newUser),
+        });
 
-    alert('Sign up successful!');
-    console.log('Sign up successful! Redirecting or taking another action...');
-    // Redirect to a success page or perform any other desired action
+        if (!response.ok) {
+            throw new Error('Signup failed');
+        }
+
+        const data = await response.json();
+        alert(data.message);
+        // Redirect or perform any other desired action
+    } catch (error) {
+        console.error('Error during signup:', error);
+        alert('Signup failed. Please try again.');
+    }
 });
