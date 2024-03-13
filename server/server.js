@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs').promises; // This line is crucial for using the promise-based APIs
 const app = express();
 const PORT = process.env.PORT || 3000;
+require('dotenv').config();
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '..', '/')));
