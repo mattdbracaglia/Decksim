@@ -12,16 +12,6 @@
 
 
     <button id="updateButton"></button>
-    <script>
-        fetch('/test')
-            .then(response => response.json())
-            .then(data => {
-                console.log(data.message);
-                // Optionally, display the message on the webpage
-                document.body.innerHTML += `<p>${data.message}</p>`;
-            })
-            .catch(error => console.error('Error fetching from /test:', error));
-    </script>
 
     <!-- New Buttons Container -->
     <div id="gameControls">
