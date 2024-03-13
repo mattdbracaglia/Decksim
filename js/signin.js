@@ -1,4 +1,4 @@
-require('dotenv').config();
+
 const signInForm = document.querySelector('form');
 
 signInForm.addEventListener('submit', function(event) {
