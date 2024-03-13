@@ -90,24 +90,20 @@ app.post('/import-cards', async (req, res) => {
     }
 });
 
-app.post('/save-deck', (req, res) => {
-    console.log(req.body); // Log the request body to see what's being received
+app.post('/save-deck', async (req, res) => {
     const { deckName, cards } = req.body;
     if (!deckName || !cards) {
         return res.status(400).send('Deck name and cards are required.');
     }
 
-    // The entire card array including uiState is directly saved
-    const dataToSave = { cards }; // Preserving the entire card structure including uiState
-
     const filePath = path.join(__dirname, '..', 'Decks', `${deckName}.json`);
-    fs.writeFile(filePath, JSON.stringify(dataToSave, null, 2), err => {
-        if (err) {
-            console.error('Error saving the deck file:', err);
-            return res.status(500).send('Error saving the deck');
-        }
+    try {
+        await fs.writeFile(filePath, JSON.stringify({ cards }, null, 2));
         res.json({ message: 'Deck saved successfully', deckName });
-    });
+    } catch (err) {
+        console.error('Error saving the deck file:', err);
+        res.status(500).send('Error saving the deck');
+    }
 });
 
 // Route to load a specific deck by name
