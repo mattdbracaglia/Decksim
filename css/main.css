@@ -378,7 +378,7 @@ button:hover {
     background-color: #004c9c;
 }
 
-#chooseDecks {
+#chooseDecksButton {
     padding: 10px 20px;
     font-size: 16px;
     color: white;
@@ -393,11 +393,11 @@ button:hover {
     z-index: 1000;
 }
 
-#chooseDecks:hover {
+#chooseDecksButton:hover {
     background-color: #0056b3;
 }
 
-#chooseDecks:active {
+#chooseDecksButton:active {
     background-color: #004c9c;
 }
 
