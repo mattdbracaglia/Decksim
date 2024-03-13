@@ -139,50 +139,38 @@ app.post('/api/signup', async (req, res) => {
 
     // Perform validation
     if (!username || !email || !password) {
-        return res.status(400).json({ success: false, message: 'Please provide all required fields.' });
+        return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
     const usersPath = path.join(__dirname, 'users.json');
 
     try {
-        // Attempt to read the existing users file
-        let data;
+        let users;
         try {
-            data = await fs.readFile(usersPath, 'utf-8');
-        } catch (err) {
-            if (err.code === 'ENOENT') {
-                // File doesn't exist, so we'll start with an empty users array
-                console.log('No existing users file found, creating a new one.');
-                data = '[]';
+            const data = await fs.readFile(usersPath, 'utf-8');
+            users = JSON.parse(data);
+        } catch (error) {
+            if (error.code === 'ENOENT') {
+                console.log('users.json not found, creating new file.');
+                users = [];
             } else {
-                throw err; // An error other than 'file not found' occurred
+                throw error;
             }
         }
 
-        let users = JSON.parse(data);
-
         // Check if the user already exists
-        const userExists = users.some(user => user.username === username);
+        const userExists = users.some(user => user.username === username || user.email === email);
         if (userExists) {
-            return res.status(409).json({ success: false, message: 'User already exists.' });
+            return res.status(409).json({ message: 'User already exists' });
         }
 
-        // Create a new user object
-        const newUser = {
-            username,
-            email,
-            password // Note: In a real application, the password should be hashed before being stored.
-        };
-
-        // Add the new user to the array
-        users.push(newUser);
-
-        // Write the updated users array back to the file
+        users.push({ username, email, password }); // Storing plain passwords is not secure, consider hashing
         await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
-        res.status(201).json({ success: true, message: 'User created successfully.' });
+
+        res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
-        console.error('Error handling the signup process:', error);
-        res.status(500).json({ success: false, message: 'Internal server error.' });
+        console.error(error);
+        res.status(500).json({ message: 'Failed to create user' });
     }
 });
 
