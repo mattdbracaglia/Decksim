@@ -23,16 +23,18 @@ signInForm.addEventListener('submit', function(event) {
     })
     .then(response => {
         if (!response.ok) {
-            throw new Error('Sign-in failed');
+            // Throw an error for non-2xx status codes to be caught by the catch block
+            throw new Error('Network response was not ok');
         }
-        return response.text();
+        return response.text(); // or response.json() if server responds with JSON
     })
-    .then(() => {
+    .then(data => {
+        console.log(data); // Process your data here
         alert('Sign in successful!');
         window.location.href = '/main.html';
     })
-    .catch((error) => {
-        console.error(error);
-        alert('Sign in failed. Invalid username or password.');
+    .catch(error => {
+        console.error('Error during sign-in:', error);
+        alert('Sign in failed. Please try again.');
     });
 });
