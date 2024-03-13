@@ -231,6 +231,11 @@ app.post('/api/signin', (req, res) => {
     });
 });
 
+// Define a test endpoint
+app.get('/test', (req, res) => {
+    res.json({ message: 'Connection successful' });
+});
+
 // Start the server
 app.listen(PORT, () => {
     console.log(`Server running at http://localhost:${PORT}/`);
