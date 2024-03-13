@@ -100,7 +100,7 @@ app.post('/save-deck', (req, res) => {
     // The entire card array including uiState is directly saved
     const dataToSave = { cards }; // Preserving the entire card structure including uiState
 
-    const filePath = path.join(__dirname, '..', 'decks', `${deckName}.json`);
+    const filePath = path.join(__dirname, '..', 'Decks', `${deckName}.json`);
     fs.writeFile(filePath, JSON.stringify(dataToSave, null, 2), err => {
         if (err) {
             console.error('Error saving the deck file:', err);
