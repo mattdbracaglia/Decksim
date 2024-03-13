@@ -46,7 +46,7 @@ app.post('/import-cards', async (req, res) => {
         return res.status(400).json({ error: 'No card names provided.' });
     }
 
-    const cardDetailsPath = path.join(__dirname, '..', 'public_html', 'card-details.json');
+    const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
 
     try {
