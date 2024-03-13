@@ -366,7 +366,7 @@ button:hover {
     transition: background-color 0.3s;
     position: fixed; /* Make the button fixed relative to the viewport */
     top: 75px; /* Distance from the top of the viewport */
-    left: 15px; /* Distance from the left of the viewport */
+    left: 145px; /* Distance from the left of the viewport */
     z-index: 1000;
 }
 
