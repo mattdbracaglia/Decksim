@@ -23,13 +23,12 @@ app.get('/', (req, res) => {
 
 // Route to list names of .json files in the Decks directory
 app.get('/get-deck-names', (req, res) => {
-    const decksPath = path.join(__dirname, '..', 'Decks');
-    console.log(`Looking for decks in: ${decksPath}`);
+    const decksPath = path.join(__dirname, '..', 'public_html', 'Decks');
     fs.readdir(decksPath, (err, files) => {
         if (err) {
             console.error("Failed to list decks:", err);
-            res.status(500).send('Error listing deck files');
-            return;
+            // Respond with a JSON error message
+            return res.status(500).json({ error: 'Error listing deck files' });
         }
         const deckNamesWithoutExtension = files
             .filter(file => file.endsWith('.json'))
