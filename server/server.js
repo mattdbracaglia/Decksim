@@ -191,39 +191,33 @@ app.post('/api/signup', (req, res) => {
     });
 });
 
-app.post('/api/signin', (req, res) => {
+// Sign-in route
+app.post('/api/signin', async (req, res) => {
     const { username, password } = req.body;
 
-    // Perform validation
+    // Basic validation
     if (!username || !password) {
-        return res.status(400).json({ success: false, message: 'Please provide username and password' });
+        return res.status(400).send('Username and password are required');
     }
 
-    // Read existing users from the file
-    const usersPath = path.join(__dirname, '..', 'users.json');
-    fs.readFile(usersPath, (err, data) => {
-        if (err) {
-            console.error('Error reading users file:', err);
-            return res.status(500).json({ success: false, message: 'Internal server error' });
+    try {
+        const usersPath = path.join(__dirname, 'users.json');
+        const data = await fs.readFile(usersPath, 'utf-8');
+        const users = JSON.parse(data);
+
+        const user = users.find(u => u.username === username && u.password === password);
+
+        if (user) {
+            // User found
+            res.status(200).send('Sign in successful');
+        } else {
+            // User not found
+            res.status(401).send('Invalid username or password');
         }
-
-        let users = [];
-        try {
-            users = JSON.parse(data);
-        } catch (parseError) {
-            console.error('Error parsing users file:', parseError);
-            return res.status(500).json({ success: false, message: 'Internal server error' });
-        }
-
-        // Find the user with the provided username
-        const user = users.find(user => user.username === username);
-
-        if (!user || user.password !== password) {
-            return res.status(401).json({ success: false, message: 'Invalid username or password' });
-        }
-
-        res.status(200).json({ success: true, message: 'Sign in successful' });
-    });
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('An error occurred while trying to sign in');
+    }
 });
 
 // Define a test endpoint
