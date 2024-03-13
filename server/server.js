@@ -137,39 +137,53 @@ app.get('/load-deck-data', (req, res) => {
 app.post('/api/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
+    console.log('Received signup request:', { username, email });
+
     // Perform validation
     if (!username || !email || !password) {
+        console.log('Validation failed: Missing fields');
         return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
     const usersPath = path.join(__dirname, 'users.json');
+    console.log(`Looking for users file at: ${usersPath}`);
 
     try {
         let users;
         try {
             const data = await fs.readFile(usersPath, 'utf-8');
             users = JSON.parse(data);
+            console.log('Existing users loaded:', users);
         } catch (error) {
             if (error.code === 'ENOENT') {
                 console.log('users.json not found, creating new file.');
                 users = [];
             } else {
+                console.error('Error reading users file:', error);
                 throw error;
             }
         }
 
         // Check if the user already exists
         const userExists = users.some(user => user.username === username || user.email === email);
+        console.log(`Checking if user exists: ${userExists ? 'Yes' : 'No'}`);
+
         if (userExists) {
+            console.log('User already exists, signup failed.');
             return res.status(409).json({ message: 'User already exists' });
         }
 
-        users.push({ username, email, password }); // Storing plain passwords is not secure, consider hashing
+        // If user doesn't exist, add to the array
+        users.push({ username, email, password }); // Note: Storing plain passwords is insecure.
+        console.log('Adding new user:', { username, email });
+
+        // Write the updated array back to the file
         await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
+        console.log('User added successfully, file updated.');
 
         res.status(201).json({ message: 'User created successfully' });
     } catch (error) {
-        console.error(error);
+        console.error('Failed during signup process:', error);
         res.status(500).json({ message: 'Failed to create user' });
     }
 });
