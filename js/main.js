@@ -120,7 +120,15 @@ document.addEventListener('DOMContentLoaded', function() {
    // Function to fetch and display deck names
    function fetchAndDisplayDeckNames() {
         fetch('/get-deck-names')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                if (response.headers.get("content-type")?.includes("application/json")) {
+                    return response.json();
+                }
+                throw new Error('Not a JSON response');
+            })
             .then(decks => {
                 const popupContent = document.querySelector('.popup-content');
                 const deckList = document.createElement('ul');
