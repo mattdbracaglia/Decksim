@@ -143,7 +143,7 @@ app.post('/api/signup', (req, res) => {
     }
 
     // Check if the user already exists (you can replace this with your own logic)
-    const userExists = false; // Replace with your own check
+    const userExists = users.some(user => user.username === newUser.username);
 
     if (userExists) {
         return res.status(409).json({ success: false, message: 'User already exists' });
@@ -157,7 +157,7 @@ app.post('/api/signup', (req, res) => {
     };
 
     // Save the user to a file or database (replace with your own storage logic)
-    const usersPath = path.join(__dirname, '..', 'user.json');
+    const usersPath = path.join(__dirname, 'users.json');
 
     // Read existing users from the file
     fs.readFile(usersPath, (err, data) => {
