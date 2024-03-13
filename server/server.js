@@ -5,6 +5,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
+
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '..', '/')));
 
