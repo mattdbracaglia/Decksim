@@ -100,7 +100,7 @@ app.post('/save-deck', (req, res) => {
     // The entire card array including uiState is directly saved
     const dataToSave = { cards }; // Preserving the entire card structure including uiState
 
-    const filePath = path.join(__dirname, '..', 'public_html', 'decks', `${deckName}.json`);
+    const filePath = path.join(__dirname, '..', 'decks', `${deckName}.json`);
     fs.writeFile(filePath, JSON.stringify(dataToSave, null, 2), err => {
         if (err) {
             console.error('Error saving the deck file:', err);
@@ -119,7 +119,7 @@ app.get('/load-deck-data', (req, res) => {
     }
 
     console.log(`Loading deck with name: ${req.query.name}`);
-    const deckPath = path.join(__dirname, '..', 'public_html', 'Decks', `${req.query.name}.json`);
+    const deckPath = path.join(__dirname, '..', 'Decks', `${req.query.name}.json`);
     console.log(`Deck path: ${deckPath}`);
 
     fs.readFile(deckPath, (err, data) => {
@@ -204,7 +204,7 @@ app.post('/api/signin', (req, res) => {
     }
 
     // Read existing users from the file
-    const usersPath = path.join(__dirname, '..', 'public_html', 'users.json');
+    const usersPath = path.join(__dirname, '..', 'users.json');
     fs.readFile(usersPath, (err, data) => {
         if (err) {
             console.error('Error reading users file:', err);
