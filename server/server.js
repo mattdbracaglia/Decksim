@@ -226,32 +226,6 @@ async function connectToMongoDB() {
 
 connectToMongoDB().catch(console.error);
 
-async function createUser(client, newUser) {
-    const result = await client.db("Decksim").collection("Decksimlogins").insertOne(newUser);
-    console.log(`New user created with the following id: ${result.insertedId}`);
-}
-
-async function main() {
-    try {
-        await client.connect();
-        console.log("Connected successfully to MongoDB");
-
-        // Example new user - replace with actual user data from your signup form
-        const newUser = {
-            username: "testUser",
-            email: "testUser@example.com",
-            password: "securePassword", // Reminder: Hash passwords in production
-        };
-
-        await createUser(client, newUser);
-
-    } catch (e) {
-        console.error(e);
-    } finally {
-        await client.close();
-    }
-}
-
 main().catch(console.error);
 
 // Define a test endpoint
