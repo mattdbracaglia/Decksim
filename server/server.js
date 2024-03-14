@@ -3,6 +3,12 @@ const path = require('path');
 const fs = require('fs').promises; // This line is crucial for using the promise-based APIs
 const app = express();
 const bcrypt = require('bcryptjs');
+const { MongoClient } = require('mongodb');
+// Ensure your password is correctly encoded if it contains special characters
+const uri = "mongodb+srv://mattbracaglia:sPRCeycmWzlSi4W4@decksim.8wd39qs.mongodb.net/?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {
+  serverApi: ServerApiVersion.v1
+});
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
@@ -255,11 +261,7 @@ app.post('/api/signin', async (req, res) => {
 
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
-// Ensure your password is correctly encoded if it contains special characters
-const uri = "mongodb+srv://mattbracaglia:sPRCeycmWzlSi4W4@decksim.8wd39qs.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
-  serverApi: ServerApiVersion.v1
-});
+
 
 // Global variable to hold the DB connection
 let db;
