@@ -141,9 +141,11 @@ app.post('/api/signup', async (req, res) => {
     // Ensure connection is established
     const db = await connectToMongoDB();
     const { username, email, password } = req.body;
+
     if (!db) {
         return res.status(500).json({ message: 'Database connection error' });
     }
+
     if (!username || !email || !password) {
         return res.status(400).json({ message: 'Please provide all required fields' });
     }
@@ -158,17 +160,20 @@ app.post('/api/signup', async (req, res) => {
             return res.status(409).json({ message: 'User already exists' });
         }
 
-        // Insert the new user - consider hashing the password with bcrypt before storing
-        const result = await usersCollection.insertOne({ username, email, password });
+        // Hash the password before saving the new user
+        const hashedPassword = await bcrypt.hash(password, 10); // 10 is the number of salt rounds
+
+        // Insert the new user with the hashed password
+        const result = await usersCollection.insertOne({
+            username,
+            email,
+            password: hashedPassword // Store the hashed password
+        });
+
         res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
     } catch (error) {
         console.error("Error creating user:", error);
-        // Based on the error, send a more specific error message
-        if (error.code === 'SomeSpecificErrorCode') {
-            return res.status(400).json({ message: 'Specific error message' });
-        } else {
-            return res.status(500).json({ message: 'Failed to create user' });
-        }
+        res.status(500).json({ message: 'Failed to create user' });
     }
 });
 
