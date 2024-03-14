@@ -139,6 +139,7 @@ app.get('/load-deck-data', (req, res) => {
 app.post('/api/signup', async (req, res) => {
     // Ensure connection is established
     const db = await connectToMongoDB();
+    const { username, email, password } = req.body;
     if (!db) {
         return res.status(500).json({ message: 'Database connection error' });
     }
