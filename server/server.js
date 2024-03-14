@@ -229,7 +229,10 @@ app.post('/api/signin', async (req, res) => {
     }
 
     try {
+        await client.connect();
+        const db = client.db("YOUR_DATABASE_NAME"); // Make sure to replace "YOUR_DATABASE_NAME" with your actual database name.
         const usersCollection = db.collection("users");
+        
         const user = await usersCollection.findOne({ username: username });
         if (!user) {
             return res.status(401).json({ error: 'Invalid username or password' });
@@ -240,10 +243,13 @@ app.post('/api/signin', async (req, res) => {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
+        // If you reach here, the username and password are correct.
         res.json({ message: 'Sign in successful' });
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
+    } finally {
+        await client.close();
     }
 });
 
