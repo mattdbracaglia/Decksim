@@ -7,7 +7,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 // Ensure your password is correctly encoded if it contains special characters
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
-const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+
 
 
 // Middleware to serve static files
