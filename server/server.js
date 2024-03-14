@@ -137,8 +137,11 @@ app.get('/load-deck-data', (req, res) => {
 });
 
 app.post('/api/signup', async (req, res) => {
-    const { username, email, password } = req.body;
-
+    // Ensure connection is established
+    const db = await connectToMongoDB();
+    if (!db) {
+        return res.status(500).json({ message: 'Database connection error' });
+    }
     if (!username || !email || !password) {
         return res.status(400).json({ message: 'Please provide all required fields' });
     }
@@ -207,20 +210,19 @@ const client = new MongoClient(uri, {
 // Global variable to hold the DB connection
 let db;
 
-// Connect to MongoDB
 async function connectToMongoDB() {
-    try {
-        await client.connect();
-        console.log("Connected successfully to MongoDB");
-        // Assign the database connection to the global variable
-        db = client.db("Decksim");
-    } catch (e) {
-        console.error("Could not connect to MongoDB", e);
-        process.exit(1); // Exit the app if we can't connect to the database
+    if (!db) {
+        try {
+            await client.connect();
+            console.log("Connected successfully to MongoDB");
+            db = client.db("Decksim"); // use your database name
+        } catch (e) {
+            console.error("Could not connect to MongoDB", e);
+        }
     }
+    return db;
 }
 
-// Call the connect function when the app starts
 connectToMongoDB().catch(console.error);
 
 async function createUser(client, newUser) {
