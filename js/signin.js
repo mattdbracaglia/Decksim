@@ -1,34 +1,42 @@
-
+// Client-side JavaScript for handling the sign-in form submission
 const signInForm = document.querySelector('form');
 
 signInForm.addEventListener('submit', function(event) {
-    event.preventDefault();
+    event.preventDefault(); // Prevent the default form submission
     console.log('Form submission intercepted');
 
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
+    // Perform validation
     if (username === '' || password === '') {
         alert('Please fill in all fields.');
         return;
     }
 
+    // Send POST request to server for sign-in
     fetch('/api/signin', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', },
+        headers: {
+            'Content-Type': 'application/json',
+        },
         body: JSON.stringify({ username, password }),
     })
-    .then(response => response.json()) // Parse JSON response
-    .then(data => {
-        if (data.error) {
-            throw new Error(data.error); // Use error message from the server
+    .then(response => {
+        if (!response.ok) {
+            return response.text().then(text => {
+                throw new Error(text); // Throw an error with the text response to catch it later
+            });
         }
-        console.log(data.message); // Sign in successful
-        alert(data.message);
-        window.location.href = '/main.html'; // Redirect on success
+        return response.text(); // or response.json() if server responds with JSON
+    })
+    .then(data => {
+        console.log(data); // Process your data here
+        alert('Sign in successful!');
+        window.location.href = '/main.html'; // Redirect on successful sign-in
     })
     .catch(error => {
-        console.error('Error during sign-in:', error);
+        console.error('Error during sign-in:', error.message);
         alert(`Sign in failed: ${error.message}`);
     });
 });
