@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs').promises; // This line is crucial for using the promise-based APIs
 const app = express();
+const bcrypt = require('bcryptjs');
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
@@ -175,25 +176,27 @@ app.post('/api/signup', async (req, res) => {
 app.post('/api/signin', async (req, res) => {
     const { username, password } = req.body;
 
-    // Basic validation
     if (!username || !password) {
         return res.status(400).send('Username and password are required');
     }
 
     try {
-        const usersPath = path.join(__dirname, 'users.json');
-        const data = await fs.readFile(usersPath, 'utf-8');
-        const users = JSON.parse(data);
+        const usersCollection = db.collection("users");
 
-        const user = users.find(u => u.username === username && u.password === password);
-
-        if (user) {
-            // User found
-            res.status(200).send('Sign in successful');
-        } else {
-            // User not found
-            res.status(401).send('Invalid username or password');
+        // Find the user by username
+        const user = await usersCollection.findOne({ username: username });
+        if (!user) {
+            return res.status(401).send('Invalid username or password');
         }
+
+        // Compare the provided password with the hashed password in the database
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).send('Invalid username or password');
+        }
+
+        // Passwords match, sign in successful
+        res.send('Sign in successful');
     } catch (error) {
         console.error(error);
         res.status(500).send('An error occurred while trying to sign in');
