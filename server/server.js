@@ -7,6 +7,7 @@ const { MongoClient, ServerApiVersion } = require('mongodb');
 // Ensure your password is correctly encoded if it contains special characters
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
+const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 
 // Middleware to serve static files
@@ -263,18 +264,20 @@ app.post('/api/signin', async (req, res) => {
 let db;
 
 async function connectToMongoDB() {
-    if (!db) {
-        try {
-            await client.connect();
-            console.log("Connected successfully to MongoDB");
-            db = client.db("Decksim"); // use your database name
-        } catch (e) {
-            console.error("Could not connect to MongoDB", e);
-        }
+    if (db) {
+        return db;
     }
-    return db;
-}
 
+    try {
+        await client.connect();
+        console.log("Connected successfully to MongoDB");
+        db = client.db("Decksim"); // Replace "Decksim" with your actual database name
+        return db;
+    } catch (error) {
+        console.error("Could not connect to MongoDB", error);
+        throw new Error('Database connection failed');
+    }
+}
 connectToMongoDB().catch(console.error);
 
 // Define a test endpoint
