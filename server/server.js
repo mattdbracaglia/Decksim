@@ -3,6 +3,7 @@ const path = require('path');
 const fs = require('fs').promises; // This line is crucial for using the promise-based APIs
 const app = express();
 const bcrypt = require('bcryptjs');
+const { MongoClient, ServerApiVersion } = require('mongodb');
 // Ensure your password is correctly encoded if it contains special characters
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
@@ -254,7 +255,7 @@ app.post('/api/signin', async (req, res) => {
     }
 });
 
-const { MongoClient, ServerApiVersion } = require('mongodb');
+
 
 
 
