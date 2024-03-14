@@ -157,8 +157,13 @@ app.post('/api/signup', async (req, res) => {
         const result = await usersCollection.insertOne({ username, email, password });
         res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
     } catch (error) {
-        console.error('Failed to create user:', error);
-        res.status(500).json({ message: 'Failed to create user' });
+        console.error("Error creating user:", error);
+        // Based on the error, send a more specific error message
+        if (error.code === 'SomeSpecificErrorCode') {
+            return res.status(400).json({ message: 'Specific error message' });
+        } else {
+            return res.status(500).json({ message: 'Failed to create user' });
+        }
     }
 });
 
