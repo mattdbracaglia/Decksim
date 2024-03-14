@@ -36,7 +36,8 @@ signupForm.addEventListener('submit', async function(event) {
         });
 
         if (!response.ok) {
-            throw new Error('Signup failed');
+            const errorText = await response.text(); // or response.json() if you expect JSON
+            throw new Error(`Signup failed: ${response.status} ${errorText}`);
         }
 
         const data = await response.json();
