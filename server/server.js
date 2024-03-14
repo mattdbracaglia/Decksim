@@ -178,29 +178,46 @@ app.post('/api/signup', async (req, res) => {
 });
 
 // Sign-in route
-app.post('/api/signin', async (req, res) => {
-    const { username, password } = req.body;
+app.post('/api/signup', async (req, res) => {
+    const db = await connectToMongoDB();
+    const { username, email, password } = req.body;
 
-    if (!username || !password) {
-        return res.status(400).json({ error: 'Username and password are required' });
+    if (!db) {
+        return res.status(500).json({ message: 'Database connection error' });
+    }
+
+    if (!username || !email || !password) {
+        return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
     try {
         const usersCollection = db.collection("users");
-        const user = await usersCollection.findOne({ username: username });
-        if (!user) {
-            return res.status(401).json({ error: 'Invalid username or password' });
+
+        // Check if the user already exists
+        const existingUser = await usersCollection.findOne({ $or: [{ username }, { email }] });
+        if (existingUser) {
+            return res.status(409).json({ message: 'User already exists' });
         }
 
-        const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
-            return res.status(401).json({ error: 'Invalid username or password' });
-        }
+        // Hash the password before saving the new user
+        const hashedPassword = await bcrypt.hash(password, 10);
 
-        res.json({ message: 'Sign in successful' });
+        // Insert the new user with the hashed password
+        const result = await usersCollection.insertOne({
+            username,
+            email,
+            password: hashedPassword
+        });
+
+        // Retrieve the newly created user using the insertedId
+        const newUser = await usersCollection.findOne({ _id: result.insertedId });
+
+        console.log('New user created:', newUser); // This will log the newly created user data
+
+        res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
     } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: 'An error occurred while trying to sign in' });
+        console.error("Error creating user:", error);
+        res.status(500).json({ message: 'Failed to create user' });
     }
 });
 
