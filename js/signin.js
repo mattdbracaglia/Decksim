@@ -24,7 +24,10 @@ signInForm.addEventListener('submit', function(event) {
     })
     .then(response => {
         if (!response.ok) {
-            // Throw an error for non-2xx status codes to be caught by the catch block
+            response.text().then(text => {
+                console.error('Error during sign-in:', text);
+                alert(`Sign in failed: ${text}`);
+            });
             throw new Error('Network response was not ok');
         }
         return response.text(); // or response.json() if server responds with JSON
