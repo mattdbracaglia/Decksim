@@ -4,6 +4,7 @@ const fs = require('fs').promises; // This line is crucial for using the promise
 const app = express();
 const bcrypt = require('bcryptjs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
+const client = new MongoClient(process.env.MONGODB_URI);
 // Ensure your password is correctly encoded if it contains special characters
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
