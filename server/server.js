@@ -221,6 +221,32 @@ app.post('/api/signup', async (req, res) => {
     }
 });
 
+app.post('/api/signin', async (req, res) => {
+    const { username, password } = req.body;
+
+    if (!username || !password) {
+        return res.status(400).json({ error: 'Username and password are required' });
+    }
+
+    try {
+        const usersCollection = db.collection("users");
+        const user = await usersCollection.findOne({ username: username });
+        if (!user) {
+            return res.status(401).json({ error: 'Invalid username or password' });
+        }
+
+        const isMatch = await bcrypt.compare(password, user.password);
+        if (!isMatch) {
+            return res.status(401).json({ error: 'Invalid username or password' });
+        }
+
+        res.json({ message: 'Sign in successful' });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: 'An error occurred while trying to sign in' });
+    }
+});
+
 const { MongoClient, ServerApiVersion } = require('mongodb');
 
 // Ensure your password is correctly encoded if it contains special characters
