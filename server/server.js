@@ -139,53 +139,25 @@ app.get('/load-deck-data', (req, res) => {
 app.post('/api/signup', async (req, res) => {
     const { username, email, password } = req.body;
 
-    console.log('Received signup request:', { username, email });
-
-    // Perform validation
     if (!username || !email || !password) {
-        console.log('Validation failed: Missing fields');
         return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
-    const usersPath = path.join(__dirname, 'users.json');
-    console.log(`Looking for users file at: ${usersPath}`);
-
     try {
-        let users;
-        try {
-            const data = await fs.readFile(usersPath, 'utf-8');
-            users = JSON.parse(data);
-            console.log('Existing users loaded:', users);
-        } catch (error) {
-            if (error.code === 'ENOENT') {
-                console.log('users.json not found, creating new file.');
-                users = [];
-            } else {
-                console.error('Error reading users file:', error);
-                throw error;
-            }
-        }
+        // Access the "users" collection
+        const usersCollection = db.collection("users");
 
         // Check if the user already exists
-        const userExists = users.some(user => user.username === username || user.email === email);
-        console.log(`Checking if user exists: ${userExists ? 'Yes' : 'No'}`);
-
-        if (userExists) {
-            console.log('User already exists, signup failed.');
+        const existingUser = await usersCollection.findOne({ $or: [{ username }, { email }] });
+        if (existingUser) {
             return res.status(409).json({ message: 'User already exists' });
         }
 
-        // If user doesn't exist, add to the array
-        users.push({ username, email, password }); // Note: Storing plain passwords is insecure.
-        console.log('Adding new user:', { username, email });
-
-        // Write the updated array back to the file
-        await fs.writeFile(usersPath, JSON.stringify(users, null, 2));
-        console.log('User added successfully, file updated.');
-
-        res.status(201).json({ message: 'User created successfully' });
+        // Insert the new user - consider hashing the password with bcrypt before storing
+        const result = await usersCollection.insertOne({ username, email, password });
+        res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
     } catch (error) {
-        console.error('Failed during signup process:', error);
+        console.error('Failed to create user:', error);
         res.status(500).json({ message: 'Failed to create user' });
     }
 });
@@ -226,6 +198,25 @@ const uri = "mongodb+srv://mattbracaglia:sPRCeycmWzlSi4W4@decksim.8wd39qs.mongod
 const client = new MongoClient(uri, {
   serverApi: ServerApiVersion.v1
 });
+
+// Global variable to hold the DB connection
+let db;
+
+// Connect to MongoDB
+async function connectToMongoDB() {
+    try {
+        await client.connect();
+        console.log("Connected successfully to MongoDB");
+        // Assign the database connection to the global variable
+        db = client.db("Decksim");
+    } catch (e) {
+        console.error("Could not connect to MongoDB", e);
+        process.exit(1); // Exit the app if we can't connect to the database
+    }
+}
+
+// Call the connect function when the app starts
+connectToMongoDB().catch(console.error);
 
 async function createUser(client, newUser) {
     const result = await client.db("Decksim").collection("Decksimlogins").insertOne(newUser);
