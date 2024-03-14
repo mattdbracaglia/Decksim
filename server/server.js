@@ -4,10 +4,6 @@ const fs = require('fs').promises; // This line is crucial for using the promise
 const app = express();
 const bcrypt = require('bcryptjs');
 // Ensure your password is correctly encoded if it contains special characters
-const uri = "mongodb+srv://mattbracaglia:sPRCeycmWzlSi4W4@decksim.8wd39qs.mongodb.net/?retryWrites=true&w=majority";
-const client = new MongoClient(uri, {
-  serverApi: ServerApiVersion.v1
-});
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
