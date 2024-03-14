@@ -226,8 +226,6 @@ async function connectToMongoDB() {
 
 connectToMongoDB().catch(console.error);
 
-main().catch(console.error);
-
 // Define a test endpoint
 app.get('/test', (req, res) => {
     res.json({ message: 'Connection successful' });
