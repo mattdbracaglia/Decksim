@@ -137,39 +137,25 @@ app.get('/load-deck-data', (req, res) => {
     });
 });
 
-app.post('/api/signup', async (req, res) => {
-    // Ensure connection is established
-    const db = await connectToMongoDB();
-    const { username, email, password } = req.body;
-    if (!db) {
-        return res.status(500).json({ message: 'Database connection error' });
+fetch('/api/signup', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(newUser),
+})
+.then(response => response.json().then(data => ({ status: response.status, body: data })))
+.then(obj => {
+    if (obj.status !== 200) {
+        throw new Error(`Signup failed: ${obj.status} ${obj.body.message}`);
     }
-    if (!username || !email || !password) {
-        return res.status(400).json({ message: 'Please provide all required fields' });
-    }
-
-    try {
-        // Access the "users" collection
-        const usersCollection = db.collection("users");
-
-        // Check if the user already exists
-        const existingUser = await usersCollection.findOne({ $or: [{ username }, { email }] });
-        if (existingUser) {
-            return res.status(409).json({ message: 'User already exists' });
-        }
-
-        // Insert the new user - consider hashing the password with bcrypt before storing
-        const result = await usersCollection.insertOne({ username, email, password });
-        res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
-    } catch (error) {
-        console.error("Error creating user:", error);
-        // Based on the error, send a more specific error message
-        if (error.code === 'SomeSpecificErrorCode') {
-            return res.status(400).json({ message: 'Specific error message' });
-        } else {
-            return res.status(500).json({ message: 'Failed to create user' });
-        }
-    }
+    console.log('Signup successful:', obj.body.message);
+    alert(obj.body.message);
+    // Redirect or perform any other desired action
+})
+.catch(error => {
+    console.error('Error during signup:', error);
+    alert(error.toString());
 });
 
 // Sign-in route
