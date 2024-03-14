@@ -177,29 +177,25 @@ app.post('/api/signin', async (req, res) => {
     const { username, password } = req.body;
 
     if (!username || !password) {
-        return res.status(400).send('Username and password are required');
+        return res.status(400).json({ error: 'Username and password are required' });
     }
 
     try {
         const usersCollection = db.collection("users");
-
-        // Find the user by username
         const user = await usersCollection.findOne({ username: username });
         if (!user) {
-            return res.status(401).send('Invalid username or password');
+            return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // Compare the provided password with the hashed password in the database
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            return res.status(401).send('Invalid username or password');
+            return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // Passwords match, sign in successful
-        res.send('Sign in successful');
+        res.json({ message: 'Sign in successful' });
     } catch (error) {
         console.error(error);
-        res.status(500).send('An error occurred while trying to sign in');
+        res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
 });
 
