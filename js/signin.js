@@ -1,10 +1,11 @@
-// Client-side JavaScript for handling the sign-in form submission
+// Get the form element
 const signInForm = document.querySelector('form');
 
+// Add event listener to the form submission
 signInForm.addEventListener('submit', function(event) {
     event.preventDefault(); // Prevent the default form submission
-    console.log('Form submission intercepted');
 
+    // Get the form values
     const username = document.getElementById('username').value;
     const password = document.getElementById('password').value;
 
@@ -14,29 +15,15 @@ signInForm.addEventListener('submit', function(event) {
         return;
     }
 
-    // Send POST request to server for sign-in
-    fetch('/api/signin', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-    })
-    .then(response => {
-        if (!response.ok) {
-            return response.text().then(text => {
-                throw new Error(text); // Throw an error with the text response to catch it later
-            });
-        }
-        return response.text(); // or response.json() if server responds with JSON
-    })
-    .then(data => {
-        console.log(data); // Process your data here
+    // Check credentials against local storage
+    const users = JSON.parse(localStorage.getItem('users') || '[]');
+    const user = users.find(user => user.username === username && user.password === password);
+
+    if (user) {
         alert('Sign in successful!');
-        window.location.href = '/main.html'; // Redirect on successful sign-in
-    })
-    .catch(error => {
-        console.error('Error during sign-in:', error.message);
-        alert(`Sign in failed: ${error.message}`);
-    });
+        // Redirect to a dashboard or desired page after successful sign-in
+        window.location.href = '/Panels.html';
+    } else {
+        alert('Sign in failed. Invalid username or password.');
+    }
 });
