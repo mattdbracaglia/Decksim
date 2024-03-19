@@ -17,9 +17,11 @@ signInForm.addEventListener('submit', function(event) {
     // Send POST request to server for sign-in
     fetch('/api/signin', {
         method: 'POST',
-        credentials: 'include', // make sure cookies are included
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password }),
+        credentials: 'include' // Include credentials like cookies in the request
     })
     .then(response => {
         console.log('Received response:', response);
