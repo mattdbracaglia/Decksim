@@ -11,14 +11,14 @@ const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 const MongoStore = require('connect-mongo');
 app.use(session({
-    secret: 'mtgdecksimba', // This should be a random, secure string
+    secret: process.env.SESSION_SECRET || 'default_secret', // Use SESSION_SECRET environment variable if available, or default to a fallback secret
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ client: client, dbName: 'Decksim' }),
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
         httpOnly: true, // Prevents client-side JS from reading the cookie
-        SameSite: 'Lax' // Sets the SameSite attribute to Lax
+        sameSite: 'Lax' // Sets the SameSite attribute to Lax
     }
 }));
 
