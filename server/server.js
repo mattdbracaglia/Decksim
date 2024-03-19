@@ -23,9 +23,12 @@ app.use(session({
 }));
 
 function ensureLoggedIn(req, res, next) {
+    console.log('Ensuring user is logged in');
     if (req.session.user) {
+        console.log('User is logged in:', req.session.user.username);
         next();
     } else {
+        console.log('User is not logged in - Unauthorized access attempt');
         res.status(401).json({ message: 'Unauthorized' });
     }
 }
@@ -49,9 +52,12 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/check-login', (req, res) => {
+    console.log('Checking login status');
     if (req.session && req.session.user) {
+        console.log('User is logged in:', req.session.user.username);
         res.json({ loggedIn: true });
     } else {
+        console.log('User is not logged in');
         res.json({ loggedIn: false });
     }
 });
