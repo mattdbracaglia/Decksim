@@ -227,29 +227,41 @@ app.post('/api/signin', async (req, res) => {
     }
 
     try {
+        console.log('Connecting to MongoDB for sign-in...');
         const db = await connectToMongoDB();
+        if (!db) {
+            console.log('Failed to connect to MongoDB');
+            return res.status(500).json({ error: 'Database connection error' });
+        }
+        console.log('MongoDB connection established for sign-in');
+
         const usersCollection = db.collection("users");
+        console.log(`Looking for user in DB: ${username}`);
 
         const user = await usersCollection.findOne({ username: username });
         if (!user) {
-            console.log(`User not found: ${username}`);
+            console.log(`User not found in DB: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
+        console.log(`User found in DB: ${username}, verifying password...`);
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
-            console.log(`Invalid password for user: ${username}`);
+            console.log(`Password verification failed for user: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        // Create session here
-        req.session.user = { id: user._id, username: user.username };
-        console.log(`Session created for user: ${username}`);
-
+        // Store user data in session after successful sign-in
+        req.session.user = {
+            id: user._id,
+            username: user.username,
+            email: user.email // Store only necessary information, avoid sensitive data
+        };
+        console.log(`Sign in successful for user: ${username}`);
         res.json({ message: 'Sign in successful' });
     } catch (error) {
-        console.error(`Sign-in error for user: ${username}`, error);
-        res.status(500).json({ error: 'An error occurred during sign-in' });
+        console.error(`Error during sign-in for user: ${username}`, error);
+        res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
 });
 
