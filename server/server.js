@@ -185,25 +185,35 @@ app.post('/api/signup', async (req, res) => {
 
 app.post('/api/signin', async (req, res) => {
     const { username, password } = req.body;
+    console.log(`Received sign-in request for username: ${username}`);
 
     if (!username || !password) {
+        console.log('Username or password not provided');
         return res.status(400).json({ error: 'Username and password are required' });
     }
 
     try {
+        console.log('Connecting to MongoDB...');
         const db = await connectToMongoDB(); // Use the connection management function
+        console.log('MongoDB connection established');
+
         const usersCollection = db.collection("users");
+        console.log(`Looking for user: ${username}`);
 
         const user = await usersCollection.findOne({ username: username });
         if (!user) {
+            console.log(`User not found: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
+        console.log(`User found: ${username}, verifying password...`);
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
+            console.log(`Password verification failed for user: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
+        console.log(`Sign in successful for user: ${username}`);
         res.json({ message: 'Sign in successful' });
     } catch (error) {
         console.error(`Error during sign-in for user: ${username}`, error);
