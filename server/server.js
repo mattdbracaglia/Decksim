@@ -48,6 +48,14 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
+app.get('/api/check-login', (req, res) => {
+    if (req.session && req.session.user) {
+        res.json({ loggedIn: true });
+    } else {
+        res.json({ loggedIn: false });
+    }
+});
+
 // Route to list names of .json files in the Decks directory
 app.get('/get-deck-names', ensureLoggedIn, async (req, res) => {
     const decksPath = path.join(__dirname, '..', 'Decks');
