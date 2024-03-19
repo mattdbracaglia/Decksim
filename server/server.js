@@ -44,7 +44,7 @@ app.get('/', (req, res) => {
 });
 
 // Route to list names of .json files in the Decks directory
-app.get('/get-deck-names', async (req, res) => {
+app.get('/get-deck-names', ensureLoggedIn, async (req, res) => {
     const decksPath = path.join(__dirname, '..', 'Decks');
     try {
         const files = await fs.readdir(decksPath);
@@ -59,7 +59,7 @@ app.get('/get-deck-names', async (req, res) => {
 });
 
 // Route to process card names and filter data from Card-Details.json
-app.post('/import-cards', async (req, res) => {
+app.post('/import-cards', ensureLoggedIn, async (req, res) => {
     console.log('Received request on /import-cards with body:', req.body);
 
     const cardRequests = req.body.cardNames;
@@ -112,7 +112,7 @@ app.post('/import-cards', async (req, res) => {
     }
 });
 
-app.post('/save-deck', async (req, res) => {
+app.post('/save-deck', ensureLoggedIn, async (req, res) => {
     const { deckName, cards } = req.body;
     if (!deckName || !cards) {
         return res.status(400).send('Deck name and cards are required.');
@@ -129,7 +129,7 @@ app.post('/save-deck', async (req, res) => {
 });
 
 // Route to load a specific deck by name
-app.get('/load-deck-data', (req, res) => {
+app.get('/load-deck-data', ensureLoggedIn, (req, res) => {
     const { name } = req.query;
     if (!name) {
         // Respond with an error in JSON format
@@ -156,7 +156,7 @@ app.get('/load-deck-data', (req, res) => {
     });
 });
 
-app.post('/api/signup', async (req, res) => {
+app.post('/api/signup', ensureLoggedIn, async (req, res) => {
     // Ensure connection is established
     const db = await connectToMongoDB();
     const { username, email, password } = req.body;
@@ -198,7 +198,7 @@ app.post('/api/signup', async (req, res) => {
 
 
 
-app.post('/api/signin', async (req, res) => {
+app.post('/api/signin', ensureLoggedIn, async (req, res) => {
     const { username, password } = req.body;
     console.log(`Received sign-in request for username: ${username}`);
 
