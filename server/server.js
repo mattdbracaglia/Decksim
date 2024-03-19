@@ -15,7 +15,7 @@ app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ client: client, dbName: 'Decksim' }), // Use your actual database name
+    store: MongoStore.create({ client: client, dbName: 'your-db-name' }), // Use your actual database name
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
         httpOnly: true, // Prevents client-side JS from reading the cookie
