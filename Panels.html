@@ -7,10 +7,17 @@
     <link rel="stylesheet" href="/css/Panels.css">
     <script>
         fetch('/api/check-login')
-            .then(response => response.json())
+            .then(response => {
+                console.log('Received response from /api/check-login');
+                return response.json();
+            })
             .then(data => {
+                console.log('Login status data:', data);
                 if (!data.loggedIn) {
+                    console.log('User is not logged in, redirecting to login page');
                     window.location.href = '/index.html'; // Redirect to login page
+                } else {
+                    console.log('User is logged in');
                 }
             })
             .catch(error => {
