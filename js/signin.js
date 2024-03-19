@@ -21,6 +21,7 @@ signInForm.addEventListener('submit', function(event) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
+        credentials: 'include' // Include credentials like cookies in the request
     })
     .then(response => {
         if (!response.ok) {
