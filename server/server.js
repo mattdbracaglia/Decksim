@@ -25,7 +25,7 @@ app.use(session({
 }));
 
 app.use(cors({
-    origin: 'https://www.Decksim.in', // replace with your client's domain
+    origin: 'https://www.decksim.in', // replace with your client's domain
     credentials: true, // to allow sending cookies with the request
 }));
 
