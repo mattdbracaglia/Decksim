@@ -10,12 +10,11 @@ const client = new MongoClient(process.env.MONGODB_URI);
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 const MongoStore = require('connect-mongo');
-const cors = require('cors');
 app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ client: client, dbName: 'your-db-name' }), // Use your actual database name
+    store: MongoStore.create({ client: client, dbName: 'your-db-name' }),
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
         httpOnly: true, // Prevents client-side JS from reading the cookie
@@ -23,25 +22,10 @@ app.use(session({
     }
 }));
 
-app.use((req, res, next) => {
-    console.log('Session ID:', req.sessionID);
-    console.log('Session cookie:', req.session.cookie);
-    console.log('Session user:', req.session.user);
-    next();
-});
-
-app.use(cors({
-    origin: 'https://www.decksim.in', // replace with your client's domain
-    credentials: true, // to allow sending cookies with the request
-}));
-
 function ensureLoggedIn(req, res, next) {
-    console.log('Ensuring user is logged in');
     if (req.session.user) {
-        console.log('User is logged in:', req.session.user.username);
         next();
     } else {
-        console.log('User is not logged in - Unauthorized access attempt');
         res.status(401).json({ message: 'Unauthorized' });
     }
 }
@@ -65,12 +49,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/api/check-login', (req, res) => {
-    console.log('Checking login status');
     if (req.session && req.session.user) {
-        console.log('User is logged in:', req.session.user);
         res.json({ loggedIn: true });
     } else {
-        console.log('User is not logged in');
         res.json({ loggedIn: false });
     }
 });
@@ -188,7 +169,7 @@ app.get('/load-deck-data', ensureLoggedIn, (req, res) => {
     });
 });
 
-app.post('/api/signup', async (req, res) => {
+app.post('/api/signup', ensureLoggedIn, async (req, res) => {
     // Ensure connection is established
     const db = await connectToMongoDB();
     const { username, email, password } = req.body;
@@ -275,14 +256,6 @@ app.post('/api/signin', async (req, res) => {
     } catch (error) {
         console.error(`Error during sign-in for user: ${username}`, error);
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
-    }
-    if (isAuthenticated) {
-        console.log('Setting session cookie for user:', req.body.username);
-        req.session.user = { id: user._id, username: user.username };
-        res.json({ message: 'Sign in successful' });
-    } else {
-        console.log('Authentication failed for user:', req.body.username);
-        res.status(401).json({ error: 'Invalid username or password' });
     }
 });
 
