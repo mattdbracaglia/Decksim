@@ -2,6 +2,7 @@ const express = require('express');
 const path = require('path');
 const fs = require('fs').promises; // This line is crucial for using the promise-based APIs
 const app = express();
+const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const client = new MongoClient(process.env.MONGODB_URI);
@@ -9,7 +10,12 @@ const client = new MongoClient(process.env.MONGODB_URI);
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
-
+app.use(session({
+    secret: 'your_secret_key', // This should be a random, secure string
+    resave: false,
+    saveUninitialized: true,
+    cookie: { secure: false } // Set to true if you're using HTTPS
+}));
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '..', '/')));
