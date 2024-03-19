@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 
 app.use(session({
-    secret: 'your_secret_key', // This should be a random, secure string
+    secret: 'mtgdecksimba', // This should be a random, secure string
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false } // Set to true if you're using HTTPS
