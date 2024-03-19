@@ -5,6 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Dashboard</title>
     <link rel="stylesheet" href="/css/Panels.css">
+    fetch('/api/check-login')
+    .then(response => response.json())
+    .then(data => {
+        if (!data.loggedIn) {
+            window.location.href = '/login.html'; // Redirect to login page
+        }
+    })
+    .catch(error => {
+        console.error('Error checking login status:', error);
+    });
 </head>
 <body>
     <div class="container">
