@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage</title>
+    <link rel="stylesheet" href="/css/simulatedeck.css">
+</head>
+<body>
+
+    <h1></h1>
+
+
+
+
+
+    <!-- New Buttons Container -->
+    <div id="gameControls">
+        <button id="chooseDecks">Choose Decks</button>
+        <button id="restart">Restart</button>
+        <button id="shuffle">Shuffle</button>
+        <button id="startGame">Start Game</button>
+        <button id="oneTurn">1 Turn</button>
+        <button id="autoTurns">Auto</button>
+        <button id="choiceTurns">Auto Choices</button>
+        
+    </div>
+
+    <div id="sectionButtons">
+        <button id="libraryBtn">Library</button>
+        <button id="handBtn">Hand</button>
+        <button id="battlefieldBtn">Battlefield</button>
+        <button id="landBtn">Land</button>
+        <button id="commanderBtn">Commander</button>
+        <button id="exileBtn">Exile</button>
+        <button id="graveyardBtn">Graveyard</button>
+    
+    </div>
+
+
+
+
+    <!-- Popup -->
+    <!-- Popup -->
+    <div id="deckPopup" class="popup-container" style="display:none;">
+        <div class="popup-content">
+            <span id="closePopup" class="close-btn">&times;</span>
+       
+            <p>Decks:</p>
+            <!-- The deck names will be dynamically added here -->
+            <!-- Adding the Load Decks button here -->
+            <button id="loadDecksButton" style="display: none;">Load Decks</button>
+        </div>
+    </div>
+    
+
+
+
+    <div id="manaCounter">
+        <span id="whiteMana">W: 0</span>
+        <span id="blueMana">U: 0</span>
+        <span id="blackMana">B: 0</span>
+        <span id="redMana">R: 0</span>
+        <span id="greenMana">G: 0</span>
+        <span id="colorlessMana">C: 0</span>
+        <span id="totalMana">T: 0</span>
+    </div>
+
+    <div class="mana-container">
+        <img src="css/white.jpg" alt="White Mana" class="mana-image">
+        <img src="css/blue.jpg" alt="Blue Mana" class="mana-image">
+        <img src="css/black.jpg" alt="Black Mana" class="mana-image">
+        <img src="css/red.jpg" alt="Red Mana" class="mana-image">
+        <img src="css/green.jpg" alt="Green Mana" class="mana-image">
+        <img src="css/colorless.jpg" alt="Colorless Mana" class="mana-image">
+    </div>
+
+    <div id="scrollboxContainer">
+        <div class="scrollbox" id="player1Scrollbox">
+            <label>P1:</label>
+            <input type="number" id="player1" class="scrollbox-input" min="0" max="7" value="0">
+        </div>
+
+    </div>
+
+   
+    <button id="player1Mulligan">M</button>
+
+
+
+    <div id="cycleButtons">
+        <button id="shuffleDrawEqual">S/D=</button>
+        <button id="shuffleDrawSeven">S/D7</button>
+        <button id="discardDrawEqual">D/D=</button>
+        <button id="discardDrawSeven">D/D7</button>
+    </div>
+
+    <div class="switch-container">
+        <label class="switch">
+          <input type="checkbox" id="modeSwitch">
+          <span class="slider"></span>
+          <span class="label label-left">Exact</span>
+          <span class="label label-right">Minimum</span>
+        </label>
+    </div>
+
+    <div class="switch-container" id="autoPlaySwitchContainer">
+        <label class="switch" id="autoPlayLabel">
+            <input type="checkbox" id="autoPlaySwitch">
+            <span class="slider" id="autoPlaySlider"></span>
+            <span class="label label-left" id="autoLabelLeft">AL</span>
+            <span class="label label-right" id="autoLabelRight">CL</span>
+        </label>
+    </div>
+
+    <button id="BacktoGame">Back</button>
+    
+    <div id="deckTabsContainer"></div>
+
+    <div id="cardImageContainer"></div>
+
+ 
+    <div id="deckSection" class="deck-section"></div>
+
+    <!-- Current Player Sections -->
+ 
+    <div class="current-player-sections">
+        <div id="library" class="current-player-section"></div>
+        <div id="hand" class="current-player-section"></div>
+        <div id="land" class="current-player-section"></div>
+        <div id="battlefield" class="current-player-section"></div>
+        <div id="graveyard" class="current-player-section"></div>
+        <div id="exile" class="current-player-section"></div>
+        <div id="commander" class="current-player-section"></div>
+        <div id="move" class="current-player-section"></div>
+        <div id="choice" class="current-player-section"></div>
+        <!-- Add more sections as needed -->
+    </div>
+        <!-- Add more sections as needed -->
+ 
+
+    <!-- Player Sections -->
+
+    
+
+
+    <script src="js/simulatedeck.js"></script>
+
+</body>
+</html>
