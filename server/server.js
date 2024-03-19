@@ -12,12 +12,14 @@ require('dotenv').config();
 const MongoStore = require('connect-mongo');
 app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
-    resave: false,          // Don't save session if unmodified
-    saveUninitialized: true, // Don't create session until something stored
-    store: MongoStore.create({
-        client: client,    // Your MongoClient instance
-        dbName: 'Decksim'  // Your MongoDB database name
-    })
+    resave: false,
+    saveUninitialized: true,
+    store: MongoStore.create({ client: client, dbName: 'your-db-name' }),
+    cookie: {
+        secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
+        httpOnly: true, // Prevents client-side JS from reading the cookie
+        SameSite: 'Lax' // Sets the SameSite attribute to Lax
+    }
 }));
 
 function ensureLoggedIn(req, res, next) {
