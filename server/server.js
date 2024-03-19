@@ -20,7 +20,7 @@ app.use(session({
         secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
         httpOnly: true, // Prevents client-side JS from reading the cookie
         sameSite: 'None', // Necessary if your client and server are on different domains or subdomains
-        domain: 'Decksim.in' // Replace 'yourdomain.com' with your actual domain
+        domain: 'www.Decksim.in' // Replace 'yourdomain.com' with your actual domain
     }
 }));
 
