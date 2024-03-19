@@ -24,6 +24,13 @@ app.use(session({
     }
 }));
 
+app.use((req, res, next) => {
+    console.log('Session ID:', req.sessionID);
+    console.log('Session cookie:', req.session.cookie);
+    console.log('Session user:', req.session.user);
+    next();
+});
+
 app.use(cors({
     origin: 'https://www.decksim.in', // replace with your client's domain
     credentials: true, // to allow sending cookies with the request
@@ -269,6 +276,14 @@ app.post('/api/signin', async (req, res) => {
     } catch (error) {
         console.error(`Error during sign-in for user: ${username}`, error);
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
+    }
+    if (isAuthenticated) {
+        console.log('Setting session cookie for user:', req.body.username);
+        req.session.user = { id: user._id, username: user.username };
+        res.json({ message: 'Sign in successful' });
+    } else {
+        console.log('Authentication failed for user:', req.body.username);
+        res.status(401).json({ error: 'Invalid username or password' });
     }
 });
 
