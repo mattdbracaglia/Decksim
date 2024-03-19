@@ -17,12 +17,20 @@ signInForm.addEventListener('submit', function(event) {
     // Send POST request to server for sign-in
     fetch('/api/signin', {
         method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ username, password }),
-        credentials: 'include' // Include credentials like cookies in the request
+        credentials: 'include', // make sure cookies are included
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
     })
+    .then(response => {
+        console.log('Received response:', response);
+        return response.json();
+    })
+    .then(data => {
+        console.log('Response data:', data);
+    })
+    .catch(error => {
+        console.error('Request error:', error);
+    });
     .then(response => {
         if (!response.ok) {
             return response.json().then(data => {
@@ -40,4 +48,7 @@ signInForm.addEventListener('submit', function(event) {
         console.error('Error during sign-in:', error.message);
         alert(`Sign in failed: ${error.message}`);
     });
+});
+document.cookie.split(';').forEach(cookie => {
+    console.log('Cookie:', cookie.trim());
 });
