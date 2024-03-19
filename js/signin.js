@@ -33,7 +33,7 @@ signInForm.addEventListener('submit', function(event) {
     .then(data => {
         console.log(data); // Process your data here
         alert('Sign in successful!');
-        window.location.href = '/index.html'; // Redirect on successful sign-in
+        window.location.href = '/Panels.html'; // Redirect on successful sign-in
     })
     .catch(error => {
         console.error('Error during sign-in:', error.message);
