@@ -1,0 +1,665 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    overflow: auto; /* Show scroll bars only when necessary */
+    height: auto; /* Let the body height naturally fit the content */
+}
+input, button {
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+
+/* Popup content */
+.popup-container {
+    position: fixed;
+    left: 50%; /* Start from the middle of the screen horizontally */
+    top: 50%; /* Start from the middle of the screen vertically */
+    width: 50%; /* Set the width to 50% of the viewport */
+    height: 50%; /* Set the height to 50% of the viewport */
+    background-color: rgba(0, 0, 0, 0.727);
+    display: none;
+    justify-content: center;
+    align-items: center; /* Center content vertically within the popup */
+    transform: translate(-50%, -50%); /* Shift back to perfectly center */
+    z-index: 1008;
+    
+}
+
+.popup-content {
+    /* Other styles remain unchanged */
+    color: #FFFFFF; /* Sets the text color to white */
+    
+}
+
+.popup-content ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+/* The Close Button */
+.close-btn {
+    color: #e25a5a;
+    float: right; /* Align to the top-right corner of the popup */
+    font-size: 28px;
+    font-weight: bold;
+    z-index: 1000;
+}
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+/* General style for horizontally scrolling sections */
+/* General style for horizontally scrolling sections */
+#library, #hand, #land, #battlefield, #choice {
+    position: relative;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 700px; /* Custom width */
+    height: 140px; /* Custom height, adjust as needed */
+    box-sizing: border-box;
+    display: flex;
+
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    white-space: nowrap; /* Ensure items line up horizontally */
+    z-index: 1005;
+}
+
+#library img, #hand img, #land img, #battlefield img {
+    max-height: 140px; /* Adjust based on your container's height */
+    object-fit: contain; /* Ensure the image fits nicely without distortion */
+    margin-right: 5px;
+    flex: 0 0 auto;
+    display: inline-block;
+}
+
+#graveyard img, #exile img, #commander img, #move img {
+    max-height: 140px; /* Adjust based on your container's height */
+    object-fit: contain; /* Ensure the image fits nicely without distortion */
+    margin-right: 5px;
+    flex: 0 0 auto;
+    display: inline-block;
+}
+
+/* Specific styles for sections with unique dimensions */
+#graveyard, #exile, #commander, #move {
+    position: relative;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 200px; /* Adjusted width for these sections */
+    height: 140px; /* Custom height, adjust as needed */
+    margin: 10px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto; /* Enable vertical scrolling if needed */
+    overflow-y: hidden; /* Hide horizontal scrollbar */
+
+
+}
+/* General style for horizontally scrolling sections */
+
+
+
+
+#info { top: 15px; right: 5px; }
+#library {
+    bottom: 674px;
+    left: 20px;
+  }
+#hand {
+    bottom: 959px;
+    left: 20px;
+  }/* Adjusted for spacing */
+#land {
+    bottom: 1244px;
+    left: 20px;
+  }
+#battlefield {
+    bottom: 1528px;
+    left: 20px;
+  }
+#graveyard {
+    bottom: 1399px;
+    left: 716px;
+  }
+#exile {
+    bottom: 1689px;
+    left: 716px;
+  }
+#commander {
+    bottom: 1558px;
+    left: 716px;
+  }
+#move {
+    bottom: 2128px;
+    left: 716px;
+  }
+#choice {
+    bottom: 1719px;
+    left: 20px;
+}
+/* Wrapper for both sets of sections */
+
+#gameControls {
+    position: relative;
+    top: 650px;
+    left: 790px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    width: 800px;
+  }
+
+#gameControls button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+#gameControls button:hover {
+    background-color: #0056b3;
+}
+
+
+#loadDecksButton {
+    padding: 10px 20px;
+    background-color: #007bff; /* Example blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Spacing from the list */
+}
+
+#loadDecksButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
+
+
+
+@media (max-width: 600px) {
+    .player-section {
+        position: static;
+        width: 90%; /* Slightly less than full width for margins */
+        height: auto;
+        margin: 10px auto; /* Centered horizontally */
+    }
+    .player-section-container {
+        padding-top: 50px; /* Adjust for smaller screens */
+        flex-direction: column;
+    }
+    #playerButtons {
+        top: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+}
+
+
+#manaCounter {
+    display: flex;
+
+    gap: 20px; /* Adjust this value to see the effect */
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-top: 10px;
+    position: relative;
+    bottom: 140px; /* Adjust if necessary */
+    left: 20px; /* Adjust if necessary */
+}
+
+#manaCounter span {
+    font-weight: bold;
+}
+
+#editDecksButton {
+    padding: 10px 20px;
+    font-size: 16px;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: relative;
+    top: 75px; /* Distance from the top of the viewport */
+    left: 15px; /* Distance from the left of the viewport */
+    z-index: 1000;
+}
+
+#editDecksButton:hover {
+    background-color: #0056b3;
+}
+
+#editDecksButton:active {
+    background-color: #004c9c;
+}
+
+
+
+html, body {
+    overflow: auto; /* Prevents scrolling on the entire webpage */
+    height: 100%; /* Ensures the body takes up the full viewport height */
+    margin: 0; /* Removes the default margin */
+    padding: 0; /* Removes the default padding */
+}
+
+#tabsContainer {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+.tab {
+    padding: 5px 10px;
+    cursor: pointer;
+    background-color: #ddd;
+    border: none;
+    outline: none;
+}
+
+.tab.active {
+    background-color: #664eee;
+    color: white;
+}
+
+#sectionButtons {
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+#sectionButtons button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+#sectionButtons button:hover {
+    background-color: #45a049;
+}
+
+#libraryBtn {    position: relative;
+    top: 555px;
+    left: 266px;
+}
+
+#handBtn {    position: relative;
+    top: 555px;
+    left: 255px;
+}
+
+#landBtn {    position: relative;
+    top: 555px;
+    left: 139px;
+}
+
+#battlefieldBtn {    position: relative;
+    top: 555px;
+    left: 300px;
+}
+
+#graveyardBtn {    position: relative;
+    top: 555px;
+    left: 33px;
+}
+
+#exileBtn {    position: relative;
+    top: 555px;
+    left: 194px;
+}
+
+#commanderBtn {    position: relative;
+    top: 555px;
+    left: 370px;
+}
+
+.mana-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    bottom: 171px;
+    right: 601px;
+    z-index: 1000;
+  }
+
+.mana-image {
+    width: 20px;
+    height: auto;
+    margin: 0 15.7px;
+}
+
+#scrollboxContainer {
+    position: relative;
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    height: 25px; /* Adjust the height as needed */
+    z-index: 2000;
+    
+}
+
+.scrollbox {
+    position: relative; 
+    width: 154px;
+}
+
+.scrollbox label {
+    margin-right: 5px;
+}
+
+.scrollbox input {
+    width: 50px;
+    padding: 5px;
+}
+
+#player1Scrollbox {
+  top: 384px;
+  left: 1180px;
+}
+
+  .switch-container {
+    position: relative;
+    top: 246px;
+    left: 1071px;
+    width: 468px;
+  }
+  
+.switch {
+position: relative;
+display: inline-block;
+width: 60px;
+height: 34px;
+}
+
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: #2196F3;
+transition: .4s;
+border-radius: 34px;
+}
+
+.slider:before {
+position: absolute;
+content: "";
+height: 26px;
+width: 26px;
+left: 4px;
+bottom: 4px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+
+input:checked + .slider {
+background-color: #2196F3;
+}
+
+input:focus + .slider {
+box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+
+.label {
+position: absolute;
+top: 50%;
+transform: translateY(-50%);
+font-size: 12px;
+font-weight: bold;
+color: rgb(0, 0, 0);
+text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.label-left {
+left: 70px;
+}
+
+.label-right {
+right: 70px;
+}
+
+#autoPlaySwitchContainer {
+    position: relative;
+    top: 246px;
+    left: 1300px;
+    width: 468px;
+  }
+
+#autoPlaySwitch + .slider {
+    background-color: #2196F3; /* Default background color */
+}
+
+#autoPlaySwitch:checked + .slider {
+    background-color: #2196F3; /* Color when checked */
+}
+
+#autoPlaySwitch:focus + .slider {
+    box-shadow: 0 0 1px #2196F3; /* Focus state */
+}
+
+#autoPlaySwitch:checked + .slider:before {
+    transform: translateX(26px); /* Slider button position when checked */
+}
+
+#autoLabelLeft {
+    left: 70px; /* Position of the left label */
+}
+
+#autoLabelRight {
+    right: 70px; /* Position of the right label */
+}
+
+.marked {
+    border: 2px solid red;
+}
+
+#player1Mulligan {
+    position: relative;
+    top: 356px;
+    left: 975px;
+    display: flex;
+    gap: 120px;
+    z-index: 2049;
+  }
+
+  #cycleButtons {
+    position: relative;
+    top: 291px;
+    left: 723px;
+    display: flex;
+    gap: 4px;
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 16px;
+    width: 791px;
+  }
+
+
+/* Adjusted Container for the tabs to change its location */
+#deckTabsContainer {
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 20px;
+    position: relative;
+    top: -400px;
+    left: 1000px;
+    width: 500px;
+  }
+
+/* Style for each tab */
+.deck-tab {
+    padding: 5px 10px; /* Padding inside each tab for spacing */
+    margin: 5px; /* Margin around tabs to separate them */
+    background-color: #ff9494; /* Light gray background */
+    border: 1px solid #dcdcdc; /* Light border for each tab */
+    border-radius: 5px; /* Rounded corners for tabs */
+    cursor: pointer; /* Change mouse cursor to indicate clickable */
+    text-align: center; /* Center text inside the tab */
+    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effect */
+}
+
+/* Hover effect for tabs */
+.deck-tab:hover {
+    background-color: #e9e9e9; /* Slightly darker on hover */
+    transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Active tab style */
+.deck-tab.active {
+    background-color: #007bff; /* Active tab has a distinct color */
+    color: white; /* White text color for better contrast */
+    border-color: #0056b3; /* Darker border color for active tab */
+}
+
+.deck-Image-Container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: start;
+    padding-top: -60px; /* Space for the top buttons */
+    box-sizing: border-box; /* Include padding in height calculation */
+}
+
+.deck-section {
+    position: relative; 
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    text-align: center;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 125px; /* Section width */
+    height: 582px; /* Section height */
+    box-sizing: border-box;
+    overflow-y: auto; /* Adds vertical scrolling */
+    overflow-x: hidden; /* Hides horizontal scrollbar */
+}
+
+.deck-section img {
+    max-width: 120%; /* Ensures the image width does not exceed the section width */
+    max-height: 150px; /* Further reduce the max height to make images smaller */
+    object-fit: contain; /* Ensures the full image is visible, might add letterboxing */
+    display: block; /* Display block to allow margin auto to center the image */
+    margin: 2px auto; /* Center the image within the section with minimal margin */
+    z-index: 1000;
+}
+
+/* Example of re-positioning */
+#deckSection {
+    bottom: 440px;
+    left: 1390px;
+  }
+
+  #cardImageContainer {
+    position: absolute;
+    bottom: 160px;
+    left: 1006px;
+    width: 360px;
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+#cardImageContainer img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.current-player-section {
+    position: relative; /* Use relative instead of absolute to keep in document flow */
+    width: 700px;
+    height: 140px;
+    margin: 5px auto; /* Center horizontally */
+    border: 2px solid #007bff;
+    overflow: hidden; /* Hide overflow within each section */
+}
+
+html, body {
+    overflow: hidden; /* Prevents scrolling on the entire webpage */
+    height: 100%; /* Ensures the body takes up the full viewport height */
+    margin: 0; /* Removes the default margin */
+    padding: 0; /* Removes the default padding */
+}
+
+#BacktoGame {
+    position: fixed;
+    top: 672px;
+    left: 731px;
+    display: flex;
+    background-color: #4CAF50;
+    color: white;
+    flex-direction: row;
+    border: none;
+    border-radius: 5px;
+    gap: 10px;
+  }
+
+
+#BacktoGame:hover {
+    background-color: #45a049; /* Darker shade on hover for feedback */
+}
