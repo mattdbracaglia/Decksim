@@ -10,6 +10,7 @@ const client = new MongoClient(process.env.MONGODB_URI);
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 const MongoStore = require('connect-mongo');
+const cors = require('cors');
 app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
     resave: false,
@@ -21,6 +22,11 @@ app.use(session({
         sameSite: 'None', // Necessary if your client and server are on different domains or subdomains
         domain: 'Decksim.in' // Replace 'yourdomain.com' with your actual domain
     }
+}));
+
+app.use(cors({
+    origin: 'https://www.Decksim.in', // replace with your client's domain
+    credentials: true, // to allow sending cookies with the request
 }));
 
 function ensureLoggedIn(req, res, next) {
