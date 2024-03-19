@@ -229,6 +229,16 @@ app.post('/api/signin', async (req, res) => {
         console.error(`Error during sign-in for user: ${username}`, error);
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
+    if (isMatch) {
+        // Store user data in session
+        req.session.user = {
+            id: user._id,
+            username: user.username,
+            email: user.email // Store only necessary information, avoid sensitive data
+        };
+        console.log(`Sign in successful for user: ${username}`);
+        res.json({ message: 'Sign in successful' });
+    }
 });
 
 
