@@ -12,9 +12,12 @@ require('dotenv').config();
 const MongoStore = require('connect-mongo');
 app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
-    resave: false,
-    saveUninitialized: true,
-    store: MongoStore.create({ client: client, dbName: 'your-db-name' })
+    resave: false,          // Don't save session if unmodified
+    saveUninitialized: true, // Don't create session until something stored
+    store: MongoStore.create({
+        client: client,    // Your MongoClient instance
+        dbName: 'Decksim'  // Your MongoDB database name
+    })
 }));
 
 function ensureLoggedIn(req, res, next) {
