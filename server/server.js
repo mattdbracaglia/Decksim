@@ -193,20 +193,24 @@ app.post('/api/signin', async (req, res) => {
     }
 
     try {
-        console.log('Connecting to MongoDB...');
-        const db = await connectToMongoDB(); // Use the connection management function
-        console.log('MongoDB connection established');
+        console.log('Connecting to MongoDB for sign-in...');
+        const db = await connectToMongoDB(); // Make sure this function is working correctly
+        if (!db) {
+            console.log('Failed to connect to MongoDB');
+            return res.status(500).json({ error: 'Database connection error' });
+        }
+        console.log('MongoDB connection established for sign-in');
 
         const usersCollection = db.collection("users");
-        console.log(`Looking for user: ${username}`);
+        console.log(`Looking for user in DB: ${username}`);
 
         const user = await usersCollection.findOne({ username: username });
         if (!user) {
-            console.log(`User not found: ${username}`);
+            console.log(`User not found in DB: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        console.log(`User found: ${username}, verifying password...`);
+        console.log(`User found in DB: ${username}, verifying password...`);
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) {
             console.log(`Password verification failed for user: ${username}`);
@@ -220,6 +224,7 @@ app.post('/api/signin', async (req, res) => {
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
 });
+
 
 
 
