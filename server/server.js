@@ -54,7 +54,7 @@ app.get('/', (req, res) => {
 app.get('/api/check-login', (req, res) => {
     console.log('Checking login status');
     if (req.session && req.session.user) {
-        console.log('User is logged in:', req.session.user.username);
+        console.log('User is logged in:', req.session.user);
         res.json({ loggedIn: true });
     } else {
         console.log('User is not logged in');
@@ -263,6 +263,16 @@ app.post('/api/signin', async (req, res) => {
         console.error(`Error during sign-in for user: ${username}`, error);
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
+    if (isMatch) {
+        req.session.user = {
+            id: user._id,
+            username: user.username,
+            email: user.email
+        };
+        console.log('User logged in, session:', req.session.user);
+        res.json({ message: 'Sign in successful' });
+    }
+
 });
 
 
