@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (backToGameButton) {
         backToGameButton.addEventListener('click', function() {
             // Navigate to main.html
-            window.location.href = 'main.html';
+            window.location.href = 'Panels.html';
         });
     } else {
         console.error('Back To Game button not found');
