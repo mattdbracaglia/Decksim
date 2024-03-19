@@ -14,7 +14,7 @@ app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
     resave: false,
     saveUninitialized: true,
-    store: MongoStore.create({ client: client, dbName: 'your-db-name' }),
+    store: MongoStore.create({ client: client, dbName: 'Decksim' }), // Replace 'your-db-name' with 'Decksim' or your actual database name
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
         httpOnly: true, // Prevents client-side JS from reading the cookie
@@ -169,7 +169,7 @@ app.get('/load-deck-data', ensureLoggedIn, (req, res) => {
     });
 });
 
-app.post('/api/signup', ensureLoggedIn, async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     // Ensure connection is established
     const db = await connectToMongoDB();
     const { username, email, password } = req.body;
