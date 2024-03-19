@@ -1857,7 +1857,9 @@ document.addEventListener('DOMContentLoaded', function() {
     btn.addEventListener('click', fetchAndDisplayDeckNames);
     close.addEventListener('click', function() { popup.style.display = "none"; });
 
-
+    document.getElementById('BacktoGame').addEventListener('click', function() {
+        window.location.href = 'Panels.html';
+    });
    
     
 
