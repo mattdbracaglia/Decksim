@@ -17,6 +17,15 @@ app.use(session({
     cookie: { secure: false } // Set to true if you're using HTTPS
 }));
 
+function ensureLoggedIn(req, res, next) {
+    if (req.session.user) {
+        next();
+    } else {
+        res.status(401).json({ message: 'Unauthorized' });
+    }
+}
+
+
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '..', '/')));
 
