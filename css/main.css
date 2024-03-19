@@ -300,20 +300,17 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    z-index: 1000;
 
 }
 
 #navigation button {
     padding: 5px 10px;
     cursor: pointer;
-    z-index: 1000;
 }
 
 #navigation span {
     min-width: 100px; /* Ensure the display doesn't jump sizes when changing text */
     text-align: center;
-    z-index: 1000;
 }
 
 @media (max-width: 600px) {
@@ -595,3 +592,20 @@ right: 70px;
     font-size: 16px;
 }
 
+#BacktoGame {
+    position: fixed; /* Or 'absolute', depending on your layout needs */
+    top: 65px;
+    left: 10px;
+    display: flex;
+    background-color: #4CAF50; /* A green shade for action buttons */
+    color: white; /* Contrast for readability */
+    flex-direction: row; /* Stack buttons horizontally */
+    border: none; /* Clean, modern look */
+    border-radius: 5px; /* Softened edges */
+    gap: 10px; /* Space between buttons */
+}
+
+
+#BacktoGame:hover {
+    background-color: #45a049; /* Darker shade on hover for feedback */
+}
