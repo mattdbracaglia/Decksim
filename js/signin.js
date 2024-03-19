@@ -49,6 +49,4 @@ signInForm.addEventListener('submit', function(event) {
         alert(`Sign in failed: ${error.message}`);
     });
 });
-document.cookie.split(';').forEach(cookie => {
-    console.log('Cookie:', cookie.trim());
-});
+
