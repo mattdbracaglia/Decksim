@@ -24,14 +24,14 @@ signInForm.addEventListener('submit', function(event) {
     })
     .then(response => {
         if (!response.ok) {
-            return response.text().then(text => {
-                throw new Error(text); // Throw an error with the text response to catch it later
+            return response.json().then(data => {
+                throw new Error(data.message || 'Error during sign-in');
             });
         }
-        return response.text(); // or response.json() if server responds with JSON
+        return response.json(); // Assuming the server responds with JSON
     })
     .then(data => {
-        console.log(data); // Process your data here
+        console.log('Sign-in successful:', data);
         alert('Sign in successful!');
         window.location.href = '/Panels.html'; // Redirect on successful sign-in
     })
