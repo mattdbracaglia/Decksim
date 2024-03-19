@@ -21,18 +21,7 @@ signInForm.addEventListener('submit', function(event) {
             'Content-Type': 'application/json',
         },
         body: JSON.stringify({ username, password }),
-        credentials: 'include' // Include credentials like cookies in the request
     })
-    .then(response => {
-        console.log('Received response:', response);
-        return response.json();
-    })
-    .then(data => {
-        console.log('Response data:', data);
-    })
-    .catch(error => {
-        console.error('Request error:', error);
-    });
     .then(response => {
         if (!response.ok) {
             return response.json().then(data => {
@@ -51,4 +40,3 @@ signInForm.addEventListener('submit', function(event) {
         alert(`Sign in failed: ${error.message}`);
     });
 });
-
