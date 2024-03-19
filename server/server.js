@@ -203,7 +203,7 @@ app.post('/api/signup', ensureLoggedIn, async (req, res) => {
 
 
 
-app.post('/api/signin', ensureLoggedIn, async (req, res) => {
+app.post('/api/signin', async (req, res) => {
     const { username, password } = req.body;
     console.log(`Received sign-in request for username: ${username}`);
 
@@ -214,7 +214,7 @@ app.post('/api/signin', ensureLoggedIn, async (req, res) => {
 
     try {
         console.log('Connecting to MongoDB for sign-in...');
-        const db = await connectToMongoDB(); // Make sure this function is working correctly
+        const db = await connectToMongoDB();
         if (!db) {
             console.log('Failed to connect to MongoDB');
             return res.status(500).json({ error: 'Database connection error' });
@@ -237,14 +237,7 @@ app.post('/api/signin', ensureLoggedIn, async (req, res) => {
             return res.status(401).json({ error: 'Invalid username or password' });
         }
 
-        console.log(`Sign in successful for user: ${username}`);
-        res.json({ message: 'Sign in successful' });
-    } catch (error) {
-        console.error(`Error during sign-in for user: ${username}`, error);
-        res.status(500).json({ error: 'An error occurred while trying to sign in' });
-    }
-    if (isMatch) {
-        // Store user data in session
+        // Store user data in session after successful sign-in
         req.session.user = {
             id: user._id,
             username: user.username,
@@ -252,6 +245,9 @@ app.post('/api/signin', ensureLoggedIn, async (req, res) => {
         };
         console.log(`Sign in successful for user: ${username}`);
         res.json({ message: 'Sign in successful' });
+    } catch (error) {
+        console.error(`Error during sign-in for user: ${username}`, error);
+        res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
 });
 
