@@ -9,12 +9,12 @@ const client = new MongoClient(process.env.MONGODB_URI);
 // Ensure your password is correctly encoded if it contains special characters
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
-
+const MongoStore = require('connect-mongo');
 app.use(session({
     secret: 'mtgdecksimba', // This should be a random, secure string
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false } // Set to true if you're using HTTPS
+    store: MongoStore.create({ client: client, dbName: 'your-db-name' })
 }));
 
 function ensureLoggedIn(req, res, next) {
