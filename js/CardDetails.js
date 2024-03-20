@@ -100,7 +100,6 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Card details fetched successfully:', data);
-    
             const currentCards = data.cards; // Assume your backend already sends the enhanced data
             console.log(currentCards);
             document.getElementById('cardInputContainer').style.display = 'none';
@@ -112,13 +111,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Debugging code here
                 console.log('Index:', 0); // Example index, assuming you want to show the first card
                 console.log('Current Cards Length:', currentCards.length);
-                if (currentCards.length > 0) {
-                    updateCardImage(0); // Assuming this function exists to display the first card
-                    populateCardList(currentCards); // Populate the card list with names
-                    populateDeckSection(currentCards); // Populate the deck section with card details
-                } else {
-                    console.error('Index out of bounds');
-                }
+                updateCardImage(0); // Assuming this function exists to display the first card
+                populateCardList(currentCards); // Populate the card list with names
+                populateDeckSection(currentCards); // Populate the deck section with card details
             }
     
             // Save the deck with the fetched and enhanced cards
@@ -146,6 +141,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
         });
     });
+    
 
     document.getElementById('AddCard').addEventListener('click', function() {
         const addCardContainer = document.getElementById('addCardContainer');
