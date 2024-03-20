@@ -236,8 +236,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
 
 
-    function updateCardImage(index) {
-        const imageUrl = currentCards[index].settings.normal_image_url;
+    function updateCardImage(index, currentCards) {
+        // Check if currentCards exists and the index is within bounds
+        if (!currentCards || index < 0 || index >= currentCards.length) {
+            console.error('Invalid index or currentCards not available');
+            return;
+        }
+    
+        const card = currentCards[index];
+        if (!card || !card.settings || !card.settings.normal_image_url) {
+            console.error('Card or image URL not found');
+            return;
+        }
+    
+        const imageUrl = card.settings.normal_image_url;
         const cardImageContainer = document.getElementById('cardImageContainer');
         let img = cardImageContainer.querySelector('img');
         if (!img) {
