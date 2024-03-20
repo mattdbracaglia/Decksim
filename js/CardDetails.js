@@ -484,6 +484,7 @@ document.addEventListener('DOMContentLoaded', function() {
             li.dataset.cardData = JSON.stringify(card);
     
             li.addEventListener('mouseover', function() {
+                console.log('Mouseover event for card:', card);
                 updateUIForSelectedCard(card);
             });
     
@@ -492,11 +493,14 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateUIForSelectedCard(card) {
+        console.log('Updating UI for selected card:', card);
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
         // Find the card in the currentCards array to get the complete data
         const selectedCard = currentCards.find(c => c.name === card.name);
+        console.log('Selected card data:', selectedCard);
+        
         if (selectedCard && selectedCard.settings && selectedCard.settings.normal_image_url) {
             const img = document.createElement('img');
             img.src = selectedCard.settings.normal_image_url;
