@@ -11,7 +11,7 @@ const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 const MongoStore = require('connect-mongo');
 app.use(session({
-    secret: process.env.SESSION_SECRET || 'default_secret', // Use SESSION_SECRET environment variable if available, or default to a fallback secret
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     store: MongoStore.create({ client: client, dbName: 'Decksim' }),
