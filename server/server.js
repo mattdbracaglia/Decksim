@@ -166,16 +166,17 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
     const { deckName, cards } = req.body;
-    const userId = req.user.id; // Extract user ID from the token
-
     if (!deckName || !cards) {
-        return res.status(400).json({ error: 'Deck name and cards are required.' });
+        return res.status(400).send('Deck name and cards are required.');
     }
 
-    const db = await connectToMongoDB();
-    const decksCollection = db.collection("decks");
+    const userId = req.user.id; // Ensure this is correctly set by your authentication middleware
 
     try {
+        const db = await connectToMongoDB();
+        const decksCollection = db.collection("decks");
+
+        // Use both userId and deckName to uniquely identify the deck
         await decksCollection.updateOne(
             { userId: userId, deckName: deckName },
             { $set: { cards: cards } },
@@ -185,7 +186,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         res.json({ message: 'Deck saved successfully', deckName });
     } catch (err) {
         console.error('Error saving the deck:', err);
-        res.status(500).json({ error: 'Error saving the deck' });
+        res.status(500).send('Error saving the deck');
     }
 });
 
