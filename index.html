@@ -24,6 +24,28 @@
             Don't have an account? <a href="signup.html">Sign Up</a>
         </div>
     </div>
+    <script>
+        // Check if the user is already logged in
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            if (token) {
+                fetch('/api/check-login', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    if (response.ok) {
+                        window.location.href = '/Panels.html'; // Redirect to panels page
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                });
+            }
+        });
+    </script>
     <script src="js/signin.js"></script>
 </body>
 </html>
