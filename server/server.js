@@ -166,19 +166,27 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
     const { deckName, cards } = req.body;
+    const userId = req.user.id; // Extract user ID from the token
+
     if (!deckName || !cards) {
-        return res.status(400).send('Deck name and cards are required.');
+        return res.status(400).json({ error: 'Deck name and cards are required.' });
     }
 
-    const filePath = path.join(__dirname, '..', 'Decks', `${deckName}.json`);
+    const db = await connectToMongoDB();
+    const decksCollection = db.collection("decks");
+
     try {
-        await fs.writeFile(filePath, JSON.stringify({ cards }, null, 2));
+        await decksCollection.updateOne(
+            { userId: userId, deckName: deckName },
+            { $set: { cards: cards } },
+            { upsert: true }
+        );
+
         res.json({ message: 'Deck saved successfully', deckName });
     } catch (err) {
-        console.error('Error saving the deck file:', err);
-        res.status(500).send('Error saving the deck');
+        console.error('Error saving the deck:', err);
+        res.status(500).json({ error: 'Error saving the deck' });
     }
-    res.json({ message: 'Access granted', user: req.user });
 });
 
 // Route to load a specific deck by name
