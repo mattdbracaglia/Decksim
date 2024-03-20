@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="/css/Panels.css">
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const token = localStorage.getItem('accessToken'); // Retrieve the stored token
+            const token = localStorage.getItem('token');
     
             if (!token) {
                 console.log('No token found, redirecting to login page');
@@ -21,39 +21,17 @@
                 })
                 .then(response => {
                     if (!response.ok) {
-                        throw new Error('Not logged in');
+                        throw new Error('Network response was not ok');
                     }
                     return response.json();
                 })
                 .then(data => {
-                    console.log('Login status data:', data);
+                    console.log('Success:', data);
                     if (!data.loggedIn) {
                         console.log('User is not logged in, redirecting to login page');
                         window.location.href = '/index.html'; // Redirect to login page
                     } else {
                         console.log('User is logged in');
-                        
-                        // Add the code below here
-                        const token = localStorage.getItem('token');
-                        fetch('/api/protected-route', { // Replace '/api/protected-route' with your actual protected route
-                            method: 'GET',
-                            headers: {
-                                'Authorization': `Bearer ${token}`
-                            }
-                        })
-                        .then(response => {
-                            if (!response.ok) {
-                                throw new Error('Network response was not ok');
-                            }
-                            return response.json();
-                        })
-                        .then(data => {
-                            console.log('Success:', data);
-                            // handle the successful response data
-                        })
-                        .catch(error => {
-                            console.error('Error:', error);
-                        });
                     }
                 })
                 .catch(error => {
