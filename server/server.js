@@ -77,12 +77,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '..', 'index.html'));
 });
 
-app.get('/api/check-login', (req, res) => {
-    if (req.session && req.session.user) {
-        res.json({ loggedIn: true });
-    } else {
-        res.json({ loggedIn: false });
-    }
+app.get('/api/check-login', authenticateToken, (req, res) => {
+    // If the token is valid, the `authenticateToken` middleware will allow this code to run
+    res.json({ loggedIn: true });
 });
 
 // Route to list names of .json files in the Decks directory
