@@ -493,6 +493,9 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateUIForSelectedCard(card) {
+            if (!cardData.uiState) {
+            cardData.uiState = { checkboxes: {}, manaCounter: {} };
+        }
         console.log('Updating UI for selected card:', card);
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
@@ -646,7 +649,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
             img.addEventListener('click', function() {
                 // Set current card based on clicked image
-                currentCard = cards[this.dataset.cardIndex];
+                currentCard = cardData;
+                if (!currentCard.uiState) {
+                    currentCard.uiState = { checkboxes: {}, manaCounter: {} };
+                }
                 displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
                 updateUIForCard(currentCard); // Update checkboxes and mana values
     
@@ -800,6 +806,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to display the selected card's UI state
     function displaySelectedCardUI(cardData) {
         // Check if uiState exists in cardData
+        if (!cardData.uiState) {
+            cardData.uiState = { checkboxes: {}, manaCounter: {} };
+        }
         if (!cardData.uiState) {
             console.error('uiState is undefined in cardData');
             return; // Exit the function if uiState is not found
