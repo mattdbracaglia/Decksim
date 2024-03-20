@@ -863,10 +863,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Saving changes to the server
     // Saving changes to the server
     document.getElementById('saveDetails').addEventListener('click', function() {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to save decks');
+            return;
+        }
+    
         fetch('/save-deck', {
             method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({deckName: currentDeckName, cards: currentCards}),
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Include the JWT token in the Authorization header
+            },
+            body: JSON.stringify({ deckName: currentDeckName, cards: currentCards }),
         })
         .then(response => {
             if (!response.ok) {
@@ -874,8 +883,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return response.json();
         })
-        .then(data => console.log('Deck saved with removed card:', data))
-        .catch(error => console.error('Error saving deck with removed card:', error));
+        .then(data => {
+            console.log('Deck saved successfully:', data);
+        })
+        .catch(error => {
+            console.error('Error saving deck:', error);
+        });
     });
 
     // Function to update the UI for mana counters
