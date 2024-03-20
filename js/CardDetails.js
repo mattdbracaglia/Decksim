@@ -497,16 +497,20 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
+        // Debugging: log the currentCards to see what it contains
+        console.log('Current cards:', currentCards);
+    
         // Find the card in the currentCards array to get the complete data
         const selectedCard = currentCards.find(c => c.name === card.name);
         console.log('Selected card data:', selectedCard);
-        
+    
         if (selectedCard && selectedCard.settings && selectedCard.settings.normal_image_url) {
             const img = document.createElement('img');
             img.src = selectedCard.settings.normal_image_url;
             img.alt = selectedCard.name;
             imageContainer.appendChild(img);
         } else {
+            console.log('No matching card found or missing image URL');
             imageContainer.textContent = 'Image not available';
         }
     }
