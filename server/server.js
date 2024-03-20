@@ -179,7 +179,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         // Use both userId and deckName to uniquely identify the deck
         await decksCollection.updateOne(
             { userId: userId, deckName: deckName },
-            { $set: { cards: cards } },
+            { $set: { userId: userId, deckName: deckName, cards: cards } },
             { upsert: true }
         );
 
