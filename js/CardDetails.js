@@ -85,23 +85,23 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`  // Assuming you have the token
+                'Authorization': `Bearer ${token}` // Assuming you have the token
             },
             body: JSON.stringify({
                 cardNames: cardNamesWithQuantity,
-                deckName: selectedDeckName  // Ensure this variable holds the current deck name
+                deckName: deckName
             })
-        });
+        })
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok on import cards');
             }
             return response.json();
-        });
+        })
         .then(data => {
             console.log('Card details fetched successfully:', data);
     
-            currentCards = data.cards; // Assume your backend already sends the enhanced data
+            const currentCards = data.cards; // Assume your backend already sends the enhanced data
             console.log(currentCards);
             document.getElementById('cardInputContainer').style.display = 'none';
     
