@@ -293,7 +293,8 @@ app.post('/api/signin', async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch) {
             console.log(`Password match for user: ${username}. Generating JWT...`);
-            const accessToken = jwt.sign({ user_id: user._id }, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '24h' });
+            const tokenPayload = { id: user._id.toString(), username: user.username };
+            const accessToken = jwt.sign(tokenPayload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '24h' });
 
             console.log(`Sign-in successful for user: ${username}`);
             return res.json({ accessToken }); // Send the token to the client
