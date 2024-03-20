@@ -20,7 +20,7 @@ app.use(session({
         httpOnly: true,
         sameSite: 'None',
         maxAge: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
-        domain: '.decksim.in'
+        domain: 'decksim.in'
     }
 }));
 
