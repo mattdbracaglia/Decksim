@@ -293,6 +293,7 @@ app.post('/api/signin', async (req, res) => {
         const isMatch = await bcrypt.compare(password, user.password);
         if (isMatch) {
             console.log(`Password match for user: ${username}. Generating JWT...`);
+            // Use user._id.toString() to ensure the ID is in string format
             const tokenPayload = { id: user._id.toString(), username: user.username };
             const accessToken = jwt.sign(tokenPayload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '24h' });
 
@@ -307,6 +308,7 @@ app.post('/api/signin', async (req, res) => {
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
     }
 });
+
 
 
 
