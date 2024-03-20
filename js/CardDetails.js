@@ -483,44 +483,19 @@ document.addEventListener('DOMContentLoaded', function() {
             // Store the full card data as a JSON string in a data attribute
             li.dataset.cardData = JSON.stringify(card);
     
-            // Check if currentCard's uiState has this card name in highlightedCards
-            if (currentCard && currentCard.uiState.highlightedCards.includes(card.name)) {
-                li.classList.add('highlighted');
-            }
-    
-            li.addEventListener('click', function() {
-                this.classList.toggle('highlighted');
-    
-                // Ensure highlightedCards is initialized
-                if (!currentCard.uiState.highlightedCards) {
-                    currentCard.uiState.highlightedCards = [];
-                }
-    
-                const highlightedIndex = currentCard.uiState.highlightedCards.indexOf(card.name);
-                if (highlightedIndex > -1) {
-                    currentCard.uiState.highlightedCards.splice(highlightedIndex, 1); // Remove if already highlighted
-                } else {
-                    currentCard.uiState.highlightedCards.push(card.name); // Add if not highlighted
-                }
-                updateUIForSelectedCard(card);
-            });
-
-            // Add mouseover event listener instead of click
             li.addEventListener('mouseover', function() {
-                // Update the UI to display the selected card's details
                 updateUIForSelectedCard(card);
             });
     
             cardList.appendChild(li);
         });
     }
-  
+    
     function updateUIForSelectedCard(card) {
-        // Display the selected card's image
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
-        // Use 'currentCards' instead of 'cards'
+        // Find the card in the currentCards array to get the complete data
         const selectedCard = currentCards.find(c => c.name === card.name);
         if (selectedCard && selectedCard.settings && selectedCard.settings.normal_image_url) {
             const img = document.createElement('img');
@@ -532,13 +507,11 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-
     document.getElementById('cardList').addEventListener('input', function(e) {
         const searchTerm = e.target.value.toLowerCase();
-        const searchResults = document.getElementById('searchResults');
-        const cards = searchResults.getElementsByTagName('li');
-        
-        Array.from(cards).forEach(card => {
+        const cards = document.querySelectorAll('#cardList li');
+    
+        cards.forEach(card => {
             const name = card.textContent.toLowerCase();
             card.style.display = name.includes(searchTerm) ? '' : 'none';
         });
