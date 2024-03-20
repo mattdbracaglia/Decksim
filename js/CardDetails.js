@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
 
-    document.getElementById('loadCards').addEventListener('click', function() {
+   document.getElementById('loadCards').addEventListener('click', function() {
         console.log('Load Cards button clicked.');
         const token = localStorage.getItem('token');
         if (!token) {
@@ -116,8 +116,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include the JWT token in the Authorization header for saving
                 },
-                body: JSON.stringify({ deckName: deckName, cards: currentCards }),
+                body: JSON.stringify({ deckName: deckName, cards: currentCards })
             });
         })
         .then(response => {
