@@ -18,7 +18,7 @@ app.use(session({
     cookie: {
         secure: process.env.NODE_ENV === 'production', // Ensure cookies are sent over HTTPS
         httpOnly: true, // Prevents client-side JS from reading the cookie
-        sameSite: 'Lax' // Sets the SameSite attribute to Lax
+        sameSite: 'Lax', // Sets the SameSite attribute to Lax
         domain: '.decksim.in' // Replace with your actual domain
     }
 }));
