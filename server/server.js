@@ -126,6 +126,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         console.log(`Filtered ${filteredCards.length} cards from the provided names.`);
 
         const transformedData = {
+            userId: userId,  // Associate the data with the user ID
             cards: filteredCards.map(card => ({
                 name: card.name,
                 quantity: card.quantity,
@@ -143,14 +144,20 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
                 }
             }))
         };
-
-        console.log('Sending transformed data back to the client.');
+        // Save the transformed data in MongoDB associated with the user
+        const db = await connectToMongoDB();
+        const decksCollection = db.collection("decks");
+        await decksCollection.updateOne(
+            { userId: userId },
+            { $set: transformedData },
+            { upsert: true }
+        );
+        console.log('Cards imported and saved for user');
         res.json(transformedData);
     } catch (err) {
         console.error('Error processing import-cards request:', err.message);
         res.status(500).json({ error: 'Internal Server Error' });
     }
-    res.json({ message: 'Access granted', user: req.user });
 });
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
