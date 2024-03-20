@@ -103,10 +103,12 @@ app.get('/get-deck-names', authenticateToken, async (req, res) => {
 app.post('/import-cards', authenticateToken, async (req, res) => {
     console.log('Received request on /import-cards with body:', req.body);
 
-    const cardRequests = req.body.cardNames;
-    if (!cardRequests || cardRequests.length === 0) {
-        console.error('No card names provided in the request body.');
-        return res.status(400).json({ error: 'No card names provided.' });
+    // Extract cardNames and deckName from the request body
+    const { cardNames, deckName } = req.body;
+
+    if (!cardNames || cardNames.length === 0 || !deckName) {
+        console.error('Deck name and card names are required.');
+        return res.status(400).json({ error: 'Deck name and card names are required.' });
     }
 
     // Use req.user.id assuming authenticateToken middleware adds the user object to req
@@ -120,12 +122,12 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         const data = await fs.readFile(cardDetailsPath, 'utf8');
         console.log('Successfully read Card-Details.json');
 
-        const cards = JSON.parse(data);
+        const cardsData = JSON.parse(data);
         console.log('Successfully parsed Card-Details.json');
 
-        const filteredCards = cardRequests.map(req => {
-            const card = cards.find(c => c.name.toLowerCase() === req.name.toLowerCase());
-            return card ? { ...card, quantity: req.quantity } : null;
+        const filteredCards = cardNames.map(cardRequest => {
+            const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
+            return card ? { ...card, quantity: cardRequest.quantity } : null;
         }).filter(card => card);
 
         console.log(`Filtered ${filteredCards.length} cards from the provided names.`);
@@ -153,15 +155,16 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         const db = await connectToMongoDB();
         const decksCollection = db.collection("decks");
         await decksCollection.updateOne(
-            { userId: userId },
-            { $set: { cards: transformedData.cards } },
+            { userId: userId, deckName: deckName },
+            { $set: { userId: userId, deckName: deckName, cards: filteredCards } },
             { upsert: true }
         );
 
         console.log('Cards imported and saved for user');
         res.json(transformedData);
+        res.json({ message: 'Cards imported successfully', deckName });
     } catch (err) {
-        console.error('Error processing import-cards request:', err.message);
+        console.error('Error processing import-cards request:', err);
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
