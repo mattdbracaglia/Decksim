@@ -791,13 +791,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Function to display the selected card's UI state
     function displaySelectedCardUI(cardData) {
+        // Check if uiState exists in cardData
+        if (!cardData.uiState) {
+            console.error('uiState is undefined in cardData');
+            return; // Exit the function if uiState is not found
+        }
+    
         // Update checkboxes based on uiState
         Object.entries(cardData.uiState.checkboxes).forEach(([key, value]) => {
             const checkbox = document.querySelector(`input[name="options"][value="${key}"]`);
             if (checkbox) checkbox.checked = value;
         });
-
-        // Update mana counters based on cardData.uiState.manaCounter
+    
         // Update mana counters based on uiState
         const manaCounterMappings = {
             W: 'whiteMana',
@@ -813,7 +818,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const manaInput = document.getElementById(manaInputId);
             if (manaInput) manaInput.value = value;
         });
-
     }
 
     // Example event listener for checkboxes (you need to adapt this to your specific setup)
