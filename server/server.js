@@ -110,7 +110,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
     }
 
     // Use req.user.id assuming authenticateToken middleware adds the user object to req
-    const userId = req.user.id;
+    const userId = req.user.user_id;
 
     const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
