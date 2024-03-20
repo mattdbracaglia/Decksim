@@ -171,7 +171,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         return res.status(400).send('Deck name and cards are required.');
     }
 
-    const userId = req.user.id; // Ensure this is correctly set by your authentication middleware
+    const userId = req.user.user_id;
 
     try {
         const db = await connectToMongoDB();
