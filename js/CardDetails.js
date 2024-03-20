@@ -59,25 +59,23 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('loadCards').addEventListener('click', function() {
         console.log('Load Cards button clicked.');
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, redirecting to login page');
+            window.location.href = '/index.html';
+            return;
+        }
+    
         const lines = document.getElementById('cardTextInput').value.split('\n');
         const cardNamesWithQuantity = lines.map(line => {
-            // Use regex to handle both "1x Card Name" and "1 Card Name" formats
             const match = line.trim().match(/^(\d+)x?\s+(.*)$/);
             if (match) {
-                const quantity = parseInt(match[1], 10);
-                const name = match[2];
-                return { name, quantity };
+                return { name: match[2], quantity: parseInt(match[1], 10) };
             }
             return null;
-        }).filter(card => card && card.name); // Filter out any null entries
+        }).filter(card => card); // Ensure each entry has a name and quantity
     
-        console.log('Card names and quantities extracted:', cardNamesWithQuantity);
-    
-        console.log('Card names and quantities extracted:', cardNamesWithQuantity);
-    
-        const deckName = document.getElementById('deckNameInput').value;
-        console.log('Deck name:', deckName);
-    
+        const deckName = document.getElementById('deckNameInput').value.trim();
         if (!deckName) {
             console.error('Deck name is required.');
             return;
@@ -87,8 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}` // Include the JWT token in the Authorization header
             },
-            body: JSON.stringify({ cardNames: cardNamesWithQuantity }),
+            body: JSON.stringify({ cardNames: cardNamesWithQuantity })
         })
         .then(response => {
             if (!response.ok) {
@@ -99,22 +98,17 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             console.log('Card details fetched successfully:', data);
     
-            // Enhance card data with default UI state
-            const enhancedCards = enhanceCardDataWithUIState(data.cards);
-    
-            // Use enhancedCards instead of data.cards for further operations
-            currentCards = enhancedCards;
-            console.log(currentCards); 
+            currentCards = data.cards; // Assume your backend already sends the enhanced data
+            console.log(currentCards);
             document.getElementById('cardInputContainer').style.display = 'none';
     
-            // Proceed with UI updates and deck saving using enhancedCards
             var cardImageContainer = document.getElementById('cardImageContainer');
             cardImageContainer.style.display = 'block';
     
             if (currentCards && currentCards.length > 0) {
-                updateCardImage(0); // Display the first card image using enhancedCards
-                populateCardList(currentCards); // Populate the card list with names using enhancedCards
-                populateDeckSection(currentCards); // Use enhancedCards here
+                updateCardImage(0); // Assuming this function exists to display the first card
+                populateCardList(currentCards); // Populate the card list with names
+                populateDeckSection(currentCards); // Populate the deck section with card details
             }
     
             // Save the deck with the fetched and enhanced cards
