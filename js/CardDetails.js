@@ -109,9 +109,16 @@ document.addEventListener('DOMContentLoaded', function() {
             cardImageContainer.style.display = 'block';
     
             if (currentCards && currentCards.length > 0) {
-                updateCardImage(0); // Assuming this function exists to display the first card
-                populateCardList(currentCards); // Populate the card list with names
-                populateDeckSection(currentCards); // Populate the deck section with card details
+                // Debugging code here
+                console.log('Index:', 0); // Example index, assuming you want to show the first card
+                console.log('Current Cards Length:', currentCards.length);
+                if (currentCards.length > 0) {
+                    updateCardImage(0); // Assuming this function exists to display the first card
+                    populateCardList(currentCards); // Populate the card list with names
+                    populateDeckSection(currentCards); // Populate the deck section with card details
+                } else {
+                    console.error('Index out of bounds');
+                }
             }
     
             // Save the deck with the fetched and enhanced cards
