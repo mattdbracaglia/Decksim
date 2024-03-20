@@ -98,6 +98,7 @@ app.get('/get-deck-names', authenticateToken, async (req, res) => {
         console.error("Failed to list decks:", err);
         return res.status(500).json({ error: 'Error listing deck files' });
     }
+    res.json({ message: 'Access granted', user: req.user });
 });
 
 // Route to process card names and filter data from Card-Details.json
@@ -152,6 +153,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         console.error('Error processing import-cards request:', err.message);
         res.status(500).json({ error: 'Internal Server Error' });
     }
+    res.json({ message: 'Access granted', user: req.user });
 });
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
@@ -168,6 +170,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         console.error('Error saving the deck file:', err);
         res.status(500).send('Error saving the deck');
     }
+    res.json({ message: 'Access granted', user: req.user });
 });
 
 // Route to load a specific deck by name
@@ -196,6 +199,7 @@ app.get('/load-deck-data', authenticateToken, (req, res) => {
             res.status(500).json({ error: `Error parsing deck data for ${name}` });
         }
     });
+    res.json({ message: 'Access granted', user: req.user });
 });
 
 app.post('/api/signup', async (req, res) => {
