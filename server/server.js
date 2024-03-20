@@ -172,18 +172,18 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         return res.status(400).send('Deck name and cards are required.');
     }
 
-    const userId = req.user.id;
+    const userId = req.user.id;  // Extracted from the authenticated token
     console.log('User ID in /save-deck:', userId);
 
     try {
         const db = await connectToMongoDB();
         const decksCollection = db.collection("decks");
 
-        // Use both userId and deckName to uniquely identify the deck
+        // Update the deck if it exists, or insert it as new if it does not
         await decksCollection.updateOne(
-            { userId: userId, deckName: deckName },
+            { userId: userId, deckName: deckName },  // Unique identifier for the deck
             { $set: { userId: userId, deckName: deckName, cards: cards } },
-            { upsert: true }
+            { upsert: true }  // Insert as a new document if it does not exist
         );
 
         res.json({ message: 'Deck saved successfully', deckName });
