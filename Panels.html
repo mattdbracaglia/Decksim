@@ -6,23 +6,36 @@
     <title>Game Dashboard</title>
     <link rel="stylesheet" href="/css/Panels.css">
     <script>
-        fetch('/api/check-login')
-            .then(response => {
-                console.log('Received response from /api/check-login');
-                return response.json();
-            })
-            .then(data => {
-                console.log('Login status data:', data);
-                if (!data.loggedIn) {
-                    console.log('User is not logged in, redirecting to login page');
-                    window.location.href = '/index.html'; // Redirect to login page
-                } else {
-                    console.log('User is logged in');
-                }
-            })
-            .catch(error => {
-                console.error('Error checking login status:', error);
-            });
+        document.addEventListener('DOMContentLoaded', function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                console.log('No token found, redirecting to login page');
+                window.location.href = '/index.html';
+            } else {
+                fetch('/api/check-login', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`
+                    }
+                })
+                .then(response => {
+                    console.log('Received response from /api/check-login');
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Login status data:', data);
+                    if (!data.loggedIn) {
+                        console.log('Token validation failed, redirecting to login page');
+                        window.location.href = '/index.html'; // Redirect to login page
+                    } else {
+                        console.log('Token is valid, user is logged in');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                });
+            }
+        });
     </script>
 </head>
 <body>
