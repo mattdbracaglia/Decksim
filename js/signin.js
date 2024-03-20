@@ -20,8 +20,7 @@ signInForm.addEventListener('submit', function(event) {
         headers: {
             'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ username, password }),
-        credentials: 'include' // Include cookies in the request and save them upon receiving the response
+        body: JSON.stringify({ username, password })
     })
     .then(response => {
         if (!response.ok) {
@@ -33,6 +32,9 @@ signInForm.addEventListener('submit', function(event) {
     })
     .then(data => {
         console.log('Sign-in successful:', data);
+        // Store the token in localStorage or sessionStorage
+        localStorage.setItem('token', data.accessToken); // Adjust depending on your storage preference
+
         alert('Sign in successful!');
         window.location.href = '/Panels.html'; // Redirect on successful sign-in
     })
@@ -40,5 +42,4 @@ signInForm.addEventListener('submit', function(event) {
         console.error('Error during sign-in:', error.message);
         alert(`Sign in failed: ${error.message}`);
     });
-
 });
