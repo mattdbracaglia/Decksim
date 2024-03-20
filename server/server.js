@@ -108,6 +108,9 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         return res.status(400).json({ error: 'No card names provided.' });
     }
 
+    // Use req.user.id assuming authenticateToken middleware adds the user object to req
+    const userId = req.user.id;
+
     const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
 
@@ -118,15 +121,15 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         const cards = JSON.parse(data);
         console.log('Successfully parsed Card-Details.json');
 
-        const filteredCards = cardRequests.filter(req => req.name).map(req => {
-            const card = cards.find(c => c.name.toLowerCase().includes(req.name.toLowerCase()));
-            return { ...card, quantity: req.quantity };
+        const filteredCards = cardRequests.map(req => {
+            const card = cards.find(c => c.name.toLowerCase() === req.name.toLowerCase());
+            return card ? { ...card, quantity: req.quantity } : null;
         }).filter(card => card);
 
         console.log(`Filtered ${filteredCards.length} cards from the provided names.`);
 
         const transformedData = {
-            userId: userId,  // Associate the data with the user ID
+            userId: userId,
             cards: filteredCards.map(card => ({
                 name: card.name,
                 quantity: card.quantity,
@@ -144,14 +147,15 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
                 }
             }))
         };
-        // Save the transformed data in MongoDB associated with the user
+
         const db = await connectToMongoDB();
         const decksCollection = db.collection("decks");
         await decksCollection.updateOne(
             { userId: userId },
-            { $set: transformedData },
+            { $set: { cards: transformedData.cards } },
             { upsert: true }
         );
+
         console.log('Cards imported and saved for user');
         res.json(transformedData);
     } catch (err) {
