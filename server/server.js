@@ -110,7 +110,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
     }
 
     // Use req.user.id assuming authenticateToken middleware adds the user object to req
-    const userId = req.user.user_id;
+    const userId = req.user.id;
 
     const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
@@ -171,7 +171,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         return res.status(400).send('Deck name and cards are required.');
     }
 
-    const userId = req.user.user_id;
+    const userId = req.user.id;
 
     try {
         const db = await connectToMongoDB();
