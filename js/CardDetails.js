@@ -829,8 +829,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-
-    // Add event listeners to mana counter inputs
+    
     const manaCounterInputs = {
         whiteMana: 'W',
         blueMana: 'U',
@@ -839,7 +838,7 @@ document.addEventListener('DOMContentLoaded', function() {
         greenMana: 'G',
         colorlessMana: 'C'
     };
-
+    
     Object.entries(manaCounterInputs).forEach(([inputId, shorthand]) => {
         const inputElement = document.getElementById(inputId);
         if (inputElement) {
