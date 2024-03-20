@@ -24,14 +24,26 @@ app.use(session({
     }
 }));
 
+app.use((req, res, next) => {
+    console.log('Session middleware triggered:', req.sessionID);
+    next();
+});
+
 function ensureLoggedIn(req, res, next) {
+    console.log('ensureLoggedIn middleware triggered for session:', req.sessionID);
     if (req.session.user) {
+        console.log('User is logged in:', req.session.user.username);
         next();
     } else {
+        console.log('User not logged in. Blocking access.');
         res.status(401).json({ message: 'Unauthorized' });
     }
 }
 
+app.use((req, res, next) => {
+    console.log(`Incoming request for ${req.path} with session ID: ${req.sessionID}`);
+    next();
+});
 
 // Middleware to serve static files
 app.use(express.static(path.join(__dirname, '..', '/')));
@@ -215,7 +227,7 @@ app.post('/api/signup', ensureLoggedIn, async (req, res) => {
 
 app.post('/api/signin', async (req, res) => {
     const { username, password } = req.body;
-    console.log(`Received sign-in request for username: ${username}`);
+    console.log(`Received sign-in request for username: ${req.body.username}`);
 
     if (!username || !password) {
         console.log('Username or password not provided');
@@ -242,6 +254,13 @@ app.post('/api/signin', async (req, res) => {
 
         console.log(`User found in DB: ${username}, verifying password...`);
         const isMatch = await bcrypt.compare(password, user.password);
+        if (isMatch) {
+            console.log(`Password match for user: ${username}. About to create session.`);
+            req.session.user = {
+                id: user._id,
+                username: user.username,
+                email: user.email
+            };
         if (!isMatch) {
             console.log(`Password verification failed for user: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
