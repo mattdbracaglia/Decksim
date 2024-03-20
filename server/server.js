@@ -51,7 +51,7 @@ function authenticateToken(req, res, next) {
     jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
         if (err) return res.sendStatus(403);
         req.user = user;
-        console.log('Authenticated user ID:', user.id); // Log to verify user id is available
+        console.log('Authenticated user:', user); // This will show the entire user object
         next();
     });
 }
@@ -111,6 +111,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
 
     // Use req.user.id assuming authenticateToken middleware adds the user object to req
     const userId = req.user.id;
+    console.log('User ID in /import-cards:', userId);
 
     const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
     console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
@@ -172,6 +173,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
     }
 
     const userId = req.user.id;
+    console.log('User ID in /save-deck:', userId);
 
     try {
         const db = await connectToMongoDB();
@@ -252,6 +254,7 @@ app.post('/api/signup', async (req, res) => {
             email,
             password: hashedPassword // Store the hashed password
         });
+        console.log('New user created with ID:', result.insertedId.toString());
 
         res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
     } catch (error) {
@@ -296,6 +299,7 @@ app.post('/api/signin', async (req, res) => {
             // Use user._id.toString() to ensure the ID is in string format
             const tokenPayload = { id: user._id.toString(), username: user.username };
             const accessToken = jwt.sign(tokenPayload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: '24h' });
+            nsole.log('Token payload:', tokenPayload);
 
             console.log(`Sign-in successful for user: ${username}`);
             return res.json({ accessToken }); // Send the token to the client
