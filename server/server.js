@@ -41,6 +41,20 @@ function ensureLoggedIn(req, res, next) {
     }
 }
 
+
+function authenticateToken(req, res, next) {
+    const authHeader = req.headers['authorization'];
+    const token = authHeader && authHeader.split(' ')[1];
+
+    if (token == null) return res.sendStatus(401);
+
+    jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+        if (err) return res.sendStatus(403);
+        req.user = user;
+        next();
+    });
+}
+
 app.use((req, res, next) => {
     console.log(`Incoming request for ${req.path} with session ID: ${req.sessionID}`);
     next();
@@ -72,7 +86,7 @@ app.get('/api/check-login', (req, res) => {
 });
 
 // Route to list names of .json files in the Decks directory
-app.get('/get-deck-names', ensureLoggedIn, async (req, res) => {
+app.get('/get-deck-names', authenticateToken, async (req, res) => {
     const decksPath = path.join(__dirname, '..', 'Decks');
     try {
         const files = await fs.readdir(decksPath);
@@ -87,7 +101,7 @@ app.get('/get-deck-names', ensureLoggedIn, async (req, res) => {
 });
 
 // Route to process card names and filter data from Card-Details.json
-app.post('/import-cards', ensureLoggedIn, async (req, res) => {
+app.post('/import-cards', authenticateToken, async (req, res) => {
     console.log('Received request on /import-cards with body:', req.body);
 
     const cardRequests = req.body.cardNames;
@@ -140,7 +154,7 @@ app.post('/import-cards', ensureLoggedIn, async (req, res) => {
     }
 });
 
-app.post('/save-deck', ensureLoggedIn, async (req, res) => {
+app.post('/save-deck', authenticateToken, async (req, res) => {
     const { deckName, cards } = req.body;
     if (!deckName || !cards) {
         return res.status(400).send('Deck name and cards are required.');
@@ -157,7 +171,7 @@ app.post('/save-deck', ensureLoggedIn, async (req, res) => {
 });
 
 // Route to load a specific deck by name
-app.get('/load-deck-data', ensureLoggedIn, (req, res) => {
+app.get('/load-deck-data', authenticateToken, (req, res) => {
     const { name } = req.query;
     if (!name) {
         // Respond with an error in JSON format
@@ -184,7 +198,7 @@ app.get('/load-deck-data', ensureLoggedIn, (req, res) => {
     });
 });
 
-app.post('/api/signup', ensureLoggedIn, async (req, res) => {
+app.post('/api/signup', async (req, res) => {
     // Ensure connection is established
     const db = await connectToMongoDB();
     const { username, email, password } = req.body;
