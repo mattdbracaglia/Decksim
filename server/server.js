@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const client = new MongoClient(process.env.MONGODB_URI);
 // Ensure your password is correctly encoded if it contains special characters
+const jwt = require('jsonwebtoken');
 const PORT = process.env.PORT || 3000;
 require('dotenv').config();
 const MongoStore = require('connect-mongo');
@@ -254,19 +255,20 @@ app.post('/api/signin', async (req, res) => {
 
         console.log(`User found in DB: ${username}, verifying password...`);
         const isMatch = await bcrypt.compare(password, user.password);
-        if (!isMatch) {
+        if (isMatch) {
+            console.log(`Password match for user: ${username}. Generating JWT...`);
+            const accessToken = jwt.sign(
+                { id: user._id, username: user.username },
+                process.env.ACCESS_TOKEN_SECRET,
+                { expiresIn: '24h' }
+            );
+
+            console.log(`Sign-in successful for user: ${username}`);
+            return res.json({ accessToken }); // Send the token to the client
+        } else {
             console.log(`Password verification failed for user: ${username}`);
             return res.status(401).json({ error: 'Invalid username or password' });
         }
-
-        // Store user data in session after successful sign-in
-        req.session.user = {
-            id: user._id,
-            username: user.username,
-            email: user.email // Store only necessary information, avoid sensitive data
-        };
-        console.log(`Sign in successful for user: ${username}`);
-        res.json({ message: 'Sign in successful' });
     } catch (error) {
         console.error(`Error during sign-in for user: ${username}`, error);
         res.status(500).json({ error: 'An error occurred while trying to sign in' });
