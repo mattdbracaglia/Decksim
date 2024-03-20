@@ -85,10 +85,13 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Include the JWT token in the Authorization header
+                'Authorization': `Bearer ${token}`  // Assuming you have the token
             },
-            body: JSON.stringify({ cardNames: cardNamesWithQuantity })
-        })
+            body: JSON.stringify({
+                cardNames: cardNamesWithQuantity,
+                deckName: selectedDeckName  // Ensure this variable holds the current deck name
+            })
+        });
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok on import cards');
