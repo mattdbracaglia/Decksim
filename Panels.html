@@ -6,33 +6,37 @@
     <title>Game Dashboard</title>
     <link rel="stylesheet" href="/css/Panels.css">
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const token = localStorage.getItem('token');
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('accessToken'); // Retrieve the stored token
+    
             if (!token) {
                 console.log('No token found, redirecting to login page');
-                window.location.href = '/index.html';
+                window.location.href = '/index.html'; // Redirect to login page
             } else {
                 fetch('/api/check-login', {
                     method: 'GET',
                     headers: {
-                        'Authorization': `Bearer ${token}`
+                        'Authorization': `Bearer ${token}` // Send the token in the Authorization header
                     }
                 })
                 .then(response => {
-                    console.log('Received response from /api/check-login');
+                    if (!response.ok) {
+                        throw new Error('Not logged in');
+                    }
                     return response.json();
                 })
                 .then(data => {
                     console.log('Login status data:', data);
                     if (!data.loggedIn) {
-                        console.log('Token validation failed, redirecting to login page');
+                        console.log('User is not logged in, redirecting to login page');
                         window.location.href = '/index.html'; // Redirect to login page
                     } else {
-                        console.log('Token is valid, user is logged in');
+                        console.log('User is logged in');
                     }
                 })
                 .catch(error => {
                     console.error('Error checking login status:', error);
+                    window.location.href = '/index.html'; // Redirect to login page on error
                 });
             }
         });
