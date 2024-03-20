@@ -18,7 +18,7 @@ app.use(session({
     cookie: {
         secure: process.env.NODE_ENV === 'production',
         httpOnly: true,
-        sameSite: 'Lax',
+        sameSite: 'None',
         maxAge: 24 * 60 * 60 * 1000, // 24 hours in milliseconds
         domain: '.decksim.in'
     }
