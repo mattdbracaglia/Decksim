@@ -97,7 +97,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 throw new Error('Network response was not ok on import cards');
             }
             return response.json();
-        })
+        });
         .then(data => {
             console.log('Card details fetched successfully:', data);
     
