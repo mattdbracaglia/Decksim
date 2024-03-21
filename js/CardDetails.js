@@ -535,6 +535,23 @@ document.addEventListener('DOMContentLoaded', function() {
     
             deckSection.appendChild(img);
         });
+        // Automatically select the first card to display its details
+                if (cards.length > 0) {
+                    currentCard = cards[0];
+                    displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+                    updateUIForCard(currentCard);
+            }
+    }
+
+         
+ 
+    
+        // Automatically select the first card to display its details
+        if (cards.length > 0) {
+            currentCard = cards[0];
+            displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+            updateUIForCard(currentCard);
+        }
     }
 
     function populateCardList(cards) {
@@ -701,43 +718,8 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    function populateDeckSection(cards) {
-        const deckSection = document.getElementById('deckSection');
-        deckSection.innerHTML = '';
+
     
-        cards.forEach((card, index) => {
-            const img = document.createElement('img');
-            img.src = card.settings.normal_image_url;
-            img.alt = card.name;
-            img.dataset.cardIndex = index; // Store the index of the card in the array
-            img.dataset.cardType = card.settings.type_line; // Set the card type as a data attribute
-    
-            img.addEventListener('click', function() {
-                // Set current card based on clicked image
-                currentCard = cardData;
-                if (!currentCard.uiState) {
-                    currentCard.uiState = { checkboxes: {}, manaCounter: {} };
-                }
-                displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-                updateUIForCard(currentCard); // Update checkboxes and mana values
-    
-                // Clear highlighted state in card list for all cards
-                clearHighlightedCardsUI();
-    
-                // Then repopulate the card list to reflect the highlighted state of the new currentCard
-                populateCardList(cards); // Assuming this function updates the highlighted state based on currentCard's uiState
-            });
-    
-            deckSection.appendChild(img);
-        });
-    
-        // Automatically select the first card to display its details
-        if (cards.length > 0) {
-            currentCard = cards[0];
-            displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-            updateUIForCard(currentCard);
-        }
-    }
 
     function clearHighlightedCardsUI() {
         const cardListItems = document.querySelectorAll('#cardList li');
