@@ -203,60 +203,63 @@ input, button {
     position: fixed;
     left: 50%;
     top: 50%;
-    transform: translate(-50%, -50%);
     width: 50%;
-    max-width: 600px;
+    max-width: 600px; /* Maximum width to avoid too wide popup */
     height: 50%;
-    max-height: 400px;
-    display: flex;
-    flex-direction: column;
-    background-color: rgba(0, 0, 0, 0.8);
+    max-height: 400px; /* Maximum height to avoid too tall popup */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    transform: translate(-50%, -50%);
     z-index: 1000;
-    overflow: hidden;
+    overflow: auto; /* Add scrolling to the entire popup container */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly darker background for better readability */
 }
 
 .popup-content {
-    flex-grow: 1;
-    overflow-y: auto;
     color: #FFFFFF;
-    padding: 20px;
-}
-
-.popup-footer {
-    text-align: center;
-    padding: 10px;
+    max-height: 350px; /* Limit height of the content area to allow scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .popup-content ul {
-    columns: 2;
+    columns: 2; /* Split the list into two columns */
     -webkit-columns: 2;
     -moz-columns: 2;
     list-style-type: none;
     padding-left: 0;
-    margin: 0;
+    margin: 0; /* Remove default margin */
 }
 
 .close-btn {
     color: #e25a5a;
+    float: right;
     font-size: 28px;
     font-weight: bold;
-    cursor: pointer;
-    margin: 0 20px 10px 0; /* Adjust margin for close button position */
 }
+
+.close-btn:hover,
+.close-btn:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 
 #loadDeckButton {
     padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #007bff; /* Example blue */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    align-self: center; /* Align button to the center of the bottom */
-    margin: 10px; /* Add margin to separate it from the list */
+    margin-top: 20px; /* Spacing from the list */
 }
 
 #loadDeckButton:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* Darker blue on hover */
 }
 
 #searchContainer {
