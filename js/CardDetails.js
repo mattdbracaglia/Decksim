@@ -339,17 +339,9 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(decks => {
             console.log('Deck names fetched:', decks);
-            const popupContent = document.querySelector('.popup-content');
-            popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
+            const deckListElement = document.getElementById('deckList');
+            deckListElement.innerHTML = ''; // Clear the deck list container
             
-            const close = document.getElementById("closePopup");
-            if (close) {
-                close.addEventListener('click', function() {
-                    console.log('Closing deck popup');
-                    document.getElementById("deckPopup").style.display = "none";
-                });
-            }
-    
             const list = document.createElement('ul');
             decks.forEach((deck, index) => {
                 console.log(`Processing deck: ${deck}`);
@@ -369,15 +361,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 list.appendChild(item);
             });
     
-            popupContent.appendChild(list);
+            deckListElement.appendChild(list);
             console.log('Decks displayed in popup');
-            document.getElementById('closePopup').onclick = function() {
-                document.getElementById("deckPopup").style.display = "none";
-            };
-    
-            popup.style.display = "block";
-            addLoadDeckButton(popupContent);
-            limitCheckboxSelections();
         })
         .catch(error => {
             console.error('Error fetching deck names:', error);
