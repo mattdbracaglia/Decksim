@@ -121,9 +121,32 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         const data = await fs.readFile(cardDetailsPath, 'utf8');
         const cardsData = JSON.parse(data);
 
+        const defaultUIState = {
+            checkboxes: {
+                returnLand: false,
+                entersTapped: false,
+                search: false,
+                and: false,
+                or: false
+            },
+            manaCounter: {
+                W: 0, U: 0, B: 0, R: 0, G: 0, C: 0
+            },
+            highlightedCards: [],
+            Commander: false
+        };
+
         const filteredCards = cardNames.map(cardRequest => {
             const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
-            return card ? { ...card, quantity: cardRequest.quantity } : null;
+            if (card) {
+                const enhancedCard = {
+                    ...card,
+                    quantity: cardRequest.quantity,
+                    uiState: { ...defaultUIState, ...(card.uiState || {}) }
+                };
+                return enhancedCard;
+            }
+            return null;
         }).filter(card => card);
 
         console.log(`Filtered ${filteredCards.length} cards from the provided names.`);
@@ -145,7 +168,8 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
                     color_identity: card.color_identity,
                     keywords: card.keywords,
                     normal_image_url: card.large_image_url
-                }
+                },
+                uiState: card.uiState
             }))
         };
 
@@ -158,7 +182,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
             { upsert: true }
         );
 
-        console.log('Cards imported and saved for user');
+        console.log('Cards imported and saved for user with default UI state');
         res.json({ message: 'Cards imported successfully', deckName, cards: transformedData.cards });
     } catch (err) {
         console.error('Error processing import-cards request:', err);
@@ -167,7 +191,6 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         }
     }
 });
-
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
     const { deckName, cards } = req.body;
