@@ -83,20 +83,20 @@ app.get('/api/check-login', authenticateToken, (req, res) => {
     res.json({ loggedIn: true });
 });
 
-// Route to list names of .json files in the Decks directory
+// Updated route to fetch deck names from MongoDB
 app.get('/get-deck-names', authenticateToken, async (req, res) => {
-    const decksPath = path.join(__dirname, '..', 'Decks');
     try {
-        const files = await fs.readdir(decksPath);
-        const deckNamesWithoutExtension = files
-            .filter(file => file.endsWith('.json'))
-            .map(file => file.replace('.json', ''));
-        res.json(deckNamesWithoutExtension);
+        const db = await connectToMongoDB(); // Ensure you have a function to connect to your MongoDB
+        const decksCollection = db.collection("decks"); // Replace "decks" with your actual collection name
+
+        // Fetch distinct deck names from the collection
+        const deckNames = await decksCollection.distinct("deckName", { userId: req.user.id });
+
+        res.json(deckNames);
     } catch (err) {
-        console.error("Failed to list decks:", err);
-        return res.status(500).json({ error: 'Error listing deck files' });
+        console.error("Failed to list decks from MongoDB:", err);
+        return res.status(500).json({ error: 'Error listing deck names from database' });
     }
-    res.json({ message: 'Access granted', user: req.user });
 });
 
 // Route to process card names and filter data from Card-Details.json
