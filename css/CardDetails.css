@@ -204,24 +204,24 @@ input, button {
     left: 50%;
     top: 50%;
     width: 50%;
-    max-width: 600px; /* Maximum width to avoid too wide popup */
+    max-width: 600px;
     height: 50%;
-    max-height: 400px; /* Maximum height to avoid too tall popup */
-    display: none;
-    justify-content: center;
-    align-items: center;
+    max-height: 400px;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    overflow: auto; /* Add scrolling to the entire popup container */
-    background-color: rgba(0, 0, 0, 0.8); /* Slightly darker background for better readability */
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    flex-direction: column; /* Organize the header, content, and footer vertically */
+}
+
+.popup-header {
+    padding: 20px;
+    color: #FFFFFF;
 }
 
 .popup-content {
-    color: #FFFFFF;
-    max-height: 350px; /* Limit height of the content area to allow scrolling */
-    overflow-y: auto; /* Enable vertical scrolling */
-    padding: 20px; /* Add some padding */
-    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    overflow-y: auto;
+    flex-grow: 1; /* Takes up remaining space */
 }
 
 .popup-content ul {
@@ -247,19 +247,22 @@ input, button {
     cursor: pointer;
 }
 
+.popup-footer {
+    padding: 20px;
+    text-align: center;
+}
 
 #loadDeckButton {
     padding: 10px 20px;
-    background-color: #007bff; /* Example blue */
+    background-color: #007bff;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-top: 20px; /* Spacing from the list */
 }
 
 #loadDeckButton:hover {
-    background-color: #0056b3; /* Darker blue on hover */
+    background-color: #0056b3;
 }
 
 #searchContainer {
