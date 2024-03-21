@@ -521,19 +521,22 @@ document.addEventListener('DOMContentLoaded', function() {
             img.dataset.cardType = card.settings.type_line; // Set the card type as a data attribute
     
             img.addEventListener('click', function() {
-                // Use the 'card' variable directly from the forEach loop
                 currentCard = card;
                 if (!currentCard.uiState) {
                     currentCard.uiState = { checkboxes: {}, manaCounter: {} };
                 }
                 displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-                updateUIForCard(currentCard); // Update checkboxes and mana values
-    
-                // Clear highlighted state in card list for all cards
+                updateUIForCard(currentCard);
                 clearHighlightedCardsUI();
+                populateCardList(cards);
+            });
     
-                // Then repopulate the card list to reflect the highlighted state of the new currentCard
-                populateCardList(cards); // Assuming this function updates the highlighted state based on currentCard's uiState
+            // Add a mouseover event listener for each card
+            img.addEventListener('mouseover', function() {
+                console.log('Mouseover card:', card);
+                // You can display the card's details in a specific section or console.log it
+                // For example, you could update the UI to show this card's details
+                updateUIForSelectedCard(card);
             });
     
             deckSection.appendChild(img);
