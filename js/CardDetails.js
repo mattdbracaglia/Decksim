@@ -567,24 +567,20 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateUIForSelectedCard(card) {
-            if (!cardData.uiState) {
-            cardData.uiState = { checkboxes: {}, manaCounter: {} };
+        if (!card.uiState) {
+            card.uiState = { checkboxes: {}, manaCounter: {} };
         }
         console.log('Updating UI for selected card:', card);
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
-        // Debugging: log the currentCards to see what it contains
-        console.log('Current cards:', currentCards);
+        // Debugging: log the card to see what it contains
+        console.log('Selected card data:', card);
     
-        // Find the card in the currentCards array to get the complete data
-        const selectedCard = currentCards.find(c => c.name === card.name);
-        console.log('Selected card data:', selectedCard);
-    
-        if (selectedCard && selectedCard.settings && selectedCard.settings.normal_image_url) {
+        if (card.settings && card.settings.normal_image_url) {
             const img = document.createElement('img');
-            img.src = selectedCard.settings.normal_image_url;
-            img.alt = selectedCard.name;
+            img.src = card.settings.normal_image_url;
+            img.alt = card.name;
             imageContainer.appendChild(img);
         } else {
             console.log('No matching card found or missing image URL');
