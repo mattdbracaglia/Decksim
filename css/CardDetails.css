@@ -204,45 +204,33 @@ input, button {
     left: 50%;
     top: 50%;
     width: 50%;
-    max-width: 600px;
+    max-width: 600px; /* Maximum width to avoid too wide popup */
     height: 50%;
-    max-height: 400px;
+    max-height: 400px; /* Maximum height to avoid too tall popup */
+    display: none;
+    justify-content: center;
+    align-items: center;
     transform: translate(-50%, -50%);
     z-index: 1000;
-    background-color: rgba(0, 0, 0, 0.8);
-    display: flex;
-    flex-direction: column;
-    overflow: auto; /* If you want the entire popup to be scrollable */
-}
-
-.popup-header {
-    padding: 20px;
-    color: #FFFFFF;
+    overflow: auto; /* Add scrolling to the entire popup container */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly darker background for better readability */
 }
 
 .popup-content {
-    overflow-y: auto;
-    flex-grow: 1;
-    padding: 20px;
-    box-sizing: border-box;
+    color: #FFFFFF;
+    max-height: 350px; /* Limit height of the content area to allow scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
-.popup-footer {
-    padding: 20px;
-    text-align: center;
-}
-
-#loadDeckButton {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-#loadDeckButton:hover {
-    background-color: #0056b3;
+.popup-content ul {
+    columns: 2; /* Split the list into two columns */
+    -webkit-columns: 2;
+    -moz-columns: 2;
+    list-style-type: none;
+    padding-left: 0;
+    margin: 0; /* Remove default margin */
 }
 
 .close-btn {
@@ -259,6 +247,20 @@ input, button {
     cursor: pointer;
 }
 
+
+#loadDeckButton {
+    padding: 10px 20px;
+    background-color: #007bff; /* Example blue */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 20px; /* Spacing from the list */
+}
+
+#loadDeckButton:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+}
 
 #searchContainer {
     position: absolute;
