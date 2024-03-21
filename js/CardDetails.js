@@ -1091,4 +1091,35 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.getElementById('deleteDeckButton').addEventListener('click', function() {
+        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.classList.toggle('delete-mode');
+            checkbox.addEventListener('click', function() {
+                if (this.classList.contains('delete-mode')) {
+                    const deckName = this.value;
+                    const token = localStorage.getItem('token');
+                    fetch(`/delete-deck?name=${encodeURIComponent(deckName)}`, {
+                        method: 'DELETE',
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    })
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Failed to delete deck');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('Deck deleted:', data);
+                        // Remove the deleted deck from the list or refresh the list
+                        this.parentElement.remove();
+                    })
+                    .catch(error => console.error('Error deleting deck:', error));
+                }
+            });
+        });
+    });
+
 });
