@@ -171,9 +171,12 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
     const { deckName, cards } = req.body;
-    const userId = req.user.id; // Extracted from the authenticated token
+    const userId = req.user.id;
+
+    console.log('Saving deck:', deckName, 'for user:', userId);
 
     if (!deckName || !cards) {
+        console.log('Deck name and cards are missing');
         return res.status(400).send('Deck name and cards are required.');
     }
 
@@ -181,12 +184,14 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
         const db = await connectToMongoDB();
         const decksCollection = db.collection("decks");
 
+        console.log('Updating/inserting the deck in the database');
         await decksCollection.updateOne(
             { userId: userId, deckName: deckName },
             { $set: { userId: userId, deckName: deckName, cards: cards } },
             { upsert: true }
         );
 
+        console.log('Deck saved successfully');
         res.json({ message: 'Deck saved successfully', deckName });
     } catch (err) {
         console.error('Error saving the deck:', err);
