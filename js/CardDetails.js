@@ -428,37 +428,38 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         const deckName = selectedCheckbox.value;
-        currentDeckName = deckName;
+        const token = localStorage.getItem('token'); // Retrieve the stored token
     
-        // Update the URL to directly access the JSON file within the Decks directory
-        const url = `/Decks/${encodeURIComponent(deckName)}.json`;
+        if (!token) {
+            console.error('No token found, user must be logged in to load decks');
+            return;
+        }
     
-        console.log(`Fetching deck data from: ${url}`); // Log the URL being fetched for debugging
-    
-        fetch(url)
+        console.log(`Loading deck data for: ${deckName}`);
+        fetch(`/load-deck-data?deckName=${encodeURIComponent(deckName)}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
         .then(response => {
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
             return response.json();
         })
-        .then(deckData => {
-            console.log(`Received deck data for ${deckName}:`, deckData); // Log the fetched deck data for debugging
-            
-            // Assuming updateLoadedDeckDataWithUIState function correctly prepares the deck data,
-            // including assigning default UI states if missing.
-            currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
+        .then(cards => {
+            console.log(`Received deck data for ${deckName}:`, cards);
+            currentCards = cards; // Assuming cards are the array of card objects
     
             if (currentCards && currentCards.length > 0) {
-                currentCardIndex = 0; // Reset index to show the first card
-                updateCardImage(currentCardIndex); // Update the main card image display
-                populateCardList(currentCards); // Update the card list display
-                populateDeckSection(currentCards); // Populate the deck section with card images
+                currentCardIndex = 0;
+                updateCardImage(currentCardIndex, currentCards);
+                populateCardList(currentCards);
+                populateDeckSection(currentCards);
             }
-            // Close the deckPopup after loading the deck
-            document.getElementById("deckPopup").style.display = "none";
     
-            // Hide the import card container and add card container
+            document.getElementById("deckPopup").style.display = "none";
             document.getElementById('cardInputContainer').style.display = 'none';
             document.getElementById('addCardContainer').style.display = 'none';
             document.getElementById('addCardsButtonContainer').style.display = 'none';
