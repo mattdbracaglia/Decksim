@@ -479,3 +479,8 @@ input, button {
     height: auto;
     margin: 0 54px;
 }
+
+.delete-mode {
+    background-color: red;
+    color: white;
+}
