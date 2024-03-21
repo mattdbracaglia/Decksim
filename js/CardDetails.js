@@ -510,6 +510,26 @@ document.addEventListener('DOMContentLoaded', function() {
             deckSection.appendChild(img);
         });
     }
+
+    function populateCardList(cards) {
+        const cardList = document.getElementById('cardList');
+        cardList.innerHTML = ''; // Clear existing content
+    
+        cards.forEach(card => {
+            const li = document.createElement('li');
+            li.textContent = card.name; // Display only card name
+    
+            // Store the full card data as a JSON string in a data attribute
+            li.dataset.cardData = JSON.stringify(card);
+    
+            li.addEventListener('mouseover', function() {
+                console.log('Mouseover event for card:', card);
+                updateUIForSelectedCard(card);
+            });
+    
+            cardList.appendChild(li);
+        });
+    }
     
     function updateUIForSelectedCard(card) {
             if (!cardData.uiState) {
