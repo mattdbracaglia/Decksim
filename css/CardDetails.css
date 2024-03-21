@@ -201,33 +201,41 @@ input, button {
 
 .popup-container {
     position: fixed;
-    left: 50%; /* Start from the middle of the screen horizontally */
-    top: 50%; /* Start from the middle of the screen vertically */
-    width: 50%; /* Set the width to 50% of the viewport */
-    height: 50%; /* Set the height to 50% of the viewport */
-    background-color: rgba(0, 0, 0, 0.727);
+    left: 50%;
+    top: 50%;
+    width: 50%;
+    max-width: 600px; /* Maximum width to avoid too wide popup */
+    height: 50%;
+    max-height: 400px; /* Maximum height to avoid too tall popup */
     display: none;
     justify-content: center;
-    align-items: center; /* Center content vertically within the popup */
-    transform: translate(-50%, -50%); /* Shift back to perfectly center */
+    align-items: center;
+    transform: translate(-50%, -50%);
     z-index: 1000;
-    
+    overflow: auto; /* Add scrolling to the entire popup container */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly darker background for better readability */
 }
 
 .popup-content {
-    /* Other styles remain unchanged */
-    color: #FFFFFF; /* Sets the text color to white */
-    
+    color: #FFFFFF;
+    max-height: 350px; /* Limit height of the content area to allow scrolling */
+    overflow-y: auto; /* Enable vertical scrolling */
+    padding: 20px; /* Add some padding */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
 .popup-content ul {
+    columns: 2; /* Split the list into two columns */
+    -webkit-columns: 2;
+    -moz-columns: 2;
     list-style-type: none;
     padding-left: 0;
+    margin: 0; /* Remove default margin */
 }
-/* The Close Button */
+
 .close-btn {
     color: #e25a5a;
-    float: right; /* Align to the top-right corner of the popup */
+    float: right;
     font-size: 28px;
     font-weight: bold;
 }
