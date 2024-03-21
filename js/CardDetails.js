@@ -321,10 +321,15 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch and display deck names
     // Function to fetch and display deck names
     function fetchAndDisplayDeckNames() {
+        const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
         console.log('Fetching deck names...');
         fetch('/get-deck-names')
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`
+                }
+            })
             .then(response => {
-                console.log('Response received from /get-deck-names');
                 if (!response.ok) {
                     throw new Error(`Network response was not ok, status: ${response.status}`);
                 }
