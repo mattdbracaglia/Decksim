@@ -321,53 +321,53 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch and display deck names
     function fetchAndDisplayDeckNames() {
         fetch('/get-deck-names')
-            .then(response => response.json())
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok, status: ${response.status}`);
+                }
+                return response.json();
+            })
             .then(decks => {
                 const popupContent = document.querySelector('.popup-content');
-                // Reset content and ensure the close button is properly setup again
                 popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
-                const close = document.getElementById("closePopup"); // Re-select the close button after resetting innerHTML
+                const close = document.getElementById("closePopup");
                 if (close) {
                     close.addEventListener('click', function() {
                         document.getElementById("deckPopup").style.display = "none";
                     });
                 }
-                
+    
                 const list = document.createElement('ul');
                 decks.forEach((deck, index) => {
                     const item = document.createElement('li');
-
-                    // Create a checkbox for each deck
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
                     checkbox.id = `deck-${index}`;
                     checkbox.value = deck;
                     checkbox.name = 'decks';
-
-                    // Create a label for each checkbox
+    
                     const label = document.createElement('label');
                     label.htmlFor = `deck-${index}`;
                     label.textContent = deck;
-
-                    // Append checkbox and label to the list item
+    
                     item.appendChild(checkbox);
                     item.appendChild(label);
                     list.appendChild(item);
                 });
-
+    
                 popupContent.appendChild(list);
-
-                // Ensure the close button works after dynamically adding content
                 document.getElementById('closePopup').onclick = function() {
                     document.getElementById("deckPopup").style.display = "none";
                 };
-
+    
                 popup.style.display = "block";
                 addLoadDeckButton(popupContent);
-                // Call limitCheckboxSelections here to ensure it applies to the newly added checkboxes
                 limitCheckboxSelections();
             })
-            .catch(error => console.error('Error fetching deck names:', error));
+            .catch(error => {
+                console.error('Error fetching deck names:', error);
+                // Here you can also update the UI to inform the user that an error occurred
+            });
     }
 
     function limitCheckboxSelections() {
