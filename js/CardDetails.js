@@ -493,7 +493,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateUIForSelectedCard(card) {
-        const cardData = JSON.parse(li.dataset.cardData);
             if (!cardData.uiState) {
             cardData.uiState = { checkboxes: {}, manaCounter: {} };
         }
