@@ -574,13 +574,16 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
-        // Debugging: log the card to see what it contains
-        console.log('Selected card data:', card);
+        console.log('Current cards:', currentCards);
     
-        if (card.settings && card.settings.normal_image_url) {
+        // Find the card in the currentCards array to get the complete data
+        const selectedCard = currentCards.find(c => c.name === card.name);
+        console.log('Selected card data:', selectedCard);
+    
+        if (selectedCard && selectedCard.settings && selectedCard.settings.normal_image_url) {
             const img = document.createElement('img');
-            img.src = card.settings.normal_image_url;
-            img.alt = card.name;
+            img.src = selectedCard.settings.normal_image_url;
+            img.alt = selectedCard.name;
             imageContainer.appendChild(img);
         } else {
             console.log('No matching card found or missing image URL');
