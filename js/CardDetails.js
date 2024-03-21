@@ -517,20 +517,21 @@ document.addEventListener('DOMContentLoaded', function() {
             const img = document.createElement('img');
             img.src = card.settings.normal_image_url;
             img.alt = card.name;
-            img.dataset.cardIndex = index; // Store the index of the card in the array
-            img.dataset.cardType = card.settings.type_line; // Set the card type as a data attribute
+            img.dataset.cardIndex = index;
+            img.dataset.cardType = card.settings.type_line;
     
             img.addEventListener('click', function() {
+                console.log('Image clicked:', card);
                 currentCard = card;
                 if (!currentCard.uiState) {
                     currentCard.uiState = { checkboxes: {}, manaCounter: {} };
                 }
+                console.log('Current card set to:', currentCard);
                 displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
                 updateUIForCard(currentCard);
                 clearHighlightedCardsUI();
                 populateCardList(cards);
             });
-
     
             deckSection.appendChild(img);
         });
