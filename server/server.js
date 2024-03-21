@@ -85,6 +85,7 @@ app.get('/api/check-login', authenticateToken, (req, res) => {
 
 // Updated route to fetch deck names from MongoDB
 app.get('/get-deck-names', authenticateToken, async (req, res) => {
+    console.log('Received token:', req.headers.authorization);
     console.log('GET /get-deck-names called');
     try {
         const db = await connectToMongoDB();
