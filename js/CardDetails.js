@@ -928,17 +928,20 @@ document.addEventListener('DOMContentLoaded', function() {
     // Saving changes to the server
     document.getElementById('saveDetails').addEventListener('click', function() {
         const token = localStorage.getItem('token');
+        console.log('Save Details button clicked');
+    
         if (!token) {
             console.error('No token found, user must be logged in to save decks');
             return;
         }
-    
+        
+        console.log('Preparing to save the deck');
         // Enhance the card data with the current UI state before saving
         const enhancedCards = currentCards.map(card => {
-            // Assuming updateUIForCard properly updates the uiState
             return { ...card, uiState: card.uiState };
         });
-    
+        
+        console.log('Sending save request to the server');
         fetch('/save-deck', {
             method: 'POST',
             headers: {
@@ -948,8 +951,9 @@ document.addEventListener('DOMContentLoaded', function() {
             body: JSON.stringify({ deckName: currentDeckName, cards: enhancedCards }),
         })
         .then(response => {
+            console.log('Response received from the server');
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+                throw new Error(`Network response was not ok, status: ${response.status}`);
             }
             return response.json();
         })
