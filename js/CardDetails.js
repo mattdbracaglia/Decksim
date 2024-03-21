@@ -544,15 +544,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
          
- 
-    
-        // Automatically select the first card to display its details
-        if (cards.length > 0) {
-            currentCard = cards[0];
-            displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-            updateUIForCard(currentCard);
-        }
-    }
+
 
     function populateCardList(cards) {
         const cardList = document.getElementById('cardList');
