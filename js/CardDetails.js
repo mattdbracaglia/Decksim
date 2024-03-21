@@ -56,6 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
         var deckNameInput = document.getElementById('deckNameInput');
         if (deckNameInput) deckNameInput.style.display = 'block'; // Make the input visible
     }
+
+    document.addEventListener('dblclick', function() {
+        console.log('Current cards:', currentCards);
+    });
     
 
    document.getElementById('loadCards').addEventListener('click', function() {
