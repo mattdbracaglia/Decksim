@@ -321,15 +321,17 @@ document.addEventListener('DOMContentLoaded', function() {
     // Function to fetch and display deck names
     // Function to fetch and display deck names
     function fetchAndDisplayDeckNames() {
-        const token = localStorage.getItem('token'); // Assuming the token is stored in localStorage
-        console.log('Fetching deck names...');
-        fetch('/get-deck-names', {  // Added opening curly brace here
+        const token = localStorage.getItem('token');
+        console.log('Fetching deck names with token:', token);
+        
+        fetch('/get-deck-names', {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
             }
         })
         .then(response => {
+            console.log('Response received:', response);
             if (!response.ok) {
                 throw new Error(`Network response was not ok, status: ${response.status}`);
             }
@@ -339,6 +341,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Deck names fetched:', decks);
             const popupContent = document.querySelector('.popup-content');
             popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
+            
             const close = document.getElementById("closePopup");
             if (close) {
                 close.addEventListener('click', function() {
