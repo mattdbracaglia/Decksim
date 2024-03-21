@@ -237,15 +237,17 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function updateCardImage(index, currentCards) {
-        // Check if currentCards exists and the index is within bounds
-        if (!currentCards || index < 0 || index >= currentCards.length) {
+        console.log('Current index:', index);
+        console.log('Current cards length:', currentCards ? currentCards.length : 'currentCards is undefined');
+    
+        if (!currentCards || index < 0 || index >= (currentCards ? currentCards.length : 0)) {
             console.error('Invalid index or currentCards not available');
             return;
         }
     
         const card = currentCards[index];
         if (!card || !card.settings || !card.settings.normal_image_url) {
-            console.error('Card or image URL not found');
+            console.error('Card or image URL not found for index', index);
             return;
         }
     
@@ -258,8 +260,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         img.src = imageUrl;
     }
-    
-    
+        
+        
     
    
     document.addEventListener('click', function(event) {
