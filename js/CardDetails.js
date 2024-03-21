@@ -105,18 +105,19 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(data => {
             console.log('Card details fetched successfully:', data);
-            
+        
+            // Update currentCards with the new data
+            currentCards = data.cards;
             console.log(currentCards);
             document.getElementById('cardInputContainer').style.display = 'none';
-    
+        
             var cardImageContainer = document.getElementById('cardImageContainer');
             cardImageContainer.style.display = 'block';
-    
+        
             if (currentCards && currentCards.length > 0) {
-                // Debugging code here
                 console.log('Index:', 0); // Example index, assuming you want to show the first card
                 console.log('Current Cards Length:', currentCards.length);
-                updateCardImage(0); // Assuming this function exists to display the first card
+                updateCardImage(0, currentCards); // Pass currentCards to updateCardImage
                 populateCardList(currentCards); // Populate the card list with names
                 populateDeckSection(currentCards); // Populate the deck section with card details
             }
