@@ -933,13 +933,19 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     
+        // Enhance the card data with the current UI state before saving
+        const enhancedCards = currentCards.map(card => {
+            // Assuming updateUIForCard properly updates the uiState
+            return { ...card, uiState: card.uiState };
+        });
+    
         fetch('/save-deck', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}` // Include the JWT token in the Authorization header
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ deckName: currentDeckName, cards: currentCards }),
+            body: JSON.stringify({ deckName: currentDeckName, cards: enhancedCards }),
         })
         .then(response => {
             if (!response.ok) {
