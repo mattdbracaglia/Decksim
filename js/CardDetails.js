@@ -421,7 +421,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     
-        const deckName = selectedCheckbox.value;
+        currentDeckName = selectedCheckbox.value;
         const token = localStorage.getItem('token'); // Retrieve the stored token
     
         if (!token) {
@@ -429,8 +429,8 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     
-        console.log(`Loading deck data for: ${deckName}`);
-        fetch(`/load-deck-data?deckName=${encodeURIComponent(deckName)}`, {
+        console.log(`Loading deck data for: ${currentDeckName}`);
+        fetch(`/load-deck-data?deckName=${encodeURIComponent(currentDeckName)}`, {
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${token}`
@@ -442,9 +442,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             return response.json();
         })
-        .then(cards => {
-            console.log(`Received deck data for ${deckName}:`, cards);
-            currentCards = cards; // Assuming cards are the array of card objects
+        .then(deckData => {
+            console.log(`Received deck data for ${currentDeckName}:`, deckData);
+            currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
     
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0;
