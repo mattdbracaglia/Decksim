@@ -370,15 +370,15 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function limitCheckboxSelections() {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"][name="decks"]');
+        let checkboxes = document.querySelectorAll('input[type="checkbox"][name='decks']');
         checkboxes.forEach(checkbox => {
             checkbox.addEventListener('change', () => {
-                if (checkbox.checked) {
-                    // Deselect all other checkboxes
-                    checkboxes.forEach(box => {
-                        if (box !== checkbox) box.checked = false;
-                    });
-                }
+                // Deselect all checkboxes except the one that was just checked
+                checkboxes.forEach(box => {
+                    if (box !== checkbox) {
+                        box.checked = false;
+                    }
+                });
             });
         });
     }
