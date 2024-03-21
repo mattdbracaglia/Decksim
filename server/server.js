@@ -197,32 +197,30 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
 });
 
 // Route to load a specific deck by name
-app.get('/load-deck-data', authenticateToken, (req, res) => {
-    const { name } = req.query;
-    if (!name) {
-        // Respond with an error in JSON format
+app.get('/load-deck-data', authenticateToken, async (req, res) => {
+    const userId = req.user.id; // Use the authenticated user's ID
+    const deckName = req.query.deckName; // Get deckName from query parameters
+
+    if (!deckName) {
         return res.status(400).json({ error: 'Deck name is required.' });
     }
 
-    console.log(`Loading deck with name: ${req.query.name}`);
-    const deckPath = path.join(__dirname, '..', 'Decks', `${req.query.name}.json`);
-    console.log(`Deck path: ${deckPath}`);
+    console.log(`Loading deck with name: ${deckName} for user ID: ${userId}`);
+    const db = await connectToMongoDB();
+    const decksCollection = db.collection("decks");
 
-    fs.readFile(deckPath, (err, data) => {
-        if (err) {
-            console.error(`Error reading deck file: ${err.message}`);
-            return res.status(500).json({ error: "Failed to load deck data" });
+    try {
+        const deckData = await decksCollection.findOne({ userId: userId, deckName: deckName });
+        if (deckData) {
+            console.log(`Deck data loaded for ${deckName}`);
+            res.json(deckData.cards); // Send only the cards array to the client
+        } else {
+            res.status(404).json({ error: 'Deck not found' });
         }
-
-        try {
-            const deckData = JSON.parse(data);
-            res.json(deckData);
-        } catch (parseError) {
-            console.error(`Error parsing deck file for ${name}:`, parseError);
-            res.status(500).json({ error: `Error parsing deck data for ${name}` });
-        }
-    });
-    res.json({ message: 'Access granted', user: req.user });
+    } catch (err) {
+        console.error(`Failed to load deck from MongoDB: ${err}`);
+        res.status(500).json({ error: 'Error loading deck data' });
+    }
 });
 
 app.post('/api/signup', async (req, res) => {
