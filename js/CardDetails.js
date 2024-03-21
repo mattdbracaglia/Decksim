@@ -319,26 +319,32 @@ document.addEventListener('DOMContentLoaded', function() {
     
  
     // Function to fetch and display deck names
+    // Function to fetch and display deck names
     function fetchAndDisplayDeckNames() {
+        console.log('Fetching deck names...');
         fetch('/get-deck-names')
             .then(response => {
+                console.log('Response received from /get-deck-names');
                 if (!response.ok) {
                     throw new Error(`Network response was not ok, status: ${response.status}`);
                 }
                 return response.json();
             })
             .then(decks => {
+                console.log('Deck names fetched:', decks);
                 const popupContent = document.querySelector('.popup-content');
                 popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
                 const close = document.getElementById("closePopup");
                 if (close) {
                     close.addEventListener('click', function() {
+                        console.log('Closing deck popup');
                         document.getElementById("deckPopup").style.display = "none";
                     });
                 }
     
                 const list = document.createElement('ul');
                 decks.forEach((deck, index) => {
+                    console.log(`Processing deck: ${deck}`);
                     const item = document.createElement('li');
                     const checkbox = document.createElement('input');
                     checkbox.type = 'checkbox';
@@ -356,6 +362,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
     
                 popupContent.appendChild(list);
+                console.log('Decks displayed in popup');
                 document.getElementById('closePopup').onclick = function() {
                     document.getElementById("deckPopup").style.display = "none";
                 };
@@ -366,7 +373,6 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .catch(error => {
                 console.error('Error fetching deck names:', error);
-                // Here you can also update the UI to inform the user that an error occurred
             });
     }
 
