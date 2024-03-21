@@ -323,7 +323,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function fetchAndDisplayDeckNames() {
         const token = localStorage.getItem('token');
         console.log('Fetching deck names with token:', token);
-        
+    
         fetch('/get-deck-names', {
             method: 'GET',
             headers: {
@@ -339,9 +339,17 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(decks => {
             console.log('Deck names fetched:', decks);
-            const deckListElement = document.getElementById('deckList');
-            deckListElement.innerHTML = ''; // Clear the deck list container
-            
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
+    
+            const close = document.getElementById("closePopup");
+            if (close) {
+                close.addEventListener('click', function() {
+                    console.log('Closing deck popup');
+                    document.getElementById("deckPopup").style.display = "none";
+                });
+            }
+    
             const list = document.createElement('ul');
             decks.forEach((deck, index) => {
                 console.log(`Processing deck: ${deck}`);
@@ -361,10 +369,9 @@ document.addEventListener('DOMContentLoaded', function() {
                 list.appendChild(item);
             });
     
-            deckListElement.appendChild(list);
+            popupContent.appendChild(list);
             console.log('Decks displayed in popup');
     
-            // Call limitCheckboxSelections after the deck list has been populated
             limitCheckboxSelections();
         })
         .catch(error => {
