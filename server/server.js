@@ -340,6 +340,27 @@ app.post('/api/signin', async (req, res) => {
     }
 });
 
+app.delete('/delete-deck', authenticateToken, async (req, res) => {
+    const { name } = req.query;
+    const userId = req.user.id;
+
+    if (!name) {
+        return res.status(400).json({ error: 'Deck name is required.' });
+    }
+
+    try {
+        const db = await connectToMongoDB();
+        const decksCollection = db.collection("decks");
+        await decksCollection.deleteOne({ userId: userId, deckName: name });
+
+        console.log(`Deck ${name} deleted for user ${userId}`);
+        res.json({ message: `Deck ${name} deleted successfully` });
+    } catch (err) {
+        console.error('Error deleting deck:', err);
+        res.status(500).json({ error: 'Error deleting the deck' });
+    }
+});
+
 
 
 
