@@ -471,24 +471,35 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
-
-    function populateCardList(cards) {
-        const cardList = document.getElementById('cardList');
-        cardList.innerHTML = ''; // Clear existing content
     
-        cards.forEach(card => {
-            const li = document.createElement('li');
-            li.textContent = card.name; // Display only card name
+    function populateDeckSection(cards) {
+        const deckSection = document.getElementById('deckSection');
+        deckSection.innerHTML = '';
     
-            // Store the full card data as a JSON string in a data attribute
-            li.dataset.cardData = JSON.stringify(card);
+        cards.forEach((card, index) => {
+            const img = document.createElement('img');
+            img.src = card.settings.normal_image_url;
+            img.alt = card.name;
+            img.dataset.cardIndex = index; // Store the index of the card in the array
+            img.dataset.cardType = card.settings.type_line; // Set the card type as a data attribute
     
-            li.addEventListener('mouseover', function() {
-                console.log('Mouseover event for card:', card);
-                updateUIForSelectedCard(card);
+            img.addEventListener('click', function() {
+                // Use the 'card' variable directly from the forEach loop
+                currentCard = card;
+                if (!currentCard.uiState) {
+                    currentCard.uiState = { checkboxes: {}, manaCounter: {} };
+                }
+                displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+                updateUIForCard(currentCard); // Update checkboxes and mana values
+    
+                // Clear highlighted state in card list for all cards
+                clearHighlightedCardsUI();
+    
+                // Then repopulate the card list to reflect the highlighted state of the new currentCard
+                populateCardList(cards); // Assuming this function updates the highlighted state based on currentCard's uiState
             });
     
-            cardList.appendChild(li);
+            deckSection.appendChild(img);
         });
     }
     
