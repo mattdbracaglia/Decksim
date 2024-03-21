@@ -363,6 +363,9 @@ document.addEventListener('DOMContentLoaded', function() {
     
             deckListElement.appendChild(list);
             console.log('Decks displayed in popup');
+    
+            // Call limitCheckboxSelections after the deck list has been populated
+            limitCheckboxSelections();
         })
         .catch(error => {
             console.error('Error fetching deck names:', error);
