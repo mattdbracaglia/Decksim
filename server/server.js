@@ -85,12 +85,14 @@ app.get('/api/check-login', authenticateToken, (req, res) => {
 
 // Updated route to fetch deck names from MongoDB
 app.get('/get-deck-names', authenticateToken, async (req, res) => {
+    console.log('GET /get-deck-names called');
     try {
         const db = await connectToMongoDB();
+        console.log('Connected to MongoDB');
         const decksCollection = db.collection("decks");
         const deckNames = await decksCollection.distinct("deckName", { userId: req.user.id });
 
-        console.log('Deck names fetched:', deckNames);
+        console.log('Deck names fetched from MongoDB:', deckNames);
         res.json(deckNames);
     } catch (err) {
         console.error("Failed to list decks from MongoDB:", err);
