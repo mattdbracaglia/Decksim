@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var currentCard; // This will hold the currently selected card's data
     let currentDeckName = ""; // Initially empty or you could set a default value
     const deckNameInput = document.getElementById('deckNameInput');
-    let currentCards = [];
+  
     if (deckNameInput) {
         currentDeckName = deckNameInput.value; // Update the currentDeckName when loading/changing the deck
     }
