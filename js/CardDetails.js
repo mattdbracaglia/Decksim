@@ -566,6 +566,27 @@ document.addEventListener('DOMContentLoaded', function() {
             // Store the full card data as a JSON string in a data attribute
             li.dataset.cardData = JSON.stringify(card);
     
+            // Highlight the card if it's in the highlightedCards array
+            if (currentCard && currentCard.uiState.highlightedCards && currentCard.uiState.highlightedCards.includes(card.name)) {
+                li.classList.add('highlighted');
+            }
+    
+            li.addEventListener('click', function() {
+                this.classList.toggle('highlighted');
+    
+                // Ensure highlightedCards array is initialized in the currentCard's uiState
+                if (!currentCard.uiState.highlightedCards) {
+                    currentCard.uiState.highlightedCards = [];
+                }
+    
+                const highlightedIndex = currentCard.uiState.highlightedCards.indexOf(card.name);
+                if (highlightedIndex > -1) {
+                    currentCard.uiState.highlightedCards.splice(highlightedIndex, 1); // Remove if already highlighted
+                } else {
+                    currentCard.uiState.highlightedCards.push(card.name); // Add if not highlighted
+                }
+            });
+    
             li.addEventListener('mouseover', function() {
                 console.log('Mouseover event for card:', card);
                 updateUIForSelectedCard(card);
