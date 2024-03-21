@@ -24,6 +24,35 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     createTabs();
     createDeckFilterTabs();
+
+
+    document.addEventListener('DOMContentLoaded', () => {
+        // Assuming your card elements are within a container with the ID 'cardContainer'
+        const cardContainer = document.getElementById('cardContainer');
+    
+        cardContainer.addEventListener('mouseover', event => {
+            // Ensure that the mouseover event is triggered by a card element
+            const cardElement = event.target.closest('.card'); // Assuming each card has a class 'card'
+            if (cardElement) {
+                // Assuming each card element has a data attribute 'cardId' that corresponds to its identifier
+                const cardId = cardElement.getAttribute('data-cardId');
+    
+                // Retrieve the card data using the cardId
+                // For demonstration, we'll log the cardId; replace this with actual data retrieval
+                console.log('Hovered over card ID:', cardId);
+    
+                // Assuming a function getCardData(cardId) returns the data for a given card
+                const cardData = getCardData(cardId);
+                console.log('Card data:', cardData);
+            }
+        });
+    
+        // Dummy function for getting card data, replace with your actual data retrieval logic
+        function getCardData(cardId) {
+            // Retrieve and return the card data from your data source using the cardId
+            return { id: cardId, name: 'Example Card', description: 'This is an example card.' };
+        }
+    });
     
     document.getElementById('importCards').addEventListener('click', function() {
         var cardInputContainer = document.getElementById('cardInputContainer');
