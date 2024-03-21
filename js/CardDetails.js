@@ -639,7 +639,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function populateDeckSection(cards) {
         const deckSection = document.getElementById('deckSection');
-        const cardData = JSON.parse(li.dataset.cardData);
         deckSection.innerHTML = '';
     
         cards.forEach((card, index) => {
