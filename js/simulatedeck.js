@@ -1550,61 +1550,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function canPlayCard(cardManaCost, manaCounter, cardCmc, cardName) {
-        // Call updateManaCounter to ensure the final total mana is up-to-date
         updateManaCounter();
-        
-        // Access the final total mana from playersData
+    
         let finalTotalMana = playersData[currentPlayerId].totalMana;
-        console.log("Final total mana available:", finalTotalMana);
-        console.log("Card Name:", cardName); // Add card name to the logging
-        console.log("Card CMC:", cardCmc);
+        console.log("Final total mana available:", finalTotalMana, "for card:", cardName, "with CMC:", cardCmc);
+    
         if (finalTotalMana < cardCmc) {
             console.log("Not enough total mana to play the card.");
             return false;
         }
     
-        // Check if cardManaCost is undefined, an empty string, or an empty array
-        if (!cardManaCost || (typeof cardManaCost === 'string' && cardManaCost.trim() === '') || (Array.isArray(cardManaCost) && cardManaCost.length === 0)) {
-            // If cardManaCost is undefined, an empty string, or an empty array, the card can be played with generic mana
+        const manaCostArray = typeof cardManaCost === 'string' ? cardManaCost.match(/\{([^}]+)\}/g) : cardManaCost;
+        if (!manaCostArray) {
             return finalTotalMana >= cardCmc;
         }
     
-        // Convert cardManaCost to an array if it's a string
-        const manaCostArray = Array.isArray(cardManaCost) ? cardManaCost : cardManaCost.match(/\{([^}]+)\}/g);
-    
-        // Check if there's enough colored mana
-        const manaRequirements = manaCostArray.reduce((acc, cur) => {
-            const color = cur.replace(/\{|\}/g, ''); // Remove braces
-            if (isNaN(color)) {
-                // If the color is not a number, it's a specific mana type
-                acc[color] = (acc[color] || 0) + 1;
-            } else {
-                // If the color is a number, it's a generic mana cost
-                acc.generic = (acc.generic || 0) + parseInt(color);
-            }
+        const manaRequirements = manaCostArray.reduce((acc, cost) => {
+            const color = cost.replace(/[{}]/g, '');
+            acc[color] = (acc[color] || 0) + 1;
             return acc;
         }, {});
     
         console.log("Mana requirements for the card:", manaRequirements);
     
-        // Check if there's enough generic mana
         if (manaRequirements.generic && finalTotalMana < manaRequirements.generic) {
             console.log("Not enough generic mana to play the card.");
             return false;
         }
     
-        // Check if there's enough specific mana
         for (const [color, requiredAmount] of Object.entries(manaRequirements)) {
-            if (color !== "generic") {
-                console.log(`Checking ${color} mana requirement:`, requiredAmount);
-                if ((manaCounter[color] || 0) < requiredAmount) {
-                    console.log(`Not enough ${color} mana to play the card.`);
-                    return false;
-                }
+            if (color !== "generic" && (manaCounter[color] || 0) < requiredAmount) {
+                console.log(`Not enough ${color} mana to play the card.`);
+                return false;
             }
         }
     
-        console.log("Card can be played.");
         return true;
     }
     
