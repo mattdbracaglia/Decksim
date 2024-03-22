@@ -1096,11 +1096,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Current player is Player 1`);
     
         // Log the current state of the player's hand before any action
-        const handBeforeAction = playersData[currentPlayerId].handImages.images.map(card => card.cardData);
-        console.log(`Hand images before action:`, handBeforeAction.map(card => ({
-            name: card.name,
-            typeLine: card.type_line
-        })));
+
     
         // Determine the action based on the current step
         switch (oneTurnStep) {
