@@ -128,48 +128,75 @@ document.addEventListener('DOMContentLoaded', function() {
    // Function to fetch and display deck names
    // Function to fetch and display deck names
     function fetchAndDisplayDeckNames() {
-        fetch('/get-deck-names')
-            .then(response => response.json())
-            .then(decks => {
-                const popupContent = document.querySelector('.popup-content');
-                const deckList = document.createElement('ul');
-
-                decks.forEach((deck, index) => {
-                    const item = document.createElement('li');
-                    const checkbox = document.createElement('input');
-                    checkbox.type = 'checkbox';
-                    checkbox.id = `deck-${index}`;
-                    checkbox.value = deck;
-                    checkbox.name = 'decks';
-
-                    const label = document.createElement('label');
-                    label.htmlFor = `deck-${index}`;
-                    label.textContent = deck;
-
-                    item.appendChild(checkbox);
-                    item.appendChild(label);
-                    deckList.appendChild(item);
-
-                    checkbox.addEventListener('change', function() {
-                        // Ensure only one checkbox can be selected at a time
-                        document.querySelectorAll('input[type="checkbox"][name="decks"]').forEach(cb => {
-                            if (cb !== checkbox) {
-                                cb.checked = false;
-                            }
-                        });
-                        updateDeckAssignments();
-                    });
+        const token = localStorage.getItem('token');
+        console.log('Fetching deck names with token:', token);
+    
+        fetch('/get-deck-names', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            console.log('Response received:', response);
+            if (!response.ok) {
+                throw new Error(`Network response was not ok, status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(decks => {
+            console.log('Deck names fetched:', decks);
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
+    
+            const close = document.getElementById("closePopup");
+            if (close) {
+                close.addEventListener('click', function() {
+                    console.log('Closing deck popup');
+                    document.getElementById("deckPopup").style.display = "none";
                 });
-
-                // Remove any existing deck list and add the new one
-                const existingDeckList = popupContent.querySelector('ul');
-                if (existingDeckList) {
-                    existingDeckList.remove();
-                }
-                popupContent.appendChild(deckList);
-                addLoadDecksButton(popupContent);
-            })
-            .catch(error => console.error('Error fetching deck names:', error));
+            }
+    
+            const list = document.createElement('ul');
+            decks.forEach((deck, index) => {
+                console.log(`Processing deck: ${deck}`);
+                const item = document.createElement('li');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `deck-${index}`;
+                checkbox.value = deck;
+                checkbox.name = 'decks';
+    
+                const label = document.createElement('label');
+                label.htmlFor = `deck-${index}`;
+                label.textContent = deck;
+    
+                item.appendChild(checkbox);
+                item.appendChild(label);
+                list.appendChild(item);
+            });
+    
+            popupContent.appendChild(list);
+            console.log('Decks displayed in popup');
+    
+            limitCheckboxSelections();
+        })
+        .catch(error => {
+            console.error('Error fetching deck names:', error);
+        });
+    }
+    
+    function limitCheckboxSelections() {
+        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
+        checkboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                checkboxes.forEach(box => {
+                    if (box !== checkbox) {
+                        box.checked = false;
+                    }
+                });
+            });
+        });
     }
 
     document.addEventListener('dblclick', () => {
@@ -210,19 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
 
-    function limitCheckboxSelections() {
-        let checkboxes = document.querySelectorAll('input[type="checkbox"][name="decks"]');
-        checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
-                let checkedCheckboxes = document.querySelectorAll('input[type="checkbox"][name="decks"]:checked');
-                if (checkedCheckboxes.length > 1) {
-                    checkbox.checked = false;
-                    console.log('Checkbox selection limited to 1 deck.');
-                    alert('You can select 1 deck only.');
-                }
-            });
-        });
-    }
+
 
     // Function to switch decks between players when arrow buttons are clicked
     // Function to switch decks between players when arrow buttons are clicked
