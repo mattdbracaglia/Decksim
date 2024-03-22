@@ -1548,25 +1548,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const combinedCards = handCards.concat(commanderCards);
     
     
-        // Process choiceCards first if any card has been selected
-        if (choiceCards.length) {
-            console.log("Checking choiceCards:", choiceCards);
-            const cardToPlay = combinedCards.find(card => choiceCards.includes(card.cardData.name));
-            if (cardToPlay) {
-                console.log(`Playing chosen card ${cardToPlay.cardData.name} onto battlefield.`);
-                // Determine where the card is from and remove it from the correct array
-                if (handCards.includes(cardToPlay)) {
-                    handCards.splice(handCards.indexOf(cardToPlay), 1);
-                } else if (commanderCards.includes(cardToPlay)) {
-                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
-                }
-                playersData[playerId].battlefieldImages.images.push(cardToPlay);
-                updatePlayerDisplay(playerId);
-                choiceCards = [];
-   
-                cardPlayed = true;
-            }
-        }
+      
     
         if (!cardPlayed) {
             const playableCards = combinedCards.filter(card => 
@@ -1576,14 +1558,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
             console.log(`Found ${playableCards.length} playable cards`);
     
-            if (choicesTurn && playableCards.length > 1) {
-                console.log('Multiple playable cards available, presenting choices');
-                playersData[playerId].choiceImages.images = [...playableCards];
-                updatePlayerDisplay(playerId);
-                toggleAutoChoices();
-  
-                cardPlayed = true;
-                return;
+
             } else if (playableCards.length === 1) {
                 console.log("One playable card found, playing it");
                 const cardToPlay = playableCards[0];
