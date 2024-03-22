@@ -1124,6 +1124,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 2:
                 console.log("Case 2: Attempting to play a card from hand to the battlefield.");
+                cardPlayed = false;
                 playCardFromHandToBattlefield(currentPlayerId);
                 oneTurnStep = 0; // Reset to the first step for the next turn
                 break;
@@ -1536,42 +1537,48 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playCardFromHandToBattlefield(playerId) {
         const handCards = playersData[playerId].handImages.images;
-        const commanderCards = playersData[playerId].commanderImages.images;
+        const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
     
         console.log("Starting playCardFromHandToBattlefield");
     
         updateManaCounter();
         const manaCounter = playersData[playerId].manaCounter;
         console.log("Updated mana counter:", manaCounter);
-    
+
         const combinedCards = handCards.concat(commanderCards);
-        let cardPlayed = false;  // Ensure cardPlayed is defined
     
-        const playableCards = combinedCards.filter(card =>
-            canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) &&
-            !card.cardData.settings.type_line.includes("Land") &&
-            !playersData[playerId].markedCards[card.cardData.name]
-        );
     
-        console.log(`Found ${playableCards.length} playable cards`);
+      
     
-        if (playableCards.length === 1) {
-            console.log("One playable card found, playing it");
-            const cardToPlay = playableCards[0];
-            if (handCards.includes(cardToPlay)) {
-                handCards.splice(handCards.indexOf(cardToPlay), 1);
-            } else if (commanderCards.includes(cardToPlay)) {
-                commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
+        if (!cardPlayed) {
+            const playableCards = combinedCards.filter(card => 
+                canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) && 
+                !card.cardData.settings.type_line.includes("Land") &&
+                !playersData[playerId].markedCards[card.cardData.name]);
+    
+            console.log(`Found ${playableCards.length} playable cards`);
+    
+
+            } else if (playableCards.length === 1) {
+                console.log("One playable card found, playing it");
+                const cardToPlay = playableCards[0];
+                // Determine where the card is from and remove it from the correct array
+                if (handCards.includes(cardToPlay)) {
+                    handCards.splice(handCards.indexOf(cardToPlay), 1);
+                } else if (commanderCards.includes(cardToPlay)) {
+                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
+                }
+                playersData[playerId].battlefieldImages.images.push(cardToPlay);
+                console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
+                updatePlayerDisplay(playerId);
+         
+                cardPlayed = true;
+            } else {
+                console.log('No playable cards found.');
             }
-            playersData[playerId].battlefieldImages.images.push(cardToPlay);
-            console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
-            updatePlayerDisplay(playerId);
-            cardPlayed = true;
-        } else {
-            console.log('No playable cards found.');
         }
     
-        // Additional logic or closing of the function
+
     }
 
 
