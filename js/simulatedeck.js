@@ -1128,6 +1128,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 2:
                 console.log("Case 2: Attempting to play a card from hand to the battlefield.");
+                cardPlayed = false;
                 playCardFromHandToBattlefield(currentPlayerId);
                 oneTurnStep = 0; // Reset to the first step for the next turn
                 break;
