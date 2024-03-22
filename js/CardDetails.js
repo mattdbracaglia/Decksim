@@ -372,9 +372,9 @@ document.addEventListener('DOMContentLoaded', function() {
     })
 
     function limitCheckboxSelections() {
-        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
+        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"][name="decks"]');
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', function() {
+            checkbox.addEventListener('change', () => {
                 checkboxes.forEach(box => {
                     if (box !== checkbox) {
                         box.checked = false;
