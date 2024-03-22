@@ -1492,7 +1492,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].battlefieldImages.images.push(cardToPlay);
                 updatePlayerDisplay(playerId);
                 choiceCards = [];
-                choiceMade = false;
+   
                 cardPlayed = true;
             }
         }
@@ -1510,7 +1510,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].choiceImages.images = [...playableCards];
                 updatePlayerDisplay(playerId);
                 toggleAutoChoices();
-                choiceMade = true;
+  
                 cardPlayed = true;
                 return;
             } else if (playableCards.length === 1) {
@@ -1525,7 +1525,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].battlefieldImages.images.push(cardToPlay);
                 console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
                 updatePlayerDisplay(playerId);
-                choiceMade = true;
+         
                 cardPlayed = true;
             } else {
                 console.log('No playable cards found.');
@@ -1533,15 +1533,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
 
-        if (cardPlayed) {
-            choiceMade = false;  // Reset choiceMade only after successfully playing a card
-            console.log(`Card played: ${cardPlayed}`);
-        } else {
-            console.log(`No card was played.`);
-        }
-    
-        console.log(`Card played: ${cardPlayed}`);
-        choiceMade = false; // Update choiceMade based on cardPlayed status
     }
 
 
