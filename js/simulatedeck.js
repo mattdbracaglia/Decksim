@@ -1283,19 +1283,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log("Starting moveFirstLandFromHandToLand");
     
-        // Check for a chosen land card
-        const choiceLand = handImages.find(card => choiceCards.includes(card.cardData.name) && isLandCard(card.cardData));
-        if (choiceLand) {
-            console.log(`Playing chosen land card: ${choiceLand.cardData.name}`);
-            playersData[playerId].landImages.images.push(choiceLand);
-            handImages.splice(handImages.indexOf(choiceLand), 1);
-            choiceCards = [];
-            updatePlayerDisplay(playerId);
-            updateManaCounter();
-            calculateBattlefieldMana();
-            choiceMade = false;
-            return;
-        }
     
         const landCards = handImages.filter(card => isLandCard(card.cardData) && !playersData[playerId].markedCards[card.cardData.name]);
         console.log(`Found ${landCards.length} land cards in hand`);
@@ -1305,14 +1292,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
     
-        if (choicesTurn && landCards.length > 1) {
-            console.log('Multiple lands available for choice, presenting choices');
-            playersData[playerId].choiceImages.images = [...landCards];
-            updatePlayerDisplay(playerId);
-            toggleAutoChoices();
-            choiceMade = true;
-            return;
-        }
+
     
         const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
         console.log(`Found ${searchableLandCards.length} searchable land cards`);
