@@ -1210,7 +1210,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Case 2: Playing a card from hand to the battlefield.");
                 cardPlayed = false;
 
-                playCardFromHandToBattlefield(currentPlayerId);
+                playCardFromHandToBattlefieldAuto(currentPlayerId);
                 // Check if the action is completed, then move to the next step or reset
                 if (choiceMade) {
                     console.log("Choice made, waiting for action to complete.");
@@ -1465,6 +1465,87 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function playCardFromHandToBattlefield(playerId) {
+        const handCards = playersData[playerId].handImages.images;
+        const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
+    
+        console.log("Starting playCardFromHandToBattlefield");
+    
+        updateManaCounter();
+        const manaCounter = playersData[playerId].manaCounter;
+        console.log("Updated mana counter:", manaCounter);
+
+        const combinedCards = handCards.concat(commanderCards);
+    
+    
+        // Process choiceCards first if any card has been selected
+        if (choiceCards.length) {
+            console.log("Checking choiceCards:", choiceCards);
+            const cardToPlay = combinedCards.find(card => choiceCards.includes(card.cardData.name));
+            if (cardToPlay) {
+                console.log(`Playing chosen card ${cardToPlay.cardData.name} onto battlefield.`);
+                // Determine where the card is from and remove it from the correct array
+                if (handCards.includes(cardToPlay)) {
+                    handCards.splice(handCards.indexOf(cardToPlay), 1);
+                } else if (commanderCards.includes(cardToPlay)) {
+                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
+                }
+                playersData[playerId].battlefieldImages.images.push(cardToPlay);
+                updatePlayerDisplay(playerId);
+                choiceCards = [];
+                choiceMade = false;
+                cardPlayed = true;
+            }
+        }
+    
+        if (!cardPlayed) {
+            const playableCards = combinedCards.filter(card => 
+                canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) && 
+                !card.cardData.settings.type_line.includes("Land") &&
+                !playersData[playerId].markedCards[card.cardData.name]);
+    
+            console.log(`Found ${playableCards.length} playable cards`);
+    
+            if (choicesTurn && playableCards.length > 1) {
+                console.log('Multiple playable cards available, presenting choices');
+                playersData[playerId].choiceImages.images = [...playableCards];
+                updatePlayerDisplay(playerId);
+                toggleAutoChoices();
+                choiceMade = true;
+                cardPlayed = true;
+                return;
+            } else if (playableCards.length === 1) {
+                console.log("One playable card found, playing it");
+                const cardToPlay = playableCards[0];
+                // Determine where the card is from and remove it from the correct array
+                if (handCards.includes(cardToPlay)) {
+                    handCards.splice(handCards.indexOf(cardToPlay), 1);
+                } else if (commanderCards.includes(cardToPlay)) {
+                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
+                }
+                playersData[playerId].battlefieldImages.images.push(cardToPlay);
+                console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
+                updatePlayerDisplay(playerId);
+                choiceMade = true;
+                cardPlayed = true;
+            } else {
+                console.log('No playable cards found.');
+            }
+        }
+    
+
+        if (cardPlayed) {
+            choiceMade = false;  // Reset choiceMade only after successfully playing a card
+            console.log(`Card played: ${cardPlayed}`);
+        } else {
+            console.log(`No card was played.`);
+        }
+    
+        console.log(`Card played: ${cardPlayed}`);
+        choiceMade = false; // Update choiceMade based on cardPlayed status
+    }
+
+
+     function playCardFromHandToBattlefieldAuto(playerId) {
         const handCards = playersData[playerId].handImages.images;
         const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
     
