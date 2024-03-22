@@ -1565,21 +1565,26 @@ document.addEventListener('DOMContentLoaded', function() {
             return finalTotalMana >= cardCmc;
         }
     
+        let genericManaRequired = 0;
         const manaRequirements = manaCostArray.reduce((acc, cost) => {
             const color = cost.replace(/[{}]/g, '');
-            acc[color] = (acc[color] || 0) + 1;
+            if (!isNaN(color)) {
+                genericManaRequired += parseInt(color);
+            } else {
+                acc[color] = (acc[color] || 0) + 1;
+            }
             return acc;
         }, {});
     
-        console.log("Mana requirements for the card:", manaRequirements);
+        console.log("Mana requirements for the card:", manaRequirements, "Generic mana required:", genericManaRequired);
     
-        if (manaRequirements.generic && finalTotalMana < manaRequirements.generic) {
+        if (finalTotalMana < genericManaRequired) {
             console.log("Not enough generic mana to play the card.");
             return false;
         }
     
         for (const [color, requiredAmount] of Object.entries(manaRequirements)) {
-            if (color !== "generic" && (manaCounter[color] || 0) < requiredAmount) {
+            if ((manaCounter[color] || 0) < requiredAmount) {
                 console.log(`Not enough ${color} mana to play the card.`);
                 return false;
             }
@@ -1587,6 +1592,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         return true;
     }
+
     
     
     function getCardDataFromImage(imgElement) {
