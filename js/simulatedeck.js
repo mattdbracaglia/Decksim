@@ -1575,7 +1575,7 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.log('No playable cards found.');
             }
-        }
+        
     
 
     }
