@@ -370,6 +370,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
         limitCheckboxSelections(); // Call after the deck list has been populated
     })
+     .catch(error => {
+            console.error('Error fetching deck names:', error);
+        });
+    }
 
     function limitCheckboxSelections() {
         const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"][name="decks"]');
