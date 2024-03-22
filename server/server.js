@@ -223,6 +223,7 @@ app.post('/save-deck', authenticateToken, async (req, res) => {
 });
 
 // Route to load a specific deck by name
+// Route to load a specific deck by name
 app.get('/load-deck-data', authenticateToken, async (req, res) => {
     const userId = req.user.id; // Use the authenticated user's ID
     const deckName = req.query.deckName; // Get deckName from query parameters
@@ -239,7 +240,7 @@ app.get('/load-deck-data', authenticateToken, async (req, res) => {
         const deckData = await decksCollection.findOne({ userId: userId, deckName: deckName });
         if (deckData) {
             console.log(`Deck data loaded for ${deckName}`);
-            res.json(deckData.cards); // Send only the cards array to the client
+            res.json(deckData); // Send the entire deck object to the client
         } else {
             res.status(404).json({ error: 'Deck not found' });
         }
