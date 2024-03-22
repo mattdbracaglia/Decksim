@@ -415,14 +415,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function handleLoadDeckClick() {
         clearCurrentDeckState(); // Clear the current deck state before loading a new one
-        const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
+        const selectedCheckbox = document.querySelector('input[type="checkbox"][name='decks']:checked');
         if (!selectedCheckbox) {
             alert('Please select a deck to load.');
             return;
         }
     
         currentDeckName = selectedCheckbox.value;
-        const token = localStorage.getItem('token'); // Retrieve the stored token
+        const token = localStorage.getItem('token');
     
         if (!token) {
             console.error('No token found, user must be logged in to load decks');
@@ -444,7 +444,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(deckData => {
             console.log(`Received deck data for ${currentDeckName}:`, deckData);
-            currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
+            // Assuming the 'cards' are directly available in 'deckData'
+            currentCards = updateLoadedDeckDataWithUIState(deckData.cards || []);
     
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0;
