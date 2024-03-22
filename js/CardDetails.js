@@ -414,7 +414,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function handleLoadDeckClick() {
-        clearCurrentDeckState(); // Clear the current deck state before loading a new one
+        clearCurrentDeckState();
         const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
         if (!selectedCheckbox) {
             alert('Please select a deck to load.');
@@ -444,23 +444,22 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(deckData => {
             console.log(`Received deck data for ${currentDeckName}:`, deckData);
-            // Assuming the 'cards' are directly available in 'deckData'
+            // Assuming deckData.cards contains the array of cards
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards || []);
     
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0;
-                updateCardImage(currentCardIndex, currentCards);
+                displayInMainImageContainer(currentCards[0].settings.normal_image_url, currentCards[0]);
+                updateUIForCard(currentCards[0]);
                 populateCardList(currentCards);
                 populateDeckSection(currentCards);
             }
     
             document.getElementById("deckPopup").style.display = "none";
-            document.getElementById('cardInputContainer').style.display = 'none';
-            document.getElementById('addCardContainer').style.display = 'none';
-            document.getElementById('addCardsButtonContainer').style.display = 'none';
         })
         .catch(error => console.error('Error loading deck:', error));
     }
+
 
     function updateLoadedDeckDataWithUIState(cards) {
         return cards.map(card => {
