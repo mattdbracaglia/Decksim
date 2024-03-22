@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadDeckButton = document.createElement('button');
             loadDeckButton.textContent = 'Load Deck';
             loadDeckButton.id = 'loadDeckButton';
-            loadDeckButton.addEventListener('click', handleLoadDeckClick);
+            loadDeckButton.addEventListener('click', handleLoadDecksClick);
             popupContent.appendChild(loadDeckButton);
         }
     
@@ -309,24 +309,32 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function handleLoadDecksClick() {
-        const selectedDeckName = getSelectedDeckNames()[0]; // Assuming `getSelectedDeckNames` returns an array of selected deck names
-        if (!selectedDeckName) {
+        const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
+        if (!selectedCheckbox) {
             console.error('No deck selected');
             return;
         }
     
-        console.log(`Selected deck for loading:`, selectedDeckName);
+        const deckName = selectedCheckbox.value;
+        console.log(`Selected deck for loading: ${deckName}`);
     
-        const url = `/Decks/${selectedDeckName}.json`;
-        console.log(`Fetching deck data from: ${url}`);
-    
-        fetch(url)
-            .then(response => response.json())
-            .then(deckData => {
-                console.log(`Received deck data for ${selectedDeckName}:`, deckData);
-                assignDeckDataToPlayer(deckData, 'Player1');
-            })
-            .catch(error => console.error(`Error loading deck ${selectedDeckName}:`, error));
+        fetch(`/load-deck-data?deckName=${encodeURIComponent(deckName)}`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(deckData => {
+            console.log(`Received deck data for ${deckName}:`, deckData);
+            assignDeckDataToPlayer(deckData, 'Player1'); // Adapt this function as needed to fit your application's logic
+        })
+        .catch(error => console.error(`Error loading deck ${deckName}:`, error));
     }
     
 
