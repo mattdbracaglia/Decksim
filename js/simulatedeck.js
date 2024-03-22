@@ -180,13 +180,12 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Decks displayed in popup');
     
             limitCheckboxSelections();
-            addLoadDeckButton(popupContent); // Call this function to add the Load Deck button
         })
         .catch(error => {
             console.error('Error fetching deck names:', error);
         });
     }
-        
+    
     function limitCheckboxSelections() {
         const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
@@ -294,18 +293,24 @@ document.addEventListener('DOMContentLoaded', function() {
   
     
     // Function to add Load Decks button
-    function addLoadDeckButton(popupContent) {
-        let loadDeckButton = document.getElementById('loadDeckButton');
+    function addLoadDecksButton(popupContent) {
+        let loadDecksButton = document.getElementById('loadDecksButton');
     
-        if (!loadDeckButton) {
-            loadDeckButton = document.createElement('button');
-            loadDeckButton.textContent = 'Load Deck';
-            loadDeckButton.id = 'loadDeckButton';
-            loadDeckButton.addEventListener('click', handleLoadDeckClick);
-            popupContent.appendChild(loadDeckButton);
+        // Create the button if it doesn't exist
+        if (!loadDecksButton) {
+            loadDecksButton = document.createElement('button');
+            loadDecksButton.textContent = 'Load Decks';
+            loadDecksButton.id = 'loadDecksButton';
+            popupContent.appendChild(loadDecksButton);
         }
     
-        loadDeckButton.style.display = 'block'; // Ensure the button is visible
+        // Show the button
+        loadDecksButton.style.display = 'block';
+    
+        // Attach or re-attach the click event listener
+        loadDecksButton.removeEventListener('click', handleLoadDecksClick); // Remove any existing listener to avoid duplicates
+        loadDecksButton.addEventListener('click', handleLoadDecksClick);
+        
     }
 
     function handleLoadDecksClick() {
