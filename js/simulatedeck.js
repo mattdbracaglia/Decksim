@@ -308,7 +308,7 @@ document.addEventListener('DOMContentLoaded', function() {
         loadDeckButton.style.display = 'block'; // Ensure the button is visible
     }
 
-    function handleLoadDecksClick() {
+    function handleLoadDeckClick() {
         const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
         if (!selectedCheckbox) {
             console.error('No deck selected');
@@ -1922,42 +1922,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
-    function handleLoadDeckClick() {
-        clearCurrentDeckState(); // Clear the current deck state before loading a new one
-        const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
-        if (!selectedCheckbox) {
-            alert('Please select a deck to load.');
-            return;
-        }
-    
-        const deckName = selectedCheckbox.value;
-        currentDeckName = deckName;
-        fetch(`/load-deck-data?name=${encodeURIComponent(deckName)}`, {
-            method: 'GET',
-        })
-        .then(response => response.json())
-        .then(deckData => {
-            // Update the deck data with any missing UI state properties
-            currentCards = updateLoadedDeckDataWithUIState(deckData.cards);
-            if (currentCards && currentCards.length > 0) {
-                currentCardIndex = 0; // Reset index to show the first card
-                updateCardImage(currentCardIndex); // Update the main card image display
 
-                populateDeckSection(currentCards); // Populate the deck section with card images
-            }
-            // Close the deckPopup after loading the deck
-            document.getElementById("deckPopup").style.display = "none";
-    
-            // Hide the import card container and add card container
-            var cardInputContainer = document.getElementById('cardInputContainer');
-            var addCardContainer = document.getElementById('addCardContainer');
-            var addCardsButtonContainer = document.getElementById('addCardsButtonContainer');
-            cardInputContainer.style.display = 'none';
-            addCardContainer.style.display = 'none';
-            addCardsButtonContainer.style.display = 'none';
-        })
-        .catch(error => console.error('Error loading deck:', error));
-    }
 
     function updateLoadedDeckDataWithUIState(cards) {
         return cards.map(card => {
@@ -2037,7 +2002,7 @@ document.addEventListener('DOMContentLoaded', function() {
     // Attach event listener to "Load Decks" button dynamically after it's created
     document.addEventListener('click', function(event) {
         if (event.target && event.target.id === 'loadDecksButton') {
-            handleLoadDecksClick();
+            handleLoadDeckClick();
         }
     });
 
