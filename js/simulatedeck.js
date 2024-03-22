@@ -294,24 +294,18 @@ document.addEventListener('DOMContentLoaded', function() {
   
     
     // Function to add Load Decks button
-    function addLoadDecksButton(popupContent) {
-        let loadDecksButton = document.getElementById('loadDecksButton');
+    function addLoadDeckButton(popupContent) {
+        let loadDeckButton = document.getElementById('loadDeckButton');
     
-        // Create the button if it doesn't exist
-        if (!loadDecksButton) {
-            loadDecksButton = document.createElement('button');
-            loadDecksButton.textContent = 'Load Decks';
-            loadDecksButton.id = 'loadDecksButton';
-            popupContent.appendChild(loadDecksButton);
+        if (!loadDeckButton) {
+            loadDeckButton = document.createElement('button');
+            loadDeckButton.textContent = 'Load Deck';
+            loadDeckButton.id = 'loadDeckButton';
+            loadDeckButton.addEventListener('click', handleLoadDeckClick);
+            popupContent.appendChild(loadDeckButton);
         }
     
-        // Show the button
-        loadDecksButton.style.display = 'block';
-    
-        // Attach or re-attach the click event listener
-        loadDecksButton.removeEventListener('click', handleLoadDecksClick); // Remove any existing listener to avoid duplicates
-        loadDecksButton.addEventListener('click', handleLoadDecksClick);
-        
+        loadDeckButton.style.display = 'block'; // Ensure the button is visible
     }
 
     function handleLoadDecksClick() {
