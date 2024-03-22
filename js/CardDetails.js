@@ -415,7 +415,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     function handleLoadDeckClick() {
         clearCurrentDeckState(); // Clear the current deck state before loading a new one
-        const selectedCheckbox = document.querySelector('input[type="checkbox"][name='decks']:checked');
+        const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
         if (!selectedCheckbox) {
             alert('Please select a deck to load.');
             return;
