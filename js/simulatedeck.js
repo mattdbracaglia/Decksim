@@ -1578,10 +1578,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log("Mana requirements for the card:", manaRequirements, "Generic mana required:", genericManaRequired);
     
-        if (finalTotalMana < genericManaRequired) {
-            console.log("Not enough generic mana to play the card.");
+        if (finalTotalMana < cardCmc) {
+            console.log("Not enough total mana to play the card.");
             return false;
         }
+        return true;
     
         for (const [color, requiredAmount] of Object.entries(manaRequirements)) {
             if ((manaCounter[color] || 0) < requiredAmount) {
