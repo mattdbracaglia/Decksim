@@ -301,7 +301,7 @@ document.addEventListener('DOMContentLoaded', function() {
             loadDeckButton = document.createElement('button');
             loadDeckButton.textContent = 'Load Deck';
             loadDeckButton.id = 'loadDeckButton';
-            loadDeckButton.addEventListener('click', handleLoadDecksClick);
+            loadDeckButton.addEventListener('click', handleLoadDeckClick);
             popupContent.appendChild(loadDeckButton);
         }
     
