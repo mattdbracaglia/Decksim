@@ -1196,7 +1196,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     moveFirstLandFromHandToLandAuto(currentPlayerId);
                 } else {
                     console.log("Auto Play Switch is off, running manual land move.");
-                    moveFirstLandFromHandToLand(currentPlayerId);
+                    moveFirstLandFromHandToLandChoice(currentPlayerId);
                 }
     
                 if (!choiceMade) {
@@ -1282,6 +1282,97 @@ document.addEventListener('DOMContentLoaded', function() {
         const handImages = playersData[playerId].handImages.images;
     
         console.log("Starting moveFirstLandFromHandToLand");
+    
+        // Check for a chosen land card
+        const choiceLand = handImages.find(card => choiceCards.includes(card.cardData.name) && isLandCard(card.cardData));
+        if (choiceLand) {
+            console.log(`Playing chosen land card: ${choiceLand.cardData.name}`);
+            playersData[playerId].landImages.images.push(choiceLand);
+            handImages.splice(handImages.indexOf(choiceLand), 1);
+            choiceCards = [];
+            updatePlayerDisplay(playerId);
+            updateManaCounter();
+            calculateBattlefieldMana();
+            choiceMade = false;
+            return;
+        }
+    
+        const landCards = handImages.filter(card => isLandCard(card.cardData) && !playersData[playerId].markedCards[card.cardData.name]);
+        console.log(`Found ${landCards.length} land cards in hand`);
+    
+        if (landCards.length === 0) {
+            console.log('No land cards found in hand');
+            return;
+        }
+    
+        if (choicesTurn && landCards.length > 1) {
+            console.log('Multiple lands available for choice, presenting choices');
+            playersData[playerId].choiceImages.images = [...landCards];
+            updatePlayerDisplay(playerId);
+            toggleAutoChoices();
+            choiceMade = true;
+            return;
+        }
+    
+        const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
+        console.log(`Found ${searchableLandCards.length} searchable land cards`);
+    
+        if (searchableLandCards.length > 0) {
+            const searchableLandCard = searchableLandCards[0];
+            const highlightedCardNames = searchableLandCard.cardData.uiState.highlightedCards;
+            const matchingLibraryCard = playersData[playerId].libraryImages.images.find(card => highlightedCardNames.includes(card.cardData.name));
+    
+            if (matchingLibraryCard) {
+                console.log(`Found matching library card: ${matchingLibraryCard.cardData.name}`);
+                const libraryIndex = playersData[playerId].libraryImages.images.indexOf(matchingLibraryCard);
+                const [landCard] = playersData[playerId].libraryImages.images.splice(libraryIndex, 1);
+                playersData[playerId].landImages.images.push(landCard);
+    
+                const handIndex = handImages.indexOf(searchableLandCard);
+                const [discardedLandCard] = handImages.splice(handIndex, 1);
+                playersData[playerId].graveyardImages.images.push(discardedLandCard);
+    
+                updatePlayerDisplay(playerId);
+                updateManaCounter();
+                calculateBattlefieldMana();
+                return;
+            }
+        }
+    
+        const unplayableCards = handImages.filter(card => !isLandCard(card.cardData) && !canPlayCard(card.cardData.mana_cost, playersData[playerId].manaCounter, card.cardData.cmc, card.cardData.name));
+        console.log(`Found ${unplayableCards.length} unplayable cards`);
+    
+        if (unplayableCards.length === 0) {
+            console.log('All non-land cards are playable, playing first land card');
+            const [landCard] = landCards.splice(0, 1);
+            playersData[playerId].landImages.images.push(landCard);
+        } else {
+            console.log('Finding land card that matches the mana requirements for unplayable cards');
+            const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
+            const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, playersData[playerId].manaCounter);
+            const prioritizedLandCard = landCards.find(card => canProduceMana(card.cardData, requiredMana));
+    
+            if (prioritizedLandCard) {
+                console.log(`Playing prioritized land card: ${prioritizedLandCard.cardData.name}`);
+                const index = handImages.indexOf(prioritizedLandCard);
+                const [landCard] = handImages.splice(index, 1);
+                playersData[playerId].landImages.images.push(landCard);
+            } else {
+                console.log('No prioritized land card found, playing first land card');
+                const [landCard] = landCards.splice(0, 1);
+                playersData[playerId].landImages.images.push(landCard);
+            }
+        }
+    
+        updatePlayerDisplay(playerId);
+        updateManaCounter();
+        calculateBattlefieldMana();
+    }
+
+    function moveFirstLandFromHandToLandChoice(playerId) {
+        const handImages = playersData[playerId].handImages.images;
+    
+        console.log("Starting moveFirstLandFromHandToLandChoice");
     
         // Check for a chosen land card
         const choiceLand = handImages.find(card => choiceCards.includes(card.cardData.name) && isLandCard(card.cardData));
