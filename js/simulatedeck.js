@@ -1537,74 +1537,39 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function playCardFromHandToBattlefield(playerId) {
         const handCards = playersData[playerId].handImages.images;
-        const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
+        const commanderCards = playersData[playerId].commanderImages.images;
     
         console.log("Starting playCardFromHandToBattlefield");
     
-        updateManaCounter();
-        const manaCounter = playersData[playerId].manaCounter;
-        console.log("Updated mana counter:", manaCounter);
-
+        // Assuming mana is reset and calculated at the start of each turn
+        const manaCounter = calculateTotalMana(playerId);  // calculateTotalMana needs to be implemented
+        console.log("Total mana available:", manaCounter);
+    
         const combinedCards = handCards.concat(commanderCards);
+        let totalManaUsed = 0;
     
+        let playableCards = combinedCards.filter(card =>
+            canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) &&
+            !card.cardData.settings.type_line.includes("Land") &&
+            !playersData[playerId].markedCards[card.cardData.name]);
     
-        // Process choiceCards first if any card has been selected
-        if (choiceCards.length) {
-            console.log("Checking choiceCards:", choiceCards);
-            const cardToPlay = combinedCards.find(card => choiceCards.includes(card.cardData.name));
-            if (cardToPlay) {
-                console.log(`Playing chosen card ${cardToPlay.cardData.name} onto battlefield.`);
-                // Determine where the card is from and remove it from the correct array
-                if (handCards.includes(cardToPlay)) {
-                    handCards.splice(handCards.indexOf(cardToPlay), 1);
-                } else if (commanderCards.includes(cardToPlay)) {
-                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
-                }
-                playersData[playerId].battlefieldImages.images.push(cardToPlay);
-                updatePlayerDisplay(playerId);
-                choiceCards = [];
-   
-                cardPlayed = true;
+        // Sort playable cards by CMC in ascending order to maximize the number of cards played
+        playableCards.sort((a, b) => a.cardData.settings.cmc - b.cardData.settings.cmc);
+    
+        console.log(`Found ${playableCards.length} playable cards`);
+    
+        for (let card of playableCards) {
+            if (totalManaUsed + card.cardData.settings.cmc <= manaCounter) {
+                console.log(`Playing card ${card.cardData.name} onto battlefield.`);
+                totalManaUsed += card.cardData.settings.cmc;
+                handCards.splice(handCards.indexOf(card), 1);
+                playersData[playerId].battlefieldImages.images.push(card);
             }
         }
     
-        if (!cardPlayed) {
-            const playableCards = combinedCards.filter(card => 
-                canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) && 
-                !card.cardData.settings.type_line.includes("Land") &&
-                !playersData[playerId].markedCards[card.cardData.name]);
-    
-            console.log(`Found ${playableCards.length} playable cards`);
-    
-            if (choicesTurn && playableCards.length > 1) {
-                console.log('Multiple playable cards available, presenting choices');
-                playersData[playerId].choiceImages.images = [...playableCards];
-                updatePlayerDisplay(playerId);
-                toggleAutoChoices();
-  
-                cardPlayed = true;
-                return;
-            } else if (playableCards.length === 1) {
-                console.log("One playable card found, playing it");
-                const cardToPlay = playableCards[0];
-                // Determine where the card is from and remove it from the correct array
-                if (handCards.includes(cardToPlay)) {
-                    handCards.splice(handCards.indexOf(cardToPlay), 1);
-                } else if (commanderCards.includes(cardToPlay)) {
-                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
-                }
-                playersData[playerId].battlefieldImages.images.push(cardToPlay);
-                console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
-                updatePlayerDisplay(playerId);
-         
-                cardPlayed = true;
-            } else {
-                console.log('No playable cards found.');
-            }
-        }
-    
-
+        updatePlayerDisplay(playerId);
     }
+
 
 
      function playCardFromHandToBattlefieldAuto(playerId) {
