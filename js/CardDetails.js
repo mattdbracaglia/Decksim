@@ -339,8 +339,8 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(decks => {
             console.log('Deck names fetched:', decks);
-            const deckListElement = document.getElementById('deckList');
-            deckListElement.innerHTML = ''; // Clear the container before appending new items
+            const popupContent = document.querySelector('.popup-content');
+            popupContent.innerHTML = '<span id="closePopup" class="close-btn">&times;</span><p>Decks:</p>';
     
             const close = document.getElementById("closePopup");
             if (close) {
@@ -350,35 +350,39 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
             }
     
+            const list = document.createElement('ul');
             decks.forEach((deck, index) => {
-            console.log(`Processing deck: ${deck}`);
-            const item = document.createElement('li');
-            const checkbox = document.createElement('input');
-            checkbox.type = 'checkbox';
-            checkbox.id = `deck-${index}`;
-            checkbox.value = deck;
-            checkbox.name = 'decks';
+                console.log(`Processing deck: ${deck}`);
+                const item = document.createElement('li');
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `deck-${index}`;
+                checkbox.value = deck;
+                checkbox.name = 'decks';
     
-            const label = document.createElement('label');
-            label.htmlFor = `deck-${index}`;
-            label.textContent = deck;
+                const label = document.createElement('label');
+                label.htmlFor = `deck-${index}`;
+                label.textContent = deck;
     
-            item.appendChild(checkbox);
-            item.appendChild(label);
-            deckListElement.appendChild(item);
-        });
+                item.appendChild(checkbox);
+                item.appendChild(label);
+                list.appendChild(item);
+            });
     
-        limitCheckboxSelections(); // Call after the deck list has been populated
-    })
-     .catch(error => {
+            popupContent.appendChild(list);
+            console.log('Decks displayed in popup');
+    
+            limitCheckboxSelections();
+        })
+        .catch(error => {
             console.error('Error fetching deck names:', error);
         });
     }
 
     function limitCheckboxSelections() {
-        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"][name="decks"]');
+        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', () => {
+            checkbox.addEventListener('change', function() {
                 checkboxes.forEach(box => {
                     if (box !== checkbox) {
                         box.checked = false;
