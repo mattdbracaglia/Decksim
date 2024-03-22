@@ -180,12 +180,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Decks displayed in popup');
     
             limitCheckboxSelections();
+            addLoadDeckButton(popupContent); // Call this function to add the Load Deck button
         })
         .catch(error => {
             console.error('Error fetching deck names:', error);
         });
     }
-    
+        
     function limitCheckboxSelections() {
         const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
         checkboxes.forEach(checkbox => {
