@@ -24,7 +24,7 @@ input, button {
     justify-content: center;
     align-items: center; /* Center content vertically within the popup */
     transform: translate(-50%, -50%); /* Shift back to perfectly center */
-    z-index: 1000;
+    z-index: 2000;
     
 }
 
@@ -300,6 +300,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 20px;
+    z-index: 2000;
 
 }
 
