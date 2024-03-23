@@ -1,4 +1,4 @@
-document.getElementById('logoutButton').addEventListener('click', function() {
+document.getElementById('logout-Button').addEventListener('click', function() {
     logOut();
 });
 function logOut() {
