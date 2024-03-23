@@ -613,8 +613,40 @@ right: 70px;
     background-color: #45a049; /* Darker shade on hover for feedback */
 }
 
+/* Specific styles for the section popup */
+#sectionPopup {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 60%; /* Adjust width as needed */
+    height: 70%; /* Adjust height as needed */
+    background-color: rgba(0, 0, 0, 0.8); /* Slightly darker background for focus */
+    z-index: 2000; /* Ensure it's on top */
+    display: none; /* Hide by default */
+    align-items: center;
+    justify-content: center;
+}
+
+#sectionPopup .popup-content {
+    color: white; /* White text for readability */
+    max-width: 90%; /* Limit content width */
+    max-height: 90%; /* Limit content height */
+    overflow: auto; /* Add scrollbars if content is too large */
+    padding: 20px; /* Padding inside the popup */
+}
+
 #sectionPopup .image-container img {
-    width: 100px; /* Set to desired width */
+    width: 150px; /* Larger images within this popup */
     height: auto; /* Maintain aspect ratio */
     margin: 10px; /* Space around the images */
+}
+
+#sectionPopup .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    color: white;
+    cursor: pointer;
 }
