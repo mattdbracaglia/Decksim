@@ -119,6 +119,8 @@ document.addEventListener('DOMContentLoaded', function() {
    // Function to fetch and display deck names
    // Function to fetch and display deck names
    function fetchAndDisplayDeckNames() {
+        const token = localStorage.getItem('token');
+        console.log('Fetching deck names with token:', token);
         fetch('/get-deck-names', {
             method: 'GET',
             headers: {
