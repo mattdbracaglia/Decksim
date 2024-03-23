@@ -354,21 +354,29 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function handleLoadDecksClick() {
         const selectedDeckNames = getSelectedDeckNames();
-        // Log the names of the decks selected for loading
         console.log(`Selected decks for loading:`, selectedDeckNames);
     
         selectedDeckNames.forEach((deckName, index) => {
             const playerKey = `Player${index + 1}`;
-            const url = `/Decks/${deckName}.json`;
-            console.log(`Fetching deck data from: ${url}`); // Log the URL being fetched
+            console.log(`Selected deck for loading: ${deckName}`);
     
-            fetch(url)
-                .then(response => response.json())
-                .then(deckData => {
-                    console.log(`Received deck data for ${deckName}:`, deckData); // Log the fetched deck data
-                    assignDeckDataToPlayer(deckData, playerKey);
-                })
-                .catch(error => console.error(`Error loading deck ${deckName}:`, error));
+            fetch(`/load-deck-data?deckName=${encodeURIComponent(deckName)}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(deckData => {
+                console.log(`Received deck data for ${deckName}:`, deckData);
+                assignDeckDataToPlayer(deckData, playerKey);
+            })
+            .catch(error => console.error(`Error loading deck ${deckName}:`, error));
         });
     }
     
