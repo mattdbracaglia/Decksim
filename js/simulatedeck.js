@@ -1539,53 +1539,45 @@ document.addEventListener('DOMContentLoaded', function() {
         const handCards = playersData[playerId].handImages.images;
         const commanderCards = playersData[playerId].commanderImages.images;
     
-        console.log("Starting playCardFromHandToBattlefield");
-    
         updateManaCounter();
-        const manaCounter = playersData[playerId].manaCounter;
-        console.log("Updated mana counter:", manaCounter);
+        let manaCounter = playersData[playerId].manaCounter;
+        let totalMana = Object.values(manaCounter).reduce((sum, mana) => sum + mana, 0);
     
-        const combinedCards = handCards.concat(commanderCards);
-    
-        // Calculate total available mana
-        const totalMana = Object.values(manaCounter).reduce((sum, mana) => sum + mana, 0);
-        console.log("Total available mana:", totalMana);
-    
-        // Filter cards that can be played
-        let playableCards = combinedCards.filter(card =>
+        let combinedCards = handCards.concat(commanderCards);
+        combinedCards = combinedCards.filter(card =>
             canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) &&
             !card.cardData.settings.type_line.includes("Land") &&
-            !playersData[playerId].markedCards[card.cardData.name]);
+            !playersData[playerId].markedCards[card.cardData.name]
+        );
     
-        console.log(`Found ${playableCards.length} playable cards`);
+        combinedCards.sort((a, b) => b.cardData.settings.cmc - a.cardData.settings.cmc);
     
-        // Sort cards by CMC in descending order
-        playableCards.sort((a, b) => b.cardData.settings.cmc - a.cardData.settings.cmc);
+        let cardsPlayed = [];
     
-        while (totalMana > 0 && playableCards.length > 0) {
-            // Find the first card that can be played within the remaining total mana
-            let cardToPlay = playableCards.find(card => card.cardData.settings.cmc <= totalMana);
+        for (let card of combinedCards) {
+            if (card.cardData.settings.cmc <= totalMana) {
+                playersData[playerId].battlefieldImages.images.push(card);
+                totalMana -= card.cardData.settings.cmc;
+                cardsPlayed.push(card.cardData.name);
+                
+                if (handCards.includes(card)) {
+                    handCards.splice(handCards.indexOf(card), 1);
+                } else if (commanderCards.includes(card)) {
+                    commanderCards.splice(commanderCards.indexOf(card), 1);
+                }
     
-            if (cardToPlay) {
-                console.log(`Playing card ${cardToPlay.cardData.name} onto battlefield.`);
-                playersData[playerId].battlefieldImages.images.push(cardToPlay);
-                totalMana -= cardToPlay.cardData.settings.cmc;
-    
-                // Remove played card from hand and playable cards list
-                handCards.splice(handCards.indexOf(cardToPlay), 1);
-                playableCards = playableCards.filter(card => card !== cardToPlay);
-            } else {
-                break; // No more cards can be played
+                if (totalMana == 0) break;
             }
         }
     
-        if (playersData[playerId].battlefieldImages.images.length > 0) {
-            console.log('Cards played onto battlefield.');
+        if (cardsPlayed.length > 0) {
+            console.log(`Played cards onto battlefield: ${cardsPlayed.join(', ')}`);
             updatePlayerDisplay(playerId);
         } else {
             console.log('No cards were played.');
         }
     }
+
 
 
 
