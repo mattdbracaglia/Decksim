@@ -1873,6 +1873,33 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('BacktoGame').addEventListener('click', function() {
         window.location.href = 'Panels.html';
     });
+
+    document.querySelectorAll('.section-button').forEach(button => {
+        button.addEventListener('dblclick', function() {
+            const sectionId = button.getAttribute('data-section-id'); // Assuming each button has a data-section-id attribute
+            const sectionImages = document.querySelectorAll(`#${sectionId} img`);
+            const popupContent = document.getElementById('sectionPopup').querySelector('.popup-content');
+            
+            // Clear previous content
+            popupContent.innerHTML = '<span id="closeSectionPopup" class="close-btn">&times;</span>'; // Add close button
+            
+            const imageContainer = document.createElement('div');
+            imageContainer.classList.add('image-container');
+            
+            sectionImages.forEach(img => {
+                const imgClone = img.cloneNode(true);
+                imgClone.style.width = '100px'; // Or set a class that defines the size
+                imageContainer.appendChild(imgClone);
+            });
+            
+            popupContent.appendChild(imageContainer);
+            document.getElementById('sectionPopup').style.display = 'block';
+        });
+    });
+    
+    document.getElementById('closeSectionPopup').addEventListener('click', function() {
+        document.getElementById('sectionPopup').style.display = 'none';
+    });
    
     
 
