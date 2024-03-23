@@ -5,6 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Webpage</title>
     <link rel="stylesheet" href="/css/simulatedeck.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+    
+            if (!token) {
+                console.log('No token found, redirecting to login page');
+                window.location.href = '/index.html'; // Redirect to login page
+            } else {
+                fetch('/api/check-login', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}` // Send the token in the Authorization header
+                    }
+                })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    console.log('Success:', data);
+                    if (!data.loggedIn) {
+                        console.log('User is not logged in, redirecting to login page');
+                        window.location.href = '/index.html'; // Redirect to login page
+                    } else {
+                        console.log('User is logged in');
+                    }
+                })
+                .catch(error => {
+                    console.error('Error checking login status:', error);
+                    window.location.href = '/index.html'; // Redirect to login page on error
+                });
+            }
+        });
+    </script>
 </head>
 <body>
 
