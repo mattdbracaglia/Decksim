@@ -39,15 +39,6 @@
                     window.location.href = '/index.html'; // Redirect to login page on error
                 });
             }
-            document.getElementById('logoutButton').addEventListener('click', function() {
-                logOut();
-            });
-            function logOut() {
-                // Clear the token from local storage or session storage
-                localStorage.removeItem('token');
-                // Redirect the user to the login page or home page
-                window.location.href = '/index.html';
-            }
         });
     </script>
 </head>
