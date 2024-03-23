@@ -501,6 +501,7 @@ html, body {
     position: absolute;
     top: 65px; /* Adjust the top position as needed */
     left: 960px; /* Adjust the left position as needed */
+    z-index: 2000;
 }
   
 .switch {
