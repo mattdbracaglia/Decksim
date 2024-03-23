@@ -74,3 +74,20 @@ a {
 #deck-builder:hover::after {
     opacity: 1;
 }
+
+.logout-button {
+    position: absolute; /* Or 'fixed' if you want it to stay in place while scrolling */
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    background-color: #ff4d4d; /* Red color for logout to indicate action */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.logout-button:hover {
+    background-color: #cc0000; /* Darker shade of red on hover */
+}
