@@ -1004,7 +1004,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const playerData = playersData[currentPlayerId];
             
             // Find the section where the card is located
-            const sections = ['libraryImages', 'handImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
+            const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
             let cardFound = false;
 
             for (const section of sections) {
