@@ -1538,31 +1538,39 @@ document.addEventListener('DOMContentLoaded', function() {
     function playCardFromHandToBattlefield(playerId) {
         const handCards = playersData[playerId].handImages.images;
         let totalMana = calculateTotalMana(playerId); // Function to calculate total available mana
+        console.log(`Total available mana: ${totalMana}`);
     
         let playableCards = handCards.filter(card => {
             return canPlayCard(card.cardData.mana_cost, totalMana) && !card.cardData.type_line.includes("Land");
         });
     
+        console.log(`Playable cards before sorting: ${playableCards.map(card => card.cardData.name).join(', ')}`);
         playableCards.sort((a, b) => a.cardData.cmc - b.cardData.cmc); // Sort by CMC in ascending order for efficiency
+        console.log(`Playable cards after sorting: ${playableCards.map(card => card.cardData.name).join(', ')}`);
     
         let manaUsed = 0;
         let cardsPlayed = [];
     
         for (const card of playableCards) {
+            console.log(`Checking card: ${card.cardData.name} with CMC: ${card.cardData.cmc}`);
             if (card.cardData.cmc + manaUsed <= totalMana) {
                 manaUsed += card.cardData.cmc;
                 cardsPlayed.push(card);
-                // Remove card from hand, add to battlefield, adjust mana counter etc.
+                console.log(`Playing card: ${card.cardData.name}, Total mana used: ${manaUsed}`);
                 playCard(playerId, card); // Assume this function handles the mechanics of playing a card
             }
     
-            if (manaUsed >= totalMana) break; // Stop if no more mana is available
+            if (manaUsed >= totalMana) {
+                console.log("No more mana available to play cards.");
+                break; // Stop if no more mana is available
+            }
         }
     
         console.log(`Played cards: ${cardsPlayed.map(card => card.cardData.name).join(', ')}`);
         // Update UI and game state as needed
     }
     
+        
 
 
 
