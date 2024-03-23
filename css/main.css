@@ -612,3 +612,9 @@ right: 70px;
 #BacktoGame:hover {
     background-color: #45a049; /* Darker shade on hover for feedback */
 }
+
+#sectionPopup .image-container img {
+    width: 100px; /* Set to desired width */
+    height: auto; /* Maintain aspect ratio */
+    margin: 10px; /* Space around the images */
+}
