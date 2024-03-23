@@ -76,16 +76,16 @@ a {
 }
 
 .logout-button {
-    position: absolute; /* Or 'fixed' if you want it to stay in place while scrolling */
-    top: 20px;
-    right: 20px;
-    padding: 10px 20px;
-    background-color: #ff4d4d; /* Red color for logout to indicate action */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+  position: absolute;
+  top: 20px;
+  Left: 5px;
+  padding: 10px 20px;
+  background-color: #ff4d4d;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
 }
 
 .logout-button:hover {
