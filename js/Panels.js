@@ -1,6 +1,8 @@
-document.getElementById('logout-Button').addEventListener('click', function() {
+// Ensure this JavaScript is placed in Panels.js or inside a <script> tag after the logout button in your HTML
+document.getElementById('logoutButton').addEventListener('click', function() {
     logOut();
 });
+
 function logOut() {
     const token = localStorage.getItem('token');
 
