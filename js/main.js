@@ -119,15 +119,18 @@ document.addEventListener('DOMContentLoaded', function() {
    // Function to fetch and display deck names
    // Function to fetch and display deck names
    function fetchAndDisplayDeckNames() {
-        fetch('/get-deck-names')
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                if (response.headers.get("content-type")?.includes("application/json")) {
-                    return response.json();
-                }
-                throw new Error('Not a JSON response');
+        fetch('/get-deck-names', {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            console.log('Response received:', response);
+            if (!response.ok) {
+                throw new Error(`Network response was not ok, status: ${response.status}`);
+            }
+            return response.json();
             })
             .then(decks => {
                 const popupContent = document.querySelector('.popup-content');
