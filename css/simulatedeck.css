@@ -92,6 +92,24 @@ button:hover {
     z-index: 1005;
 }
 
+#choice {
+    position: relative;
+    border: 2px solid #007bff;
+    padding: 10px; /* Adjust padding as needed */
+    margin: 5px; /* Adjust margin as needed */
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    width: 700px; /* Custom width */
+    height: 140px; /* Custom height, adjust as needed */
+    box-sizing: border-box;
+    display: flex;
+
+    overflow-x: auto; /* Enable horizontal scrolling */
+    overflow-y: hidden; /* Hide vertical scrollbar */
+    white-space: nowrap; /* Ensure items line up horizontally */
+    z-index: 1005;
+}
+
 #library img, #hand img, #land img, #battlefield img {
     max-height: 140px; /* Adjust based on your container's height */
     object-fit: contain; /* Ensure the image fits nicely without distortion */
@@ -138,29 +156,29 @@ button:hover {
   left: 20px;
 }
 #land {
-  bottom: 1099px;
+  bottom: 1082px;
   left: 20px;
 }
 #hand {
-  bottom: 782px;
+  bottom: 765px;
   left: 20px;
 }
 #battlefield {
-  bottom: 1416px;
+  bottom: 1399px;
   left: 20px;
 }
 #graveyard {
-    bottom: 1399px;
-    left: 716px;
-  }
+  bottom: 1376px;
+  left: 745px;
+}
 #exile {
     bottom: 1689px;
     left: 716px;
   }
 #commander {
-    bottom: 1558px;
-    left: 716px;
-  }
+  bottom: 1505px;
+  left: 745px;
+}
 #move {
     bottom: 2128px;
     left: 716px;
@@ -597,7 +615,7 @@ right: 70px;
   background-color: #f0f0f0;
   border-radius: 5px;
   width: 125px;
-  height: 533px;
+  height: 536px;
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
