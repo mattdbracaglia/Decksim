@@ -439,8 +439,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 const img = document.createElement('img');
                 img.src = item.imageUrl;
                 img.setAttribute('data-card', JSON.stringify(item.cardData));
-                //img.style.maxWidth = '100%';
-                //img.style.maxHeight = '100px';
     
                 // Check if the card is marked and apply the appropriate CSS class and styling
                 if (playerData.markedCards[item.cardData.name]) {
@@ -453,6 +451,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         updateManaCounter();
     }
+    
 
 
     
