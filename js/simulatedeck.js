@@ -355,15 +355,17 @@ document.addEventListener('DOMContentLoaded', function() {
                 cmc: card.cmc,
                 oracleText: card.oracle_text || card.settings.oracle_text,
             };
-            const quantity = card.quantity || 1;  // Ensure there is a default quantity
-        
-            if (card.uiState && card.uiState.Commander) {
-                for (let i = 0; i < quantity; i++) {
-                    commanderCards.push({ imageUrl: cardData.imageUrl, cardData: cardData });
-                }
-            } else {
-                for (let i = 0; i < quantity; i++) {
-                    libraryCards.push({ imageUrl: cardData.imageUrl, cardData: cardData });
+            // Handle multiple quantities of the same card
+            for (let i = 0; i < card.quantity; i++) {
+                const cardInstance = {
+                    ...cardData,
+                    id: `${cardData.name}-${i}` // Assign a unique ID to each card instance
+                };
+    
+                if (card.uiState && card.uiState.Commander) {
+                    commanderCards.push(cardInstance);
+                } else {
+                    libraryCards.push(cardInstance);
                 }
             }
         });
