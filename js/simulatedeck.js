@@ -344,7 +344,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Separate commander cards from library cards
         const commanderCards = [];
         const libraryCards = [];
-        const deckCards = []; // To hold all cards for the deck section
     
         deckData.cards.forEach(card => {
             const cardData = {
@@ -356,22 +355,21 @@ document.addEventListener('DOMContentLoaded', function() {
                 cmc: card.cmc,
                 oracleText: card.oracle_text || card.settings.oracle_text,
             };
-    
             // Handle multiple quantities of the same card
             for (let i = 0; i < card.quantity; i++) {
                 const cardInstance = {
-                    cardData: { ...cardData, id: `${cardData.name}-${i}` },
+                    cardData: { // Wrap the card data
+                        ...cardData,
+                        id: `${cardData.name}-${i}`
+                    },
                     imageUrl: cardData.imageUrl
                 };
-    
+        
                 if (card.uiState && card.uiState.Commander) {
                     commanderCards.push(cardInstance);
                 } else {
                     libraryCards.push(cardInstance);
                 }
-    
-                // Add to deckCards for the deck section
-                deckCards.push(cardInstance);
             }
         });
     
@@ -381,12 +379,8 @@ document.addEventListener('DOMContentLoaded', function() {
         // Assign library cards to libraryImages
         playersData[playerKey].libraryImages.images = libraryCards;
     
-        // Assign all cards to deckImages for the deck section
-        playersData[playerKey].deckImages.images = deckCards;
-    
         console.log(`Updated commander for ${playerKey}:`, playersData[playerKey].commanderImages.images);
         console.log(`Updated library for ${playerKey}:`, playersData[playerKey].libraryImages.images);
-        console.log(`Updated deck for ${playerKey}:`, playersData[playerKey].deckImages.images);
     
         // Update the checkedOrder array based on the fetched deck data
         const deckName = deckData.name; // Assuming the deck name is available in the fetched data
@@ -398,10 +392,12 @@ document.addEventListener('DOMContentLoaded', function() {
         checkboxes.forEach(checkbox => {
             checkbox.checked = checkedOrder.includes(checkbox.value);
         });
-    
+        playersData[playerKey].deckImages.images = deckData.cards; // Or process as needed
+
         populateDeckSection(playersData[playerKey].deckImages.images);
     
         updatePlayerDisplay(playerKey);
+
     }
     
 
