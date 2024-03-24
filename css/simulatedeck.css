@@ -546,22 +546,22 @@ right: 70px;
 }
 
 #player1Mulligan {
-    position: relative;
-    top: 356px;
-    left: 975px;
-    display: flex;
-    gap: 120px;
-    z-index: 2049;
-  }
+  position: relative;
+  top: 126px;
+  left: 145px;
+  display: flex;
+  gap: 120px;
+  z-index: 2049;
+}
 
 #startGame {
-    position: relative;
-    top: 356px;
-    left: 875px;
-    display: flex;
-    gap: 120px;
-    z-index: 2049;
-  }
+  position: relative;
+  top: 77px;
+  left: 25px;
+  display: flex;
+  gap: 120px;
+  z-index: 2049;
+}
 
 #cycleButtons {
   position: relative;
