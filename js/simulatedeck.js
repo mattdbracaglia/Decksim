@@ -403,8 +403,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function updatePlayerDisplay(playerKey) {
+        // First, process movedCardNames to update the data model accordingly
+        let processedCards = new Set(); // To track cards that have already been processed
+        
+        movedCardNames.forEach(move => {
+            if (!processedCards.has(move.name)) {
+                // Find the last occurrence of the card in movedCardNames to determine its final target section
+                const lastMove = [...movedCardNames].reverse().find(m => m.name === move.name);
+                if (lastMove) {
+                    // Move the card data within playersData
+                    moveCardDataToTargetSection(playerKey, lastMove.name, lastMove.targetSection);
+                    processedCards.add(move.name); // Mark as processed
+                }
+            }
+        });
+        
+        // Clear movedCardNames after processing
+        movedCardNames = [];
+    
+        // Then, update the display as before
         const playerData = playersData[playerKey];
-        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'info'];
+        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'choice'];
     
         sectionsToUpdate.forEach(sectionId => {
             const sectionElement = document.getElementById(sectionId);
@@ -420,20 +439,19 @@ document.addEventListener('DOMContentLoaded', function() {
                 const img = document.createElement('img');
                 img.src = item.imageUrl;
                 img.setAttribute('data-card', JSON.stringify(item.cardData));
-                img.setAttribute('data-id', item.cardData.id); // Ensure the ID is used
     
-                if (playerData.markedCards[item.cardData.id]) { // Check if the card is marked by ID
+                // Check if the card is marked and apply the appropriate CSS class and styling
+                if (playerData.markedCards[item.cardData.name]) {
                     img.classList.add('marked');
+                    img.style.border = '2px solid red';
                 }
     
                 sectionElement.appendChild(img);
             });
         });
-    
-        updateManaCounter(); // Call this function if you have it for mana updating
+        updateManaCounter();
     }
     
-        
 
 
     
@@ -990,8 +1008,41 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Shift' && lastHoveredCardData) {
+            const playerData = playersData[currentPlayerId];
+            
+            // Find the section where the card is located
+            const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
+            let cardFound = false;
 
-     
+            for (const section of sections) {
+                const index = playerData[section].images.findIndex(card => card.cardData.name === lastHoveredCardData.name);
+                
+                if (index !== -1) {
+                    // Remove the card from its current section
+                    const [card] = playerData[section].images.splice(index, 1);
+                    
+                    // Add the card to the moveImages section
+                    playerData.moveImages.images.push(card);
+                    
+                    cardFound = true;
+                    break;
+                }
+            }
+
+            if (cardFound) {
+                updatePlayerDisplay(currentPlayerId);
+                console.log('Card moved to the "moveImages" section.');
+            } else {
+                console.log('Card not found in any section.');
+            }
+
+            // Reset the last hovered card data
+            lastHoveredCardData = null;
+        }
+    });
+ 
     
     
 
@@ -2156,56 +2207,41 @@ document.addEventListener('DOMContentLoaded', function() {
     close.addEventListener('click', function() { popup.style.display = "none"; });
 
 
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Shift' && lastHoveredCardData) {
-            const playerData = playersData[currentPlayerId];
-            let cardFound = false;
+    function handleDeckImageClick(event) {
+        const clickedImage = event.target;
+        const cardIndex = parseInt(clickedImage.dataset.cardIndex, 10);
+        const playerKey = getCurrentPlayerKey();
     
-            for (const section of Object.keys(playerData)) {
-                if (section.endsWith('Images')) { // Check only sections that end with 'Images'
-                    const index = playerData[section].images.findIndex(card => card.cardData.id === lastHoveredCardData.id);
-                    
-                    if (index !== -1) {
-                        const [card] = playerData[section].images.splice(index, 1);
-                        playerData.moveImages.images.push(card);
-                        cardFound = true;
-                        break;
-                    }
+        if (cardIndex >= 0 && cardIndex < playersData[playerKey].deckImages.images.length) {
+            const card = playersData[playerKey].deckImages.images[cardIndex]; // Directly access the card object
+    
+            if (card) {
+                console.log(`Clicked on card: ${card.name} at index ${cardIndex}`);
+    
+                const cardName = card.name;
+    
+                if (clickedImage.classList.contains('marked')) {
+                    console.log(`Removing mark from card: ${cardName}`);
+                    clickedImage.classList.remove('marked');
+                    clickedImage.style.border = '';
+                    delete playersData[playerKey].markedCards[cardName];
+                } else {
+                    console.log(`Marking card: ${cardName}`);
+                    clickedImage.classList.add('marked');
+                    clickedImage.style.border = '2px solid red';
+                    playersData[playerKey].markedCards[cardName] = true;
                 }
-            }
     
-            if (cardFound) {
-                updatePlayerDisplay(currentPlayerId);
+                console.log(`Marked cards for ${playerKey}:`, playersData[playerKey].markedCards);
             } else {
-                console.log(`Card with ID ${lastHoveredCardData.id} not found in any section.`);
+                console.error('Card data is undefined for the clicked image.');
             }
+        } else {
+            console.error('Invalid card index.');
         }
-    });
-        
-    // Helper function to get all cards from all sections
-    function getAllCards(playerData) {
-        const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'moveImages'];
-        let allCards = [];
     
-        sections.forEach(section => {
-            allCards = allCards.concat(playerData[section].images);
-        });
-    
-        return allCards;
+        updatePlayerDisplay(playerKey);
     }
-    
-    // Helper function to remove the card from its current section
-    function removeCardFromCurrentSection(playerData, card) {
-        const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'moveImages'];
-    
-        sections.forEach(section => {
-            const index = playerData[section].images.findIndex(c => c.id === card.id);
-            if (index !== -1) {
-                playerData[section].images.splice(index, 1);
-            }
-        });
-    }
-
     
     const deckSection = document.getElementById('deckSection');
     deckSection.addEventListener('click', event => {
