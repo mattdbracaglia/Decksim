@@ -358,10 +358,13 @@ document.addEventListener('DOMContentLoaded', function() {
             // Handle multiple quantities of the same card
             for (let i = 0; i < card.quantity; i++) {
                 const cardInstance = {
-                    ...cardData,
-                    id: `${cardData.name}-${i}` // Assign a unique ID to each card instance
+                    cardData: { // Wrap the card data
+                        ...cardData,
+                        id: `${cardData.name}-${i}`
+                    },
+                    imageUrl: cardData.imageUrl
                 };
-    
+        
                 if (card.uiState && card.uiState.Commander) {
                     commanderCards.push(cardInstance);
                 } else {
