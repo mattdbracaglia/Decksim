@@ -2211,41 +2211,64 @@ document.addEventListener('DOMContentLoaded', function() {
     close.addEventListener('click', function() { popup.style.display = "none"; });
 
 
-    function handleDeckImageClick(event) {
-        const clickedImage = event.target;
-        const cardIndex = parseInt(clickedImage.dataset.cardIndex, 10);
-        const playerKey = getCurrentPlayerKey();
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Shift' && lastHoveredCardData) {
+            const playerData = playersData[currentPlayerId];
+            let cardFound = false;
     
-        if (cardIndex >= 0 && cardIndex < playersData[playerKey].deckImages.images.length) {
-            const card = playersData[playerKey].deckImages.images[cardIndex]; // Directly access the card object
+            // Assume we have a function to get all cards regardless of their section
+            const allCards = getAllCards(playerData);
     
-            if (card) {
-                console.log(`Clicked on card: ${card.name} at index ${cardIndex}`);
+            const cardIndex = allCards.findIndex(card => card.id === lastHoveredCardData.id);
     
-                const cardName = card.name;
+            if (cardIndex !== -1) {
+                const card = allCards[cardIndex];
     
-                if (clickedImage.classList.contains('marked')) {
-                    console.log(`Removing mark from card: ${cardName}`);
-                    clickedImage.classList.remove('marked');
-                    clickedImage.style.border = '';
-                    delete playersData[playerKey].markedCards[cardName];
-                } else {
-                    console.log(`Marking card: ${cardName}`);
-                    clickedImage.classList.add('marked');
-                    clickedImage.style.border = '2px solid red';
-                    playersData[playerKey].markedCards[cardName] = true;
-                }
+                // Assuming we have a function to remove the card from its current section
+                removeCardFromCurrentSection(playerData, card);
     
-                console.log(`Marked cards for ${playerKey}:`, playersData[playerKey].markedCards);
-            } else {
-                console.error('Card data is undefined for the clicked image.');
+                // Add the card to the moveImages section
+                playerData.moveImages.images.push(card);
+    
+                cardFound = true;
+                console.log(`Card with ID ${lastHoveredCardData.id} moved to the "moveImages" section.`);
             }
-        } else {
-            console.error('Invalid card index.');
-        }
     
-        updatePlayerDisplay(playerKey);
+            if (!cardFound) {
+                console.log(`Card with ID ${lastHoveredCardData.id} not found in any section.`);
+            }
+    
+            // Reset the last hovered card data
+            lastHoveredCardData = null;
+    
+            updatePlayerDisplay(currentPlayerId);
+        }
+    });
+    
+    // Helper function to get all cards from all sections
+    function getAllCards(playerData) {
+        const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'moveImages'];
+        let allCards = [];
+    
+        sections.forEach(section => {
+            allCards = allCards.concat(playerData[section].images);
+        });
+    
+        return allCards;
     }
+    
+    // Helper function to remove the card from its current section
+    function removeCardFromCurrentSection(playerData, card) {
+        const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'moveImages'];
+    
+        sections.forEach(section => {
+            const index = playerData[section].images.findIndex(c => c.id === card.id);
+            if (index !== -1) {
+                playerData[section].images.splice(index, 1);
+            }
+        });
+    }
+
     
     const deckSection = document.getElementById('deckSection');
     deckSection.addEventListener('click', event => {
