@@ -424,6 +424,10 @@ html, body {
     width: 154px; /* Or adjust the width as needed */
 }
 
+.scrollbox label {
+    white-space: nowrap; /* Prevents the label from wrapping */
+}
+
 
 .scrollbox input {
     width: 50px;
