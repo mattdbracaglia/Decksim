@@ -537,14 +537,14 @@ right: 70px;
 
 /* Adjusted Container for the tabs to change its location */
 #deckTabsContainer {
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-bottom: 20px;
-    position: relative;
-    top: -400px;
-    left: 1000px;
-    width: 500px;
-  }
+  flex-wrap: wrap;
+  justify-content: inherit;
+  margin-bottom: 20px;
+  position: relative;
+  top: -436px;
+  left: 726px;
+  width: 814px;
+}
 
 /* Style for each tab */
 .deck-tab {
