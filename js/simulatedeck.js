@@ -1015,9 +1015,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Find the section where the card is located
             const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
             let cardFound = false;
-
+    
             for (const section of sections) {
-                const index = playerData[section].images.findIndex(card => card.cardData.name === lastHoveredCardData.name);
+                const index = playerData[section].images.findIndex(card => card.id === lastHoveredCardData.id);
                 
                 if (index !== -1) {
                     // Remove the card from its current section
@@ -1030,19 +1030,19 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                 }
             }
-
+    
             if (cardFound) {
                 updatePlayerDisplay(currentPlayerId);
                 console.log('Card moved to the "moveImages" section.');
             } else {
                 console.log('Card not found in any section.');
             }
-
+    
             // Reset the last hovered card data
             lastHoveredCardData = null;
         }
     });
- 
+     
     
     
 
