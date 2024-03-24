@@ -403,23 +403,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function updatePlayerDisplay(playerKey) {
-        // First, process movedCardNames to update the data model accordingly
-        let processedCards = new Set(); // To track cards that have already been processed
-        
-        movedCardNames.forEach(move => {
-            if (!processedCards.has(move.id)) {
-                const lastMove = [...movedCardNames].reverse().find(m => m.id === move.id);
-                if (lastMove) {
-                    moveCardDataToTargetSection(playerKey, lastMove.id, lastMove.targetSection);
-                    processedCards.add(move.id);
-                }
-            }
-        });
-    
-        movedCardNames = []; // Clear movedCardNames after processing
-    
         const playerData = playersData[playerKey];
-        const sectionsToUpdate = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'moveImages'];
+        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move'];
     
         sectionsToUpdate.forEach(sectionId => {
             const sectionElement = document.getElementById(sectionId);
@@ -427,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error(`Section element not found for ${sectionId}`);
                 return;
             }
-            
+    
             sectionElement.innerHTML = ''; // Clear existing content for the section
     
             const items = playerData[`${sectionId}Images`]?.images || [];
@@ -437,8 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.setAttribute('data-id', item.id); // Use data-id for referencing
                 img.classList.add('card-image');
     
-                // Check if the card is marked and apply the appropriate CSS class and styling
-                if (playerData.markedCards[item.id]) {
+                if (playerData.markedCards[item.id]) { // Check if the card is marked
                     img.classList.add('marked');
                 }
     
@@ -448,6 +432,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         updateManaCounter();
     }
+
     
         
 
