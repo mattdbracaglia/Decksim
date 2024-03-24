@@ -1023,7 +1023,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
             for (const section of sections) {
                 console.log(`Searching in section: ${section}`);
-                const index = playerData[section].images.findIndex(card => card.cardData.name === lastHoveredCardData.name);
+                const index = playerData[section].images.findIndex(card => card.cardData.id === lastHoveredCardData.id);
     
                 if (index !== -1) {
                     console.log(`Card found in section: ${section}, at index: ${index}`);
