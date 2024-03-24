@@ -223,40 +223,44 @@ app.get('/load-deck-data', authenticateToken, async (req, res) => {
 });
 
 app.post('/api/signup', async (req, res) => {
-    // Ensure connection is established
-    const db = await connectToMongoDB();
     const { username, email, password } = req.body;
-
-    if (!db) {
-        return res.status(500).json({ message: 'Database connection error' });
-    }
-
+    
     if (!username || !email || !password) {
         return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
     try {
-        // Access the "users" collection
+        const db = await connectToMongoDB();
         const usersCollection = db.collection("users");
+        const decksCollection = db.collection("decks");
 
-        // Check if the user already exists
         const existingUser = await usersCollection.findOne({ $or: [{ username }, { email }] });
         if (existingUser) {
             return res.status(409).json({ message: 'User already exists' });
         }
 
-        // Hash the password before saving the new user
-        const hashedPassword = await bcrypt.hash(password, 10); // 10 is the number of salt rounds
-
-        // Insert the new user with the hashed password
-        const result = await usersCollection.insertOne({
+        const hashedPassword = await bcrypt.hash(password, 10);
+        const newUserResult = await usersCollection.insertOne({
             username,
             email,
-            password: hashedPassword // Store the hashed password
+            password: hashedPassword
         });
-        console.log('New user created with ID:', result.insertedId.toString());
+        
+        console.log('New user created with ID:', newUserResult.insertedId.toString());
 
-        res.status(201).json({ message: 'User created successfully', userId: result.insertedId });
+        // Copy decks from "Usertesting" to the new user
+        const usertestingDecks = await decksCollection.find({ username: "Usertesting" }).toArray();
+        if (usertestingDecks.length > 0) {
+            const copiedDecks = usertestingDecks.map(deck => ({
+                ...deck,
+                userId: newUserResult.insertedId.toString(),
+                username: username // assuming you want to associate the copied decks with the new username as well
+            }));
+            await decksCollection.insertMany(copiedDecks);
+            console.log(`Copied ${copiedDecks.length} decks to new user ${username}`);
+        }
+
+        res.status(201).json({ message: 'User created successfully', userId: newUserResult.insertedId });
     } catch (error) {
         console.error("Error creating user:", error);
         res.status(500).json({ message: 'Failed to create user' });
