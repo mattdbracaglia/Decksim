@@ -1017,7 +1017,10 @@ document.addEventListener('DOMContentLoaded', function() {
             let cardFound = false;
     
             for (const section of sections) {
-                const index = playerData[section].images.findIndex(card => card.id === lastHoveredCardData.id);
+                const index = playerData[section].images.findIndex(card => {
+                    console.log(`Searching for ID: ${lastHoveredCardData.id}, Current card ID: ${card.id}`);
+                    return card.id === lastHoveredCardData.id;
+                });
                 
                 if (index !== -1) {
                     // Remove the card from its current section
