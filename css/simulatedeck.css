@@ -531,9 +531,9 @@ right: 70px;
 #cycleButtons {
   position: relative;
   top: 234px;
-  left: 98px;
+  left: 92px;
   display: flex;
-  gap: 40px;
+  gap: 37px;
   margin-top: 8px;
   padding: 8px;
   font-size: 16px;
@@ -597,7 +597,7 @@ right: 70px;
   background-color: #f0f0f0;
   border-radius: 5px;
   width: 125px;
-  height: 553px;
+  height: 533px;
   box-sizing: border-box;
   overflow-y: auto;
   overflow-x: hidden;
@@ -614,8 +614,8 @@ right: 70px;
 
 /* Example of re-positioning */
 #deckSection {
-  bottom: 450px;
-  left: 750px;
+  top: -455px;
+  left: 982px;
 }
 
 #cardImageContainer {
