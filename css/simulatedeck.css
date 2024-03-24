@@ -583,18 +583,18 @@ right: 70px;
 }
 
 .deck-section {
-    position: relative; 
-    border: 2px solid #007bff;
-    padding: 10px; /* Adjust padding as needed */
-    margin: 5px; /* Adjust margin as needed */
-    text-align: center;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    width: 125px; /* Section width */
-    height: 582px; /* Section height */
-    box-sizing: border-box;
-    overflow-y: auto; /* Adds vertical scrolling */
-    overflow-x: hidden; /* Hides horizontal scrollbar */
+  position: relative;
+  border: 2px solid #007bff;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  width: 125px;
+  height: 553px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .deck-section img {
@@ -608,21 +608,21 @@ right: 70px;
 
 /* Example of re-positioning */
 #deckSection {
-    bottom: 440px;
-    left: 1390px;
-  }
+  bottom: 450px;
+  left: 750px;
+}
 
-  #cardImageContainer {
-    position: absolute;
-    bottom: 160px;
-    left: 1006px;
-    width: 360px;
-    height: 450px;
-    overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
+#cardImageContainer {
+  position: absolute;
+  bottom: 220px;
+  left: 1150px;
+  width: 360px;
+  height: 450px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 #cardImageContainer img {
     max-width: 100%;
