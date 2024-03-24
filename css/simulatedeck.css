@@ -418,13 +418,12 @@ html, body {
 }
 
 .scrollbox {
-    position: relative; 
-    width: 154px;
+    display: flex; /* Use flexbox layout */
+    align-items: center; /* Align items vertically in the center */
+    gap: 5px; /* Add some space between the label and the input box */
+    width: 154px; /* Or adjust the width as needed */
 }
 
-.scrollbox label {
-    margin-right: 5px;
-}
 
 .scrollbox input {
     width: 50px;
@@ -432,8 +431,9 @@ html, body {
 }
 
 #player1Scrollbox {
-  top: 384px;
-  left: 1180px;
+    position: absolute; /* Use absolute if you need to place it at a specific location */
+    top: 384px;
+    left: 1180px;
 }
 
   .switch-container {
