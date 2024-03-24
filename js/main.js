@@ -1884,12 +1884,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function openSectionPopup(sectionId) {
-        const sectionImages = document.querySelectorAll(`#${sectionId} img`);
-        const popupContent = document.getElementById('sectionPopup').querySelector('.popup-content');
-        
+        const popup = document.getElementById('sectionPopup');
+        if (!popup) {
+            console.error('Section popup not found');
+            return;
+        }
+    
+        const popupContent = popup.querySelector('.popup-content');
+        if (!popupContent) {
+            console.error('Popup content not found');
+            return;
+        }
+    
         // Clear previous content and set new title
         popupContent.innerHTML = `<span id="closeSectionPopup" class="close-btn">&times;</span><h2>${sectionId.charAt(0).toUpperCase() + sectionId.slice(1)}</h2>`;
-        
+    
+        const sectionImages = document.querySelectorAll(`#${sectionId} img`);
         const imageContainer = document.createElement('div');
         imageContainer.classList.add('image-container');
         
@@ -1900,13 +1910,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         
         popupContent.appendChild(imageContainer);
-        document.getElementById('sectionPopup').style.display = 'block';
+        popup.style.display = 'block';
     
         // Close popup on clicking the close button
         document.getElementById('closeSectionPopup').addEventListener('click', function() {
-            document.getElementById('sectionPopup').style.display = 'none';
+            popup.style.display = 'none';
         });
     }
+
    
     
 
