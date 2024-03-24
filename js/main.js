@@ -399,10 +399,16 @@ document.addEventListener('DOMContentLoaded', function() {
                 oracleText: card.oracle_text || card.settings.oracle_text,
             };
     
+            const quantity = card.quantity || 1;  // Ensure there is a default quantity
+
             if (card.uiState && card.uiState.Commander) {
-                commanderCards.push({ imageUrl: cardData.imageUrl, cardData: cardData });
+                for (let i = 0; i < quantity; i++) {
+                    commanderCards.push({ imageUrl: cardData.imageUrl, cardData: cardData });
+                }
             } else {
-                libraryCards.push({ imageUrl: cardData.imageUrl, cardData: cardData });
+                for (let i = 0; i < quantity; i++) {
+                    libraryCards.push({ imageUrl: cardData.imageUrl, cardData: cardData });
+                }
             }
         });
     
