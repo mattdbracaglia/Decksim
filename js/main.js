@@ -401,18 +401,21 @@ document.addEventListener('DOMContentLoaded', function() {
     
             // Handle multiple quantities of the same card
             for (let i = 0; i < card.quantity; i++) {
-                const cardInstance = {
-                    ...cardData,
-                    id: `${cardData.name}-${i}` // Assign a unique ID to each card instance
-                };
-    
-                if (card.uiState && card.uiState.Commander) {
-                    commanderCards.push(cardInstance);
-                } else {
-                    libraryCards.push(cardInstance);
+                    const cardInstance = {
+                        cardData: { // Wrap the card data
+                            ...cardData,
+                            id: `${cardData.name}-${i}`
+                        },
+                        imageUrl: cardData.imageUrl
+                    };
+            
+                    if (card.uiState && card.uiState.Commander) {
+                        commanderCards.push(cardInstance);
+                    } else {
+                        libraryCards.push(cardInstance);
+                    }
                 }
-            }
-        });
+            });
     
         // Assign commander cards to commanderImages
         playersData[playerKey].commanderImages.images = commanderCards;
@@ -441,25 +444,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function updatePlayerDisplay(playerKey) {
-        // First, process movedCardNames to update the data model accordingly
         let processedCards = new Set(); // To track cards that have already been processed
         
         movedCardNames.forEach(move => {
             if (!processedCards.has(move.name)) {
-                // Find the last occurrence of the card in movedCardNames to determine its final target section
                 const lastMove = [...movedCardNames].reverse().find(m => m.name === move.name);
                 if (lastMove) {
-                    // Move the card data within playersData
                     moveCardDataToTargetSection(playerKey, lastMove.name, lastMove.targetSection);
-                    processedCards.add(move.name); // Mark as processed
+                    processedCards.add(move.name);
                 }
             }
         });
         
-        // Clear movedCardNames after processing
-        movedCardNames = [];
-    
-        // Then, update the display as before
+        movedCardNames = []; // Clear movedCardNames after processing
+        
         const playerData = playersData[playerKey];
         const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'info'];
     
@@ -480,7 +478,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.style.maxWidth = '100%';
                 img.style.maxHeight = '100px';
     
-                // Check if the card is marked and apply the appropriate CSS class and styling
                 if (playerData.markedCards[item.cardData.name]) {
                     img.classList.add('marked');
                     img.style.border = '2px solid red';
@@ -489,8 +486,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 sectionElement.appendChild(img);
             });
         });
+    
         updateManaCounter();
     }
+
     
     function moveCardDataToTargetSection(playerKey, cardName, targetSectionId) {
         let found = false;
@@ -1141,40 +1140,37 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('keydown', function(event) {
-        console.log('Key pressed:', event.key); // Log which key is pressed
-    
         if (event.key === 'Shift' && lastHoveredCardData) {
-            console.log('Shift key pressed with card hovered:', lastHoveredCardData);
-    
             const playerData = playersData[currentPlayerId];
-            console.log(`Current player data:`, playerData);
-    
-            const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
+            
+            // Find the section where the card is located
+            const sections = ['libraryImages', 'handImages', 'battlefieldImages', 'graveyardImages', 'exileImages'];
             let cardFound = false;
-    
+
             for (const section of sections) {
-                console.log(`Searching in section: ${section}`);
-                const index = playerData[section].images.findIndex(card => card.cardData.id === lastHoveredCardData.id);
-    
+                const index = playerData[section].images.findIndex(card => card.cardData.name === lastHoveredCardData.name);
+                
                 if (index !== -1) {
-                    console.log(`Card found in section: ${section}, at index: ${index}`);
+                    // Remove the card from its current section
                     const [card] = playerData[section].images.splice(index, 1);
-    
+                    
+                    // Add the card to the moveImages section
                     playerData.moveImages.images.push(card);
+                    
                     cardFound = true;
-    
-                    console.log(`Card moved to the "moveImages" section:`, card);
                     break;
                 }
             }
-    
+
             if (cardFound) {
                 updatePlayerDisplay(currentPlayerId);
-                console.log('Card successfully moved.');
+                updateAllPlayersSectionDisplay();
+                console.log('Card moved to the "moveImages" section.');
             } else {
                 console.log('Card not found in any section.');
             }
-    
+
+            // Reset the last hovered card data
             lastHoveredCardData = null;
         }
     });
