@@ -1008,43 +1008,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    document.addEventListener('keydown', function(event) {
-        if (event.key === 'Shift' && lastHoveredCardData) {
-            const playerData = playersData[currentPlayerId];
-            
-            // Find the section where the card is located
-            const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
-            let cardFound = false;
-    
-            for (const section of sections) {
-                const index = playerData[section].images.findIndex(card => {
-                    console.log(`Searching for ID: ${lastHoveredCardData.id}, Current card ID: ${card.id}`);
-                    return card.id === lastHoveredCardData.id;
-                });
-                
-                if (index !== -1) {
-                    // Remove the card from its current section
-                    const [card] = playerData[section].images.splice(index, 1);
-                    
-                    // Add the card to the moveImages section
-                    playerData.moveImages.images.push(card);
-                    
-                    cardFound = true;
-                    break;
-                }
-            }
-    
-            if (cardFound) {
-                updatePlayerDisplay(currentPlayerId);
-                console.log(`Card with ID ${lastHoveredCardData.id} moved to the "moveImages" section.`);
-            } else {
-                console.log(`Card with ID ${lastHoveredCardData.id} not found in any section.`);
-            }
-    
-            // Reset the last hovered card data
-            lastHoveredCardData = null;
-        }
-    });
 
      
     
