@@ -213,47 +213,50 @@ button:hover {
 #libraryBtn {
   position: relative;
   top: 462px;
-  left: -440px;
-      z-index: 1005;
+  left: 190px;
+  z-index: 1005;
 }
 
 #handBtn {
   position: relative;
   top: 291px;
-  left: -522px;
-      z-index: 1005;
+  left: 119px;
+  z-index: 1005;
 }
 
 #landBtn {
   position: relative;
   top: 118px;
-  left: -699px;
-      z-index: 1005;
+  left: -53px;
+  z-index: 1005;
 }
 
 #battlefieldBtn {
   position: relative;
+  top: -53px;
+  left: 17px;
+  z-index: 1005;
+}
+
+#graveyardBtn {
+  position: relative;
+  top: 119px;
+  left: -224px;
+  z-index: 1005;
+}
+
+#exileBtn {
+  position: relative;
   top: -55px;
-  left: -593px;
-      z-index: 1005;
+  left: -156px;
+  z-index: 1005;
 }
 
-#graveyardBtn {    position: relative;
-    top: 555px;
-    left: 33px;
-    z-index: 1005;
-}
-
-#exileBtn {    position: relative;
-    top: 555px;
-    left: 194px;
-     z-index: 1005;
-}
-
-#commanderBtn {    position: relative;
-    top: 555px;
-    left: 370px;
-    z-index: 1005;
+#commanderBtn {
+  position: relative;
+  top: 291px;
+  left: -38px;
+  z-index: 1005;
 }
 
 #gameControls {
@@ -554,7 +557,7 @@ right: 70px;
 #cycleButtons {
   position: relative;
   top: 234px;
-  left: 92px;
+  left: 18px;
   display: flex;
   gap: 37px;
   margin-top: 8px;
