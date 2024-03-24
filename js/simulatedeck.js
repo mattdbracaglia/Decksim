@@ -1033,15 +1033,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
             if (cardFound) {
                 updatePlayerDisplay(currentPlayerId);
-                console.log('Card moved to the "moveImages" section.');
+                console.log(`Card with ID ${lastHoveredCardData.id} moved to the "moveImages" section.`);
             } else {
-                console.log('Card not found in any section.');
+                console.log(`Card with ID ${lastHoveredCardData.id} not found in any section.`);
             }
     
             // Reset the last hovered card data
             lastHoveredCardData = null;
         }
     });
+
      
     
     
