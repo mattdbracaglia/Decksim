@@ -134,19 +134,19 @@ button:hover {
 
 #info { top: 15px; right: 5px; }
 #library {
-  bottom: 470px;
+  bottom: 465px;
   left: 20px;
 }
 #land {
-  bottom: 1107px;
+  bottom: 1099px;
   left: 20px;
 }
 #hand {
-    bottom: 1244px;
-    left: 20px;
-  }
+  bottom: 782px;
+  left: 20px;
+}
 #battlefield {
-  bottom: 1425px;
+  bottom: 1416px;
   left: 20px;
 }
 #graveyard {
@@ -170,6 +170,67 @@ button:hover {
   left: 820px;
 }
 /* Wrapper for both sets of sections */
+
+#sectionButtons {
+    text-align: center;
+    margin-top: 20px;
+    
+}
+
+#sectionButtons button {
+    margin: 5px;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+
+}
+
+#sectionButtons button:hover {
+    background-color: #45a049;
+}
+
+#libraryBtn {
+  position: relative;
+  top: 462px;
+  left: -440px;
+}
+
+#handBtn {
+  position: relative;
+  top: 291px;
+  left: -522px;
+}
+
+#landBtn {
+  position: relative;
+  top: 118px;
+  left: -699px;
+}
+
+#battlefieldBtn {
+  position: relative;
+  top: -55px;
+  left: -593px;
+}
+
+#graveyardBtn {    position: relative;
+    top: 555px;
+    left: 33px;
+}
+
+#exileBtn {    position: relative;
+    top: 555px;
+    left: 194px;
+}
+
+#commanderBtn {    position: relative;
+    top: 555px;
+    left: 370px;
+}
 
 #gameControls {
     position: relative;
@@ -302,65 +363,7 @@ html, body {
     color: white;
 }
 
-#sectionButtons {
-    text-align: center;
-    margin-top: 20px;
-    
-}
 
-#sectionButtons button {
-    margin: 5px;
-    padding: 5px 10px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
-}
-
-#sectionButtons button:hover {
-    background-color: #45a049;
-}
-
-#libraryBtn {
-  position: relative;
-  top: 455px;
-  left: -440px;
-}
-
-#handBtn {
-  position: relative;
-  top: 283px;
-  left: -522px;
-}
-
-#landBtn {
-  position: relative;
-  top: 110px;
-  left: -699px;
-}
-
-#battlefieldBtn {    position: relative;
-    top: 555px;
-    left: 300px;
-}
-
-#graveyardBtn {    position: relative;
-    top: 555px;
-    left: 33px;
-}
-
-#exileBtn {    position: relative;
-    top: 555px;
-    left: 194px;
-}
-
-#commanderBtn {    position: relative;
-    top: 555px;
-    left: 370px;
-}
 
 .mana-container {
     display: flex;
@@ -525,17 +528,17 @@ right: 70px;
     z-index: 2049;
   }
 
-  #cycleButtons {
-    position: relative;
-    top: 291px;
-    left: 723px;
-    display: flex;
-    gap: 4px;
-    margin-top: 8px;
-    padding: 8px;
-    font-size: 16px;
-    width: 791px;
-  }
+#cycleButtons {
+  position: relative;
+  top: 234px;
+  left: 98px;
+  display: flex;
+  gap: 40px;
+  margin-top: 8px;
+  padding: 8px;
+  font-size: 16px;
+  width: 791px;
+}
 
 
 /* Adjusted Container for the tabs to change its location */
