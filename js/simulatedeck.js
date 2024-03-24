@@ -403,8 +403,27 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
     function updatePlayerDisplay(playerKey) {
+        // First, process movedCardNames to update the data model accordingly
+        let processedCards = new Set(); // To track cards that have already been processed
+        
+        movedCardNames.forEach(move => {
+            if (!processedCards.has(move.name)) {
+                // Find the last occurrence of the card in movedCardNames to determine its final target section
+                const lastMove = [...movedCardNames].reverse().find(m => m.name === move.name);
+                if (lastMove) {
+                    // Move the card data within playersData
+                    moveCardDataToTargetSection(playerKey, lastMove.name, lastMove.targetSection);
+                    processedCards.add(move.name); // Mark as processed
+                }
+            }
+        });
+        
+        // Clear movedCardNames after processing
+        movedCardNames = [];
+    
+        // Then, update the display as before
         const playerData = playersData[playerKey];
-        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move'];
+        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'choice'];
     
         sectionsToUpdate.forEach(sectionId => {
             const sectionElement = document.getElementById(sectionId);
@@ -412,46 +431,58 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.error(`Section element not found for ${sectionId}`);
                 return;
             }
-    
+            
             sectionElement.innerHTML = ''; // Clear existing content for the section
     
             const items = playerData[`${sectionId}Images`]?.images || [];
             items.forEach(item => {
                 const img = document.createElement('img');
                 img.src = item.imageUrl;
-                img.setAttribute('data-id', item.id); // Use data-id for referencing
-                img.classList.add('card-image');
+                img.setAttribute('data-card', JSON.stringify(item.cardData));
     
-                if (playerData.markedCards[item.id]) { // Check if the card is marked
+                // Check if the card is marked and apply the appropriate CSS class and styling
+                if (playerData.markedCards[item.cardData.name]) {
                     img.classList.add('marked');
+                    img.style.border = '2px solid red';
                 }
     
                 sectionElement.appendChild(img);
             });
         });
-    
         updateManaCounter();
     }
+    
+
 
     
+    function moveCardDataToTargetSection(playerKey, cardName, targetSectionId) {
+        let found = false;
         
-
-
-    
-    function moveCardDataToTargetSection(playerKey, cardId, targetSection) {
-        const playerData = playersData[playerKey];
-        const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'moveImages'];
-    
-        for (const section of sections) {
-            const index = playerData[section].images.findIndex(card => card.id === cardId);
-            if (index !== -1) {
-                const [card] = playerData[section].images.splice(index, 1);
-                playerData[targetSection].images.push(card);
-                break;
+        // Ensure target section exists and has an initialized images array
+        const targetSection = playersData[playerKey][`${targetSectionId}Images`];
+        if (!targetSection) {
+            console.error(`Target section "${targetSectionId}" not found for player ${playerKey}.`);
+            return;
+        }
+        
+        Object.keys(playersData[playerKey]).forEach(sectionKey => {
+            const section = playersData[playerKey][sectionKey];
+            if (section && section.images && !found) {
+                const index = section.images.findIndex(card => card.name === cardName);
+                if (index !== -1) {
+                    // Found the card, move it to targetSection
+                    const [cardToMove] = section.images.splice(index, 1);
+                    targetSection.images.push(cardToMove);
+                    found = true;
+                }
             }
+        });
+        
+        if (!found) {
+            console.error(`Card "${cardName}" not found in any section for playerId: ${playerKey}.`);
         }
     }
-        
+    
   
     
 
@@ -984,9 +1015,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Find the section where the card is located
             const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
             let cardFound = false;
-    
+
             for (const section of sections) {
-                const index = playerData[section].images.findIndex(card => card.id === lastHoveredCardData.id);
+                const index = playerData[section].images.findIndex(card => card.cardData.name === lastHoveredCardData.name);
                 
                 if (index !== -1) {
                     // Remove the card from its current section
@@ -999,19 +1030,18 @@ document.addEventListener('DOMContentLoaded', function() {
                     break;
                 }
             }
-    
+
             if (cardFound) {
                 updatePlayerDisplay(currentPlayerId);
                 console.log('Card moved to the "moveImages" section.');
             } else {
                 console.log('Card not found in any section.');
             }
-    
+
             // Reset the last hovered card data
             lastHoveredCardData = null;
         }
     });
-
  
     
     
