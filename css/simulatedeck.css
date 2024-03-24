@@ -151,15 +151,15 @@ button:hover {
 
 #info { top: 15px; right: 5px; }
 #library {
-  bottom: 449px;
+  bottom: 499px;
   left: 20px;
 }
 #land {
-  bottom: 1082px;
+  bottom: 1132px;
   left: 20px;
 }
 #hand {
-  bottom: 765px;
+  bottom: 814px;
   left: 20px;
 }
 #battlefield {
@@ -167,23 +167,23 @@ button:hover {
   left: 20px;
 }
 #graveyard {
-  bottom: 1376px;
+  bottom: 1426px;
   left: 745px;
 }
 #exile {
-  bottom: 1699px;
+  bottom: 1749px;
   left: 745px;
 }
 #commander {
-  bottom: 1505px;
+  bottom: 1554px;
   left: 745px;
 }
 #move {
-  bottom: 1484px;
+  bottom: 1534px;
   left: 744px;
 }
 #choice {
-  bottom: 1634px;
+  bottom: 1684px;
   left: 958px;
 }
 /* Wrapper for both sets of sections */
@@ -247,7 +247,7 @@ button:hover {
 
 #exileBtn {
   position: relative;
-  top: -55px;
+  top: -53px;
   left: -156px;
   z-index: 1005;
 }
@@ -565,7 +565,7 @@ right: 70px;
 
 #cycleButtons {
   position: relative;
-  top: 234px;
+  top: 184px;
   left: 18px;
   display: flex;
   gap: 37px;
@@ -582,7 +582,7 @@ right: 70px;
   justify-content: inherit;
   margin-bottom: 20px;
   position: relative;
-  top: -436px;
+  top: -485px;
   left: 726px;
   width: 814px;
 }
@@ -649,7 +649,7 @@ right: 70px;
 
 /* Example of re-positioning */
 #deckSection {
-  top: -455px;
+  top: -504px;
   left: 982px;
 }
 
