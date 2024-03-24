@@ -137,18 +137,18 @@ button:hover {
   bottom: 470px;
   left: 20px;
 }
-#hand {
-    bottom: 959px;
-    left: 20px;
-  }/* Adjusted for spacing */
+#land {
+  bottom: 1107px;
+  left: 20px;
+}
 #land {
     bottom: 1244px;
     left: 20px;
   }
 #battlefield {
-    bottom: 1528px;
-    left: 20px;
-  }
+  bottom: 1425px;
+  left: 20px;
+}
 #graveyard {
     bottom: 1399px;
     left: 716px;
@@ -324,19 +324,22 @@ html, body {
     background-color: #45a049;
 }
 
-#libraryBtn {    position: relative;
-    top: 555px;
-    left: 266px;
+#libraryBtn {
+  position: relative;
+  top: 455px;
+  left: -440px;
 }
 
-#handBtn {    position: relative;
-    top: 555px;
-    left: 255px;
+#handBtn {
+  position: relative;
+  top: 283px;
+  left: -522px;
 }
 
-#landBtn {    position: relative;
-    top: 555px;
-    left: 139px;
+#landBtn {
+  position: relative;
+  top: 110px;
+  left: -699px;
 }
 
 #battlefieldBtn {    position: relative;
