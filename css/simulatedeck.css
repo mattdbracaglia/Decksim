@@ -134,9 +134,9 @@ button:hover {
 
 #info { top: 15px; right: 5px; }
 #library {
-    bottom: 674px;
-    left: 20px;
-  }
+  bottom: 470px;
+  left: 20px;
+}
 #hand {
     bottom: 959px;
     left: 20px;
@@ -166,8 +166,8 @@ button:hover {
     left: 716px;
   }
 #choice {
-    bottom: 1719px;
-    left: 20px;
+  bottom: 1656px;
+  left: 820px;
 }
 /* Wrapper for both sets of sections */
 
