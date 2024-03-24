@@ -435,17 +435,17 @@ html, body {
 }
 
 #player1Scrollbox {
-    position: absolute; /* Use absolute if you need to place it at a specific location */
-    top: 384px;
-    left: 1180px;
+  position: absolute;
+  top: 155px;
+  left: 260px;
 }
 
-  .switch-container {
-    position: relative;
-    top: 246px;
-    left: 1071px;
-    width: 468px;
-  }
+.switch-container {
+  position: relative;
+  top: -32px;
+  left: 551px;
+  width: 468px;
+}
   
 .switch {
 position: relative;
@@ -515,11 +515,11 @@ right: 70px;
 }
 
 #autoPlaySwitchContainer {
-    position: relative;
-    top: 246px;
-    left: 1300px;
-    width: 468px;
-  }
+  position: relative;
+  top: -410px;
+  left: 524px;
+  width: 468px;
+}
 
 #autoPlaySwitch + .slider {
     background-color: #2196F3; /* Default background color */
