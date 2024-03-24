@@ -1010,40 +1010,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.addEventListener('keydown', function(event) {
+        console.log('Key pressed:', event.key); // Log which key is pressed
+    
         if (event.key === 'Shift' && lastHoveredCardData) {
+            console.log('Shift key pressed with card hovered:', lastHoveredCardData);
+    
             const playerData = playersData[currentPlayerId];
-            
-            // Find the section where the card is located
+            console.log(`Current player data:`, playerData);
+    
             const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
             let cardFound = false;
-
+    
             for (const section of sections) {
+                console.log(`Searching in section: ${section}`);
                 const index = playerData[section].images.findIndex(card => card.cardData.name === lastHoveredCardData.name);
-                
+    
                 if (index !== -1) {
-                    // Remove the card from its current section
+                    console.log(`Card found in section: ${section}, at index: ${index}`);
                     const [card] = playerData[section].images.splice(index, 1);
-                    
-                    // Add the card to the moveImages section
+    
                     playerData.moveImages.images.push(card);
-                    
                     cardFound = true;
+    
+                    console.log(`Card moved to the "moveImages" section:`, card);
                     break;
                 }
             }
-
+    
             if (cardFound) {
                 updatePlayerDisplay(currentPlayerId);
-                console.log('Card moved to the "moveImages" section.');
+                console.log('Card successfully moved.');
             } else {
                 console.log('Card not found in any section.');
             }
-
-            // Reset the last hovered card data
+    
             lastHoveredCardData = null;
         }
     });
- 
+     
     
     
 
