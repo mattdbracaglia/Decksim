@@ -1132,6 +1132,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Mouse is hovering over a card:');
                 console.log('Name:', cardData.name);
                 console.log('Type:', cardData.typeLine);
+                console.log('ID:', cardData.id);
                 console.log('Mana Cost:', cardData.manaCost);
                 console.log('Oracle Text:', cardData.oracleText);
                 console.log('-------------------------');
