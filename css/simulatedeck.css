@@ -93,21 +93,20 @@ button:hover {
 }
 
 #choice {
-    position: relative;
-    border: 2px solid #007bff;
-    padding: 10px; /* Adjust padding as needed */
-    margin: 5px; /* Adjust margin as needed */
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    width: 700px; /* Custom width */
-    height: 140px; /* Custom height, adjust as needed */
-    box-sizing: border-box;
-    display: flex;
-
-    overflow-x: auto; /* Enable horizontal scrolling */
-    overflow-y: hidden; /* Hide vertical scrollbar */
-    white-space: nowrap; /* Ensure items line up horizontally */
-    z-index: 1005;
+  position: relative;
+  border: 2px solid #007bff;
+  padding: 10px;
+  margin: 5px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  width: 567px;
+  height: 140px;
+  box-sizing: border-box;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  white-space: nowrap;
+  z-index: 1005;
 }
 
 #library img, #hand img, #land img, #battlefield img {
@@ -152,7 +151,7 @@ button:hover {
 
 #info { top: 15px; right: 5px; }
 #library {
-  bottom: 465px;
+  bottom: 449px;
   left: 20px;
 }
 #land {
@@ -172,20 +171,20 @@ button:hover {
   left: 745px;
 }
 #exile {
-    bottom: 1689px;
-    left: 716px;
-  }
+  bottom: 1699px;
+  left: 745px;
+}
 #commander {
   bottom: 1505px;
   left: 745px;
 }
 #move {
-    bottom: 2128px;
-    left: 716px;
-  }
+  bottom: 1484px;
+  left: 744px;
+}
 #choice {
-  bottom: 1641px;
-  left: 820px;
+  bottom: 1634px;
+  left: 958px;
 }
 /* Wrapper for both sets of sections */
 
@@ -215,50 +214,57 @@ button:hover {
   position: relative;
   top: 462px;
   left: -440px;
+      z-index: 1005;
 }
 
 #handBtn {
   position: relative;
   top: 291px;
   left: -522px;
+      z-index: 1005;
 }
 
 #landBtn {
   position: relative;
   top: 118px;
   left: -699px;
+      z-index: 1005;
 }
 
 #battlefieldBtn {
   position: relative;
   top: -55px;
   left: -593px;
+      z-index: 1005;
 }
 
 #graveyardBtn {    position: relative;
     top: 555px;
     left: 33px;
+    z-index: 1005;
 }
 
 #exileBtn {    position: relative;
     top: 555px;
     left: 194px;
+     z-index: 1005;
 }
 
 #commanderBtn {    position: relative;
     top: 555px;
     left: 370px;
+    z-index: 1005;
 }
 
 #gameControls {
-    position: relative;
-    top: 650px;
-    left: 790px;
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    width: 800px;
-  }
+  position: relative;
+  top: -31px;
+  left: 77px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  width: 800px;
+}
 
 #gameControls button {
     padding: 10px;
@@ -314,16 +320,15 @@ button:hover {
 
 
 #manaCounter {
-    display: flex;
-
-    gap: 20px; /* Adjust this value to see the effect */
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin-top: 10px;
-    position: relative;
-    bottom: 140px; /* Adjust if necessary */
-    left: 20px; /* Adjust if necessary */
+  display: flex;
+  gap: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-top: 10px;
+  position: relative;
+  bottom: -70px;
+  left: 212px;
 }
 
 #manaCounter span {
@@ -384,14 +389,14 @@ html, body {
 
 
 .mana-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    bottom: 171px;
-    right: 601px;
-    z-index: 1000;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: -39px;
+  right: 409px;
+  z-index: 1000;
+}
 
 .mana-image {
     width: 20px;
@@ -671,17 +676,17 @@ html, body {
 }
 
 #BacktoGame {
-    position: fixed;
-    top: 672px;
-    left: 731px;
-    display: flex;
-    background-color: #4CAF50;
-    color: white;
-    flex-direction: row;
-    border: none;
-    border-radius: 5px;
-    gap: 10px;
-  }
+  position: fixed;
+  top: -9px;
+  left: 11px;
+  display: flex;
+  background-color: #4CAF50;
+  color: white;
+  flex-direction: row;
+  border: none;
+  border-radius: 5px;
+  gap: 10px;
+}
 
 
 #BacktoGame:hover {
