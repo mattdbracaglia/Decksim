@@ -1018,7 +1018,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const playerData = playersData[currentPlayerId];
             console.log(`Current player data:`, playerData);
     
-            const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages'];
+            const sections = ['libraryImages', 'handImages', 'landImages', 'battlefieldImages', 'graveyardImages', 'exileImages', 'commanderImages', 'deckImages'];
             let cardFound = false;
     
             for (const section of sections) {
