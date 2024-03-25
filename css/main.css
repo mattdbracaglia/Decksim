@@ -488,22 +488,22 @@ html, body {
 }
 
 #player1Scrollbox {
-    top: 25px;
+    top: 585px;
     right: 590px;
 }
 
 #player2Scrollbox {
-    top: 25px;
+    top: 585px;
     right: 415px;
 }
 
 #player3Scrollbox {
-    top: 25px;
+    top: 585px;
     right: 265px;
 }
 
 #player4Scrollbox {
-    top: 25px;
+    top: 585px;
     right: 115px;
 }
 
@@ -586,11 +586,11 @@ right: 70px;
 }
 
 #mulliganButtons {
-    position: fixed;
-    top: 95px; /* Move to the top to utilize space efficiently */
-    right: 73px; /* Adjusted to reduce space from the right */
-    display: flex;
-    gap: 120px; /* Reduced gap to save space */
+  position: fixed;
+  top: 605px;
+  right: 73px;
+  display: flex;
+  gap: 120px;
 }
 
 #cycleButtons {
