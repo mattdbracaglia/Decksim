@@ -523,16 +523,14 @@ document.addEventListener('DOMContentLoaded', function() {
         imageContainer.innerHTML = ''; // Clear existing images
     
         cards.forEach(card => {
-            if (card.settings && card.settings.normal_image_url) {
-                const img = document.createElement('img');
-                img.src = card.settings.normal_image_url;
-                img.alt = card.name;
-                img.style.width = '200px'; // Set the image size as desired
-                img.style.height = 'auto';
-                img.style.margin = '10px'; // Add some space between images
-    
-                imageContainer.appendChild(img); // Append the new image to the container
-            }
+            const img = document.createElement('img');
+            img.src = card.large_image_url;  // Use large_image_url directly from the card object
+            img.alt = card.name;
+            img.style.width = '200px';
+            img.style.height = 'auto';
+            img.style.margin = '10px';
+        
+            imageContainer.appendChild(img);
         });
     }
     
@@ -542,10 +540,10 @@ document.addEventListener('DOMContentLoaded', function() {
     
         cards.forEach((card, index) => {
             const img = document.createElement('img');
-            img.src = card.settings.normal_image_url;
+            img.src = card.large_image_url;  // Use large_image_url directly from the card object
             img.alt = card.name;
             img.dataset.cardIndex = index;
-            img.dataset.cardType = card.settings.type_line;
+            img.dataset.cardType = card.type_line;  // Assuming type_line is directly under the card object
     
             img.addEventListener('click', function() {
                 console.log('Image clicked:', card);
