@@ -587,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function() {
             li.dataset.cardData = JSON.stringify(card);
     
             // Highlight the card if it's in the highlightedCards array
-            if (currentCard && currentCard.uiState.highlightedCards && currentCard.uiState.highlightedCards.includes(card.name)) {
+            if (currentCard && currentCard.uiState && currentCard.uiState.highlightedCards && currentCard.uiState.highlightedCards.includes(card.name)) {
                 li.classList.add('highlighted');
             }
     
@@ -596,8 +596,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 this.classList.toggle('highlighted');
     
                 // Ensure highlightedCards array is initialized in the currentCard's uiState
-                if (!currentCard.uiState.highlightedCards) {
-                    currentCard.uiState.highlightedCards = [];
+                if (!currentCard.uiState) {
+                    currentCard.uiState = { checkboxes: {}, manaCounter: {}, highlightedCards: [] };
                 }
     
                 const highlightedIndex = currentCard.uiState.highlightedCards.indexOf(card.name);
@@ -606,6 +606,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 } else {
                     currentCard.uiState.highlightedCards.push(card.name); // Add if not highlighted
                 }
+                updateUIForSelectedCard(card);
             });
     
             li.addEventListener('mouseover', function() {
