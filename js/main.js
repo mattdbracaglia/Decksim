@@ -1384,8 +1384,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 1:
                 console.log("Case 1: Moving the first land from hand to land.");
-                
-                // Check the status of the auto-play switch to determine which function to run
                 if (document.getElementById('autoPlaySwitch').checked) {
                     console.log("Auto Play Switch is on, running auto land move.");
                     moveFirstLandFromHandToLandAuto(currentPlayerId);
@@ -1393,7 +1391,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log("Auto Play Switch is off, running manual land move.");
                     moveFirstLandFromHandToLandChoice(currentPlayerId);
                 }
-    
                 if (!choiceMade) {
                     currentChoicesTurnStep++;
                     console.log("Moving to next step after moving land.");
@@ -1403,35 +1400,34 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 2:
                 console.log("Case 2: Playing a card from hand to the battlefield.");
-                cardPlayed = false;
-
                 playCardFromHandToBattlefieldAuto(currentPlayerId);
-                // Check if the action is completed, then move to the next step or reset
                 if (choiceMade) {
                     console.log("Choice made, waiting for action to complete.");
                 } else {
-                    currentChoicesTurnStep = 0;  // Or advance to the next step as needed
+                    currentChoicesTurnStep = 0;  // Reset to step 0 for the next player
                     console.log("Resetting to step 0 after playing a card.");
                 }
                 break;
             default:
-                console.log("Case 3: Updating turn player to the next player in the rotation.");
-                const currentPlayerIndex = parseInt(currentPlayerId.slice(-1)) - 1;
-                const nextPlayerIndex = (currentPlayerIndex + 1) % 4;
-                turnPlayer = `Player${nextPlayerIndex + 1}`;
-                console.log(`Turn player updated to: ${turnPlayer}`);
-                setCurrentPlayer(turnPlayer);
-                updatePlayerDisplay(turnPlayer);
-                oneTurnStep = 0; // Reset to the first step for the next player's turn
-                break;
                 console.log("Unknown step encountered. Resetting to step 0.");
                 currentChoicesTurnStep = 0;
                 break;
         }
     
+        // Logic to change the turn player after all steps are completed
+        if (currentChoicesTurnStep == 0) {
+            const currentPlayerIndex = parseInt(currentPlayerId.slice(-1)) - 1;
+            const nextPlayerIndex = (currentPlayerIndex + 1) % 4;  // Assuming 4 players
+            turnPlayer = `Player${nextPlayerIndex + 1}`;
+            console.log(`Turn player updated to: ${turnPlayer}`);
+            setCurrentPlayer(turnPlayer);
+            updatePlayerDisplay(turnPlayer);
+        }
+    
         console.log(`Current step after action: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
     }
+
 
 
     document.getElementById('choice').addEventListener('click', function(event) {
