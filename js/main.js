@@ -1224,17 +1224,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // Check if the button exists to avoid errors
-    // Check if the button exists to avoid errors
-    if (fiveTurnsButton) {
-        // Add an event listener to the button for the "click" event
-        fiveTurnsButton.addEventListener('click', function() {
-            // Update the player display when the button is clicked
-            updatePlayerDisplay(currentPlayerId);
-        });
-    } else {
-        // Log an error if the button wasn't found
-        console.error('5 Turns button not found');
-    }
+
 
     function handleHandImageClick(event) {
         const clickedImage = event.target;
