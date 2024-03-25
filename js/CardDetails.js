@@ -619,30 +619,18 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function updateUIForSelectedCard(card) {
-        if (!card.uiState) {
-            card.uiState = { checkboxes: {}, manaCounter: {} };
-        }
         console.log('Updating UI for selected card:', card);
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
-        console.log('Current cards:', currentCards);
+        // Using large_image_url directly from the card object
+        const img = document.createElement('img');
+        img.src = card.large_image_url; // Assuming large_image_url is directly under the card object
+        img.alt = card.name;
     
-        // Find the card in the currentCards array to get the complete data
-        const selectedCard = currentCards.find(c => c.name === card.name);
-        console.log('Selected card data:', selectedCard);
-    
-        if (selectedCard && selectedCard.settings && selectedCard.settings.large_image_url) {
-            const img = document.createElement('img');
-            img.src = selectedCard.settings.large_image_url;
-            img.alt = selectedCard.name;
-            imageContainer.appendChild(img);
-        } else {
-            console.log('No matching card found or missing image URL');
-            imageContainer.textContent = 'Image not available';
-        }
+        imageContainer.appendChild(img);
     }
-    
+        
     document.getElementById('cardList').addEventListener('input', function(e) {
         const searchTerm = e.target.value.toLowerCase();
         const cards = document.querySelectorAll('#cardList li');
