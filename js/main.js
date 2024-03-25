@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var close = document.getElementById("closePopup");
     let currentPlayerId = 'Player1';  // Default to Player1
     const oneTurnButton = document.getElementById('oneTurn');
-    const fiveTurnsButton = document.getElementById('fiveTurns');
+    let autoTurnIntervalId = null;
     let oneTurnStep = 0; // Tracks the current step of the "1 Turn" action
     let selectedImageData = null; // New variable to store the selected image data
     let turnPlayer = null; // Initialize the turnPlayer variable
