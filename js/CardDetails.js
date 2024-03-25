@@ -623,10 +623,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const imageContainer = document.getElementById('selectedCardImageContainer');
         imageContainer.innerHTML = ''; // Clear existing image
     
-        // Using large_image_url directly from the card object
+        const imageUrl = card.large_image_url || 'path/to/default/image.jpg'; // Provide a default image path if large_image_url is undefined
         const img = document.createElement('img');
-        img.src = card.large_image_url; // Assuming large_image_url is directly under the card object
-        img.alt = card.name;
+        img.src = imageUrl;
+        img.alt = card.name || 'Default Card Name'; // Provide a default name if card name is undefined
     
         imageContainer.appendChild(img);
     }
