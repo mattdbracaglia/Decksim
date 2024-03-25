@@ -103,49 +103,50 @@ app.get('/get-deck-names', authenticateToken, async (req, res) => {
 
 // Route to process card names and filter data from Card-Details.json
 app.post('/import-cards', authenticateToken, async (req, res) => {
+    console.log('Received request on /import-cards with body:', req.body);
+
     const { cardNames, deckName } = req.body;
     if (!cardNames || cardNames.length === 0 || !deckName) {
+        console.error('Deck name and card names are required.');
         return res.status(400).json({ error: 'Deck name and card names are required.' });
     }
 
     const userId = req.user.id;
+    console.log('User ID in /import-cards:', userId);
+
     const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
+    console.log('Attempting to read Card-Details.json from path:', cardDetailsPath);
 
     try {
         const data = await fs.readFile(cardDetailsPath, 'utf8');
         const cardsData = JSON.parse(data);
 
-        const defaultUIState = {
-            checkboxes: {
-                returnLand: false,
-                entersTapped: false,
-                search: false,
-                and: false,
-                or: false
-            },
-            manaCounter: {
-                W: 0, U: 0, B: 0, R: 0, G: 0, C: 0
-            },
-            highlightedCards: [],
-            Commander: false
-        };
-
-        const filteredCards = cardNames.flatMap(cardRequest => {
+        const filteredCards = cardNames.map(cardRequest => {
             const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
-            if (card) {
-                return Array.from({ length: cardRequest.quantity }, (_, index) => ({
-                    ...card,
-                    id: `${card.name}-${index}`,
-                    uiState: { ...defaultUIState, ...(card.uiState || {}) }
-                }));
-            }
-            return [];
-        });
+            return card ? { ...card, quantity: cardRequest.quantity } : null;
+        }).filter(card => card);
+
+        console.log(`Filtered ${filteredCards.length} cards from the provided names.`);
 
         const transformedData = {
             userId: userId,
             deckName: deckName,
-            cards: filteredCards
+            cards: filteredCards.map(card => ({
+                name: card.name,
+                quantity: card.quantity,
+                settings: {
+                    mana_cost: card.mana_cost,
+                    type_line: card.type_line,
+                    power: card.power,
+                    toughness: card.toughness,
+                    cmc: card.cmc,
+                    oracle_text: card.oracle_text,
+                    colors: card.colors,
+                    color_identity: card.color_identity,
+                    keywords: card.keywords,
+                    normal_image_url: card.large_image_url
+                }
+            }))
         };
 
         const db = await connectToMongoDB();
@@ -157,10 +158,13 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
             { upsert: true }
         );
 
+        console.log('Cards imported and saved for user');
         res.json({ message: 'Cards imported successfully', deckName, cards: transformedData.cards });
     } catch (err) {
         console.error('Error processing import-cards request:', err);
-        res.status(500).json({ error: 'Internal Server Error' });
+        if (!res.headersSent) {
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
     }
 });
 
