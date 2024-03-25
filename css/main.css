@@ -257,12 +257,12 @@ button:hover {
 }
 
 #gameControls {
-    position: fixed; /* Or 'absolute', depending on your layout needs */
-    top: 20px; /* Adjust as needed for your layout */
-    left: 10px; /* Adjust as needed */
-    display: flex;
-    flex-direction: row; /* Stack buttons vertically */
-    gap: 10px; /* Space between buttons */
+  position: fixed;
+  top: 46px;
+  left: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 #gameControls button {
@@ -348,16 +348,16 @@ button:hover {
 
 
 #manaCounter {
-    display: flex;
-    justify-content: space-around; /* You can adjust this for different spacing effects */
-    gap: 20px; /* Adjust this value to increase or decrease the space between counters */
-    padding: 10px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    margin-top: 10px;    
-    position: fixed;
-    Top: 130px; /* Distance from the bottom of the viewport */
-    Left: 20px; /* Distance from the right side of the viewport */
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-top: 10px;
+  position: fixed;
+  Top: 307px;
+  Left: 151px;
 }
 
 #manaCounter span {
@@ -452,13 +452,13 @@ html, body {
 #commanderBtn {    position: absolute;    top: 315px;    left: 630px;}
 
 .mana-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-    top: 148px;
-    left: 13px;
-    z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 325px;
+  left: 143px;
+  z-index: 1000;
 }
 
 .mana-image {
@@ -607,16 +607,16 @@ right: 70px;
 }
 
 #BacktoGame {
-    position: fixed; /* Or 'absolute', depending on your layout needs */
-    top: 65px;
-    left: 10px;
-    display: flex;
-    background-color: #4CAF50; /* A green shade for action buttons */
-    color: white; /* Contrast for readability */
-    flex-direction: row; /* Stack buttons horizontally */
-    border: none; /* Clean, modern look */
-    border-radius: 5px; /* Softened edges */
-    gap: 10px; /* Space between buttons */
+  position: fixed;
+  top: 0px;
+  left: 10px;
+  display: flex;
+  background-color: #4CAF50;
+  color: white;
+  flex-direction: row;
+  border: none;
+  border-radius: 5px;
+  gap: 10px;
 }
 
 
