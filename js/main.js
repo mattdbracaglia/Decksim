@@ -1425,6 +1425,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             default:
+                console.log("Case 3: Updating turn player to the next player in the rotation.");
+                const currentPlayerIndex = parseInt(currentPlayerId.slice(-1)) - 1;
+                const nextPlayerIndex = (currentPlayerIndex + 1) % 4;
+                turnPlayer = `Player${nextPlayerIndex + 1}`;
+                console.log(`Turn player updated to: ${turnPlayer}`);
+                setCurrentPlayer(turnPlayer);
+                updatePlayerDisplay(turnPlayer);
+                oneTurnStep = 0; // Reset to the first step for the next player's turn
+                break;
                 console.log("Unknown step encountered. Resetting to step 0.");
                 currentChoicesTurnStep = 0;
                 break;
