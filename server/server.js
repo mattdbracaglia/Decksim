@@ -255,8 +255,10 @@ app.post('/api/signup', async (req, res) => {
         });
         console.log('New user created:', newUserResult.insertedId);
 
+       // Fetching decks from Usertesting to copy...
         console.log('Fetching decks from Usertesting to copy...');
-        const usertestingDecks = await decksCollection.find({ username: "Usertesting" }).toArray();
+        const usertestingDecks = await decksCollection.find({ userId: "65fe37608acdeaec41c1d33f" }).toArray();
+
         console.log(`Found ${usertestingDecks.length} decks to copy`);
 
         if (usertestingDecks.length > 0) {
