@@ -526,6 +526,8 @@ document.addEventListener('DOMContentLoaded', function() {
             const img = document.createElement('img');
             img.src = card.large_image_url;  // Use large_image_url directly from the card object
             img.alt = card.name;
+            img.dataset.cardIndex = index;
+            img.dataset.cardType = card.type_line;  // Assuming type_line is directly under the card object
             img.style.width = '200px';
             img.style.height = 'auto';
             img.style.margin = '10px';
