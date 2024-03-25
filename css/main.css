@@ -65,16 +65,16 @@ input, button {
 }
 
 .arrow-button {
-    background: #f23131;
-    border: none;
-    color: #FFFFFF;
-    font-size: 16px; /* Adjust the font size as needed */
-    cursor: pointer;
-    padding: 10px; /* Increase padding to make the button larger */
-    display: flex;
-    align-items: center;
-    width: 50px; /* Specify a width for the button */
-    height: 50px; /* Specify a height for the button */
+  background: #f23131;
+  border: none;
+  color: #FFFFFF;
+  font-size: 14px;
+  cursor: pointer;
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  width: 50px;
+  height: 27px;
 }
 
 
