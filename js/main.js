@@ -25,6 +25,12 @@ document.addEventListener('DOMContentLoaded', function() {
     // Parse the JSON string to get the card data object
     var editDecksButton = document.getElementById('editDecksButton');
     let HoldCards = [];
+    let choiceCards = [];
+    let choicesTurn = false;
+    let currentChoicesTurnStep = 0;  // Global variable to track the current step in the choices turn process
+    let choiceMade = false; // Flag to indicate if a choice has been made
+    let nonlandchoiceMade = false; // Flag to indicate if a choice has been made
+    let cardPlayed = false;  // Variable to track if a card has been played
     let lastHoveredCardData = null;
 
 
@@ -459,7 +465,7 @@ document.addEventListener('DOMContentLoaded', function() {
         movedCardNames = []; // Clear movedCardNames after processing
         
         const playerData = playersData[playerKey];
-        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'info'];
+        const sectionsToUpdate = ['library', 'hand', 'land', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'info', 'choice'];
     
         sectionsToUpdate.forEach(sectionId => {
             const sectionElement = document.getElementById(sectionId);
@@ -662,6 +668,28 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         return null; // Return null if the image is not found in the player data
     }
+
+    // Access the autoPlaySwitch element
+    const autoPlaySwitch = document.getElementById('autoPlaySwitch');
+
+    // Optionally set the initial checked state
+    autoPlaySwitch.checked = false; // or true, depending on your needs
+
+    // Add an event listener for when the switch's state changes
+    autoPlaySwitch.addEventListener('change', function() {
+        const isAutoPlayOn = this.checked;
+        console.log('Auto Play Switch is ' + (isAutoPlayOn ? 'on' : 'off'));
+
+        if (isAutoPlayOn) {
+            // Code to execute when the autoPlay switch is on
+            console.log('Auto play actions will be executed');
+            // Add the code or function calls you need to execute when the auto-play is enabled
+        } else {
+            // Code to execute when the autoPlay switch is off
+            console.log('Auto play actions will be stopped');
+            // Add the code or function calls you need to execute when the auto-play is disabled
+        }
+    });
 
 
     const startGameButton = document.getElementById('startGame');
@@ -1307,6 +1335,133 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
 
+    function toggleAutoTurns() {
+        const autoButton = document.getElementById('autoTurns');
+    
+        if (autoTurnIntervalId === null) {
+            autoTurnIntervalId = setInterval(simulate1Turn, 1000);
+            autoButton.textContent = 'Stop Auto';
+        } else {
+            clearInterval(autoTurnIntervalId);
+            autoTurnIntervalId = null;
+            autoButton.textContent = 'Auto';
+        }
+    }
+    
+    // Add event listener to the auto button
+    const autoButton = document.getElementById('autoTurns');
+    autoButton.addEventListener('click', toggleAutoTurns);
+
+    let autoChoicesIntervalId = null;
+
+    function toggleAutoChoices() {
+        const autoChoicesButton = document.getElementById('choiceTurns');
+    
+        if (autoChoicesIntervalId === null) {
+            autoChoicesIntervalId = setInterval(simulateChoicesTurn, 1000);
+            autoChoicesButton.textContent = 'Stop Auto Choices';
+            choicesTurn = true;  // Ensure choicesTurn is set to true when auto choices are running
+        } else {
+            clearInterval(autoChoicesIntervalId);
+            autoChoicesIntervalId = null;
+            autoChoicesButton.textContent = 'Auto Choices';
+            choicesTurn = false;  // Set choicesTurn to false when auto choices are stopped
+        }
+    }
+
+    // Add event listener to the auto choices button
+    const autoChoicesButton = document.getElementById('choiceTurns');
+    autoChoicesButton.addEventListener('click', toggleAutoChoices);
+
+    function simulateChoicesTurn() {
+        console.log('Starting simulateChoicesTurn...');
+        console.log(`Current step before action: ${currentChoicesTurnStep}`);
+    
+        switch (currentChoicesTurnStep) {
+            case 0:
+                console.log("Case 0: Drawing a card from the library to the hand.");
+                drawCardFromLibraryToHand(currentPlayerId);
+                if (!choiceMade) {
+                    currentChoicesTurnStep++;
+                    console.log("Moving to next step after drawing a card.");
+                } else {
+                    console.log("Choice required, pausing step increment.");
+                }
+                break;
+            case 1:
+                console.log("Case 1: Moving the first land from hand to land.");
+                
+                // Check the status of the auto-play switch to determine which function to run
+                if (document.getElementById('autoPlaySwitch').checked) {
+                    console.log("Auto Play Switch is on, running auto land move.");
+                    moveFirstLandFromHandToLandAuto(currentPlayerId);
+                } else {
+                    console.log("Auto Play Switch is off, running manual land move.");
+                    moveFirstLandFromHandToLandChoice(currentPlayerId);
+                }
+    
+                if (!choiceMade) {
+                    currentChoicesTurnStep++;
+                    console.log("Moving to next step after moving land.");
+                } else {
+                    console.log("Choice required, pausing step increment.");
+                }
+                break;
+            case 2:
+                console.log("Case 2: Playing a card from hand to the battlefield.");
+                cardPlayed = false;
+
+                playCardFromHandToBattlefieldAuto(currentPlayerId);
+                // Check if the action is completed, then move to the next step or reset
+                if (choiceMade) {
+                    console.log("Choice made, waiting for action to complete.");
+                } else {
+                    currentChoicesTurnStep = 0;  // Or advance to the next step as needed
+                    console.log("Resetting to step 0 after playing a card.");
+                }
+                break;
+            default:
+                console.log("Unknown step encountered. Resetting to step 0.");
+                currentChoicesTurnStep = 0;
+                break;
+        }
+    
+        console.log(`Current step after action: ${currentChoicesTurnStep}`);
+        choiceMade = false; // Reset the choiceMade flag after processing the step
+    }
+
+
+    document.getElementById('choice').addEventListener('click', function(event) {
+        const clickedElement = event.target;
+        console.log('Clicked element in choice section:', clickedElement);
+    
+        if (clickedElement.tagName === 'IMG' && clickedElement.dataset.card) {
+            const cardData = JSON.parse(clickedElement.dataset.card);
+            console.log('Clicked card data:', cardData);
+    
+            if (cardData && cardData.name) {
+                console.log(`Card name from clicked choice card: ${cardData.name}`);
+                choiceCards.push(cardData.name); // Add the card name to the choiceCards array
+    
+                // Clear the choiceImages and update the display
+                playersData[currentPlayerId].choiceImages.images = [];
+                console.log('Cleared choice images and updating display');
+                updatePlayerDisplay(currentPlayerId);
+    
+                // Resume the auto choices process
+                console.log('Checking autoChoicesIntervalId:', autoChoicesIntervalId);
+                if (!autoChoicesIntervalId) {
+                    console.log('Toggling auto choices due to card selection');
+                    toggleAutoChoices();
+                }
+            } else {
+                console.error('Card name not found in clicked choice card');
+            }
+        } else {
+            console.log('Clicked element is not an image or does not have card data');
+        }
+    });
+
     function drawCardFromLibraryToHand(playerId) {
         const libraryImages = playersData[playerId].libraryImages.images;
         const handImages = playersData[playerId].handImages.images;
@@ -1325,6 +1480,168 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function moveFirstLandFromHandToLand(playerId) {
+        const handImages = playersData[playerId].handImages.images;
+        const libraryImages = playersData[playerId].libraryImages.images;
+        const landCards = handImages.filter(card => isLandCard(card.cardData));
+    
+        if (landCards.length === 0) {
+            console.log('No land cards found in hand');
+            return;
+        }
+    
+        // Check for land cards with uiState.checkboxes.search set to true
+        const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
+    
+        if (searchableLandCards.length > 0) {
+            const searchableLandCard = searchableLandCards[0];
+            const highlightedCardNames = searchableLandCard.cardData.uiState.highlightedCards;
+    
+            // Search the library for a card that matches one of the highlighted card names
+            const matchingLibraryCard = libraryImages.find(card => highlightedCardNames.includes(card.cardData.name));
+    
+            if (matchingLibraryCard) {
+                // Move the matching library card to the landImages
+                const libraryIndex = libraryImages.indexOf(matchingLibraryCard);
+                const [landCard] = libraryImages.splice(libraryIndex, 1);
+                playersData[playerId].landImages.images.push(landCard);
+    
+                // Move the searchable land card from the hand to the graveyardImages
+                const handIndex = handImages.indexOf(searchableLandCard);
+                const [discardedLandCard] = handImages.splice(handIndex, 1);
+                playersData[playerId].graveyardImages.images.push(discardedLandCard);
+    
+                updatePlayerDisplay(playerId);
+                updateManaCounter();
+                calculateBattlefieldMana();
+                return;
+            }
+        }
+    
+        // If no searchable or matching library cards, proceed with the original logic
+        const nonLandCards = handImages.filter(card => !isLandCard(card.cardData));
+        const unplayableCards = nonLandCards.filter(card => !canPlayCard(card.cardData.mana_cost, playersData[playerId].manaCounter, card.cardData.cmc, card.cardData.name));
+    
+        if (unplayableCards.length === 0) {
+            // If all non-land cards are playable, just play the first land card
+            const [landCard] = landCards.splice(0, 1);
+            playersData[playerId].landImages.images.push(landCard);
+        } else {
+            // Find the unplayable card with the lowest CMC
+            const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
+    
+            // Find a land card that produces the required mana for the lowest CMC card
+            const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, playersData[playerId].manaCounter);
+            const prioritizedLandCard = landCards.find(card => canProduceMana(card.cardData, requiredMana));
+    
+            if (prioritizedLandCard) {
+                // If a prioritized land card is found, play it
+                const index = handImages.indexOf(prioritizedLandCard);
+                const [landCard] = handImages.splice(index, 1);
+                playersData[playerId].landImages.images.push(landCard);
+            } else {
+                // If no prioritized land card is found, just play the first land card
+                const [landCard] = landCards.splice(0, 1);
+                playersData[playerId].landImages.images.push(landCard);
+            }
+        }
+    
+        updatePlayerDisplay(playerId);
+        updateManaCounter();
+        calculateBattlefieldMana();
+    }
+
+    function moveFirstLandFromHandToLandChoice(playerId) {
+        const handImages = playersData[playerId].handImages.images;
+    
+        console.log("Starting moveFirstLandFromHandToLandChoice");
+    
+        // Check for a chosen land card
+        const choiceLand = handImages.find(card => choiceCards.includes(card.cardData.name) && isLandCard(card.cardData));
+        if (choiceLand) {
+            console.log(`Playing chosen land card: ${choiceLand.cardData.name}`);
+            playersData[playerId].landImages.images.push(choiceLand);
+            handImages.splice(handImages.indexOf(choiceLand), 1);
+            choiceCards = [];
+            updatePlayerDisplay(playerId);
+            updateManaCounter();
+            calculateBattlefieldMana();
+            choiceMade = false;
+            return;
+        }
+    
+        const landCards = handImages.filter(card => isLandCard(card.cardData) && !playersData[playerId].markedCards[card.cardData.name]);
+        console.log(`Found ${landCards.length} land cards in hand`);
+    
+        if (landCards.length === 0) {
+            console.log('No land cards found in hand');
+            return;
+        }
+    
+        if (choicesTurn && landCards.length > 1) {
+            console.log('Multiple lands available for choice, presenting choices');
+            playersData[playerId].choiceImages.images = [...landCards];
+            updatePlayerDisplay(playerId);
+            toggleAutoChoices();
+            choiceMade = true;
+            return;
+        }
+    
+        const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
+        console.log(`Found ${searchableLandCards.length} searchable land cards`);
+    
+        if (searchableLandCards.length > 0) {
+            const searchableLandCard = searchableLandCards[0];
+            const highlightedCardNames = searchableLandCard.cardData.uiState.highlightedCards;
+            const matchingLibraryCard = playersData[playerId].libraryImages.images.find(card => highlightedCardNames.includes(card.cardData.name));
+    
+            if (matchingLibraryCard) {
+                console.log(`Found matching library card: ${matchingLibraryCard.cardData.name}`);
+                const libraryIndex = playersData[playerId].libraryImages.images.indexOf(matchingLibraryCard);
+                const [landCard] = playersData[playerId].libraryImages.images.splice(libraryIndex, 1);
+                playersData[playerId].landImages.images.push(landCard);
+    
+                const handIndex = handImages.indexOf(searchableLandCard);
+                const [discardedLandCard] = handImages.splice(handIndex, 1);
+                playersData[playerId].graveyardImages.images.push(discardedLandCard);
+    
+                updatePlayerDisplay(playerId);
+                updateManaCounter();
+                calculateBattlefieldMana();
+                return;
+            }
+        }
+    
+        const unplayableCards = handImages.filter(card => !isLandCard(card.cardData) && !canPlayCard(card.cardData.mana_cost, playersData[playerId].manaCounter, card.cardData.cmc, card.cardData.name));
+        console.log(`Found ${unplayableCards.length} unplayable cards`);
+    
+        if (unplayableCards.length === 0) {
+            console.log('All non-land cards are playable, playing first land card');
+            const [landCard] = landCards.splice(0, 1);
+            playersData[playerId].landImages.images.push(landCard);
+        } else {
+            console.log('Finding land card that matches the mana requirements for unplayable cards');
+            const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
+            const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, playersData[playerId].manaCounter);
+            const prioritizedLandCard = landCards.find(card => canProduceMana(card.cardData, requiredMana));
+    
+            if (prioritizedLandCard) {
+                console.log(`Playing prioritized land card: ${prioritizedLandCard.cardData.name}`);
+                const index = handImages.indexOf(prioritizedLandCard);
+                const [landCard] = handImages.splice(index, 1);
+                playersData[playerId].landImages.images.push(landCard);
+            } else {
+                console.log('No prioritized land card found, playing first land card');
+                const [landCard] = landCards.splice(0, 1);
+                playersData[playerId].landImages.images.push(landCard);
+            }
+        }
+    
+        updatePlayerDisplay(playerId);
+        updateManaCounter();
+        calculateBattlefieldMana();
+    }
+
+    function moveFirstLandFromHandToLandAuto(playerId) {
         const handImages = playersData[playerId].handImages.images;
         const libraryImages = playersData[playerId].libraryImages.images;
         const landCards = handImages.filter(card => isLandCard(card.cardData));
@@ -1507,6 +1824,86 @@ document.addEventListener('DOMContentLoaded', function() {
                 break; // Exit after playing the first playable card
             }
         }
+    }
+
+    function playCardFromHandToBattlefieldAuto(playerId) {
+        const handCards = playersData[playerId].handImages.images;
+        const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
+    
+        console.log("Starting playCardFromHandToBattlefield");
+    
+        updateManaCounter();
+        const manaCounter = playersData[playerId].manaCounter;
+        console.log("Updated mana counter:", manaCounter);
+
+        const combinedCards = handCards.concat(commanderCards);
+    
+    
+        // Process choiceCards first if any card has been selected
+        if (choiceCards.length) {
+            console.log("Checking choiceCards:", choiceCards);
+            const cardToPlay = combinedCards.find(card => choiceCards.includes(card.cardData.name));
+            if (cardToPlay) {
+                console.log(`Playing chosen card ${cardToPlay.cardData.name} onto battlefield.`);
+                // Determine where the card is from and remove it from the correct array
+                if (handCards.includes(cardToPlay)) {
+                    handCards.splice(handCards.indexOf(cardToPlay), 1);
+                } else if (commanderCards.includes(cardToPlay)) {
+                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
+                }
+                playersData[playerId].battlefieldImages.images.push(cardToPlay);
+                updatePlayerDisplay(playerId);
+                choiceCards = [];
+                choiceMade = false;
+                cardPlayed = true;
+            }
+        }
+    
+        if (!cardPlayed) {
+            const playableCards = combinedCards.filter(card => 
+                canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) && 
+                !card.cardData.settings.type_line.includes("Land") &&
+                !playersData[playerId].markedCards[card.cardData.name]);
+    
+            console.log(`Found ${playableCards.length} playable cards`);
+    
+            if (choicesTurn && playableCards.length > 1) {
+                console.log('Multiple playable cards available, presenting choices');
+                playersData[playerId].choiceImages.images = [...playableCards];
+                updatePlayerDisplay(playerId);
+                toggleAutoChoices();
+                choiceMade = true;
+                cardPlayed = true;
+                return;
+            } else if (playableCards.length === 1) {
+                console.log("One playable card found, playing it");
+                const cardToPlay = playableCards[0];
+                // Determine where the card is from and remove it from the correct array
+                if (handCards.includes(cardToPlay)) {
+                    handCards.splice(handCards.indexOf(cardToPlay), 1);
+                } else if (commanderCards.includes(cardToPlay)) {
+                    commanderCards.splice(commanderCards.indexOf(cardToPlay), 1);
+                }
+                playersData[playerId].battlefieldImages.images.push(cardToPlay);
+                console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
+                updatePlayerDisplay(playerId);
+                choiceMade = true;
+                cardPlayed = true;
+            } else {
+                console.log('No playable cards found.');
+            }
+        }
+    
+
+        if (cardPlayed) {
+            choiceMade = false;  // Reset choiceMade only after successfully playing a card
+            console.log(`Card played: ${cardPlayed}`);
+        } else {
+            console.log(`No card was played.`);
+        }
+    
+        console.log(`Card played: ${cardPlayed}`);
+        choiceMade = false; // Update choiceMade based on cardPlayed status
     }
 
     function canPlayCard(cardManaCost, manaCounter, cardCmc, cardName) {
