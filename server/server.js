@@ -136,6 +136,21 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
             highlightedCards: [],
             Commander: false
         };
+
+        // Define a default settings object
+        const defaultSettings = {
+            mana_cost: '',
+            cmc: 0,
+            type_line: '',
+            oracle_text: '',
+            power: null,
+            toughness: null,
+            colors: [],
+            color_identity: [],
+            keywords: [],
+            // Add more properties as needed
+        };
+
         console.log('Default UI State:', defaultUIState);
 
         const filteredCards = cardNames.flatMap(cardRequest => {
@@ -146,7 +161,8 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
                 return Array.from({ length: cardRequest.quantity }, (_, index) => ({
                     ...card,
                     id: `${card.name}-${index}`,
-                    uiState: { ...defaultUIState, ...(card.uiState || {}) }
+                    uiState: { ...defaultUIState, ...(card.uiState || {}) },
+                    settings: { ...defaultSettings, ...(card.settings || {}) } // Merge default settings with card settings
                 }));
             }
             console.log(`Card not found: ${cardRequest.name}`);
