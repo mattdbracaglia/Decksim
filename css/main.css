@@ -671,3 +671,16 @@ right: 70px;
   gap: 120px;
   z-index: 2049;
 }
+
+#leftArrow, #rightArrow {
+    padding: 10px; /* Increase padding to make the button larger */
+    font-size: 16px; /* Adjust the font size as needed */
+    cursor: pointer;
+    background: #f23131;
+    color: #FFFFFF;
+    border: none;
+}
+
+#leftArrow:hover, #rightArrow:hover {
+    color: #CCCCCC;
+}
