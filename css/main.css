@@ -583,6 +583,37 @@ left: 70px;
 right: 70px;
 }
 
+#autoPlaySwitchContainer {
+  position: relative;
+  top: -410px;
+  left: 501px;
+  width: 468px;
+}
+
+#autoPlaySwitch + .slider {
+    background-color: #2196F3; /* Default background color */
+}
+
+#autoPlaySwitch:checked + .slider {
+    background-color: #2196F3; /* Color when checked */
+}
+
+#autoPlaySwitch:focus + .slider {
+    box-shadow: 0 0 1px #2196F3; /* Focus state */
+}
+
+#autoPlaySwitch:checked + .slider:before {
+    transform: translateX(26px); /* Slider button position when checked */
+}
+
+#autoLabelLeft {
+    left: 70px; /* Position of the left label */
+}
+
+#autoLabelRight {
+    right: 70px; /* Position of the right label */
+}
+
 .marked {
     border: 2px solid red;
 }
