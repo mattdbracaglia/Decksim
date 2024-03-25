@@ -1110,7 +1110,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Delete button clicked');
         
         // Select all checkboxes within the element with id 'deckList'
-        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="decks"]');
         console.log('Found checkboxes:', checkboxes);
     
         // Add a click event listener to each checkbox
