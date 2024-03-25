@@ -154,20 +154,21 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
         console.log('Default UI State:', defaultUIState);
 
         const filteredCards = cardNames.flatMap(cardRequest => {
-            console.log(`Processing card request: ${cardRequest.name}`);
-            const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
-            if (card) {
-                console.log(`Card found: ${card.name}`);
-                return Array.from({ length: cardRequest.quantity }, (_, index) => ({
-                    ...card,
-                    id: `${card.name}-${index}`,
-                    uiState: { ...defaultUIState, ...(card.uiState || {}) },
-                    settings: { ...defaultSettings, ...(card.settings || {}) } // Merge default settings with card settings
-                }));
-            }
-            console.log(`Card not found: ${cardRequest.name}`);
-            return [];
-        });
+        console.log(`Processing card request: ${cardRequest.name}`);
+        const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
+        if (card) {
+            console.log(`Card found: ${card.name}`);
+            return Array.from({ length: cardRequest.quantity }, (_, index) => ({
+                ...card,
+                id: `${card.name}-${index}`,
+                uiState: { ...defaultUIState, ...(card.uiState || {}) },
+                settings: { ...defaultSettings, ...(card.settings || {}) },
+                large_image_url: card.large_image_url // Make sure this property is correctly set in your card details
+            }));
+        }
+        console.log(`Card not found: ${cardRequest.name}`);
+        return [];
+    });
 
         const transformedData = {
             userId: userId,
