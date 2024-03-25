@@ -163,7 +163,7 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
                 id: `${card.name}-${index}`,
                 uiState: { ...defaultUIState, ...(card.uiState || {}) },
                 settings: { ...defaultSettings, ...(card.settings || {}) },
-                large_image_url: card.large_image_url // Make sure this property is correctly set in your card details
+                normal_image_url: card.large_image_url // Make sure this property is correctly set in your card details
             }));
         }
         console.log(`Card not found: ${cardRequest.name}`);
