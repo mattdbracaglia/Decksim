@@ -1407,7 +1407,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     setTimeout(() => {
                         currentChoicesTurnStep = 0;  // Reset to step 0 for the next player
                         console.log("Resetting to step 0 after playing a card.");
-                        updateTurnPlayer();
+                        goToNextPlayer();
                     }, 2000);  // 2000 milliseconds delay (2 seconds)
                     return; // Return here to prevent immediate execution of the next lines
                 }
@@ -1421,8 +1421,8 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log(`Current step after action: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
     }
-
-    function updateTurnPlayer() {
+    
+    function goToNextPlayer() {
         const currentPlayerIndex = parseInt(currentPlayerId.slice(-1)) - 1;
         const nextPlayerIndex = (currentPlayerIndex + 1) % 4;  // Assuming 4 players
         turnPlayer = `Player${nextPlayerIndex + 1}`;
