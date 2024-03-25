@@ -414,16 +414,21 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function handleLoadDeckClick() {
+        console.log('Load deck button clicked');
         clearCurrentDeckState();
+        console.log('Cleared current deck state');
+    
         const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
         if (!selectedCheckbox) {
+            console.log('No deck selected');
             alert('Please select a deck to load.');
             return;
         }
     
         currentDeckName = selectedCheckbox.value;
-        const token = localStorage.getItem('token');
+        console.log(`Deck selected: ${currentDeckName}`);
     
+        const token = localStorage.getItem('token');
         if (!token) {
             console.error('No token found, user must be logged in to load decks');
             return;
@@ -437,6 +442,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         })
         .then(response => {
+            console.log('Received response from server');
             if (!response.ok) {
                 throw new Error(`HTTP error! Status: ${response.status}`);
             }
@@ -444,21 +450,30 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(deckData => {
             console.log(`Received deck data for ${currentDeckName}:`, deckData);
-            // Assuming deckData.cards contains the array of cards
+            
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards || []);
+            console.log(`Updated current cards with UI state:`, currentCards);
     
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0;
+                console.log(`Displaying first card in main image container:`, currentCards[0]);
+    
                 displayInMainImageContainer(currentCards[0].settings.normal_image_url, currentCards[0]);
                 updateUIForCard(currentCards[0]);
                 populateCardList(currentCards);
                 populateDeckSection(currentCards);
+            } else {
+                console.log('No cards found in the loaded deck');
             }
     
             document.getElementById("deckPopup").style.display = "none";
+            console.log('Deck popup hidden');
         })
-        .catch(error => console.error('Error loading deck:', error));
+        .catch(error => {
+            console.error('Error loading deck:', error);
+        });
     }
+
 
 
     function updateLoadedDeckDataWithUIState(cards) {
