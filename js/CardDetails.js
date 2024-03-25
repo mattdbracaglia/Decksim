@@ -1108,12 +1108,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('deleteDeckButton').addEventListener('click', function() {
         console.log('Delete button clicked');
-        
-        // Select all checkboxes within the element with id 'deckList'
-        const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
+    
+        // Select all checkboxes with name "decks"
+        const checkboxes = document.querySelectorAll('input[type="checkbox"][name="decks"]');
         console.log('Found checkboxes:', checkboxes);
     
-        // Add a click event listener to each checkbox
         checkboxes.forEach(checkbox => {
             console.log('Adding click listener to checkbox:', checkbox);
     
@@ -1160,16 +1159,8 @@ document.addEventListener('DOMContentLoaded', function() {
         this.classList.toggle('delete-mode');
         console.log('Toggled delete mode on the delete button');
     
-        // Toggle delete mode class on each checkbox to indicate they are in delete mode
         checkboxes.forEach(checkbox => {
             checkbox.classList.toggle('delete-mode');
             console.log('Toggled delete mode on checkbox:', checkbox);
         });
-    });
-    
-    // Ensure limitCheckboxSelections is called after checkboxes are rendered
-    fetchAndDisplayDeckNames().then(() => {
-        limitCheckboxSelections();
-    });
-
 });
