@@ -1107,14 +1107,29 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('deleteDeckButton').addEventListener('click', function() {
+        console.log('Delete button clicked');
+        
+        // Select all checkboxes within the element with id 'deckList'
         const checkboxes = document.querySelectorAll('#deckList input[type="checkbox"]');
+        console.log('Found checkboxes:', checkboxes);
+    
+        // Add a click event listener to each checkbox
         checkboxes.forEach(checkbox => {
+            console.log('Adding click listener to checkbox:', checkbox);
+    
             checkbox.addEventListener('click', function() {
+                console.log('Checkbox clicked:', this);
+    
                 const deckName = this.value;
+                console.log('Deck name from checkbox value:', deckName);
+    
                 const token = localStorage.getItem('token');
+                console.log('Token retrieved from localStorage:', token);
     
                 // Proceed with deletion only if in delete mode
                 if (this.classList.contains('delete-mode')) {
+                    console.log('Delete mode is active, attempting to delete:', deckName);
+    
                     fetch(`/delete-deck?name=${encodeURIComponent(deckName)}`, {
                         method: 'DELETE',
                         headers: {
@@ -1122,6 +1137,8 @@ document.addEventListener('DOMContentLoaded', function() {
                         }
                     })
                     .then(response => {
+                        console.log('Received response from server:', response);
+    
                         if (!response.ok) {
                             throw new Error('Failed to delete deck');
                         }
@@ -1130,15 +1147,24 @@ document.addEventListener('DOMContentLoaded', function() {
                     .then(data => {
                         console.log('Deck deleted:', data);
                         this.parentElement.remove(); // Remove the deleted deck from the list
+                        console.log('Removed deck element from page');
                     })
                     .catch(error => console.error('Error deleting deck:', error));
+                } else {
+                    console.log('Delete mode is not active, no action taken');
                 }
             });
         });
     
         // Toggle delete mode
         this.classList.toggle('delete-mode');
-        checkboxes.forEach(checkbox => checkbox.classList.toggle('delete-mode'));
+        console.log('Toggled delete mode on the delete button');
+    
+        // Toggle delete mode class on each checkbox to indicate they are in delete mode
+        checkboxes.forEach(checkbox => {
+            checkbox.classList.toggle('delete-mode');
+            console.log('Toggled delete mode on checkbox:', checkbox);
+        });
     });
     
     // Ensure limitCheckboxSelections is called after checkboxes are rendered
