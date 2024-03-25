@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const playersData = {
         Player1: {
+            choiceImages: {images: [], scrollOffset: 0},
             libraryImages: {images: [], scrollOffset: 0},
             handImages: {images: [], scrollOffset: 0},
             battlefieldImages: {images: [], scrollOffset: 0},
@@ -55,6 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
             markedCards: {},
         },
         Player2: {
+            choiceImages: {images: [], scrollOffset: 0},
             libraryImages: {images: [], scrollOffset: 0},
             handImages: {images: [], scrollOffset: 0},
             battlefieldImages: {images: [], scrollOffset: 0},
@@ -74,6 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
             markedCards: {},
         },
         Player3: {
+            choiceImages: {images: [], scrollOffset: 0},
             libraryImages: {images: [], scrollOffset: 0},
             handImages: {images: [], scrollOffset: 0},
             battlefieldImages: {images: [], scrollOffset: 0},
@@ -93,6 +96,7 @@ document.addEventListener('DOMContentLoaded', function() {
             markedCards: {},
         },
         Player4: {
+            choiceImages: {images: [], scrollOffset: 0},
             libraryImages: {images: [], scrollOffset: 0},
             handImages: {images: [], scrollOffset: 0},
             battlefieldImages: {images: [], scrollOffset: 0},
