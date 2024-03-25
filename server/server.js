@@ -364,17 +364,30 @@ app.delete('/delete-deck', authenticateToken, async (req, res) => {
     const { name } = req.query;
     const userId = req.user.id;
 
+    console.log(`Received delete request for deck '${name}' from user ${userId}`);
+
     if (!name) {
+        console.error('No deck name provided in the request');
         return res.status(400).json({ error: 'Deck name is required.' });
     }
 
     try {
+        console.log('Connecting to MongoDB');
         const db = await connectToMongoDB();
-        const decksCollection = db.collection("decks");
-        await decksCollection.deleteOne({ userId: userId, deckName: name });
 
-        console.log(`Deck ${name} deleted for user ${userId}`);
-        res.json({ message: `Deck ${name} deleted successfully` });
+        console.log('Connected to MongoDB, accessing decks collection');
+        const decksCollection = db.collection("decks");
+
+        console.log(`Attempting to delete deck '${name}' for user ${userId}`);
+        const deleteResult = await decksCollection.deleteOne({ userId: userId, deckName: name });
+
+        if (deleteResult.deletedCount === 0) {
+            console.log(`No deck found to delete for name '${name}' and user ${userId}`);
+            return res.status(404).json({ error: 'Deck not found' });
+        }
+
+        console.log(`Deck '${name}' deleted for user ${userId}`);
+        res.json({ message: `Deck '${name}' deleted successfully` });
     } catch (err) {
         console.error('Error deleting deck:', err);
         res.status(500).json({ error: 'Error deleting the deck' });
