@@ -299,12 +299,12 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         const card = currentCards[index];
-        if (!card || !card.settings || !card.settings.normal_image_url) {
+        if (!card || !card.settings || !card.settings.large_image_url) {
             console.error('Card or image URL not found for index', index);
             return;
         }
     
-        const imageUrl = card.settings.normal_image_url;
+        const imageUrl = card.settings.large_image_url;
         const cardImageContainer = document.getElementById('cardImageContainer');
         let img = cardImageContainer.querySelector('img');
         if (!img) {
@@ -467,7 +467,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0;
-                displayInMainImageContainer(currentCards[0].settings.normal_image_url, currentCards[0]);
+                displayInMainImageContainer(currentCards[0].settings.large_image_url, currentCards[0]);
                 updateUIForCard(currentCards[0]);
                 populateCardList(currentCards);
                 populateDeckSection(currentCards);
@@ -552,7 +552,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentCard.uiState = { checkboxes: {}, manaCounter: {} };
                 }
                 console.log('Current card set to:', currentCard);
-                displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+                displayInMainImageContainer(currentCard.settings.large_image_url, currentCard);
                 updateUIForCard(currentCard);
                 clearHighlightedCardsUI();
                 populateCardList(cards);
@@ -563,7 +563,7 @@ document.addEventListener('DOMContentLoaded', function() {
         // Automatically select the first card to display its details
                 if (cards.length > 0) {
                     currentCard = cards[0];
-                    displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+                    displayInMainImageContainer(currentCard.settings.large_image_url, currentCard);
                     updateUIForCard(currentCard);
             }
     }
@@ -626,9 +626,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const selectedCard = currentCards.find(c => c.name === card.name);
         console.log('Selected card data:', selectedCard);
     
-        if (selectedCard && selectedCard.settings && selectedCard.settings.normal_image_url) {
+        if (selectedCard && selectedCard.settings && selectedCard.settings.large_image_url) {
             const img = document.createElement('img');
-            img.src = selectedCard.settings.normal_image_url;
+            img.src = selectedCard.settings.large_image_url;
             img.alt = selectedCard.name;
             imageContainer.appendChild(img);
         } else {
