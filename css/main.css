@@ -223,18 +223,18 @@ button:hover {
 
 /* Example of re-positioning */
 #playerSection1 {
-  top: -32px;
+  top: -141px;
   right: 535px;
 }
 #playerSection2 {
-  top: -32px;
+  top: -141px;
   right: 380px;
 }
 #playerSection3 {
-  top: -32px;
+  top: -141px;
   right: 225px;
 }
-#playerSection4 { top: -32px; right: 75px; }
+#playerSection4 { top: -141px; right: 75px; }
 
 
 
@@ -691,8 +691,8 @@ right: 70px;
   margin: 5px;
   background-color: #f0f0f0;
   border-radius: 5px;
-  width: 567px;
-  height: 140px;
+  width: 601px;
+  height: 100px;
   box-sizing: border-box;
   display: flex;
   overflow-x: auto;
@@ -702,6 +702,6 @@ right: 70px;
 }
 
 #choice {
-  bottom: 1684px;
-  left: 958px;
+  top: 559px;
+  left: 858px;
 }
