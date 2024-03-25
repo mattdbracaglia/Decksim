@@ -93,7 +93,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
    document.getElementById('loadCards').addEventListener('click', function() {
         console.log('Load Cards button clicked.');
+    
         const token = localStorage.getItem('token');
+        console.log('Token retrieved:', token);
         if (!token) {
             console.error('No token found, redirecting to login page');
             window.location.href = '/index.html';
@@ -101,20 +103,27 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         const lines = document.getElementById('cardTextInput').value.split('\n');
+        console.log('Card input lines:', lines);
+    
         const cardNamesWithQuantity = lines.map(line => {
             const match = line.trim().match(/^(\d+)x?\s+(.*)$/);
+            console.log('Processing line:', line);
             if (match) {
+                console.log('Match found:', match);
                 return { name: match[2], quantity: parseInt(match[1], 10) };
             }
             return null;
         }).filter(card => card); // Ensure each entry has a name and quantity
+        console.log('Card names with quantities:', cardNamesWithQuantity);
     
         const deckName = document.getElementById('deckNameInput').value.trim();
+        console.log('Deck name:', deckName);
         if (!deckName) {
             console.error('Deck name is required.');
             return;
         }
     
+        console.log('Sending import cards request');
         fetch('/import-cards', {
             method: 'POST',
             headers: {
@@ -127,22 +136,27 @@ document.addEventListener('DOMContentLoaded', function() {
             })
         })
         .then(response => {
+            console.log('Response received from import cards request');
             if (!response.ok) {
+                console.error('Network response was not ok on import cards');
                 throw new Error('Network response was not ok on import cards');
             }
             return response.json();
         })
         .then(data => {
             console.log('Card details fetched successfully:', data);
-        
+    
             // Update currentCards with the new data
             currentCards = data.cards;
-            console.log(currentCards);
+            console.log('Current cards updated:', currentCards);
+    
             document.getElementById('cardInputContainer').style.display = 'none';
-        
+            console.log('Card input container hidden');
+    
             var cardImageContainer = document.getElementById('cardImageContainer');
             cardImageContainer.style.display = 'block';
-        
+            console.log('Card image container displayed');
+    
             if (currentCards && currentCards.length > 0) {
                 console.log('Index:', 0); // Example index, assuming you want to show the first card
                 console.log('Current Cards Length:', currentCards.length);
@@ -152,6 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
     
             // Save the deck with the fetched and enhanced cards
+            console.log('Sending save deck request');
             return fetch('/save-deck', {
                 method: 'POST',
                 headers: {
@@ -162,7 +177,9 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         })
         .then(response => {
+            console.log('Response received from save deck request');
             if (!response.ok) {
+                console.error('Network response was not ok on save deck');
                 throw new Error('Network response was not ok on save deck');
             }
             return response.json();
@@ -171,12 +188,13 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Deck saved successfully:', saveResponse);
             // Set the currentDeckName to the name that the deck was saved as
             currentDeckName = deckName;
+            console.log('Current deck name set:', currentDeckName);
         })
         .catch((error) => {
             console.error('Error:', error);
         });
     });
-    
+
 
     document.getElementById('AddCard').addEventListener('click', function() {
         const addCardContainer = document.getElementById('addCardContainer');
