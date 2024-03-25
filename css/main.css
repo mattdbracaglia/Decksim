@@ -305,15 +305,14 @@ button:hover {
 }
 
 #navigation {
-    position: absolute;
-    top: -140px;
-    left: 800px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    z-index: 2000;
-
+  position: absolute;
+  top: 60px;
+  left: 1150px;
+  display: table;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  z-index: 2000;
 }
 
 #navigation button {
@@ -511,10 +510,10 @@ html, body {
 }
 
 .switch-container {
-    position: absolute;
-    top: 65px; /* Adjust the top position as needed */
-    left: 960px; /* Adjust the left position as needed */
-    z-index: 2000;
+  position: absolute;
+  top: 668px;
+  left: 1360px;
+  z-index: 2000;
 }
   
 .switch {
@@ -665,8 +664,8 @@ right: 70px;
 
 #startGame {
   position: relative;
-  top: 77px;
-  left: 25px;
+  top: 610px;
+  left: 1055px;
   display: flex;
   gap: 120px;
   z-index: 2049;
@@ -676,7 +675,7 @@ right: 70px;
     padding: 10px; /* Increase padding to make the button larger */
     font-size: 16px; /* Adjust the font size as needed */
     cursor: pointer;
-    background: #f23131;
+    background: #007bff;
     color: #FFFFFF;
     border: none;
 }
