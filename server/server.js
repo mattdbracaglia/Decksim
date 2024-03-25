@@ -25,7 +25,6 @@ app.use(session({
     }
 }));
 
-
 app.use((req, res, next) => {
     console.log('Session middleware triggered:', req.sessionID);
     next();
@@ -104,24 +103,17 @@ app.get('/get-deck-names', authenticateToken, async (req, res) => {
 
 // Route to process card names and filter data from Card-Details.json
 app.post('/import-cards', authenticateToken, async (req, res) => {
-    console.log('Starting card import process');
     const { cardNames, deckName } = req.body;
-
     if (!cardNames || cardNames.length === 0 || !deckName) {
-        console.log('Invalid request: Deck name and card names are required.');
         return res.status(400).json({ error: 'Deck name and card names are required.' });
     }
 
     const userId = req.user.id;
-    console.log(`User ID: ${userId}`);
     const cardDetailsPath = path.join(__dirname, '..', 'card-details.json');
-    console.log(`Card details path: ${cardDetailsPath}`);
 
     try {
-        console.log('Reading card details file');
         const data = await fs.readFile(cardDetailsPath, 'utf8');
         const cardsData = JSON.parse(data);
-        console.log(`Cards data loaded: ${cardsData.length} entries`);
 
         const defaultUIState = {
             checkboxes: {
@@ -138,58 +130,33 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
             Commander: false
         };
 
-        // Define a default settings object
-        const defaultSettings = {
-            mana_cost: '',
-            cmc: 0,
-            type_line: '',
-            oracle_text: '',
-            power: null,
-            toughness: null,
-            colors: [],
-            color_identity: [],
-            keywords: [],
-            // Add more properties as needed
-        };
-
-        console.log('Default UI State:', defaultUIState);
-
         const filteredCards = cardNames.flatMap(cardRequest => {
-        console.log(`Processing card request: ${cardRequest.name}`);
-        const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
-        if (card) {
-            console.log(`Card found: ${card.name}`);
-            return Array.from({ length: cardRequest.quantity }, (_, index) => ({
-                ...card,
-                id: `${card.name}-${index}`,
-                uiState: { ...defaultUIState, ...(card.uiState || {}) },
-                settings: { ...defaultSettings, ...(card.settings || {}) },
-                large_image_url: card.normal_image_url // Make sure this property is correctly set in your card details
-            }));
-        }
-        console.log(`Card not found: ${cardRequest.name}`);
-        return [];
-    });
+            const card = cardsData.find(c => c.name.toLowerCase() === cardRequest.name.toLowerCase());
+            if (card) {
+                return Array.from({ length: cardRequest.quantity }, (_, index) => ({
+                    ...card,
+                    id: `${card.name}-${index}`,
+                    uiState: { ...defaultUIState, ...(card.uiState || {}) }
+                }));
+            }
+            return [];
+        });
 
         const transformedData = {
             userId: userId,
             deckName: deckName,
             cards: filteredCards
         };
-        console.log('Transformed data prepared for database');
 
         const db = await connectToMongoDB();
-        console.log('Connected to MongoDB');
         const decksCollection = db.collection("decks");
 
-        console.log('Updating/Inserting deck in database');
         await decksCollection.updateOne(
             { userId: userId, deckName: deckName },
             { $set: transformedData },
             { upsert: true }
         );
 
-        console.log('Cards imported successfully');
         res.json({ message: 'Cards imported successfully', deckName, cards: transformedData.cards });
     } catch (err) {
         console.error('Error processing import-cards request:', err);
