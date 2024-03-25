@@ -248,17 +248,23 @@ app.post('/api/signup', async (req, res) => {
             password: hashedPassword
         });
 
-        // Find the userId for "Usertesting"
-        const usertestingUser = await usersCollection.findOne({ username: "Usertesting" });
-        if (usertestingUser) {
-            // Fetch and copy decks from "Usertesting" to the new user
-            const usertestingDecks = await decksCollection.find({ userId: usertestingUser._id.toString() }).toArray();
-            const copiedDecks = usertestingDecks.map(deck => ({
-                ...deck,
-                userId: newUserResult.insertedId.toString(), // Set the new user's ID for the copied decks
-                username: username // Optionally set the new username for the copied decks
-            }));
+        // Fetching decks from Usertesting to copy...
+        console.log('Fetching decks from Usertesting to copy...');
+        const usertestingDecks = await decksCollection.find({ username: "Usertesting" }).toArray();
+        
+        if (usertestingDecks.length > 0) {
+            console.log('Copying decks from Usertesting...');
+            const copiedDecks = usertestingDecks.map(deck => {
+                const { _id, ...deckWithoutId } = deck; // Destructure to remove _id from the original deck
+                return {
+                    ...deckWithoutId,
+                    userId: newUserResult.insertedId.toString(),
+                    username: username // assuming you want to associate the copied decks with the new username as well
+                };
+            });
+        
             await decksCollection.insertMany(copiedDecks);
+            console.log(`Copied ${copiedDecks.length} decks to new user ${username}`);
         }
 
         res.status(201).json({ message: 'User created successfully', userId: newUserResult.insertedId });
