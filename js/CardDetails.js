@@ -1163,4 +1163,11 @@ document.addEventListener('DOMContentLoaded', function() {
             checkbox.classList.toggle('delete-mode');
             console.log('Toggled delete mode on checkbox:', checkbox);
         });
+    });
+
+      // Ensure limitCheckboxSelections is called after checkboxes are rendered
+    fetchAndDisplayDeckNames().then(() => {
+        limitCheckboxSelections();
+    });
+
 });
