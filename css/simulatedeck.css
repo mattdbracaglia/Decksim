@@ -213,49 +213,49 @@ button:hover {
 #libraryBtn {
   position: relative;
   top: 462px;
-  left: 190px;
+  left: 224px;
   z-index: 1005;
 }
 
 #handBtn {
   position: relative;
   top: 291px;
-  left: 119px;
+  left: 140px;
   z-index: 1005;
 }
 
 #landBtn {
   position: relative;
   top: 118px;
-  left: -53px;
+  left: -61px;
   z-index: 1005;
 }
 
 #battlefieldBtn {
   position: relative;
   top: -53px;
-  left: 17px;
+  left: 20px;
   z-index: 1005;
 }
 
 #graveyardBtn {
   position: relative;
   top: 119px;
-  left: -224px;
+  left: -258px;
   z-index: 1005;
 }
 
 #exileBtn {
   position: relative;
   top: -53px;
-  left: -156px;
+  left: -177px;
   z-index: 1005;
 }
 
 #commanderBtn {
   position: relative;
   top: 291px;
-  left: -38px;
+  left: -45px;
   z-index: 1005;
 }
 
@@ -443,7 +443,7 @@ html, body {
 .switch-container {
   position: relative;
   top: -32px;
-  left: 551px;
+  left: 543px;
   width: 468px;
 }
   
@@ -517,7 +517,7 @@ right: 70px;
 #autoPlaySwitchContainer {
   position: relative;
   top: -410px;
-  left: 524px;
+  left: 501px;
   width: 468px;
 }
 
@@ -572,7 +572,7 @@ right: 70px;
   top: 184px;
   left: 18px;
   display: flex;
-  gap: 37px;
+  gap: 33px;
   margin-top: 8px;
   padding: 8px;
   font-size: 16px;
