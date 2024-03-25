@@ -575,9 +575,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function populateCardList(cards) {
         const cardList = document.getElementById('cardList');
+        console.log('Populating card list with cards:', cards);
         cardList.innerHTML = ''; // Clear existing content
     
         cards.forEach(card => {
+            console.log('Processing card:', card.name);
             const li = document.createElement('li');
             li.textContent = card.name; // Display only card name
     
@@ -590,6 +592,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }
     
             li.addEventListener('click', function() {
+                console.log('Card clicked:', card.name);
                 this.classList.toggle('highlighted');
     
                 // Ensure highlightedCards array is initialized in the currentCard's uiState
