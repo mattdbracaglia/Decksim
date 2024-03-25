@@ -68,12 +68,15 @@ input, button {
     background: #f23131;
     border: none;
     color: #FFFFFF;
-    font-size: 8px;
+    font-size: 16px; /* Adjust the font size as needed */
     cursor: pointer;
-    padding: 0 5px;
+    padding: 10px; /* Increase padding to make the button larger */
     display: flex;
     align-items: center;
+    width: 50px; /* Specify a width for the button */
+    height: 50px; /* Specify a height for the button */
 }
+
 
 .arrow-button:hover {
     color: #CCCCCC;
