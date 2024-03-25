@@ -650,3 +650,12 @@ right: 70px;
     color: white;
     cursor: pointer;
 }
+
+#startGame {
+  position: relative;
+  top: 77px;
+  left: 25px;
+  display: flex;
+  gap: 120px;
+  z-index: 2049;
+}
