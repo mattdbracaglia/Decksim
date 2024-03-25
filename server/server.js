@@ -143,8 +143,27 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
                     oracle_text: card.oracle_text,
                     colors: card.colors,
                     color_identity: card.color_identity,
-                    keywords: card.keywords,
-                    normal_image_url: card.large_image_url
+                    keywords: card.keywords || [],  // Ensure keywords are set, even as an empty array
+                    normal_image_url: card.large_image_url  // Rename large_image_url to normal_image_url
+                },
+                uiState: {
+                    checkboxes: {
+                        returnLand: false,
+                        entersTapped: false,
+                        search: false,
+                        and: false,
+                        or: false
+                    },
+                    manaCounter: {
+                        W: 0,
+                        U: 0,
+                        B: 0,
+                        R: 0,
+                        G: 0,
+                        C: 0
+                    },
+                    highlightedCards: [],
+                    Commander: false
                 }
             }))
         };
