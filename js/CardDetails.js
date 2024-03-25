@@ -462,12 +462,12 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(deckData => {
             console.log(`Received deck data for ${currentDeckName}:`, deckData);
-            // Assuming deckData.cards contains the array of cards
             currentCards = updateLoadedDeckDataWithUIState(deckData.cards || []);
     
             if (currentCards && currentCards.length > 0) {
                 currentCardIndex = 0;
-                displayInMainImageContainer(currentCards[0].settings.large_image_url, currentCards[0]);
+                const imageUrl = currentCards[0].large_image_url || currentCards[0].settings.large_image_url; // Add a check for both direct and nested image URL
+                displayInMainImageContainer(imageUrl, currentCards[0]);
                 updateUIForCard(currentCards[0]);
                 populateCardList(currentCards);
                 populateDeckSection(currentCards);
