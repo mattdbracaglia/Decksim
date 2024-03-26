@@ -1123,65 +1123,45 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('deleteDeckButton').addEventListener('click', function() {
         console.log('Delete button clicked');
-        
-        // Select all checkboxes within the element with id 'deckList'
+    
+        // Select the checked checkbox within the elements with name 'decks'
         const selectedCheckbox = document.querySelector('input[type="checkbox"][name="decks"]:checked');
-        console.log('Found checkboxes:', checkboxes);
+        if (!selectedCheckbox) {
+            console.log('No deck selected for deletion');
+            alert('Please select a deck to delete.');
+            return;
+        }
     
-        // Add a click event listener to each checkbox
-        checkboxes.forEach(checkbox => {
-            console.log('Adding click listener to checkbox:', checkbox);
+        const deckName = selectedCheckbox.value;
+        console.log('Deck name to delete:', deckName);
     
-            checkbox.addEventListener('click', function() {
-                console.log('Checkbox clicked:', this);
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to delete decks');
+            return;
+        }
     
-                const deckName = this.value;
-                console.log('Deck name from checkbox value:', deckName);
-    
-                const token = localStorage.getItem('token');
-                console.log('Token retrieved from localStorage:', token);
-    
-                // Proceed with deletion only if in delete mode
-                if (this.classList.contains('delete-mode')) {
-                    console.log('Delete mode is active, attempting to delete:', deckName);
-    
-                    fetch(`/delete-deck?name=${encodeURIComponent(deckName)}`, {
-                        method: 'DELETE',
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    })
-                    .then(response => {
-                        console.log('Received response from server:', response);
-    
-                        if (!response.ok) {
-                            throw new Error('Failed to delete deck');
-                        }
-                        return response.json();
-                    })
-                    .then(data => {
-                        console.log('Deck deleted:', data);
-                        this.parentElement.remove(); // Remove the deleted deck from the list
-                        console.log('Removed deck element from page');
-                    })
-                    .catch(error => console.error('Error deleting deck:', error));
-                } else {
-                    console.log('Delete mode is not active, no action taken');
-                }
-            });
-        });
-    
-        // Toggle delete mode
-        this.classList.toggle('delete-mode');
-        console.log('Toggled delete mode on the delete button');
-    
-        // Toggle delete mode class on each checkbox to indicate they are in delete mode
-        checkboxes.forEach(checkbox => {
-            checkbox.classList.toggle('delete-mode');
-            console.log('Toggled delete mode on checkbox:', checkbox);
-        });
+        console.log(`Attempting to delete deck: ${deckName}`);
+        fetch(`/delete-deck?name=${encodeURIComponent(deckName)}`, {
+            method: 'DELETE',
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to delete deck');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Deck deleted:', data);
+            selectedCheckbox.parentElement.remove(); // Remove the deleted deck from the UI
+        })
+        .catch(error => console.error('Error deleting deck:', error));
     });
     
+        
     // Ensure limitCheckboxSelections is called after checkboxes are rendered
     fetchAndDisplayDeckNames().then(() => {
         limitCheckboxSelections();
