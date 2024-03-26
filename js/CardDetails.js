@@ -1148,8 +1148,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
             // Clear the card details for the removed card
             clearCardDetails();
+    
+            // Save the updated deck
+            saveDeck(currentDeckName, currentCards);
         }
     });
+    
+    function saveDeck(deckName, cards) {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to save decks');
+            return;
+        }
+    
+        fetch('/save-deck', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ deckName: deckName, cards: cards })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Failed to save the deck: ${deckName}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log(`Deck ${deckName} saved successfully.`);
+        })
+        .catch(error => {
+            console.error('Error saving deck:', error);
+        });
+    }
+
 
     document.getElementById('deleteDeckButton').addEventListener('click', function() {
         console.log('Delete button clicked');
