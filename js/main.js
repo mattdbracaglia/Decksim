@@ -1354,7 +1354,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const choiceSection = document.getElementById('choice');
     
         if (autoChoicesIntervalId === null) {
-            autoChoicesIntervalId = setInterval(simulateChoicesTurn, 1000);
+            autoChoicesIntervalId = setInterval(simulateChoicesTurn, 500);
             autoChoicesButton.textContent = 'Stop Auto Choices';
             choicesTurn = true;  // Ensure choicesTurn is set to true when auto choices are running
             choiceSection.style.display = 'block'; // Show the choice section
