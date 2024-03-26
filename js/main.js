@@ -1416,6 +1416,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     currentChoicesTurnStep = 0;  // Or advance to the next step as needed
                     console.log("Resetting to step 0 after playing a card.");
                 }
+                goToNextPlayer();
                 break;
             default:
                 console.log("Unknown step encountered. Resetting to step 0.");
@@ -1425,6 +1426,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log(`Current step after action: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
+
     }
     
     function goToNextPlayer() {
