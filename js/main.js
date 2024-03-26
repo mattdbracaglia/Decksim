@@ -1216,11 +1216,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Check if the button exists to avoid errors
     if (oneTurnButton) {
-        // Add an event listener to the button for the "click" event
-        oneTurnButton.addEventListener('click', simulate1Turn);
-    } else {
-        // Log an error if the button wasn't found
-        console.error('1 Turn button not found');
+        oneTurnButton.addEventListener('click', function() {
+            simulate1Turn();
+            document.getElementById('choice').style.display = 'block'; // Show the choice section
+        });
     }
 
     // Check if the button exists to avoid errors
@@ -1331,10 +1330,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function toggleAutoTurns() {
         const autoButton = document.getElementById('autoTurns');
+        const choiceSection = document.getElementById('choice');
     
         if (autoTurnIntervalId === null) {
             autoTurnIntervalId = setInterval(simulate1Turn, 1000);
             autoButton.textContent = 'Stop Auto';
+            choiceSection.style.display = 'block'; // Show the choice section
         } else {
             clearInterval(autoTurnIntervalId);
             autoTurnIntervalId = null;
@@ -1350,11 +1351,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function toggleAutoChoices() {
         const autoChoicesButton = document.getElementById('choiceTurns');
+        const choiceSection = document.getElementById('choice');
     
         if (autoChoicesIntervalId === null) {
             autoChoicesIntervalId = setInterval(simulateChoicesTurn, 1000);
             autoChoicesButton.textContent = 'Stop Auto Choices';
             choicesTurn = true;  // Ensure choicesTurn is set to true when auto choices are running
+            choiceSection.style.display = 'block'; // Show the choice section
         } else {
             clearInterval(autoChoicesIntervalId);
             autoChoicesIntervalId = null;
