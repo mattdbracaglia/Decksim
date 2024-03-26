@@ -204,26 +204,22 @@ document.addEventListener('DOMContentLoaded', function() {
     });
     
     document.getElementById('addCardsButton').addEventListener('click', function() {
+        console.log('Add Cards button clicked');
+    
         const lines = document.getElementById('addCardTextInput').value.split('\n');
+        console.log('Text input split into lines:', lines);
+    
         const cardNamesWithQuantity = lines.map(line => {
             const match = line.trim().match(/^(\d+)x?\s+(.*)$/);
+            console.log('Processing line:', line);
             if (match) {
-                return { name: match[2], quantity: parseInt(match[1], 10) };
+                const quantity = parseInt(match[1], 10);
+                const name = match[2];
+                console.log(`Parsed card name and quantity: ${name}, ${quantity}`);
+                return { name, quantity };
             }
             return null;
-        }).filter(card => card);  // Ensure each entry has a name and quantity
-    
-        if (cardNamesWithQuantity.length === 0) {
-            console.error('No valid card entries found.');
-            alert('Please enter valid card names and quantities.');
-            return;
-        }
-    
-        const token = localStorage.getItem('token');
-        if (!token) {
-            console.error('No token found, user must be logged in to add cards');
-            return;
-        }
+        }).filter(card => card && card.name);
     
         console.log('Card names and quantities to add:', cardNamesWithQuantity);
     
@@ -231,11 +227,11 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ cardNames: cardNamesWithQuantity, deckName: currentDeckName }),
+            body: JSON.stringify({ cardNames: cardNamesWithQuantity }),
         })
         .then(response => {
+            console.log('Received response from /import-cards:', response);
             if (!response.ok) {
                 throw new Error('Network response was not ok on import cards');
             }
@@ -245,22 +241,49 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Card details fetched successfully:', data);
     
             const enhancedCards = enhanceCardDataWithUIState(data.cards);
+            console.log('Enhanced cards with UI state:', enhancedCards);
     
             currentCards = [...currentCards, ...enhancedCards];
+            console.log('Updated current cards:', currentCards);
     
             populateCardList(currentCards);
+            console.log('Card list populated');
+    
             populateDeckSection(currentCards);
+            console.log('Deck section populated');
     
-            document.getElementById('addCardTextInput').value = '';  // Clear the input field
-            addCardContainer.style.display = 'none';  // Hide the add card container
-            addCardsButtonContainer.style.display = 'none';  // Hide the button container
+            return fetch('/save-deck', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ deckName: currentDeckName, cards: currentCards }),
+            });
+        })
+        .then(response => {
+            console.log('Received response from /save-deck:', response);
+            if (!response.ok) {
+                throw new Error('Network response was not ok on save deck');
+            }
+            return response.json();
+        })
+        .then(saveResponse => {
+            console.log('Deck saved successfully with added cards:', saveResponse);
     
-            // Optionally, you might want to save the deck here as well
+            document.getElementById('addCardTextInput').value = '';
+            console.log('Cleared card text input');
     
-            console.log('Cards added successfully');
+            addCardContainer.style.display = 'none';
+            addCardsButtonContainer.style.display = 'none';
+            console.log('Add card UI elements hidden');
+    
+            // Show the card image container
+            const cardImageContainer = document.getElementById('cardImageContainer');
+            cardImageContainer.style.display = 'block';
+            console.log('Card image container displayed');
         })
         .catch((error) => {
-            console.error('Error adding cards:', error);
+            console.error('Error:', error);
         });
     });
         
