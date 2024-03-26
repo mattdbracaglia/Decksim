@@ -208,12 +208,22 @@ document.addEventListener('DOMContentLoaded', function() {
         const cardNamesWithQuantity = lines.map(line => {
             const match = line.trim().match(/^(\d+)x?\s+(.*)$/);
             if (match) {
-                const quantity = parseInt(match[1], 10);
-                const name = match[2];
-                return { name, quantity };
+                return { name: match[2], quantity: parseInt(match[1], 10) };
             }
             return null;
-        }).filter(card => card && card.name);
+        }).filter(card => card);  // Ensure each entry has a name and quantity
+    
+        if (cardNamesWithQuantity.length === 0) {
+            console.error('No valid card entries found.');
+            alert('Please enter valid card names and quantities.');
+            return;
+        }
+    
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to add cards');
+            return;
+        }
     
         console.log('Card names and quantities to add:', cardNamesWithQuantity);
     
@@ -221,8 +231,9 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ cardNames: cardNamesWithQuantity }),
+            body: JSON.stringify({ cardNames: cardNamesWithQuantity, deckName: currentDeckName }),
         })
         .then(response => {
             if (!response.ok) {
@@ -240,35 +251,19 @@ document.addEventListener('DOMContentLoaded', function() {
             populateCardList(currentCards);
             populateDeckSection(currentCards);
     
-            return fetch('/save-deck', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ deckName: currentDeckName, cards: currentCards }),
-            });
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Network response was not ok on save deck');
-            }
-            return response.json();
-        })
-        .then(saveResponse => {
-            console.log('Deck saved successfully with added cards:', saveResponse);
-            document.getElementById('addCardTextInput').value = '';
-            addCardContainer.style.display = 'none';
-            addCardsButtonContainer.style.display = 'none';
+            document.getElementById('addCardTextInput').value = '';  // Clear the input field
+            addCardContainer.style.display = 'none';  // Hide the add card container
+            addCardsButtonContainer.style.display = 'none';  // Hide the button container
     
-            // Show the card image container
-            const cardImageContainer = document.getElementById('cardImageContainer');
-            cardImageContainer.style.display = 'block';
+            // Optionally, you might want to save the deck here as well
+    
+            console.log('Cards added successfully');
         })
         .catch((error) => {
-            console.error('Error:', error);
+            console.error('Error adding cards:', error);
         });
     });
-    
+        
 
 
     function updateCardImage(index, currentCards) {
