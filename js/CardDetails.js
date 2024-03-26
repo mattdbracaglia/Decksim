@@ -206,6 +206,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.getElementById('addCardsButton').addEventListener('click', function() {
         console.log('Add Cards button clicked');
+        const token = localStorage.getItem('token');
     
         const lines = document.getElementById('addCardTextInput').value.split('\n');
         console.log('Text input split into lines:', lines);
