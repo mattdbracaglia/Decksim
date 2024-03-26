@@ -206,7 +206,20 @@ document.addEventListener('DOMContentLoaded', function() {
     
     document.getElementById('addCardsButton').addEventListener('click', function() {
         console.log('Add Cards button clicked');
+    
+        const addCardContainer = document.getElementById('addCardContainer');
+        const addCardsButtonContainer = document.getElementById('addCardsButtonContainer');
+    
+        if (!addCardContainer || !addCardsButtonContainer) {
+            console.error('UI containers for adding cards are not found');
+            return;
+        }
+    
         const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to add cards');
+            return;
+        }
     
         const lines = document.getElementById('addCardTextInput').value.split('\n');
         console.log('Text input split into lines:', lines);
@@ -229,7 +242,7 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`  // Ensure the token is included and valid
+                'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ cardNames: cardNamesWithQuantity, deckName: currentDeckName }),
         })
@@ -276,9 +289,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('addCardTextInput').value = '';
             console.log('Cleared card text input');
     
+            // Ensure that the display style is being changed
+            console.log('Hiding add card UI elements');
             addCardContainer.style.display = 'none';
             addCardsButtonContainer.style.display = 'none';
-            console.log('Add card UI elements hidden');
     
             // Show the card image container
             const cardImageContainer = document.getElementById('cardImageContainer');
@@ -289,6 +303,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
         });
     });
+
         
 
 
