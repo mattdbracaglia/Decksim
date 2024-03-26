@@ -207,42 +207,83 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('addCardsButton').addEventListener('click', function() {
         console.log('Add Cards button clicked');
     
+        // Make sure these elements are correctly initialized earlier in your code
+        const addCardContainer = document.getElementById('addCardContainer');
+        const addCardsButtonContainer = document.getElementById('addCardsButtonContainer');
+    
+        if (!addCardContainer || !addCardsButtonContainer) {
+            console.error('UI containers for adding cards are not found');
+            return;
+        }
+    
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to add cards');
+            return;
+        }
+    
         const lines = document.getElementById('addCardTextInput').value.split('\n');
         console.log('Text input split into lines:', lines);
     
         const cardNamesWithQuantity = lines.map(line => {
             const match = line.trim().match(/^(\d+)x?\s+(.*)$/);
+            console.log('Processing line:', line);
             if (match) {
                 const quantity = parseInt(match[1], 10);
                 const name = match[2];
+                console.log(`Parsed card name and quantity: ${name}, ${quantity}`);
                 return { name, quantity };
             }
             return null;
-        }).filter(card => card);
+        }).filter(card => card && card.name);
     
         console.log('Card names and quantities to add:', cardNamesWithQuantity);
     
-        // Assume enhanceCardDataWithUIState is a function that formats the card data correctly
-        const enhancedCards = cardNamesWithQuantity.map(card => enhanceCardDataWithUIState(card));
-        console.log('Enhanced cards:', enhancedCards);
+        // Before fetching new card details, ensure currentCards contains the existing deck data
+        if (!currentCards || currentCards.length === 0) {
+            console.log('No current cards loaded, loading existing deck first');
+            // Load the existing deck here first
+            // This might involve fetching the deck data from the server
+            // and then continuing with the process below
+        }
     
-        // Just add the new cards to the currentCards array without saving to the server
-        currentCards = [...currentCards, ...enhancedCards];
-        console.log('Current cards after addition:', currentCards);
+        fetch('/import-cards', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ cardNames: cardNamesWithQuantity, deckName: currentDeckName }),
+        })
+        .then(response => {
+            console.log('Received response from /import-cards:', response);
+            if (!response.ok) {
+                throw new Error('Network response was not ok on import cards');
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log('Card details fetched successfully:', data);
     
-        // Update the UI to reflect the added cards
-        populateCardList(currentCards);
-        populateDeckSection(currentCards);
+            const enhancedCards = enhanceCardDataWithUIState(data.cards);
+            console.log('Enhanced cards with UI state:', enhancedCards);
     
-        // Clear the input field
-        document.getElementById('addCardTextInput').value = '';
-        
-        // Optionally hide the add card container
-        document.getElementById('addCardContainer').style.display = 'none';
-        document.getElementById('addCardsButtonContainer').style.display = 'none';
+            // Append the new cards to the existing deck data
+            currentCards = [...currentCards, ...enhancedCards];
+            console.log('Updated current cards:', currentCards);
     
-        // If you have a function to show the updated current cards in the UI, call it here
-        // updateUIWithCurrentCards(currentCards);
+            populateCardList(currentCards);
+            console.log('Card list populated');
+    
+            populateDeckSection(currentCards);
+            console.log('Deck section populated');
+    
+            // It might be necessary to save the updated deck back to the server here
+            // If so, continue with the save process
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
     });
 
 
