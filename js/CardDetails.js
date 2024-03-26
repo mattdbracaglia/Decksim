@@ -1146,8 +1146,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // Reset the current card variable
             currentCard = null;
     
-            // Clear the card details for the removed card
-            clearCardDetails();
     
             // Save the updated deck
             saveDeck(currentDeckName, currentCards);
