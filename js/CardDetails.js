@@ -1117,7 +1117,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`${currentCard.name} is now set as a Commander.`);
     
             // Change the button color to green
-            this.style.backgroundColor = '#28a745';  // Green color
+            this.style.backgroundColor = '#fb2323';  // Red color
         } else {
             console.log('No card selected.');
             this.style.backgroundColor = '#007bff';  // Original blue color
