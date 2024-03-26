@@ -278,8 +278,28 @@ document.addEventListener('DOMContentLoaded', function() {
             populateDeckSection(currentCards);
             console.log('Deck section populated');
     
-            // It might be necessary to save the updated deck back to the server here
-            // If so, continue with the save process
+            fetch('/save-deck', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ deckName: currentDeckName, cards: enhancedCards }),
+            })
+            .then(response => {
+                console.log('Response received from the server');
+                if (!response.ok) {
+                    throw new Error(`Network response was not ok, status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log('Deck saved successfully:', data);
+            })
+            .catch(error => {
+                console.error('Error saving deck:', error);
+            });
+        });
         })
         .catch((error) => {
             console.error('Error:', error);
