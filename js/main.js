@@ -1413,9 +1413,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             case 3:
-                console.log("Case 3: Going to the next player's turn.");
-                goToNextPlayer();
-                currentChoicesTurnStep = 0; // Reset to start at step 0 for the next player
+                console.log("Case 3: Preparing to go to the next player's turn.");
+                setTimeout(() => {
+                    console.log("Case 3: Going to the next player's turn.");
+                    goToNextPlayer();
+                    currentChoicesTurnStep = 0; // Reset to start at step 0 for the next player
+                }, 1000); // 1000 milliseconds delay equals 1 second
                 break;
             default:
                 console.log("Unknown step encountered. Resetting to step 0.");
