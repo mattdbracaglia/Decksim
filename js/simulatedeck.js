@@ -1047,7 +1047,55 @@ document.addEventListener('DOMContentLoaded', function() {
             lastHoveredCardData = null;
         }
     });
-     
+
+    document.addEventListener('keydown', function(event) {
+        console.log('Key pressed:', event.key); // Log which key is pressed
+    
+        if (!lastHoveredCardData) {
+            console.log('No card hovered.');
+            return;
+        }
+    
+        const playerData = playersData[currentPlayerId];
+        console.log(`Current player data:`, playerData);
+    
+        const sectionsMap = {
+            '1': 'libraryImages',
+            '2': 'handImages',
+            '3': 'landImages',
+            '4': 'battlefieldImages',
+            '5': 'exileImages',
+            '6': 'graveyardImages',
+            '7': 'commanderImages'
+        };
+    
+        const targetSection = sectionsMap[event.key];
+        if (targetSection) {
+            console.log(`Key pressed for moving card to: ${targetSection}`);
+            
+            // Find and remove the card from its current section
+            const sections = Object.values(sectionsMap);
+            for (const section of sections) {
+                const index = playerData[section].images.findIndex(card => card.cardData.id === lastHoveredCardData.id);
+                if (index !== -1) {
+                    console.log(`Card found in section: ${section}, at index: ${index}`);
+                    const [card] = playerData[section].images.splice(index, 1);
+                    
+                    // Add the card to the target section
+                    playerData[targetSection].images.push(card);
+                    console.log(`Card moved to "${targetSection}" section:`, card);
+    
+                    updatePlayerDisplay(currentPlayerId);
+                    console.log('Card successfully moved.');
+                    lastHoveredCardData = null;
+                    return;
+                }
+            }
+    
+            console.log('Card not found in any section.');
+        } 
+    });
+         
     
     
 
