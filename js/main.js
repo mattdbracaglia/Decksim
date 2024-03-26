@@ -1387,6 +1387,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 1:
                 console.log("Case 1: Moving the first land from hand to land.");
+                
+                // Check the status of the auto-play switch to determine which function to run
                 if (document.getElementById('autoPlaySwitch').checked) {
                     console.log("Auto Play Switch is on, running auto land move.");
                     moveFirstLandFromHandToLandAuto(currentPlayerId);
@@ -1394,6 +1396,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log("Auto Play Switch is off, running manual land move.");
                     moveFirstLandFromHandToLandChoice(currentPlayerId);
                 }
+    
                 if (!choiceMade) {
                     currentChoicesTurnStep++;
                     console.log("Moving to next step after moving land.");
@@ -1404,16 +1407,14 @@ document.addEventListener('DOMContentLoaded', function() {
             case 2:
                 console.log("Case 2: Playing a card from hand to the battlefield.");
                 cardPlayed = false;
+
                 playCardFromHandToBattlefieldAuto(currentPlayerId);
+                // Check if the action is completed, then move to the next step or reset
                 if (choiceMade) {
                     console.log("Choice made, waiting for action to complete.");
                 } else {
-                    setTimeout(() => {
-                        currentChoicesTurnStep = 0;  // Reset to step 0 for the next player
-                        console.log("Resetting to step 0 after playing a card.");
-                        goToNextPlayer();
-                    }, 2000);  // 2000 milliseconds delay (2 seconds)
-                    return; // Return here to prevent immediate execution of the next lines
+                    currentChoicesTurnStep = 0;  // Or advance to the next step as needed
+                    console.log("Resetting to step 0 after playing a card.");
                 }
                 break;
             default:
@@ -1421,7 +1422,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 currentChoicesTurnStep = 0;
                 break;
         }
-      
+    
         console.log(`Current step after action: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
     }
@@ -1467,6 +1468,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Clicked element is not an image or does not have card data');
         }
     });
+
 
     function drawCardFromLibraryToHand(playerId) {
         const libraryImages = playersData[playerId].libraryImages.images;
