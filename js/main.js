@@ -1919,14 +1919,14 @@ document.addEventListener('DOMContentLoaded', function() {
         let finalTotalMana = playersData[currentPlayerId].totalMana;
         console.log("Final total mana available:", finalTotalMana, "for card:", cardName, "with CMC:", cardCmc);
     
-        if (finalTotalMana < cardCmc || !cardCmc) {
-            console.log("Not enough total mana to play the card or card CMC is undefined.");
+        if (finalTotalMana < cardCmc) {
+            console.log("Not enough total mana to play the card.");
             return false;
         }
     
-        // Ensure cardManaCost is defined before proceeding
-        if (!cardManaCost) {
-            console.error(`cardManaCost is undefined for card: ${cardName}`);
+        // Ensure cardManaCost is a string before calling match on it
+        if (typeof cardManaCost !== 'string') {
+            console.error(`Invalid mana cost for card: ${cardName}`);
             return false;
         }
     
@@ -1952,7 +1952,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         // Check if total mana is sufficient after accounting for specific color requirements
-        return finalTotalMana >= genericManaRequired;
+        return finalTotalMana >= cardCmc;
     }
 
         
