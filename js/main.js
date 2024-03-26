@@ -1408,12 +1408,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 if (choiceMade) {
                     console.log("Choice made, waiting for action to complete.");
                 } else {
-                    setTimeout(() => {
-                        currentChoicesTurnStep = 0;  // Reset to step 0 for the next player
-                        console.log("Resetting to step 0 after playing a card.");
-                        goToNextPlayer();
-                    }, 2000);  // 2000 milliseconds delay (2 seconds)
-                    return; // Return here to prevent immediate execution of the next lines
+                    currentChoicesTurnStep = 0;  // Or advance to the next step as needed
+                    console.log("Resetting to step 0 after playing a card.");
                 }
                 break;
             default:
@@ -1424,6 +1420,7 @@ document.addEventListener('DOMContentLoaded', function() {
       
         console.log(`Current step after action: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
+        goToNextPlayer();
     }
     
     function goToNextPlayer() {
