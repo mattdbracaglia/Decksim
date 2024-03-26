@@ -68,6 +68,5 @@
         const presentationArea = document.getElementById('presentationArea');
         presentationArea.innerHTML = ''; // Clear the presentation area
         currentSlideIndex = 0; // Reset the slide index
-        }
-    });
+    }
 
