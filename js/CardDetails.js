@@ -1121,15 +1121,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.getElementById('commanderButton').addEventListener('click', function() {
         if (currentCard) {
-            // Set the Commander property of the current card to true
-            currentCard.uiState.Commander = true;
-            console.log(`${currentCard.name} is now set as a Commander.`);
+            // Toggle the Commander property of the current card
+            currentCard.uiState.Commander = !currentCard.uiState.Commander;
+            console.log(`${currentCard.name} is now set as a Commander: ${currentCard.uiState.Commander}`);
     
-            // Change the button color to green
-            this.style.backgroundColor = '#fb2323';  // Red color
+            // Change the button color based on whether the Commander property is true or false
+            if (currentCard.uiState.Commander) {
+                this.style.backgroundColor = '#fb2323';  // Red color for Commander
+            } else {
+                this.style.backgroundColor = '#007bff';  // Blue color when not Commander
+            }
         } else {
             console.log('No card selected.');
-            this.style.backgroundColor = '#007bff';  // Original blue color
+            // Optionally reset the button color to blue if no card is selected
+            this.style.backgroundColor = '#007bff';
         }
     });
 
