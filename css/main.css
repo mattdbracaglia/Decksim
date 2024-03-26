@@ -490,29 +490,29 @@ html, body {
 }
 
 #player1Scrollbox {
-    top: 585px;
-    right: 590px;
+  top: 585px;
+  right: 577px;
 }
 
 #player2Scrollbox {
-    top: 585px;
-    right: 415px;
+  top: 585px;
+  right: 424px;
 }
 
 #player3Scrollbox {
-    top: 585px;
-    right: 265px;
+  top: 585px;
+  right: 275px;
 }
 
 #player4Scrollbox {
-    top: 585px;
-    right: 115px;
+  top: 585px;
+  right: 127px;
 }
 
 .switch-container {
   position: absolute;
   top: 668px;
-  left: 1360px;
+  left: 1347px;
   z-index: 2000;
 }
   
@@ -621,9 +621,9 @@ right: 70px;
 #mulliganButtons {
   position: fixed;
   top: 605px;
-  right: 73px;
+  right: 85px;
   display: flex;
-  gap: 120px;
+  gap: 117px;
 }
 
 #cycleButtons {
