@@ -207,6 +207,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('addCardsButton').addEventListener('click', function() {
         console.log('Add Cards button clicked');
     
+        // Make sure these elements are correctly initialized earlier in your code
         const addCardContainer = document.getElementById('addCardContainer');
         const addCardsButtonContainer = document.getElementById('addCardsButtonContainer');
     
@@ -238,6 +239,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log('Card names and quantities to add:', cardNamesWithQuantity);
     
+        // Before fetching new card details, ensure currentCards contains the existing deck data
+        if (!currentCards || currentCards.length === 0) {
+            console.log('No current cards loaded, loading existing deck first');
+            // Load the existing deck here first
+            // This might involve fetching the deck data from the server
+            // and then continuing with the process below
+        }
+    
         fetch('/import-cards', {
             method: 'POST',
             headers: {
@@ -259,6 +268,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const enhancedCards = enhanceCardDataWithUIState(data.cards);
             console.log('Enhanced cards with UI state:', enhancedCards);
     
+            // Append the new cards to the existing deck data
             currentCards = [...currentCards, ...enhancedCards];
             console.log('Updated current cards:', currentCards);
     
@@ -268,41 +278,14 @@ document.addEventListener('DOMContentLoaded', function() {
             populateDeckSection(currentCards);
             console.log('Deck section populated');
     
-            return fetch('/save-deck', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ deckName: currentDeckName, cards: currentCards }),
-            });
-        })
-        .then(response => {
-            console.log('Received response from /save-deck:', response);
-            if (!response.ok) {
-                throw new Error('Network response was not ok on save deck');
-            }
-            return response.json();
-        })
-        .then(saveResponse => {
-            console.log('Deck saved successfully with added cards:', saveResponse);
-    
-            document.getElementById('addCardTextInput').value = '';
-            console.log('Cleared card text input');
-    
-            // Ensure that the display style is being changed
-            console.log('Hiding add card UI elements');
-            addCardContainer.style.display = 'none';
-            addCardsButtonContainer.style.display = 'none';
-    
-            // Show the card image container
-            const cardImageContainer = document.getElementById('cardImageContainer');
-            cardImageContainer.style.display = 'block';
-            console.log('Card image container displayed');
+            // It might be necessary to save the updated deck back to the server here
+            // If so, continue with the save process
         })
         .catch((error) => {
             console.error('Error:', error);
         });
     });
+
 
         
 
