@@ -1289,8 +1289,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Case 0: Drawing a card from the library to the hand.");
                 drawCardFromLibraryToHand(currentPlayerId);
                 console.log(`After drawing a card, hand:`, playersData[currentPlayerId].handImages.images.map(card => ({
-                    name: card.cardData.name,
-                    typeLine: card.cardData.type_line
+                    name: card.name,
+                    typeLine: card.type_line
                 })));
                 oneTurnStep++; // Move to the next step
                 break;
@@ -1298,12 +1298,12 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log("Case 1: Moving the first land from hand to land.");
                 moveFirstLandFromHandToLand(currentPlayerId);
                 console.log(`After moving first land, hand:`, playersData[currentPlayerId].handImages.images.map(card => ({
-                    name: card.cardData.name,
-                    typeLine: card.cardData.type_line
+                    name: card.name,
+                    typeLine: card.type_line
                 })));
                 console.log(`Lands section after moving a land:`, playersData[currentPlayerId].landImages.images.map(card => ({
-                    name: card.cardData.name,
-                    typeLine: card.cardData.type_line
+                    name: card.name,
+                    typeLine: card.type_line
                 })));
                 oneTurnStep++; // Move to the next step
                 break;
