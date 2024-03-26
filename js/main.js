@@ -1403,6 +1403,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 2:
                 console.log("Case 2: Playing a card from hand to the battlefield.");
+                cardPlayed = false;
                 playCardFromHandToBattlefieldAuto(currentPlayerId);
                 if (choiceMade) {
                     console.log("Choice made, waiting for action to complete.");
