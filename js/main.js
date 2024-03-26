@@ -1229,7 +1229,8 @@ document.addEventListener('DOMContentLoaded', function() {
             '4': 'battlefieldImages',
             '5': 'exileImages',
             '6': 'graveyardImages',
-            '7': 'commanderImages'
+            '7': 'commanderImages',
+            'Shift': 'moveImages'
         };
     
         const targetSection = sectionsMap[event.key];
