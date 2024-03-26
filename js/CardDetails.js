@@ -228,8 +228,9 @@ document.addEventListener('DOMContentLoaded', function() {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`  // Ensure the token is included and valid
             },
-            body: JSON.stringify({ cardNames: cardNamesWithQuantity }),
+            body: JSON.stringify({ cardNames: cardNamesWithQuantity, deckName: currentDeckName }),
         })
         .then(response => {
             console.log('Received response from /import-cards:', response);
