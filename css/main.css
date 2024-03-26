@@ -223,18 +223,18 @@ button:hover {
 
 /* Example of re-positioning */
 #playerSection1 {
-  top: -33px;
+  top: -66px;
   right: 535px;
 }
 #playerSection2 {
-  top: -33px;
+  top: -66px;
   right: 380px;
 }
 #playerSection3 {
-  top: -33px;
+  top: -66px;
   right: 225px;
 }
-#playerSection4 { top: -33px; right: 75px; }
+#playerSection4 { top: -66px; right: 75px; }
 
 
 
