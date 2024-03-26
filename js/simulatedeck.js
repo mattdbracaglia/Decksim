@@ -1560,12 +1560,18 @@ document.addEventListener('DOMContentLoaded', function() {
         // Combine hand and commander cards
         let combinedCards = handCards.concat(commanderCards);
     
-        // Filter cards that can be played within the total available mana
-        let playableCards = combinedCards.filter(card => 
+        // Filter cards that can potentially be played (ignoring specific mana requirements for now)
+        let potentialPlayableCards = combinedCards.filter(card => 
             card.cardData.settings.cmc <= totalMana &&
             !card.cardData.settings.type_line.includes("Land")
         );
-        console.log(`Found ${playableCards.length} playable cards after filtering by CMC and type`);
+    
+        // Now filter based on specific mana requirements
+        let playableCards = potentialPlayableCards.filter(card => 
+            canPlayCard(card.cardData.settings.mana_cost, playersData[playerId].manaCounter, card.cardData.settings.cmc, card.cardData.name)
+        );
+    
+        console.log(`Found ${playableCards.length} playable cards after filtering by CMC and specific mana`);
     
         // Sort playable cards by CMC in ascending order
         playableCards.sort((a, b) => a.cardData.settings.cmc - b.cardData.settings.cmc);
