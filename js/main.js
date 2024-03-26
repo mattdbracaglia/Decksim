@@ -1482,6 +1482,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
             handImages.push(drawnCard);
             updatePlayerDisplay(playerId); // Update the entire UI for consistency
+            updateAllPlayersSectionDisplay();
         } else {
             console.log('No cards left in the library to draw');
         }
@@ -1519,6 +1520,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].graveyardImages.images.push(discardedLandCard);
     
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 updateManaCounter();
                 calculateBattlefieldMana();
                 return;
@@ -1554,6 +1556,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         updatePlayerDisplay(playerId);
+        updateAllPlayersSectionDisplay();
         updateManaCounter();
         calculateBattlefieldMana();
     }
@@ -1571,6 +1574,7 @@ document.addEventListener('DOMContentLoaded', function() {
             handImages.splice(handImages.indexOf(choiceLand), 1);
             choiceCards = [];
             updatePlayerDisplay(playerId);
+            updateAllPlayersSectionDisplay();
             updateManaCounter();
             calculateBattlefieldMana();
             choiceMade = false;
@@ -1589,6 +1593,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Multiple lands available for choice, presenting choices');
             playersData[playerId].choiceImages.images = [...landCards];
             updatePlayerDisplay(playerId);
+            updateAllPlayersSectionDisplay();
             toggleAutoChoices();
             choiceMade = true;
             return;
@@ -1613,6 +1618,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].graveyardImages.images.push(discardedLandCard);
     
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 updateManaCounter();
                 calculateBattlefieldMana();
                 return;
@@ -1645,6 +1651,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         updatePlayerDisplay(playerId);
+        updateAllPlayersSectionDisplay();
         updateManaCounter();
         calculateBattlefieldMana();
     }
@@ -1681,6 +1688,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].graveyardImages.images.push(discardedLandCard);
     
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 updateManaCounter();
                 calculateBattlefieldMana();
                 return;
@@ -1716,6 +1724,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         updatePlayerDisplay(playerId);
+        updateAllPlayersSectionDisplay();
         updateManaCounter();
         calculateBattlefieldMana();
     }
@@ -1861,6 +1870,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 playersData[playerId].battlefieldImages.images.push(cardToPlay);
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 choiceCards = [];
                 choiceMade = false;
                 cardPlayed = true;
@@ -1879,6 +1889,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 console.log('Multiple playable cards available, presenting choices');
                 playersData[playerId].choiceImages.images = [...playableCards];
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 toggleAutoChoices();
                 choiceMade = true;
                 cardPlayed = true;
@@ -1895,6 +1906,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].battlefieldImages.images.push(cardToPlay);
                 console.log(`Played ${cardToPlay.cardData.name} onto battlefield.`);
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 choiceMade = true;
                 cardPlayed = true;
             } else {
