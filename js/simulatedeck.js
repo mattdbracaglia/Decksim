@@ -1720,11 +1720,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log("Mana requirements for the card:", manaRequirements, "Generic mana required:", genericManaRequired);
     
-        if (finalTotalMana < cardCmc) {
-            console.log("Not enough total mana to play the card.");
-            return false;
-        }
-        return true;
+        // This check is redundant and can be removed as we have already checked if total mana is less than card CMC
+        // if (finalTotalMana < cardCmc) {
+        //     console.log("Not enough total mana to play the card.");
+        //     return false;
+        // }
     
         for (const [color, requiredAmount] of Object.entries(manaRequirements)) {
             if ((manaCounter[color] || 0) < requiredAmount) {
@@ -1733,10 +1733,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     
-        return true;
+        return finalTotalMana >= cardCmc;
     }
-
-    
+        
     
     function getCardDataFromImage(imgElement) {
         const cardDataJSON = imgElement.getAttribute('data-card');
