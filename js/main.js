@@ -1913,7 +1913,7 @@ document.addEventListener('DOMContentLoaded', function() {
         choiceMade = false; // Update choiceMade based on cardPlayed status
     }
 
-    function canPlayCard(cardManaCost, manaCounter, cardCmc, cardName) {
+     function canPlayCard(cardManaCost, manaCounter, cardCmc, cardName) {
         updateManaCounter();
     
         let finalTotalMana = playersData[currentPlayerId].totalMana;
@@ -1924,13 +1924,11 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     
-        // Ensure cardManaCost is a string before calling match on it
-        if (typeof cardManaCost !== 'string') {
-            console.error(`Invalid mana cost for card: ${cardName}`);
-            return false;
+        const manaCostArray = typeof cardManaCost === 'string' ? cardManaCost.match(/\{([^}]+)\}/g) : cardManaCost;
+        if (!manaCostArray) {
+            return finalTotalMana >= cardCmc;
         }
     
-        const manaCostArray = cardManaCost.match(/\{([^}]+)\}/g) || [];
         let genericManaRequired = 0;
         const manaRequirements = manaCostArray.reduce((acc, cost) => {
             const color = cost.replace(/[{}]/g, '');
@@ -1944,6 +1942,12 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log("Mana requirements for the card:", manaRequirements, "Generic mana required:", genericManaRequired);
     
+        // This check is redundant and can be removed as we have already checked if total mana is less than card CMC
+        // if (finalTotalMana < cardCmc) {
+        //     console.log("Not enough total mana to play the card.");
+        //     return false;
+        // }
+    
         for (const [color, requiredAmount] of Object.entries(manaRequirements)) {
             if ((manaCounter[color] || 0) < requiredAmount) {
                 console.log(`Not enough ${color} mana to play the card.`);
@@ -1951,9 +1955,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     
-        // Check if total mana is sufficient after accounting for specific color requirements
         return finalTotalMana >= cardCmc;
     }
+        
 
         
     
