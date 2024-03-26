@@ -1833,7 +1833,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     function playCardFromHandToBattlefieldAuto(playerId) {
-        let cardPlayed = false;  // Reset cardPlayed to false at the beginning of the function
         const handCards = playersData[playerId].handImages.images;
         const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
     
@@ -1907,7 +1906,6 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`Card played: ${cardPlayed}`);
         } else {
             console.log(`No card was played.`);
-            choiceMade = false;  // You may also want to reset choiceMade here if no card was played
         }
     
         console.log(`Card played: ${cardPlayed}`);
