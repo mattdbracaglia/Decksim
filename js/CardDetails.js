@@ -88,6 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     document.addEventListener('dblclick', function() {
         console.log('Current cards:', currentCards);
+        console.log('Current deck name:', currentDeckName);
     });
     
 
