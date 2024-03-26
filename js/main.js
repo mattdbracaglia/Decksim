@@ -1249,6 +1249,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log(`Card moved to "${targetSection}" section:`, card);
     
                     updatePlayerDisplay(currentPlayerId);
+                    updateAllPlayersSectionDisplay();
                     console.log('Card successfully moved.');
                     // Do not nullify lastHoveredCardData here
                     break; // Stop the loop after moving the card
