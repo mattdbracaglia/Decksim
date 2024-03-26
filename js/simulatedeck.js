@@ -1087,16 +1087,14 @@ document.addEventListener('DOMContentLoaded', function() {
     
                     updatePlayerDisplay(currentPlayerId);
                     console.log('Card successfully moved.');
-                    lastHoveredCardData = null;
-                    return;
+                    // Do not nullify lastHoveredCardData here
+                    break; // Stop the loop after moving the card
                 }
             }
-    
-            console.log('Card not found in any section.');
         } 
     });
-         
-    
+             
+        
     
 
     // Check if the button exists to avoid errors
