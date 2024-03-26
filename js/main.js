@@ -1333,7 +1333,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const choiceSection = document.getElementById('choice');
     
         if (autoTurnIntervalId === null) {
-            autoTurnIntervalId = setInterval(simulate1Turn, 1000);
+            autoTurnIntervalId = setInterval(simulate1Turn, 500);
             autoButton.textContent = 'Stop Auto';
             choiceSection.style.display = 'block'; // Show the choice section
         } else {
