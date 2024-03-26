@@ -1387,8 +1387,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
             case 1:
                 console.log("Case 1: Moving the first land from hand to land.");
-                
-                // Check the status of the auto-play switch to determine which function to run
                 if (document.getElementById('autoPlaySwitch').checked) {
                     console.log("Auto Play Switch is on, running auto land move.");
                     moveFirstLandFromHandToLandAuto(currentPlayerId);
@@ -1396,7 +1394,6 @@ document.addEventListener('DOMContentLoaded', function() {
                     console.log("Auto Play Switch is off, running manual land move.");
                     moveFirstLandFromHandToLandChoice(currentPlayerId);
                 }
-    
                 if (!choiceMade) {
                     currentChoicesTurnStep++;
                     console.log("Moving to next step after moving land.");
@@ -1407,16 +1404,18 @@ document.addEventListener('DOMContentLoaded', function() {
             case 2:
                 console.log("Case 2: Playing a card from hand to the battlefield.");
                 cardPlayed = false;
-
                 playCardFromHandToBattlefieldAuto(currentPlayerId);
-                // Check if the action is completed, then move to the next step or reset
-                if (choiceMade) {
-                    console.log("Choice made, waiting for action to complete.");
+                if (!choiceMade) {
+                    console.log("Card played, advancing to the next step.");
+                    currentChoicesTurnStep++;
                 } else {
-                    currentChoicesTurnStep = 0;  // Or advance to the next step as needed
-                    console.log("Resetting to step 0 after playing a card.");
+                    console.log("Choice made, waiting for action to complete.");
                 }
+                break;
+            case 3:
+                console.log("Case 3: Going to the next player's turn.");
                 goToNextPlayer();
+                currentChoicesTurnStep = 0; // Reset to start at step 0 for the next player
                 break;
             default:
                 console.log("Unknown step encountered. Resetting to step 0.");
@@ -1426,7 +1425,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log(`Current step after action: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
-
     }
     
     function goToNextPlayer() {
