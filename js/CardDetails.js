@@ -1111,16 +1111,23 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     document.getElementById('commanderButton').addEventListener('click', function() {
+        const commanderButton = document.getElementById('commanderButton');
         if (currentCard) {
             // Set the Commander property of the current card to true
             currentCard.uiState.Commander = true;
             console.log(`${currentCard.name} is now set as a Commander.`);
+    
+            // Change the button color to green
+            commanderButton.style.backgroundColor = '#28a745';  // Green color
     
             // Optional: Update the UI to reflect this change
             // This might involve highlighting the card, updating a text label, etc.
         } else {
             console.log('No card selected.');
             // Optionally, display a message to the user indicating no card is selected
+    
+            // Reset the button color if no card is selected
+            commanderButton.style.backgroundColor = '#007bff';  // Original blue color
         }
     });
 
