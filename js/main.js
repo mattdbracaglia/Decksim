@@ -1924,11 +1924,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return false;
         }
     
-        const manaCostArray = typeof cardManaCost === 'string' ? cardManaCost.match(/\{([^}]+)\}/g) : cardManaCost;
-        if (!manaCostArray) {
-            return finalTotalMana >= cardCmc;
-        }
-    
+        const manaCostArray = cardManaCost.match(/\{([^}]+)\}/g) || [];
         let genericManaRequired = 0;
         const manaRequirements = manaCostArray.reduce((acc, cost) => {
             const color = cost.replace(/[{}]/g, '');
@@ -1942,12 +1938,6 @@ document.addEventListener('DOMContentLoaded', function() {
     
         console.log("Mana requirements for the card:", manaRequirements, "Generic mana required:", genericManaRequired);
     
-        if (finalTotalMana < cardCmc) {
-            console.log("Not enough total mana to play the card.");
-            return false;
-        }
-        return true;
-    
         for (const [color, requiredAmount] of Object.entries(manaRequirements)) {
             if ((manaCounter[color] || 0) < requiredAmount) {
                 console.log(`Not enough ${color} mana to play the card.`);
@@ -1955,9 +1945,10 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     
-        return true;
+        // Check if total mana is sufficient after accounting for specific color requirements
+        return finalTotalMana >= cardCmc;
     }
-    
+        
     
     function getCardDataFromImage(imgElement) {
         const cardDataJSON = imgElement.getAttribute('data-card');
