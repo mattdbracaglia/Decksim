@@ -589,15 +589,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
             deckSection.appendChild(img);
         });
+    
         // Automatically select the first card to display its details
-                if (cards.length > 0) {
-                    currentCard = cards[0];
-                    displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-                    updateUIForCard(currentCard);
-            }
+        if (cards.length > 0) {
+            currentCard = cards[0];
+            displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+            updateUIForCard(currentCard);
+        }
     }
-
-         
+    
+             
 
 
     function populateCardList(cards) {
@@ -846,14 +847,22 @@ document.addEventListener('DOMContentLoaded', function() {
     function displayInMainImageContainer(imageSrc, cardData) {
         const cardImageContainer = document.getElementById('cardImageContainer');
         cardImageContainer.innerHTML = ''; // Clear existing content
-
+    
         const img = document.createElement('img');
         img.src = imageSrc;
         img.dataset.cardData = JSON.stringify(cardData); // Store card data in dataset for access in event listeners
         cardImageContainer.appendChild(img);
-
+    
         // Display the UI state for the selected card
         displaySelectedCardUI(cardData);
+    
+        // Change the Set Commander button color based on the Commander status of the current card
+        const commanderButton = document.getElementById('commanderButton');
+        if (cardData.uiState && cardData.uiState.Commander) {
+            commanderButton.style.backgroundColor = '#dc3545'; // Red color for commander
+        } else {
+            commanderButton.style.backgroundColor = '#007bff'; // Blue color for non-commander
+        }
     }
 
     function updateUIForCard(cardData) {
