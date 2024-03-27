@@ -77,10 +77,10 @@ input, button {
 }
 
 #cardTextInput {
-    resize: none; /* Prevent resizing */
-    width: 300px; /* Manually set the width */
-    height: 100px; /* Manually set the height */
-    margin-bottom: 10px; /* Space between the textarea and the button */
+  resize: none;
+  width: 300px;
+  height: 436px;
+  margin-bottom: 10px;
 }
 
 #deckNameInput {
