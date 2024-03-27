@@ -484,3 +484,13 @@ input, button {
     background-color: red;
     color: white;
 }
+
+#quantityContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#cardQuantity {
+    width: 60px; /* You can adjust the width as needed */
+    padding: 5px;
+}
