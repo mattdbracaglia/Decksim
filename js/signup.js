@@ -67,7 +67,7 @@ signupForm.addEventListener('submit', async function(event) {
         alert(data.message);
         
         // Redirect to signin.html after successful signup
-        window.location.href = 'signin.html';
+        window.location.href = 'index.html';
     } catch (error) {
         console.error('Error during signup:', error);
         alert('Signup failed. Please try again.');
