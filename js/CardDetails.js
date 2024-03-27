@@ -998,6 +998,16 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    document.getElementById('cardQuantity').addEventListener('input', function() {
+        const newQuantity = parseInt(this.value, 10) || 0; // Ensure the value is a number and default to 0 if not
+    
+        // Update the quantity for the currentCard
+        if (currentCard) {
+            currentCard.quantity = newQuantity;
+            console.log(`Updated quantity for ${currentCard.name}: ${newQuantity}`);
+        }
+    });
+
     // Saving changes to the server
     // Saving changes to the server
     document.getElementById('saveDetails').addEventListener('click', function() {
@@ -1008,13 +1018,17 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('No token found, user must be logged in to save decks');
             return;
         }
-        
+    
         console.log('Preparing to save the deck');
-        // Enhance the card data with the current UI state before saving
-        const enhancedCards = currentCards.map(card => {
-            return { ...card, uiState: card.uiState };
-        });
-        
+        // No need to enhance with UI state if it's already included in the card data
+        const deckDataToSave = {
+            deckName: currentDeckName,
+            cards: currentCards.map(card => ({
+                ...card,
+                quantity: card.quantity // Ensure the latest quantity is included
+            }))
+        };
+    
         console.log('Sending save request to the server');
         fetch('/save-deck', {
             method: 'POST',
@@ -1022,7 +1036,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${token}`
             },
-            body: JSON.stringify({ deckName: currentDeckName, cards: enhancedCards }),
+            body: JSON.stringify(deckDataToSave),
         })
         .then(response => {
             console.log('Response received from the server');
