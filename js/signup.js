@@ -21,6 +21,18 @@ signupForm.addEventListener('submit', async function(event) {
         return;
     }
 
+    if (username.length < 5) {
+        console.log('Validation failed: Username must have at least 5 characters');
+        alert('Username must have at least 5 characters.');
+        return;
+    }
+
+    if (password.length < 6) {
+        console.log('Validation failed: Password must have at least 6 characters');
+        alert('Password must have at least 6 characters.');
+        return;
+    }
+
     if (password !== confirmPassword) {
         console.log('Validation failed: Passwords do not match');
         alert('Passwords do not match.');
