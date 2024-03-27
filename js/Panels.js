@@ -36,37 +36,29 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const tutorialButton = document.getElementById('tutorialButton');
+        let currentSlideIndex = 1;  // Start with the first slide
     
         tutorialButton.addEventListener('click', function() {
-            // Assuming tutorial.pptx is in the same directory as your HTML file
-            window.location.href = 'tutorial.pptx';
+            showSlide(currentSlideIndex);
         });
+    
+        function showSlide(index) {
+            const presentationArea = document.getElementById('presentationArea');
+            presentationArea.innerHTML = ''; // Clear previous content
+    
+            const slideImage = document.createElement('img');
+            slideImage.src = `tutorial/Slide${index}.JPG`;
+            slideImage.style.width = '100%';
+            slideImage.style.height = 'auto';
+            presentationArea.appendChild(slideImage);
+    
+            presentationArea.onclick = function() {
+                currentSlideIndex++;
+                if (currentSlideIndex <= 47) {
+                    showSlide(currentSlideIndex);
+                } else {
+                    window.location.href = 'Panels.html'; // Redirect after the last slide
+                }
+            };
+        }
     });
-
-    function showSlide(index) {
-        const slideImage = document.createElement('img');
-        slideImage.src = slides[index];
-        slideImage.style.width = '100%'; // Set width as needed
-        slideImage.style.height = 'auto'; // Set height as needed
-        slideImage.id = 'currentSlide';
-    
-        const presentationArea = document.getElementById('presentationArea');
-        presentationArea.innerHTML = ''; // Clear previous slide
-        presentationArea.appendChild(slideImage);
-    
-        slideImage.addEventListener('click', function() {
-            currentSlideIndex++;
-            if (currentSlideIndex < slides.length) {
-                showSlide(currentSlideIndex);
-            } else {
-                endPresentation();
-            }
-        });
-    }
-    
-    function endPresentation() {
-        const presentationArea = document.getElementById('presentationArea');
-        presentationArea.innerHTML = ''; // Clear the presentation area
-        currentSlideIndex = 0; // Reset the slide index
-    }
-
