@@ -486,10 +486,11 @@ input, button {
 }
 
 #quantityContainer {
+    position: absolute;  /* Use 'fixed' if you want the container to stay in the same place even when scrolling */
+    top: 50px;  /* Adjust the value of 'top' as needed */
+    left: 100px;  /* Adjust the value of 'left' as needed */
     margin-top: 10px;
     margin-bottom: 10px;
-    top: 690px;
-    left: 15px;
 }
 
 #cardQuantity {
