@@ -36,29 +36,37 @@
 
     document.addEventListener('DOMContentLoaded', function() {
         const tutorialButton = document.getElementById('tutorialButton');
-        let currentSlideIndex = 1;  // Start with the first slide
+        const presentationArea = document.getElementById('presentationArea');
+        let currentSlideIndex = 0;
     
         tutorialButton.addEventListener('click', function() {
+            presentationArea.style.display = 'flex'; // Show the presentation area
             showSlide(currentSlideIndex);
         });
     
+        presentationArea.addEventListener('click', function() {
+            currentSlideIndex++;
+            if (currentSlideIndex <= 47) {
+                showSlide(currentSlideIndex);
+            } else {
+                endPresentation();
+                window.location.href = 'Panels.html'; // Redirect after the last slide
+            }
+        });
+    
         function showSlide(index) {
-            const presentationArea = document.getElementById('presentationArea');
-            presentationArea.innerHTML = ''; // Clear previous content
-    
             const slideImage = document.createElement('img');
-            slideImage.src = `tutorial/Slide${index}.JPG`;
-            slideImage.style.width = '100%';
-            slideImage.style.height = 'auto';
-            presentationArea.appendChild(slideImage);
+            slideImage.src = `tutorial/Slide${index + 1}.JPG`; // Adjust the path as needed
+            slideImage.style.maxWidth = '100%'; // Ensure image fits in the container
+            slideImage.style.maxHeight = '100%';
     
-            presentationArea.onclick = function() {
-                currentSlideIndex++;
-                if (currentSlideIndex <= 47) {
-                    showSlide(currentSlideIndex);
-                } else {
-                    window.location.href = 'Panels.html'; // Redirect after the last slide
-                }
-            };
+            presentationArea.innerHTML = ''; // Clear previous slide
+            presentationArea.appendChild(slideImage);
+        }
+    
+        function endPresentation() {
+            presentationArea.innerHTML = ''; // Clear the presentation area
+            presentationArea.style.display = 'none'; // Hide the presentation area
+            currentSlideIndex = 0; // Reset the slide index
         }
     });
