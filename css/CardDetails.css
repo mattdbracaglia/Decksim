@@ -456,7 +456,7 @@ input, button {
   cursor: pointer;
   margin-top: 10px;
   position: relative;
-  top: -211px;
+  top: -151px;
   left: 950px;
 }
 
@@ -486,11 +486,11 @@ input, button {
 }
 
 #quantityContainer {
-    position: absolute;  /* Use 'fixed' if you want the container to stay in the same place even when scrolling */
-    top: 50px;  /* Adjust the value of 'top' as needed */
-    left: 100px;  /* Adjust the value of 'left' as needed */
-    margin-top: 10px;
-    margin-bottom: 10px;
+  position: absolute;
+  top: 120px;
+  left: 790px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 #cardQuantity {
