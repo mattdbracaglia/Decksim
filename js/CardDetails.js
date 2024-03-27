@@ -881,10 +881,16 @@ document.addEventListener('DOMContentLoaded', function() {
             C: 'colorlessMana'
         };
         Object.entries(cardData.uiState.manaCounter).forEach(([key, value]) => {
-            const manaInputId = manaCounterMappings[key]; // Map the key to the input's ID
+            const manaInputId = manaCounterMappings[key];
             const manaInput = document.getElementById(manaInputId);
             if (manaInput) manaInput.value = value;
         });
+    
+        // Update quantity
+        const quantityInput = document.getElementById('cardQuantity');
+        if (quantityInput) {
+            quantityInput.value = cardData.quantity || 0; // Use card's quantity, defaulting to 0 if undefined
+        }
     }
     
 
