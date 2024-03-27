@@ -648,6 +648,7 @@ right: 70px;
   border: none;
   border-radius: 5px;
   gap: 10px;
+  z-index: 2000;
 }
 
 
