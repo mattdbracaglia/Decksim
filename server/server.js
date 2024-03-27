@@ -254,6 +254,16 @@ app.post('/api/signup', async (req, res) => {
         return res.status(400).json({ message: 'Please provide all required fields' });
     }
 
+    if (username.length < 5) {
+        console.log('Username must have at least 5 characters');
+        return res.status(400).json({ message: 'Username must have at least 5 characters' });
+    }
+
+    if (password.length < 6) {
+        console.log('Password must have at least 6 characters');
+        return res.status(400).json({ message: 'Password must have at least 6 characters' });
+    }
+
     try {
         console.log('Connecting to the database...');
         const db = await connectToMongoDB();
