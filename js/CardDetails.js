@@ -853,14 +853,13 @@ document.addEventListener('DOMContentLoaded', function() {
         img.dataset.cardData = JSON.stringify(cardData); // Store card data in dataset for access in event listeners
         cardImageContainer.appendChild(img);
     
-        // Display the UI state for the selected card
-        displaySelectedCardUI(cardData);
-    
-        // Change the Set Commander button color based on the Commander status of the current card
+        // Change the Set Commander button text and color based on the Commander status
         const commanderButton = document.getElementById('commanderButton');
         if (cardData.uiState && cardData.uiState.Commander) {
+            commanderButton.textContent = 'Commander: Yes';
             commanderButton.style.backgroundColor = '#dc3545'; // Red color for commander
         } else {
+            commanderButton.textContent = 'Commander: No';
             commanderButton.style.backgroundColor = '#007bff'; // Blue color for non-commander
         }
     }
@@ -1125,16 +1124,18 @@ document.addEventListener('DOMContentLoaded', function() {
             currentCard.uiState.Commander = !currentCard.uiState.Commander;
             console.log(`${currentCard.name} is now set as a Commander: ${currentCard.uiState.Commander}`);
     
-            // Change the button color based on whether the Commander property is true or false
+            // Change the button text and color based on the Commander status
             if (currentCard.uiState.Commander) {
+                this.textContent = 'Commander: Yes';
                 this.style.backgroundColor = '#fb2323';  // Red color for Commander
             } else {
+                this.textContent = 'Commander: No';
                 this.style.backgroundColor = '#007bff';  // Blue color when not Commander
             }
         } else {
             console.log('No card selected.');
-            // Optionally reset the button color to blue if no card is selected
-            this.style.backgroundColor = '#007bff';
+            this.textContent = 'Commander: No';
+            this.style.backgroundColor = '#007bff';  // Default color when no card is selected
         }
     });
 
