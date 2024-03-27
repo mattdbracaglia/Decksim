@@ -46,7 +46,7 @@
     
         presentationArea.addEventListener('click', function() {
             currentSlideIndex++;
-            if (currentSlideIndex < 47) {  // Use < 47 since index starts from 0
+            if (currentSlideIndex < 50) {  // Use < 47 since index starts from 0
                 showSlide(currentSlideIndex);
             } else {
                 endPresentation();
