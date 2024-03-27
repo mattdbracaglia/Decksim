@@ -65,7 +65,9 @@ signupForm.addEventListener('submit', async function(event) {
         const data = await response.json();
         console.log('Signup successful:', data.message);
         alert(data.message);
-        // Redirect or perform any other desired action
+        
+        // Redirect to signin.html after successful signup
+        window.location.href = 'signin.html';
     } catch (error) {
         console.error('Error during signup:', error);
         alert('Signup failed. Please try again.');
