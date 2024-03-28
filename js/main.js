@@ -1484,6 +1484,7 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (oneTurnStep) {
             case 0:
                 console.log("Case 0: Drawing a card from the library to the hand.");
+                tappedLands = [];
                 drawCardFromLibraryToHand(currentPlayerId);
                 console.log(`After drawing a card, hand:`, playersData[currentPlayerId].handImages.images.map(card => ({
                     name: card.cardData.name,
@@ -1574,6 +1575,7 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (currentChoicesTurnStep) {
             case 0:
                 console.log("Case 0: Drawing a card from the library to the hand.");
+                tappedLands = [];
                 drawCardFromLibraryToHand(currentPlayerId);
                 if (!choiceMade) {
                     currentChoicesTurnStep++;
