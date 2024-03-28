@@ -116,6 +116,88 @@ document.addEventListener('DOMContentLoaded', function() {
             markedCards: {},
         },
     };
+    const originalplayersData = {
+        Player1: {
+            choiceImages: {images: [], scrollOffset: 0},
+            libraryImages: {images: [], scrollOffset: 0},
+            handImages: {images: [], scrollOffset: 0},
+            battlefieldImages: {images: [], scrollOffset: 0},
+            landImages: {images: [], scrollOffset: 0},
+            commanderImages: {images: [], scrollOffset: 0},
+            exileImages: {images: [], scrollOffset: 0},
+            graveyardImages: {images: [], scrollOffset: 0},
+            tappedLandsImages: {images: [], scrollOffset: 0},
+            moveImages: {images: [], scrollOffset: 0},
+            historyImages: {images: [], scrollOffset: 0},
+            infoImages: {images: [], scrollOffset: 0},
+            gameStats: {},
+            manaCounter: {W: 0, B: 0, U: 0, R: 0, G: 0, C: 0},
+            totalMana: 0,
+            totalManaOr: 0,
+            selectedImageData: null,
+            markedCards: {},
+        },
+        Player2: {
+            choiceImages: {images: [], scrollOffset: 0},
+            libraryImages: {images: [], scrollOffset: 0},
+            handImages: {images: [], scrollOffset: 0},
+            battlefieldImages: {images: [], scrollOffset: 0},
+            landImages: {images: [], scrollOffset: 0},
+            commanderImages: {images: [], scrollOffset: 0},
+            exileImages: {images: [], scrollOffset: 0},
+            graveyardImages: {images: [], scrollOffset: 0},
+            tappedLandsImages: {images: [], scrollOffset: 0},
+            moveImages: {images: [], scrollOffset: 0},
+            historyImages: {images: [], scrollOffset: 0},
+            infoImages: {images: [], scrollOffset: 0},
+            gameStats: {},
+            manaCounter: {W: 0, B: 0, U: 0, R: 0, G: 0, C: 0},
+            totalMana: 0,
+            totalManaOr: 0,
+            selectedImageData: null,
+            markedCards: {},
+        },
+        Player3: {
+            choiceImages: {images: [], scrollOffset: 0},
+            libraryImages: {images: [], scrollOffset: 0},
+            handImages: {images: [], scrollOffset: 0},
+            battlefieldImages: {images: [], scrollOffset: 0},
+            landImages: {images: [], scrollOffset: 0},
+            commanderImages: {images: [], scrollOffset: 0},
+            exileImages: {images: [], scrollOffset: 0},
+            graveyardImages: {images: [], scrollOffset: 0},
+            tappedLandsImages: {images: [], scrollOffset: 0},
+            moveImages: {images: [], scrollOffset: 0},
+            historyImages: {images: [], scrollOffset: 0},
+            infoImages: {images: [], scrollOffset: 0},
+            gameStats: {},
+            manaCounter: {W: 0, B: 0, U: 0, R: 0, G: 0, C: 0},
+            totalMana: 0,
+            totalManaOr: 0,
+            selectedImageData: null,
+            markedCards: {},
+        },
+        Player4: {
+            choiceImages: {images: [], scrollOffset: 0},
+            libraryImages: {images: [], scrollOffset: 0},
+            handImages: {images: [], scrollOffset: 0},
+            battlefieldImages: {images: [], scrollOffset: 0},
+            landImages: {images: [], scrollOffset: 0},
+            commanderImages: {images: [], scrollOffset: 0},
+            exileImages: {images: [], scrollOffset: 0},
+            graveyardImages: {images: [], scrollOffset: 0},
+            tappedLandsImages: {images: [], scrollOffset: 0},
+            moveImages: {images: [], scrollOffset: 0},
+            historyImages: {images: [], scrollOffset: 0},
+            infoImages: {images: [], scrollOffset: 0},
+            gameStats: {},
+            manaCounter: {W: 0, B: 0, U: 0, R: 0, G: 0, C: 0},
+            totalMana: 0,
+            totalManaOr: 0,
+            selectedImageData: null,
+            markedCards: {},
+        },
+    };
     let player1StarterLands = 0;
     let player2StarterLands = 0;
     let player3StarterLands = 0;
@@ -432,6 +514,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Assign library cards to libraryImages
         playersData[playerKey].libraryImages.images = libraryCards;
+
+        uploadToOriginalPlayersData(playerKey, playersData[playerKey]);
     
         console.log(`Updated commander for ${playerKey}:`, playersData[playerKey].commanderImages.images);
         console.log(`Updated library for ${playerKey}:`, playersData[playerKey].libraryImages.images);
@@ -450,6 +534,68 @@ document.addEventListener('DOMContentLoaded', function() {
         updatePlayerDisplay(playerKey);
         updateAllPlayersSectionDisplay();
     }
+    
+    function uploadToOriginalPlayersData() {
+        // Deep clone the playersData object
+        const clonedPlayersData = JSON.parse(JSON.stringify(playersData));
+    
+        // Merge the cloned data into originalPlayersData
+        for (let playerKey in clonedPlayersData) {
+            if (clonedPlayersData.hasOwnProperty(playerKey)) {
+                originalplayersData[playerKey] = clonedPlayersData[playerKey];
+            }
+        }
+    
+        console.log('Original players data updated successfully');
+    }
+
+    document.getElementById('restart').addEventListener('click', restartGame);
+    
+    function restartGame() {
+        // Stop auto choices and auto turns if they are running
+        if (autoChoicesIntervalId !== null) {
+            clearInterval(autoChoicesIntervalId);
+            autoChoicesIntervalId = null;
+            const autoChoicesButton = document.getElementById('choiceTurns');
+            if (autoChoicesButton) {
+                autoChoicesButton.textContent = 'Auto Choices';
+            }
+        }
+    
+        if (autoTurnIntervalId !== null) {
+            clearInterval(autoTurnIntervalId);
+            autoTurnIntervalId = null;
+            const autoButton = document.getElementById('autoTurns');
+            if (autoButton) {
+                autoButton.textContent = 'Auto';
+            }
+        }
+    
+        // Hide the choice section
+        const choiceSection = document.getElementById('choice');
+        if (choiceSection) {
+            choiceSection.style.display = 'none';
+        }
+    
+        // Iterate over each player in playersData and reset data
+        for (const playerKey in playersData) {
+            if (playersData.hasOwnProperty(playerKey)) {
+                playersData[playerKey] = JSON.parse(JSON.stringify(originalplayersData[playerKey]));
+                updatePlayerDisplay(playerKey); // Update display for each player
+            }
+        }
+    
+        // Reset game state variables
+        turnPlayer = null;
+        currentPlayerId = null; // Assuming you have a variable like this
+    
+        // Re-enable the start game button
+        document.getElementById('startGame').disabled = false;
+    
+        updateAllPlayersSectionDisplay();
+        console.log('Game has been restarted');
+    }
+    
     
 
 
@@ -651,6 +797,7 @@ document.addEventListener('DOMContentLoaded', function() {
             clearInfoSection();
         }
         console.log("All players' data:", playersData);
+        console.log(originalplayersData);
     });
 
     // Function to find the location of an image in the player data
@@ -775,6 +922,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         turnPlayer = 'Player1'; // Set the turnPlayer to 'Player1'
+        currentPlayerId = 'Player1'; // Set the currentPlayerId to 'Player1', assuming you have this variable
         console.log(`Turn 1 player set to: ${turnPlayer}`);
     
         // Set the current player to Player1 and update the UI accordingly
