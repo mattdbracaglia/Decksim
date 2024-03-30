@@ -888,6 +888,22 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('discardDrawSeven').addEventListener('click', function() {
         discardDrawSeven();
     });
+    
+    document.getElementById('1Draw').addEventListener('click', drawOneCard);
+
+    function drawOneCard() {
+        const playerKey = currentPlayerId;
+        const libraryCards = playersData[playerKey].libraryImages.images;
+        const handCards = playersData[playerKey].handImages.images;
+    
+        // Check if the library has cards to draw
+        if (libraryCards.length > 0) {
+            const card = libraryCards.shift(); // Remove the top card from the library
+            handCards.push(card); // Add the removed card to the hand
+        }
+    
+        updatePlayerDisplay(playerKey);
+    }
 
 
     function shuffleDrawEqual() {
