@@ -711,19 +711,19 @@ input, button {
 }
 
 .search-section {
-    position: relative;
-    border: 2px solid #007bff;
-    padding: 10px;
-    margin: 5px;
-    text-align: center;
-    background-color: #f0f0f066;
-    border-radius: 5px;
-    width: 125px;
-    height: 600px;
-    box-sizing: border-box;
-    overflow-y: auto;
-    overflow-x: hidden;
-  }
+  position: absolute;
+  border: 2px solid #007bff;
+  padding: 10px;
+  margin: 5px;
+  text-align: center;
+  background-color: #f0f0f066;
+  border-radius: 5px;
+  width: 125px;
+  height: 600px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
 
 .search-section img {
     max-width: 120%; /* Ensures the image width does not exceed the section width */
@@ -736,9 +736,9 @@ input, button {
 
 /* Example of re-positioning */
 #searchSection {
-    top: -11px;
-    right: -16px;
-  }
+  top: -131px;
+  right: -16px;
+}
 
   #CardSearch {
     position: relative;
