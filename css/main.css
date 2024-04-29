@@ -738,15 +738,16 @@ right: 70px;
 
 
 #cycleButtons {
-    position: fixed;
-    bottom: 117px;
-    left: 121px;
-    display: flex;
-    gap: 80px;
-    margin-top: 8px;
-    padding: 8px;
-    font-size: 16px;
-  }
+  position: fixed;
+  bottom: 117px;
+  left: 121px;
+  display: flex;
+  gap: 55px;
+  margin-top: 8px;
+  padding: 8px;
+  font-size: 16px;
+}
+
 #cycleButtons button {
     padding: 10px;
     font-size: 16px;
