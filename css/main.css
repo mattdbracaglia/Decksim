@@ -2,8 +2,13 @@ body {
     font-family: Arial, sans-serif;
     margin: 0; /* Minimize unnecessary space */
     padding: 0; /* Minimize unnecessary space */
-    background-color: #f0f0f0;
-}
+    background-color: #f0f0f0; /* Default background color */
+    background-image: url('background.jpg'); /* Adds background image from the css folder */
+    background-size: cover; /* Cover the entire page */
+    background-attachment: fixed; /* Keep the background image fixed during scrolling */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-position: center; /* Center the background image */
+  }
 
 input, button {
     margin-top: 10px;
@@ -63,37 +68,77 @@ input, button {
 .player-label {
     color: #FFFFFF;
 }
-
 .arrow-button {
-  background: #f23131;
-  border: none;
-  color: #FFFFFF;
-  font-size: 14px;
-  cursor: pointer;
-  padding: 10px;
-  display: flex;
-  align-items: center;
-  width: 50px;
-  height: 27px;
-}
-
-
-.arrow-button:hover {
-    color: #CCCCCC;
-}
-
-.left-arrow,
-.right-arrow {
+    background: #f23131;
+    border: none;
+    color: #FFFFFF;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+    height: 27px;
+    border-radius: 4px;
+    box-shadow: 0 4px #b22222; /* Darker red for shadow, adding depth */
+    transition: background 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
+  }
+  
+  .arrow-button:hover {
+    background-color: #e02020; /* Slightly lighter red on hover */
+    box-shadow: 0 2px #b22222; /* Smaller shadow to simulate button press */
+    transform: translateY(2px); /* Move button slightly down to mimic pressing */
+  }
+  
+  .arrow-button:active {
+    background-color: #c81e1e; /* Even lighter red when clicked */
+    box-shadow: 0 1px #b22222; /* Minimal shadow for pressed effect */
+    transform: translateY(4px); /* Press the button down further */
+  }
+  
+  .left-arrow,
+  .right-arrow {
     padding: 0 2px;
-}
+  }
+  
 
 #playerButtons {
-  position: fixed;
-  top: 560px;
-  right: 100px;
-  display: flex;
-  gap: 80px;
+    position: fixed;
+    top: 571px;
+    right: 100px;
+    display: flex;
+    gap: 80px;
+  }
+
+  #playerButtons button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px #0056b3;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    height: 29px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+#playerButtons button:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+    box-shadow: 0 2px #003f7f; /* Even darker blue for a smaller shadow, simulates button press */
+    transform: translateY(2px); /* Move button slightly down to mimic pressing */
 }
+
+#playerButtons button:active {
+    background-color: #004c8c; /* Even darker blue when clicked */
+    box-shadow: 0 1px #003366; /* Minimal shadow for pressed effect */
+    transform: translateY(4px); /* Press the button down further */
+}
+
 
 button {
     padding: 10px;
@@ -116,7 +161,7 @@ button:hover {
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
-    background-color: #f0f0f0;
+    background-color: #f0f0f059;
     border-radius: 5px;
     width: 600px; /* Custom width */
     height: 100px; /* Custom height, adjust as needed */
@@ -151,7 +196,7 @@ button:hover {
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
-    background-color: #f0f0f0;
+    background-color: #f0f0f059;
     border-radius: 5px;
     width: 200px; /* Adjusted width for these sections */
     height: 100px; /* Consistent height, adjust as needed */
@@ -170,7 +215,7 @@ button:hover {
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
-    background-color: #f0f0f0;
+    background-color: #f0f0f059;
     border-radius: 5px;
     width: 200px; /* Custom width */
     height: 300px; /* Custom height, adjust as needed */
@@ -203,7 +248,7 @@ button:hover {
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
     text-align: center;
-    background-color: #f0f0f0;
+    background-color: #f0f0f059;
     border-radius: 5px;
     width: 125px; /* Section width */
     height: 560px; /* Section height */
@@ -269,15 +314,25 @@ button:hover {
     padding: 10px;
     font-size: 16px;
     cursor: pointer;
-    background-color: #007bff;
+    background-color: #007bff; /* Bright blue */
     color: white;
     border: none;
     border-radius: 5px;
     z-index: 1000;
+    box-shadow: 0 4px #0056b3; /* Darker blue for shadow, adds depth */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
 }
 
 #gameControls button:hover {
-    background-color: #0056b3;
+    background-color: #0056b3; /* A darker blue on hover */
+    box-shadow: 0 2px #003974; /* Even darker blue for a smaller shadow, simulates button press */
+    transform: translateY(2px); /* Move button slightly down to mimic pressing */
+}
+
+#gameControls button:active {
+    background-color: #004885; /* Even darker blue when clicked */
+    box-shadow: 0 1px #002244; /* Minimal shadow for pressed effect */
+    transform: translateY(4px); /* Press the button down further */
 }
 
 
@@ -305,20 +360,41 @@ button:hover {
 }
 
 #navigation {
-  position: absolute;
-  top: 60px;
-  left: 1150px;
-  display: table;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  z-index: 2000;
-}
+    position: absolute;
+    top: 60px;
+    left: 1122px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    z-index: 2000;
+  }
+  
 
 #navigation button {
     padding: 5px 10px;
     cursor: pointer;
+    background-color: #007bff; /* Blue background for the button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px #0056b3; /* Darker blue shadow to create a 3D effect */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition effects */
 }
+
+#navigation button:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    box-shadow: 0 2px #003f7f; /* Smaller shadow for a pressed effect */
+    transform: translateY(2px); /* Move the button down slightly to mimic pressing */
+}
+
+#navigation button:active {
+    background-color: #004c8c; /* Even darker blue for active state */
+    box-shadow: 0 1px #003366; /* Minimal shadow to enhance the pressed effect */
+    transform: translateY(4px); /* Further press down the button */
+}
+
 
 #navigation span {
     min-width: 100px; /* Ensure the display doesn't jump sizes when changing text */
@@ -425,17 +501,27 @@ html, body {
     margin: 5px;
     padding: 5px 10px;
     font-size: 16px;
-    background-color: #4CAF50;
+    background-color: #4CAF50; /* A green shade for action buttons */
     color: white;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-
+    box-shadow: 0 4px #3e8e41; /* Darker green for shadow to create depth */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions for interaction */
 }
 
 #sectionButtons button:hover {
-    background-color: #45a049;
+    background-color: #45a049; /* A slightly darker green on hover */
+    box-shadow: 0 2px #3e8e41; /* Smaller shadow on hover */
+    transform: translateY(2px); /* Slight downward movement to mimic pressing down */
 }
+
+#sectionButtons button:active {
+    background-color: #369636; /* Even darker green when active */
+    box-shadow: 0 1px #2c7a2c; /* Minimal shadow for a pressed effect */
+    transform: translateY(4px); /* Further pressing down effect */
+}
+
 
 #libraryBtn {    position: absolute;    top: 575px;    left: 20px;}
 
@@ -626,35 +712,100 @@ right: 70px;
   gap: 117px;
 }
 
+#mulliganButtons button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff; /* Specific blue shade for the buttons */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px #0056b3; /* Darker blue for shadow, adds depth */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+#mulliganButtons button:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+    box-shadow: 0 2px #003f7f; /* Even darker blue for a smaller shadow, simulates button press */
+    transform: translateY(2px); /* Move button slightly down to mimic pressing */
+}
+
+#mulliganButtons button:active {
+    background-color: #004c8c; /* Even darker blue when clicked */
+    box-shadow: 0 1px #003366; /* Minimal shadow for pressed effect */
+    transform: translateY(4px); /* Press the button down further */
+}
+
+
 #cycleButtons {
-  position: fixed;
-  bottom: 110px;
-  left: 121px;
-  display: flex;
-  gap: 56px;
-  margin-top: 8px;
-  padding: 8px;
-  font-size: 16px;
-}
+    position: fixed;
+    bottom: 117px;
+    left: 121px;
+    display: flex;
+    gap: 80px;
+    margin-top: 8px;
+    padding: 8px;
+    font-size: 16px;
+  }
+#cycleButtons button {
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 26px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px #999;
+  }
+  
+  #cycleButtons button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+    box-shadow: 0 2px #666;   /* Adjust shadow for hovered state */
+    transform: translateY(2px); /* Button moves down slightly when hovered */
+  }
+  
+  #cycleButtons button:active {
+    transform: translateY(4px); /* Button moves further down when clicked */
+    box-shadow: 0 1px #666; /* Less shadow to simulate button being pressed */
+  }
 
-#BacktoGame {
-  position: fixed;
-  top: 0px;
-  left: 10px;
-  display: flex;
-  background-color: #4CAF50;
-  color: white;
-  flex-direction: row;
-  border: none;
-  border-radius: 5px;
-  gap: 10px;
-  z-index: 2000;
+  #BacktoGame {
+    position: fixed;
+    top: 0px;
+    left: 10px;
+    display: flex;
+    align-items: center; /* Center items vertically within the button */
+    justify-content: center; /* Center items horizontally within the button */
+    background-color: #4CAF50; /* A green shade for action buttons */
+    color: white;
+    font-size: 16px; /* Set font size */
+    padding: 10px 20px; /* Padding around the text */
+    border: none;
+    border-radius: 5px;
+    gap: 10px;
+    z-index: 2000;
+    cursor: pointer; /* Indicates that the item is clickable */
+    box-shadow: 0 4px #2e7d32; /* Darker green for shadow, adds depth */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
 }
-
 
 #BacktoGame:hover {
-    background-color: #45a049; /* Darker shade on hover for feedback */
+    background-color: #45a049; /* Slightly darker green on hover */
+    box-shadow: 0 2px #1e6b24; /* Even darker green for a smaller shadow, simulates button press */
+    transform: translateY(2px); /* Move button slightly down to mimic pressing */
 }
+
+#BacktoGame:active {
+    background-color: #388e3c; /* Even darker green when clicked */
+    box-shadow: 0 1px #276629; /* Minimal shadow for pressed effect */
+    transform: translateY(4px); /* Press the button down further */
+}
+
 
 /* Specific styles for the section popup */
 #sectionPopup {
@@ -702,6 +853,36 @@ right: 70px;
   gap: 120px;
   z-index: 2049;
 }
+#startGame {
+    position: relative;
+    top: 570px;
+    left: 1055px;
+    display: flex;
+    gap: 120px;
+    z-index: 2049;
+    padding: 10px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #007bff; /* Specific blue shade for the button */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 4px #0056b3; /* Darker blue for shadow, adds depth */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+}
+
+#startGame:hover {
+    background-color: #0056b3; /* Slightly darker blue on hover */
+    box-shadow: 0 2px #003f7f; /* Even darker blue for a smaller shadow, simulates button press */
+    transform: translateY(2px); /* Move button slightly down to mimic pressing */
+}
+
+#startGame:active {
+    background-color: #004c8c; /* Even darker blue when clicked */
+    box-shadow: 0 1px #003366; /* Minimal shadow for pressed effect */
+    transform: translateY(4px); /* Press the button down further */
+}
+
 
 #leftArrow, #rightArrow {
     padding: 10px; /* Increase padding to make the button larger */
