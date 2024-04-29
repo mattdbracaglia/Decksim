@@ -67,7 +67,7 @@ a {
 }
 
 #deck-builder::after {
-    content: "Coming Soon";
+    content: "More Features Coming Soon";
     position: absolute;
     width: 100%;
     height: 100%;
