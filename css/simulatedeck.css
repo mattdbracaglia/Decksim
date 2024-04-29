@@ -1,11 +1,15 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
-    margin: 0;
-    padding: 0;
-    overflow: auto; /* Show scroll bars only when necessary */
-    height: auto; /* Let the body height naturally fit the content */
+  font-family: Arial, sans-serif;
+  margin: 0; /* Minimize unnecessary space */
+  padding: 0; /* Minimize unnecessary space */
+  background-color: #f0f0f0; /* Default background color */
+  background-image: url('background.jpg'); /* Adds background image from the css folder */
+  background-size: cover; /* Cover the entire page */
+  background-attachment: fixed; /* Keep the background image fixed during scrolling */
+  background-repeat: no-repeat; /* Do not repeat the image */
+  background-position: center; /* Center the background image */
 }
+
 input, button {
     margin-top: 10px;
     padding: 10px;
@@ -79,7 +83,7 @@ button:hover {
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
-    background-color: #f0f0f0;
+    background-color: #f0f0f059;
     border-radius: 5px;
     width: 700px; /* Custom width */
     height: 140px; /* Custom height, adjust as needed */
@@ -97,7 +101,7 @@ button:hover {
   border: 2px solid #007bff;
   padding: 10px;
   margin: 5px;
-  background-color: #f0f0f0;
+  background-color: #f0f0f059;
   border-radius: 5px;
   width: 567px;
   height: 140px;
@@ -131,7 +135,7 @@ button:hover {
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
-    background-color: #f0f0f0;
+    background-color: #f0f0f059;
     border-radius: 5px;
     width: 200px; /* Adjusted width for these sections */
     height: 140px; /* Custom height, adjust as needed */
@@ -151,39 +155,39 @@ button:hover {
 
 #info { top: 15px; right: 5px; }
 #library {
-  bottom: 499px;
+  bottom: 487px;
   left: 20px;
 }
 #land {
-  bottom: 1132px;
+  bottom: 1119px;
   left: 20px;
 }
 #hand {
-  bottom: 814px;
+  bottom: 801px;
   left: 20px;
 }
 #battlefield {
-  bottom: 1449px;
+  bottom: 1436px;
   left: 20px;
 }
 #graveyard {
-  bottom: 1426px;
+  bottom: 1413px;
   left: 745px;
 }
 #exile {
-  bottom: 1749px;
+  bottom: 1736px;
   left: 745px;
 }
 #commander {
-  bottom: 1554px;
+  bottom: 1541px;
   left: 745px;
 }
 #move {
-  bottom: 1534px;
+  bottom: 1523px;
   left: 744px;
 }
 #choice {
-  bottom: 1684px;
+  bottom: 1674px;
   left: 958px;
 }
 /* Wrapper for both sets of sections */
@@ -195,20 +199,30 @@ button:hover {
 }
 
 #sectionButtons button {
-    margin: 5px;
-    padding: 5px 10px;
-    font-size: 16px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-
+  margin: 5px;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: #4CAF50; /* Green background */
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  border-bottom: 4px solid #3a8f3a; /* Darker green for 3D effect */
+  transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transitions */
 }
 
 #sectionButtons button:hover {
-    background-color: #45a049;
+  background-color: #45a049; /* Slightly darker green on hover */
+  border-bottom: 1px solid #317231; /* Thinner border to mimic button being pressed */
+  transform: translateY(2px); /* Subtle movement down */
 }
+
+#sectionButtons button:active {
+  background-color: #317231; /* Even darker for active state */
+  border-bottom: 0; /* No border to simulate the button being fully pressed */
+  transform: translateY(4px); /* More pronounced movement down */
+}
+
 
 #libraryBtn {
   position: relative;
@@ -270,19 +284,30 @@ button:hover {
 }
 
 #gameControls button {
-    padding: 10px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    z-index: 1000;
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  border-bottom: 4px solid #004080; /* Darker blue for the 3D effect */
+  transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transition for hover effects */
+  z-index: 1000;
 }
 
 #gameControls button:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
+  border-bottom: 1px solid #003366; /* Slightly change for hover state */
+  transform: translateY(3px); /* Move the button down slightly on hover */
 }
+
+#gameControls button:active {
+  background-color: #003366; /* Even darker blue for active state */
+  border-bottom: 0; /* Eliminate the border-bottom to make it look like it's pressed */
+  transform: translateY(4px); /* Move the button further down to simulate being pressed */
+}
+
 
 
 #loadDecksButton {
@@ -326,7 +351,7 @@ button:hover {
   display: flex;
   gap: 20px;
   padding: 10px;
-  background-color: #f0f0f0;
+  background-color: #f0f0f000;
   border-radius: 5px;
   margin-top: 10px;
   position: relative;
@@ -364,7 +389,8 @@ button:hover {
 
 
 html, body {
-    overflow: auto; /* Prevents scrolling on the entire webpage */
+    overflow: hidden; /* Prevents scrolling on the entire webpage */
+    /*overflow: inherit; */
     height: 100%; /* Ensures the body takes up the full viewport height */
     margin: 0; /* Removes the default margin */
     padding: 0; /* Removes the default padding */
@@ -408,13 +434,13 @@ html, body {
 }
 
 #scrollboxContainer {
-    position: relative;
-    display: block;
-    margin-top: 20px;
-    width: 100%;
-    height: 25px; /* Adjust the height as needed */
-    z-index: 1;
-    
+  position: relative;
+  display: block;
+  margin-top: 20px;
+  width: 100%;
+  height: 25px;
+  z-index: 1;
+
 }
 
 .scrollbox {
@@ -436,17 +462,17 @@ html, body {
 
 #player1Scrollbox {
   position: absolute;
-  top: 155px;
-  left: 260px;
+  top: 154px;
+  left: 285px;
 }
 
 .switch-container {
   position: relative;
-  top: -32px;
+  top: -16px;
   left: 543px;
   width: 468px;
 }
-  
+
 .switch {
 position: relative;
 display: inline-block;
@@ -516,7 +542,7 @@ right: 70px;
 
 #autoPlaySwitchContainer {
   position: relative;
-  top: -410px;
+  top: -396px;
   left: 501px;
   width: 468px;
 }
@@ -548,37 +574,107 @@ right: 70px;
 .marked {
     border: 2px solid red;
 }
-
 #player1Mulligan {
+  padding: 12px 24px;
+  font-size: 18px;
+  background-color: #f44336;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #b71c1c;
+  transition: all 0.3s;
   position: relative;
-  top: 126px;
-  left: 145px;
+  top: 128px;
+  left: 159px;
+  height: 30px;
   display: flex;
-  gap: 120px;
-  z-index: 2049;
+  align-items: center;
+  justify-content: center;
+  width: 109px;
+}
+#player1Mulligan:hover {
+  background-color: #d32f2f; /* Slightly darker on hover */
+  box-shadow: 0 2px #b71c1c; /* Adjusted shadow for hover */
+  transform: translateY(2px); /* Simulate button press */
+}
+
+#player1Mulligan:active {
+  transform: translateY(4px); /* Deeper press effect */
+  box-shadow: 0 1px #b71c1c; /* Less shadow for a pressed look */
 }
 
 #startGame {
   position: relative;
-  top: 77px;
+  top: 88px;
   left: 25px;
   display: flex;
+  align-items: center;
+  justify-content: center;
   gap: 120px;
   z-index: 2049;
+  padding: 8px 24px;
+  font-size: 14px;
+  background-color: #2196F3;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px #1976D2;
+  transition: all 0.3s;
+  height: 30px;
+  width: 119px;
+}
+
+#startGame:hover {
+  background-color: #1E88E5; /* Slightly darker on hover */
+  box-shadow: 0 2px #1976D2;
+  transform: translateY(2px);
+}
+
+#startGame:active {
+  transform: translateY(4px);
+  box-shadow: 0 1px #1976D2;
 }
 
 #cycleButtons {
   position: relative;
-  top: 184px;
+  top: 198px;
   left: 18px;
   display: flex;
-  gap: 15px;
+  gap: 33px;
   margin-top: 8px;
   padding: 8px;
   font-size: 16px;
   width: 791px;
+  height: 50px;
+  align-items: center;
 }
 
+#cycleButtons button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 26px;
+  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px #999;
+}
+
+#cycleButtons button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  box-shadow: 0 2px #666;   /* Adjust shadow for hovered state */
+  transform: translateY(2px); /* Button moves down slightly when hovered */
+}
+
+#cycleButtons button:active {
+  transform: translateY(4px); /* Button moves further down when clicked */
+  box-shadow: 0 1px #666; /* Less shadow to simulate button being pressed */
+}
 
 /* Adjusted Container for the tabs to change its location */
 #deckTabsContainer {
@@ -586,34 +682,38 @@ right: 70px;
   justify-content: inherit;
   margin-bottom: 20px;
   position: relative;
-  top: -485px;
+  top: -472px;
   left: 726px;
   width: 814px;
 }
 
 /* Style for each tab */
 .deck-tab {
-    padding: 5px 10px; /* Padding inside each tab for spacing */
-    margin: 5px; /* Margin around tabs to separate them */
-    background-color: #ff9494; /* Light gray background */
-    border: 1px solid #dcdcdc; /* Light border for each tab */
-    border-radius: 5px; /* Rounded corners for tabs */
-    cursor: pointer; /* Change mouse cursor to indicate clickable */
-    text-align: center; /* Center text inside the tab */
-    transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effect */
+  padding: 5px 10px; /* Padding inside each tab for spacing */
+  margin: 5px; /* Margin around tabs to separate them */
+  background-color: #ff9494; /* Light gray background */
+  border: 1px solid #dcdcdc; /* Light border for each tab */
+  border-bottom: 4px solid #b71c1c; /* Shadow effect for 3D look */
+  border-radius: 5px; /* Rounded corners for tabs */
+  cursor: pointer; /* Change mouse cursor to indicate clickable */
+  text-align: center; /* Center text inside the tab */
+  transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transitions for effects */
 }
 
 /* Hover effect for tabs */
 .deck-tab:hover {
-    background-color: #e9e9e9; /* Slightly darker on hover */
-    transform: translateY(-2px); /* Slight lift effect */
+  background-color: #e9e9e9; /* Slightly darker on hover */
+  border-bottom: 1px solid #b71c1c; /* Less depth when hovered */
+  transform: translateY(3px); /* Push effect when tab is hovered */
 }
 
 /* Active tab style */
 .deck-tab.active {
-    background-color: #007bff; /* Active tab has a distinct color */
-    color: white; /* White text color for better contrast */
-    border-color: #0056b3; /* Darker border color for active tab */
+  background-color: #007bff; /* Active tab has a distinct color */
+  color: white; /* White text color for better contrast */
+  border-color: #0056b3; /* Darker border color for active tab */
+  border-bottom: 0 solid #b71c1c; /* Flatten the tab when active */
+  transform: translateY(4px); /* Push effect when tab is active */
 }
 
 .deck-Image-Container {
@@ -633,7 +733,7 @@ right: 70px;
   padding: 10px;
   margin: 5px;
   text-align: center;
-  background-color: #f0f0f0;
+  background-color: #f0f0f059;
   border-radius: 5px;
   width: 125px;
   height: 536px;
@@ -653,7 +753,7 @@ right: 70px;
 
 /* Example of re-positioning */
 #deckSection {
-  top: -504px;
+  top: -493px;
   left: 982px;
 }
 
@@ -684,17 +784,12 @@ right: 70px;
     overflow: hidden; /* Hide overflow within each section */
 }
 
-html, body {
-    overflow: hidden; /* Prevents scrolling on the entire webpage */
-    height: 100%; /* Ensures the body takes up the full viewport height */
-    margin: 0; /* Removes the default margin */
-    padding: 0; /* Removes the default padding */
-}
+
 
 #BacktoGame {
   position: fixed;
   top: -9px;
-  left: 11px;
+  left: 5px;
   display: flex;
   background-color: #4CAF50;
   color: white;
@@ -702,9 +797,21 @@ html, body {
   border: none;
   border-radius: 5px;
   gap: 10px;
+  padding: 10px 20px;
+  box-shadow: 0 4px #2e7d32;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  width: 71px;
 }
 
-
-#BacktoGame:hover {
-    background-color: #45a049; /* Darker shade on hover for feedback */
+#BacktoGame:hover, #BacktoGame:focus {
+  background-color: #45a049; /* Darker shade on hover for feedback */
+  box-shadow: 0 2px #2e7d32; /* Reduce shadow size on hover */
+  transform: translateY(2px); /* Move button down to mimic pressing */
 }
+
+#BacktoGame:active {
+  background-color: #388e3c; /* Even darker for active state */
+  box-shadow: 0 1px #2e7d32; /* Minimal shadow for pressed effect */
+  transform: translateY(4px); /* Button looks fully pressed */
+}
+
