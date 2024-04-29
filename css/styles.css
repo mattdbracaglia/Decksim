@@ -1,7 +1,14 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
-}
+    margin: 0; /* Minimize unnecessary space */
+    padding: 0; /* Minimize unnecessary space */
+    background-color: #f0f0f0; /* Default background color */
+    background-image: url('background.jpg'); /* Adds background image from the css folder */
+    background-size: cover; /* Cover the entire page */
+    background-attachment: fixed; /* Keep the background image fixed during scrolling */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-position: center; /* Center the background image */
+  }
 
 .container {
     max-width: 400px;
@@ -62,4 +69,19 @@ button[type="submit"]:hover {
 
 .signup-link a:hover {
     text-decoration: underline;
+}
+
+button#guestSignIn {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;  /* A different shade to distinguish it from the main submit button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px; /* Optional: adds some space between this button and others */
+}
+
+button#guestSignIn:hover {
+    background-color: #0056b3;
 }
