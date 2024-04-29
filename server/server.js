@@ -103,6 +103,9 @@ app.get('/get-deck-names', authenticateToken, async (req, res) => {
 
 // Route to process card names and filter data from Card-Details.json
 app.post('/import-cards', authenticateToken, async (req, res) => {
+    if (req.user.username.toLowerCase() === 'guest') {
+        return res.status(403).json({ error: 'Access denied for guest users.' });
+    }
     console.log('Received request on /import-cards with body:', req.body);
 
     const { cardNames, deckName } = req.body;
@@ -188,6 +191,9 @@ app.post('/import-cards', authenticateToken, async (req, res) => {
 });
 
 app.post('/save-deck', authenticateToken, async (req, res) => {
+    if (req.user.username.toLowerCase() === 'guest') {
+        return res.status(403).json({ error: 'Access denied for guest users.' });
+    }
     const { deckName, cards } = req.body;
     const userId = req.user.id;
 
@@ -371,6 +377,9 @@ app.post('/api/signin', async (req, res) => {
 });
 
 app.delete('/delete-deck', authenticateToken, async (req, res) => {
+    if (req.user.username.toLowerCase() === 'guest') {
+        return res.status(403).json({ error: 'Access denied for guest users.' });
+    }
     const { name } = req.query;
     const userId = req.user.id;
 
