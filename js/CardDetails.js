@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     var backToGameButton = document.getElementById('BacktoGame');
+    var editDeckButton = document.getElementById('EditDeck'); // Get the EditDeck button
+    var cardSearchButton = document.getElementById('CardSearch'); // Get the Card Search button
     let tempCardNames = [];
     let currentCardIndex = 0; // Tracks the current card index
     let currentCards = []; // Global variable to store cards data
@@ -7,10 +9,38 @@ document.addEventListener('DOMContentLoaded', function() {
     var popup = document.getElementById("deckPopup"); // Ensure this is accessible
     resetManaCounters();
     let highlightedCards = [];
+    let originalSearchResults = [];
     var currentCard; // This will hold the currently selected card's data
     let currentDeckName = ""; // Initially empty or you could set a default value
-    const deckNameInput = document.getElementById('deckNameInput');
-  
+    const deckNameInput = document.getElementById('deckNameInput2');
+    var getSimilar = document.getElementById('getSimilar');
+    let wordsToInclude = [];
+    let wordsToExclude = [];
+    let activeFilters = {
+        minPercentage: null,
+        maxPercentage: null,
+        wordsToInclude: [],
+        wordsToExclude: []
+    };
+    let globalFilters = {
+        includeWords: new Set(),
+        excludeWords: new Set()
+    };
+    let filters = {
+        minPercentage: null,
+        maxPercentage: null,
+        words: new Set()
+    };
+
+    if (searchButton) {
+        searchButton.addEventListener('click', function() {
+            console.log('Search button clicked outside DOMContentLoaded');
+            handleSearch();
+        });
+    } else {
+        console.log('Search button not found outside DOMContentLoaded');
+    }
+   
     if (deckNameInput) {
         currentDeckName = deckNameInput.value; // Update the currentDeckName when loading/changing the deck
     }
@@ -22,8 +52,236 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('Back To Game button not found');
     }
+
+    // Add event listener for EditDeck button
+    if (editDeckButton) {
+        editDeckButton.addEventListener('click', function() {
+            console.log('EditDeck button clicked'); // This will log when the EditDeck button is clicked
+            makeElementsVisible();
+            // Optionally, click the BacktoGame button if needed here
+            // backToGameButton.click();
+        });
+    } else {
+        console.error('EditDeck button not found');
+    }
+    
+
+    if (cardSearchButton) {
+        cardSearchButton.addEventListener('click', function() {
+            hideElements();
+        });
+    } else {
+        console.error('Card Search button not found');
+    }
+
+    if (getSimilar) {
+        getSimilar.addEventListener('click', function() {
+            setsearchimage();
+        });
+    } else {
+        console.log('Get Similar button not found');
+    }
+
+    document.getElementById('clearFilters').addEventListener('click', function() {
+        // Reset filter settings
+        activeFilters = {
+            minPercentage: null,
+            maxPercentage: null,
+            wordsToInclude: [],
+            wordsToExclude: []
+        };
+        applyFilters(); // Reapply filters which effectively resets to show all original results
+        console.log('All filters cleared and original search results displayed.');
+    });
+
+
+    function setsearchimage() {
+        console.log('Setting search image...');
+        const searchImageContainer = document.getElementById('searchImageContainer');
+        const similarCardImageContainer = document.getElementById('similarCardImageContainer');
+        const wordFilterContainer = document.getElementById('wordFilterContainer');
+    
+        similarCardImageContainer.innerHTML = ''; // Clear the container
+        wordFilterContainer.innerHTML = ''; // Clear the word filters
+    
+        console.log('Checking if searchImageContainer has child nodes...');
+        if (searchImageContainer.hasChildNodes()) {
+            const image = searchImageContainer.querySelector('img');
+            if (image && image.dataset.cardData) {
+                const cardData = JSON.parse(image.dataset.cardData);
+                console.log('Card data for similar:', cardData);
+    
+                // Clone the image node
+                const clonedImage = image.cloneNode(true);
+                similarCardImageContainer.appendChild(clonedImage);
+                console.log('Cloned image added to similarCardImageContainer');
+    
+                // Remove text in parentheses from oracle text before processing
+                const oracleTextWithoutParentheses = cardData.oracle_text.replace(/\(.*?\)/g, '');
+                console.log('Processed oracle text:', oracleTextWithoutParentheses);
+    
+                // Split oracle text into words and create buttons
+                const oracleWords = new Set(oracleTextWithoutParentheses.split(/\s+/)); // Use Set to avoid duplicate words
+                console.log('Unique words extracted:', [...oracleWords]);
+                oracleWords.forEach(word => {
+                    console.log(`Processing word: ${word}`);
+                    const wordFilter = document.createElement('div');
+                    wordFilter.className = 'word-filter';
+    
+                    const plusButton = document.createElement('button');
+                    plusButton.textContent = '+';
+                    plusButton.className = 'plus-button'; // Assign specific class for styling
+    
+                    const minusButton = document.createElement('button');
+                    minusButton.textContent = '-';
+                    minusButton.className = 'minus-button'; // Assign specific class for styling
+    
+                    // Plus button click event
+                    plusButton.addEventListener('click', () => {
+                        console.log(`Plus clicked for word: ${word}`);
+                        if (minusButton.classList.contains('selected')) {
+                            minusButton.classList.remove('selected');
+                        }
+                        plusButton.classList.toggle('selected');
+                        addWordFilter(word, true);
+                    });
+    
+                    // Minus button click event
+                    minusButton.addEventListener('click', () => {
+                        console.log(`Minus clicked for word: ${word}`);
+                        if (plusButton.classList.contains('selected')) {
+                            plusButton.classList.remove('selected');
+                        }
+                        minusButton.classList.toggle('selected');
+                        addWordFilter(word, false);
+                    });
+    
+                    wordFilter.appendChild(plusButton); // Add plus button before the word
+                    wordFilter.appendChild(document.createTextNode(word)); // Add the word text
+                    wordFilter.appendChild(minusButton); // Add minus button after the word
+    
+                    wordFilterContainer.appendChild(wordFilter);
+                    console.log('Word filter added to wordFilterContainer');
+                });
+    
+            } else {
+                console.log('No card data found in search image container');
+            }
+        } else {
+            console.log('Search image container is empty');
+        }
+    }
+
+    
+    
+    
+    function addWordFilter(word, isInclude) {
+        console.log(`Adjusting word filter. Word: ${word}, Include: ${isInclude}`);
+    
+        if (isInclude) {
+            if (globalFilters.includeWords.has(word)) {
+                globalFilters.includeWords.delete(word);
+                console.log(`Word "${word}" removed from include filters.`);
+            } else {
+                globalFilters.includeWords.add(word);
+                globalFilters.excludeWords.delete(word);
+                console.log(`Word "${word}" added to include filters.`);
+            }
+        } else {
+            if (globalFilters.excludeWords.has(word)) {
+                globalFilters.excludeWords.delete(word);
+                console.log(`Word "${word}" removed from exclude filters.`);
+            } else {
+                globalFilters.excludeWords.add(word);
+                globalFilters.includeWords.delete(word);
+                console.log(`Word "${word}" added to exclude filters.`);
+            }
+        }
+    
+        console.log(`Current include filters:`, Array.from(globalFilters.includeWords));
+        console.log(`Current exclude filters:`, Array.from(globalFilters.excludeWords));
+        
+        applyAllFilters();  // Reapply all filters with the updated state
+    }
+
+    function updateFilterByPercentage(minPercentage, maxPercentage) {
+        console.log(`Updating filters for percentage range. Min: ${minPercentage}, Max: ${maxPercentage}`);
+        
+        // Setting the active filter ranges for minimum and maximum percentages
+        activeFilters.minPercentage = minPercentage;
+        activeFilters.maxPercentage = maxPercentage;
+    
+        console.log(`Filters set to active:`, activeFilters);
+    
+        // Applying the filters to the current dataset
+        console.log('Applying filters based on updated percentage criteria...');
+        applyFilters();
+    }
+    
+    
+    function updateFilterByWord(includeWords, excludeWords) {
+        activeFilters.wordsToInclude = includeWords;
+        activeFilters.wordsToExclude = excludeWords;
+        applyFilters();
+    }
+
+   
+    
+    function filterCardsByWord() {
+        const similarCardImageContainer = document.getElementById('similarCardImageContainer');
+        const similarImage = similarCardImageContainer.querySelector('img');
+    
+        if (!similarImage || !similarImage.dataset.cardData) {
+            console.log('No similar card data available for filtering.');
+            return;
+        }
+    
+        const similarCardData = JSON.parse(similarImage.dataset.cardData);
+        const words = similarCardData.oracle_text.replace(/\(.*?\)/g, '').toLowerCase().split(/\s+/);
+    
+        // Assuming words to exclude are stored somewhere or you provide them
+        const wordsToExclude = []; // Modify as needed
+    
+        updateFilterByWord(words, wordsToExclude);
+    }
+    
+
     createTabs();
     createDeckFilterTabs();
+
+    createPercentageTabs();
+
+    function createPercentageTabs() {
+        const percentageTabsContainer = document.getElementById('percentageTabsContainer');
+        percentageTabsContainer.innerHTML = ''; // Clear existing tabs
+    
+        // Add 'All' tab
+        const allTab = document.createElement('button');
+        allTab.className = 'tab';
+        allTab.textContent = 'All';
+        percentageTabsContainer.appendChild(allTab);
+        allTab.addEventListener('click', function() {
+            filters.minPercentage = 0; // Set minimum percentage to 0
+            filters.maxPercentage = 100; // Set maximum percentage to 100
+            populateSearchSection(originalSearchResults); // Repopulate with original results
+        });
+    
+        for (let i = 100; i >= 10; i -= 10) {
+            const tab = document.createElement('button');
+            tab.className = 'tab';
+            tab.textContent = `${i}-${i - 9}%`;
+            tab.dataset.rangeMin = i - 9;
+            tab.dataset.rangeMax = i;
+            percentageTabsContainer.appendChild(tab);
+    
+            tab.addEventListener('click', function() {
+                filters.minPercentage = parseInt(this.dataset.rangeMin);
+                filters.maxPercentage = parseInt(this.dataset.rangeMax);
+                filterCardsByPercentage(filters.minPercentage, filters.maxPercentage);
+            });
+        }
+    }
+    
 
 
     document.addEventListener('DOMContentLoaded', () => {
@@ -59,26 +317,62 @@ document.addEventListener('DOMContentLoaded', function() {
         var cardImageContainer = document.getElementById('cardImageContainer');
         var addCardContainer = document.getElementById('addCardContainer');
         var addCardsButtonContainer = document.getElementById('addCardsButtonContainer');
+        var deckNameInput2 = document.getElementById('deckNameInput2'); // Get the deck name input
     
         if (cardInputContainer.style.display === 'none') {
             // If the card input container is currently hidden, show it
             cardInputContainer.style.display = 'block';
-            
+    
             // And ensure the card image container and add card container are hidden
             cardImageContainer.style.display = 'none';
             addCardContainer.style.display = 'none';
             addCardsButtonContainer.style.display = 'none';
+    
+            // Make the deck name input visible
+            deckNameInput2.style.display = 'block'; // Show the deck name input
         } else {
             // If the card input container is currently shown, hide it
             cardInputContainer.style.display = 'none';
-            
+    
             // And unhide the card image container
             cardImageContainer.style.display = 'block';
+    
+            // Hide the deck name input
+            deckNameInput2.style.display = 'none'; // Hide the deck name input
         }
     
         // Call askForDeckName to show the deck name input alongside
         askForDeckName(); // This ensures the deck name input is shown when Import Cards is clicked
     });
+    
+
+    document.getElementById('saveDetails').addEventListener('click', function() {
+        const cards = currentCards;  // Assuming this variable holds your card data.
+    
+        if (!currentDeckName) {
+            console.log('No deck name specified.');
+            document.getElementById('deckNameModal').style.display = 'block'; // Show the modal if no deck name is set
+            return;
+        }
+    
+        saveDeck(currentDeckName, cards);
+    });
+    
+    document.getElementById('saveDeckNameButton').addEventListener('click', function() {
+        const deckName = document.getElementById('deckNameInput').value; // Get the deck name from the modal input
+    
+        if (!deckName) {
+            console.error('No deck name entered in the modal.');
+            alert('Please enter a deck name.');
+            return;
+        }
+    
+        console.log(`Deck name entered: ${deckName}, proceeding to save.`);
+        saveDeck(deckName, currentCards);
+    
+        document.getElementById('deckNameModal').style.display = 'none'; // Hide the modal once saved
+    });
+    
         
     function askForDeckName() {
         console.log('Asking for deck name...');
@@ -89,10 +383,43 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('dblclick', function() {
         console.log('Current cards:', currentCards);
         console.log('Current deck name:', currentDeckName);
+    
+        const similarCardImageContainer = document.getElementById('similarCardImageContainer');
+        if (similarCardImageContainer) {
+            const image = similarCardImageContainer.querySelector('img');
+            if (image && image.dataset.cardData) {
+                const cardData = JSON.parse(image.dataset.cardData);
+                console.log('Similar card data:', cardData);
+                console.log('Similar card name:', cardData.name);
+            } else {
+                console.log('No image or card data found in similar card image container');
+            }
+        }
+    
+        // Logging active filter settings
+        console.log('Active Percentage Range Filters:', {
+            'Minimum Percentage': activeFilters.minPercentage,
+            'Maximum Percentage': activeFilters.maxPercentage
+        });
+        console.log('Active Word Include/Exclude Filters:', {
+            'Words to Include': [...activeFilters.wordsToInclude],
+            'Words to Exclude': [...activeFilters.wordsToExclude]
+        });
+        console.log('Global Filters:', {
+            'Included Words': [...globalFilters.includeWords],
+            'Excluded Words': [...globalFilters.excludeWords]
+        });
+        console.log('Single Filters Object:', {
+            'Min Percentage': filters.minPercentage,
+            'Max Percentage': filters.maxPercentage,
+            'Words': [...filters.words]
+        });
     });
     
+    
+    
 
-   document.getElementById('loadCards').addEventListener('click', function() {
+   document.getElementById('loadingCards').addEventListener('click', function() {
         console.log('Load Cards button clicked.');
         const token = localStorage.getItem('token');
         if (!token) {
@@ -110,7 +437,7 @@ document.addEventListener('DOMContentLoaded', function() {
             return null;
         }).filter(card => card); // Ensure each entry has a name and quantity
     
-        const deckName = document.getElementById('deckNameInput').value.trim();
+        const deckName = document.getElementById('deckNameInput2').value.trim();
         if (!deckName) {
             console.error('Deck name is required.');
             return;
@@ -177,6 +504,74 @@ document.addEventListener('DOMContentLoaded', function() {
             console.error('Error:', error);
         });
     });
+
+    document.getElementById('searchQuantity').addEventListener('change', function() {
+        const searchImageContainer = document.getElementById('searchImageContainer');
+        const img = searchImageContainer.querySelector('img');
+        if (!img) {
+            console.error('No image found in search image container.');
+            return;
+        }
+    
+        const cardData = JSON.parse(img.dataset.cardData);
+        const newQuantity = parseInt(this.value, 10);
+    
+        if (newQuantity > 0) {
+            const existingCard = currentCards.find(c => c.name === cardData.name);
+            if (!existingCard) {
+                // If card not in currentCards, add it with new quantity and save the deck
+                currentCards.push({ ...cardData, quantity: newQuantity });
+            } else {
+                // If card is already in currentCards, update its quantity and save the deck
+                existingCard.quantity = newQuantity;
+            }
+            populateDeckSection(currentCards);
+        } else {
+            // If new quantity is 0, remove the card from currentCards and save the deck
+            const cardIndex = currentCards.findIndex(c => c.name === cardData.name);
+            if (cardIndex !== -1) {
+                currentCards.splice(cardIndex, 1);
+                populateDeckSection(currentCards);
+            }
+        }
+    
+        saveDeck();  // Save the deck after updating the quantities
+    });
+
+    function populateDeckSection(cards) {
+        const deckSection = document.getElementById('deckSection');
+        deckSection.innerHTML = '';
+    
+        cards.forEach((card, index) => {
+            const img = document.createElement('img');
+            img.src = card.settings.normal_image_url;
+            img.alt = card.name;
+            img.dataset.cardIndex = index;
+            img.dataset.cardType = card.settings.type_line;
+    
+            img.addEventListener('click', function() {
+                console.log('Image clicked:', card);
+                currentCard = card;
+                if (!currentCard.uiState) {
+                    currentCard.uiState = { checkboxes: {}, manaCounter: {} };
+                }
+                console.log('Current card set to:', currentCard);
+                displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+                updateUIForCard(currentCard);
+                clearHighlightedCardsUI();
+                populateCardList(cards);
+            });
+    
+            deckSection.appendChild(img);
+        });
+    
+        // Automatically select the first card to display its details
+        if (cards.length > 0) {
+            currentCard = cards[0];
+            displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+            updateUIForCard(currentCard);
+        }
+    }
     
 
     document.getElementById('AddCard').addEventListener('click', function() {
@@ -563,40 +958,28 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    function populateDeckSection(cards) {
-        const deckSection = document.getElementById('deckSection');
-        deckSection.innerHTML = '';
+    function populateSearchSection(cards) {
+        console.log('Populating search section with cards:', cards);
+        const searchSection = document.getElementById('searchSection');
+        searchSection.innerHTML = '';  // Clear the search section before adding new cards
     
-        cards.forEach((card, index) => {
-            const img = document.createElement('img');
-            img.src = card.settings.normal_image_url;
-            img.alt = card.name;
-            img.dataset.cardIndex = index;
-            img.dataset.cardType = card.settings.type_line;
+        // Iterate through each card in the provided array
+        cards.forEach(card => {
+            const img = document.createElement('img');  // Create an image element for each card
+            img.src = card.large_image_url;  // Set the source of the image to the card's large image URL
+            img.alt = card.name;  // Use the card's name as the alt text for accessibility
+            img.dataset.cardData = JSON.stringify(card);  // Store the card data as a JSON string in a data attribute for later use
     
-            img.addEventListener('click', function() {
-                console.log('Image clicked:', card);
-                currentCard = card;
-                if (!currentCard.uiState) {
-                    currentCard.uiState = { checkboxes: {}, manaCounter: {} };
-                }
-                console.log('Current card set to:', currentCard);
-                displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-                updateUIForCard(currentCard);
-                clearHighlightedCardsUI();
-                populateCardList(cards);
+            // Add an event listener for clicks on the image
+            img.addEventListener('click', () => {
+                console.log('Image clicked:', card.name);
+                displayInSearchImageContainer(card.large_image_url, card);  // Display the card in the search image container when clicked
             });
     
-            deckSection.appendChild(img);
+            searchSection.appendChild(img);  // Append the image element to the search section
         });
-    
-        // Automatically select the first card to display its details
-        if (cards.length > 0) {
-            currentCard = cards[0];
-            displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
-            updateUIForCard(currentCard);
-        }
     }
+    
     
              
 
@@ -1001,57 +1384,41 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('cardQuantity').addEventListener('input', function() {
         const newQuantity = parseInt(this.value, 10) || 0; // Ensure the value is a number and default to 0 if not
     
-        // Update the quantity for the currentCard
         if (currentCard) {
-            currentCard.quantity = newQuantity;
-            console.log(`Updated quantity for ${currentCard.name}: ${newQuantity}`);
+            if (newQuantity > 0) {
+                currentCard.quantity = newQuantity;
+                console.log(`Updated quantity for ${currentCard.name}: ${newQuantity}`);
+            } else {
+                // Find the index of the current card in the currentCards array
+                const currentCardIndex = currentCards.findIndex(card => card.name === currentCard.name);
+                
+                if (currentCardIndex !== -1) {
+                    // Remove the current card from the currentCards array
+                    currentCards.splice(currentCardIndex, 1);
+                    console.log(`${currentCard.name} removed from the deck as its quantity is set to 0`);
+    
+                    // Update the UI to reflect the changes
+                    if (currentCards.length > 0) {
+                        currentCard = currentCards[0];
+                        displayInMainImageContainer(currentCard.settings.normal_image_url, currentCard);
+                        updateUIForCard(currentCard);
+                    } else {
+                        currentCard = null;
+                        clearMainImageContainer();
+                    }
+    
+                    populateCardList(currentCards); // Update the card list display
+                    populateDeckSection(currentCards); // Update the deck section with card images
+                }
+            }
         }
+        saveDeck();
     });
 
     // Saving changes to the server
     // Saving changes to the server
-    document.getElementById('saveDetails').addEventListener('click', function() {
-        const token = localStorage.getItem('token');
-        console.log('Save Details button clicked');
     
-        if (!token) {
-            console.error('No token found, user must be logged in to save decks');
-            return;
-        }
     
-        console.log('Preparing to save the deck');
-        // No need to enhance with UI state if it's already included in the card data
-        const deckDataToSave = {
-            deckName: currentDeckName,
-            cards: currentCards.map(card => ({
-                ...card,
-                quantity: card.quantity // Ensure the latest quantity is included
-            }))
-        };
-    
-        console.log('Sending save request to the server');
-        fetch('/save-deck', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify(deckDataToSave),
-        })
-        .then(response => {
-            console.log('Response received from the server');
-            if (!response.ok) {
-                throw new Error(`Network response was not ok, status: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            console.log('Deck saved successfully:', data);
-        })
-        .catch(error => {
-            console.error('Error saving deck:', error);
-        });
-    });
 
     // Function to update the UI for mana counters
     function updateManaCounterUI() {
@@ -1263,4 +1630,387 @@ document.addEventListener('DOMContentLoaded', function() {
         limitCheckboxSelections();
     });
 
+    function makeElementsVisible() {
+        console.log('makeElementsVisible function called');
+        
+        // Setting elements to be visible
+        document.getElementById('LoadCards').style.display = 'block';
+        document.querySelector('.deck-Image-Container').style.display = 'block';
+        document.getElementById('deckTabsContainer').style.display = 'block';
+        document.getElementById('LanddataContainer').style.display = 'block';
+        document.getElementById('manaCounter').style.display = 'flex';
+        document.querySelector('.mana-container').style.display = 'flex';
+        document.getElementById('quantityContainer').style.display = 'block';
+        document.getElementById('searchContainer').style.display = 'block';
+        document.getElementById('commanderButton').style.display = 'block';
+        document.getElementById('selectedCardImageContainer').style.display = 'block';
+        document.getElementById('searchCardImageContainer').style.display = 'block';
+        document.getElementById('cardImageContainer').style.display = 'block';
+    
+        // Update quantity display based on the current card
+        if (currentCard) {
+            document.getElementById('cardQuantity').value = currentCard.quantity || 0;
+        }
+        
+        // Hiding the search section and search quantity specifically
+        document.querySelector('.search-section').style.display = 'none';
+        document.getElementById('searchQuantityContainer').style.display = 'none';
+        document.getElementById('cardInfo').style.display = 'none';
+        document.getElementById('percentageTabsContainer').style.display = 'none';
+        document.getElementById('wordFilterContainer').style.display = 'none';
+        document.getElementById('getSimilar').style.display = 'none';
+        document.getElementById('searchImageContainer').style.display = 'none';
+        document.getElementById('clearFilters').style.display = 'none';
+        document.getElementById('searchInfoDisplay').style.display = 'none';
+        document.getElementById('similarCardImageContainer').style.display = 'none';
+    
+        console.log('All elements should now be visible, except the search section and search quantity');
+        populateDeckSection(currentCards);
+    }
+    
+    function hideElements() {
+        console.log('Hiding elements');
+        
+        // Hiding these elements
+        document.getElementById('LoadCards').style.display = 'none';
+        document.querySelector('.deck-Image-Container').style.display = 'none';
+        document.getElementById('deckTabsContainer').style.display = 'none';
+        document.getElementById('LanddataContainer').style.display = 'none';
+        document.getElementById('manaCounter').style.display = 'none';
+        document.querySelector('.mana-container').style.display = 'none';
+        document.getElementById('quantityContainer').style.display = 'none';
+        document.getElementById('commanderButton').style.display = 'none';
+        document.getElementById('selectedCardImageContainer').style.display = 'none';
+        document.getElementById('searchContainer').style.display = 'none';
+        document.getElementById('searchCardImageContainer').style.display = 'none';
+        document.getElementById('cardImageContainer').style.display = 'none';
+    
+        // Making the search section visible
+        document.querySelector('.search-section').style.display = 'block';
+        document.getElementById('searchQuantityContainer').style.display = 'block';
+        document.getElementById('cardInfo').style.display = 'block';
+        document.getElementById('percentageTabsContainer').style.display = 'flex';
+        document.getElementById('wordFilterContainer').style.display = 'block';
+        document.getElementById('getSimilar').style.display = 'block';
+        document.getElementById('searchImageContainer').style.display = 'flex';
+        document.getElementById('similarCardImageContainer').style.display = 'block';
+    
+        // Update the search quantity to match the card in the search image container, if present
+        const searchImageContainer = document.getElementById('searchImageContainer');
+        const img = searchImageContainer.querySelector('img');
+        if (img) {
+            const cardData = JSON.parse(img.dataset.cardData);
+            const currentCard = currentCards.find(c => c.name === cardData.name);
+            document.getElementById('searchQuantity').value = currentCard ? currentCard.quantity : 0;
+        }
+    
+        console.log('All elements are hidden except the search section');
+        populateDeckSection(currentCards);
+    }
+    
+
+    function handleSearch() {
+        console.log('Handling search...');
+        fetch('card-details.json')
+            .then(response => {
+                console.log('Received response from card-details.json');
+                return response.json();
+            })
+            .then(cards => {
+                console.log('Card data loaded:', cards);
+                const nameInput = document.getElementById('name').value.toLowerCase();
+                const oracleTextInput = document.getElementById('oracleText').value.toLowerCase().split(/\s+/);
+                const manaCost = document.getElementById('manaCost').value;
+                const power = document.getElementById('power').value;
+                const toughness = document.getElementById('toughness').value;
+                const typeLine = Array.from(document.getElementById('type_line').selectedOptions).map(o => o.value);
+                const colors = Array.from(document.getElementById('colors').selectedOptions).map(o => o.value);
+                const colorIdentity = Array.from(document.getElementById('colorIdentity').selectedOptions).map(o => o.value);
+    
+                console.log('Search parameters:', { nameInput, oracleTextInput, manaCost, power, toughness, typeLine, colors, colorIdentity });
+    
+                const filteredCards = cards.filter(card => {
+                    const nameMatches = !nameInput || card.name.toLowerCase().includes(nameInput);
+                    const oracleTextMatches = !oracleTextInput.length || oracleTextInput.every(word => card.oracle_text && card.oracle_text.toLowerCase().includes(word));
+    
+                    return nameMatches &&
+                           oracleTextMatches &&
+                           (manaCost === 'None' || card.cmc === parseFloat(manaCost)) &&
+                           (power === 'None' || card.power === power) &&
+                           (toughness === 'None' || card.toughness === toughness) &&
+                           (typeLine.length === 0 || typeLine.includes(card.type_line) || typeLine.some(tl => card.type_line.includes(tl))) &&
+                           (colors.length === 0 || colors.some(c => card.colors.includes(c))) &&
+                           (colorIdentity.length === 0 || colorIdentity.some(c => card.color_identity.includes(c)));
+                });
+    
+                console.log('Filtered cards:', filteredCards);
+                originalSearchResults = filteredCards; // Store the filtered results
+                populateSearchSection(filteredCards);
+    
+                // Assuming we want to display the first card of the filtered results in the search image container
+                if (filteredCards.length > 0) {
+                    displayInSearchImageContainer(filteredCards[0].large_image_url, filteredCards[0]);
+                }
+            });
+    }
+    
+    
+    // Helper function to check if an element is within the viewport plus a buffer
+    function isVisible(elem, buffer) {
+        const rect = elem.getBoundingClientRect();
+        const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+        return !(rect.bottom < -buffer || rect.top - viewHeight > buffer);
+    }
+
+    
+    
+
+    // Function to load images lazily
+    function lazyLoadImages() {
+        const images = document.querySelectorAll('.lazy-load');
+        console.log(`Checking ${images.length} images for visibility...`);
+
+        images.forEach(img => {
+            if (isVisible(img, 2000)) { // Adjust buffer as needed
+                if (!img.src && img.dataset.src) { // Check if the src has not been set yet
+                    console.log(`Loading image for ${img.alt}`);
+                    img.src = img.dataset.src;
+                }
+            }
+        });
+    }
+
+    // Enhanced function to populate the search section with filtered cards
+    // Enhanced function to populate the search section with filtered cards
+    function populateSearchSection(cards) {
+        console.log('Populating search section with cards:', cards);
+        const searchSection = document.getElementById('searchSection');
+        const searchInfoDisplay = document.getElementById('searchInfoDisplay');  // Get the label/div element for displaying information
+
+        searchSection.innerHTML = '';  // Clear the search section before adding new cards
+
+        // Prepare filter information for display using globalFilters
+        let filterInfo = `
+            <strong>${cards.length} cards</strong><br>
+            ${filters.minPercentage || '0'}% - ${filters.maxPercentage || '100'}% similarity<br>
+            Cards that include: ${Array.from(globalFilters.includeWords).join(', ') || 'None'}<br>
+            Cards that exclude: ${Array.from(globalFilters.excludeWords).join(', ') || 'None'}
+        `;
+
+        // Update the display label with the number of cards and filter information
+        searchInfoDisplay.innerHTML = filterInfo;  // Update the label with detailed filter information and number of cards
+
+        // Iterate through each card in the provided array
+        cards.forEach((card, index) => {
+            const img = document.createElement('img');  // Create an image element for each card
+            img.alt = card.name;
+            img.dataset.cardData = JSON.stringify(card); // Store card data
+            img.dataset.src = card.large_image_url; // Temporarily hold the image URL
+            img.className = 'lazy-load'; // Mark for lazy loading
+
+            // Add an event listener for clicks on the image
+            img.addEventListener('click', () => {
+                console.log(`Image clicked: ${card.name}`);
+                displayInSearchImageContainer(card.large_image_url, card);
+                refreshSurroundingImages(index, cards, 20); // Refresh images around the clicked one
+            });
+
+            searchSection.appendChild(img);
+        });
+
+        // Call lazy load initially and also set up on scroll
+        lazyLoadImages();
+        window.addEventListener('scroll', debounce(lazyLoadImages, 100)); // Adjust debounce timing if needed
+    }
+    
+
+    function refreshSurroundingImages(clickedIndex, cards, range) {
+        const startIndex = Math.max(0, clickedIndex - range);
+        const endIndex = Math.min(cards.length - 1, clickedIndex + range);
+        const images = document.querySelectorAll('.lazy-load');
+    
+        for (let i = startIndex; i <= endIndex; i++) {
+            const img = images[i];
+            if (img && !img.src && img.dataset.src) {
+                img.src = img.dataset.src; // Load the image if it hasn't been loaded yet
+            }
+        }
+    }
+
+    // Debouncing function to optimize performance during scroll
+    function debounce(func, wait, immediate) {
+        let timeout;
+        return function() {
+            const context = this, args = arguments;
+            const later = function() {
+                timeout = null;
+                if (!immediate) func.apply(context, args);
+            };
+            const callNow = immediate && !timeout;
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+            if (callNow) func.apply(context, args);
+        };
+    }
+    
+    function displayInSearchImageContainer(imageUrl, card) {
+        console.log('Displaying image in search image container:', imageUrl, 'for card:', card.name);
+        const searchImageContainer = document.getElementById('searchImageContainer');
+        const searchQuantityInput = document.getElementById('searchQuantity');
+    
+        searchImageContainer.innerHTML = '';
+        const img = document.createElement('img');
+        img.src = imageUrl;
+        img.alt = card.name;
+        img.dataset.cardData = JSON.stringify(card);
+        searchImageContainer.appendChild(img);
+    
+        // Find the card in currentCards for the most up-to-date quantity
+        const currentCard = currentCards.find(c => c.name === card.name);
+        const quantityToDisplay = currentCard ? currentCard.quantity : card.quantity || 0;
+        console.log(`Found card: ${card.name} with quantity ${quantityToDisplay}`);
+        searchQuantityInput.value = quantityToDisplay;
+    }
+    
+    function updateSearchQuantity(quantity) {
+        const searchQuantityInput = document.getElementById('searchQuantity');
+        console.log(`Updating search quantity to ${quantity}`);
+        searchQuantityInput.value = quantity;
+    }
+
+    
+    
+    
+    
+    
+
+    function filterCardsByPercentage(minPercentage, maxPercentage) {
+        console.log(`Updating filter range to from ${minPercentage}% to ${maxPercentage}%`);
+    
+        // Update global filter settings
+        filters.minPercentage = minPercentage;
+        filters.maxPercentage = maxPercentage;
+    
+        // Apply all active filters to the card data
+        applyAllFilters();
+    }
+    
+    function applyAllFilters() {
+        const similarCardImageContainer = document.getElementById('similarCardImageContainer');
+        const similarImage = similarCardImageContainer.querySelector('img');
+    
+        if (!similarImage || !similarImage.dataset.cardData) {
+            console.log('No base card data available for filtering.');
+            return;
+        }
+    
+        const baseCardData = JSON.parse(similarImage.dataset.cardData);
+    
+        // Filter cards based on all criteria in 'filters'
+        let filteredCards = originalSearchResults.filter(card => {
+            // First, calculate the closeness using a percentage match method
+            const closeness = calculateMatchPercentage(baseCardData.oracle_text, card.oracle_text);
+            const matchesPercentage = closeness >= filters.minPercentage && closeness <= filters.maxPercentage;
+    
+            // Combine name and oracle text for comprehensive text search
+            const textToSearch = (card.name + " " + card.oracle_text).toLowerCase();
+    
+            // Check for matches against include words if any
+            const includeMatch = globalFilters.includeWords.size === 0 || Array.from(globalFilters.includeWords).every(word => 
+                textToSearch.includes(word.toLowerCase())
+            );
+    
+            // Check for matches against exclude words if any
+            const excludeMatch = Array.from(globalFilters.excludeWords).some(word => 
+                textToSearch.includes(word.toLowerCase())
+            );
+    
+            // Log card processing for debug purposes
+            console.log(`Card: ${card.name}, Closeness: ${closeness}, Include Match: ${includeMatch}, Exclude Match: ${excludeMatch}`);
+    
+            // Combine all filter checks: percentage, include, and exclude
+            return matchesPercentage && includeMatch && !excludeMatch;
+        });
+    
+        console.log(`Filtered ${filteredCards.length} cards within the specified filters.`);
+        populateSearchSection(filteredCards);
+    }
+    
+    function calculateMatchPercentage(text1, text2) {
+        const words1 = text1.toLowerCase().replace(/\(.*?\)/g, '').split(/\s+/);
+        const words2 = text2.toLowerCase().replace(/\(.*?\)/g, '').split(/\s+/);
+        const totalWords = words1.length || 1;  // Avoid division by zero
+        const matchingWords = words1.filter(word => words2.includes(word)).length;
+        return (matchingWords / totalWords) * 100;
+    }
+    
+    function oracleTextCloseness(oracleText, similarWords) {
+        console.log(`Calculating text closeness between oracle text and similar words.`);
+        const words = oracleText.toLowerCase().replace(/\(.*?\)/g, '').split(/\s+/);
+        const totalWords = similarWords.length; // Total number of words to consider in percentage calculation
+    
+        const closeness = similarWords.reduce((sum, word) => {
+            const isWordPresent = words.includes(word);
+            console.log(`Word "${word}" ${isWordPresent ? "found" : "not found"} in oracle text.`);
+            return sum + (isWordPresent ? 1 : 0);
+        }, 0);
+    
+        const closenessPercentage = (closeness / totalWords) * 100;
+        console.log(`Closeness percentage: ${closenessPercentage}% based on ${closeness}/${totalWords} matches.`);
+        return closenessPercentage;
+    }
+
+    function addCardsToDeck(cardNamesWithQuantity) {
+        console.log('Adding cards to deck:', cardNamesWithQuantity);
+        
+        const token = localStorage.getItem('token');
+        if (!token) {
+            console.error('No token found, user must be logged in to add cards');
+            return;
+        }
+    
+        fetch('/import-cards', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ cardNames: cardNamesWithQuantity, deckName: currentDeckName }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok on import cards');
+            }
+            return response.json();
+        })
+        .then(data => {
+            const enhancedCards = enhanceCardDataWithUIState(data.cards);
+            currentCards = [...currentCards, ...enhancedCards];
+            populateCardList(currentCards);
+            populateDeckSection(currentCards);
+        })
+        .catch(error => {
+            console.error('Error adding cards to deck:', error);
+        });
+    }
+    
+    
+    
+
+    function checkPercentageFilter(card) {
+        if (activeFilters.minPercentage === null || activeFilters.maxPercentage === null) {
+            return true; // No percentage filter to apply
+        }
+        const matchPercentage = calculateMatchPercentage(/* parameters */); // Ensure this function is defined and usable
+        return matchPercentage >= activeFilters.minPercentage && matchPercentage <= activeFilters.maxPercentage;
+    }
+    
+    function checkWordFilter(card) {
+        const includeMatch = activeFilters.wordsToInclude.every(word => card.oracle_text.toLowerCase().includes(word));
+        const excludeMatch = activeFilters.wordsToExclude.some(word => card.oracle_text.toLowerCase().includes(word));
+        return includeMatch && !excludeMatch;
+    }
+   
 });
+
+
