@@ -1,9 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0; /* Minimize unnecessary space */
+    padding: 0; /* Minimize unnecessary space */
+    background-color: #f0f0f0; /* Default background color */
+    background-image: url('background.jpg'); /* Adds background image from the css folder */
+    background-size: cover; /* Cover the entire page */
+    background-attachment: fixed; /* Keep the background image fixed during scrolling */
+    background-repeat: no-repeat; /* Do not repeat the image */
+    background-position: center; /* Center the background image */
+}
+
 .panel {
     width: 600px; /* Fixed size for square shape */
     height: 300px;
     padding: 20px;
     margin: 10px;
-    background-color: lightblue;
+    background-color: #add8e6b2;
     text-align: center;
     border-radius: 5px;
     transition: transform 0.3s ease, background-color 0.3s ease;
@@ -24,33 +36,33 @@ a {
 }
 
 .panel:hover {
-    transform: scale(1.1); /* Slightly enlarge the panel on hover */
+    transform: scale(1.02); /* Slightly enlarge the panel on hover */
     background-color: skyblue; /* Change color on hover */
 }
 
 /* Individual positioning */
 #decks {
     position: absolute;
-    top: 10px; /* Adjust these values */
+    top: 0px; /* Adjust these values */
     left: 100px;
 }
 
 #solo-game {
     position: absolute;
-    top: 10px; /* Adjust these values */
+    top: 0px; /* Adjust these values */
     left: 850px;
 }
 
 #multiplayer-game {
     position: absolute;
-    top: 400px; /* Adjust these values */
+    top: 370px; /* Adjust these values */
     left: 100px;
 }
 
 /* Deck Builder specific styles */
 #deck-builder {
     position: absolute;
-    top: 400px;
+    top: 370px;
     left: 850px;
 }
 
@@ -76,38 +88,59 @@ a {
 }
 
 .logout-button {
-  position: absolute;
-  top: 20px;
-  Left: 5px;
-  padding: 10px 20px;
-  background-color: #ff4d4d;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.logout-button:hover {
-    background-color: #cc0000; /* Darker shade of red on hover */
-}
-
-.tutorial-button {
-  position: absolute;
-  top: 104px;
-  Left: 5px;
-  padding: 10px 20px;
-  background-color: #28a43b;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.tutorial-button:hover {
-    background-color: #63ff4d; /* Darker shade of red on hover */
-}
+    position: absolute;
+    top: 20px;
+    left: 5px;
+    padding: 10px 20px;
+    background-color: #ff4d4d; /* Bright red background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px #cc0000; /* Darker red for the shadow */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transitions for interaction */
+  }
+  
+  .logout-button:hover, .logout-button:focus {
+    background-color: #e60000; /* Slightly darker red on hover */
+    box-shadow: 0 2px #cc0000; /* Smaller shadow on hover */
+    transform: translateY(2px); /* Slight downward movement */
+  }
+  
+  .logout-button:active {
+    background-color: #cc0000; /* Even darker on active click */
+    box-shadow: 0 1px #b30000; /* Minimal shadow for a pressed effect */
+    transform: translateY(4px); /* Mimics the button being pressed down */
+  }
+  
+  .tutorial-button {
+    position: absolute;
+    top: 104px;
+    left: 5px;
+    padding: 10px 20px;
+    background-color: #28a43b; /* Green background */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    box-shadow: 0 4px #1b7e2c; /* Darker green for the shadow */
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Consistent transition effects */
+  }
+  
+  .tutorial-button:hover, .tutorial-button:focus {
+    background-color: #248a36; /* Slightly darker green on hover */
+    box-shadow: 0 2px #1b7e2c; /* Smaller shadow on hover */
+    transform: translateY(2px); /* Slight downward movement */
+  }
+  
+  .tutorial-button:active {
+    background-color: #1b7e2c; /* Even darker on active click */
+    box-shadow: 0 1px #165623; /* Minimal shadow for a pressed effect */
+    transform: translateY(4px); /* Mimics the button being pressed down */
+  }
+  
 
 .presentation-area {
     position: fixed; /* or 'absolute' */
