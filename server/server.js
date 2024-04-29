@@ -404,7 +404,26 @@ app.delete('/delete-deck', authenticateToken, async (req, res) => {
     }
 });
 
+app.post('/api/search-cards', authenticateToken, async (req, res) => {
+    const searchCriteria = req.body;
+    const cardDetailsPath = path.join(__dirname, 'card-details.json'); // Adjust path as necessary
 
+    try {
+        const data = await fs.readFile(cardDetailsPath, 'utf8');
+        const cards = JSON.parse(data);
+
+        const filteredCards = cards.filter(card => {
+            // Implement your filtering logic here based on searchCriteria
+            // For example, check if card.mana_cost matches searchCriteria.manaCost, etc.
+            return true; // Placeholder: replace with actual condition
+        });
+
+        res.json(filteredCards);
+    } catch (err) {
+        console.error('Error reading card details:', err);
+        res.status(500).json({ error: 'Failed to process search' });
+    }
+});
 
 
 
