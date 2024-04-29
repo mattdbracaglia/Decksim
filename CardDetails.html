@@ -1,10 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buttons Example</title>
-    <link rel="stylesheet" href="/css/CardDetails.css">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Buttons Example</title>
+        <link rel="stylesheet" href="/css/CardDetailsnew.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const token = localStorage.getItem('token');
@@ -41,13 +44,15 @@
             }
         });
     </script>
-</head>
+    </head>
 <body>
     <h1></h1>
     
     <button id="BacktoGame">Back</button>
+    <button id="CardSearch">Card Search</button>
+    <button id="EditDeck">Edit Deck</button>
     
-    <div id="LoadCards">
+    <div id="LoadCards" style="display: none;">
         <button id="importCards">Import Deck</button>
         <button id="importDeck">Open Deck</button>
         <button id="AddCard">Add Card</button>
@@ -57,12 +62,141 @@
         <button id="clearDeckDetails">Clear Deck Details</button>
     </div>
 
+    <div id="cardInfo">
+        <h2>Card Info</h2>
+        
+        <div class="common-form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        </div>
+        
+        <div class="common-form-group">
+            <label for="oracleText">Oracle Text:</label>
+            <input type="text" id="oracleText" name="oracleText">
+        </div>
+    
+        <div class="common-form-group">
+            <label for="type_line">Type:</label>
+            <select id="type_line" name="type_line[]" multiple>
+                <option value="None"></option>
+                <option value="Creature">Creature</option>
+                <option value="Instant">Instant</option>
+                <option value="Sorcery">Sorcery</option>
+                <option value="Enchantment">Enchantment</option>
+                <option value="Artifact">Artifact</option>
+                <option value="Planeswalker">Planeswalker</option>
+                <option value="Legendary">Legendary</option>
+                <option value="Land">Land</option>
+                <option value="Basic">Basic Land</option>
+                <option value="Or">Or</option>
+            </select>
+        </div>
+        
+        <div class="common-form-group">
+            <label for="colors">Colors:</label>
+            <select id="colors" name="colors[]" multiple>
+                <option value="None"></option>
+                <option value="B">Black</option>
+                <option value="C">Colorless</option>
+                <option value="G">Green</option>
+                <option value="R">Red</option>
+                <option value="U">Blue</option>
+                <option value="W">White</option>
+                <option value="Or">Or</option>
+            </select>
+        </div>
+        
+        <div class="common-form-group">
+            <label for="colorIdentity">Color Identity:</label>
+            <select id="colorIdentity" name="colorIdentity[]" multiple>
+                <option value="None"></option>
+                <option value="B">Black</option>
+                <option value="C">Colorless</option>
+                <option value="G">Green</option>
+                <option value="R">Red</option>
+                <option value="U">Blue</option>
+                <option value="W">White</option>
+                <option value="Or">Or</option>
+            </select>
+        </div>
+        
+        <div class="common-form-group">
+            <label for="producedMana">Produced Mana:</label>
+            <select id="producedMana" name="producedMana[]" multiple>
+                <option value="None"></option>
+                <option value="B">Black</option>
+                <option value="C">Colorless</option>
+                <option value="G">Green</option>
+                <option value="R">Red</option>
+                <option value="U">Blue</option>
+                <option value="W">White</option>
+                <option value="Or">Or</option>
+            </select>
+        </div>
+    
+        <!-- Row for Mana Cost, Power, and Toughness -->
+        <div class="form-row">
+            <div class="form-group">
+                <label for="manaCost">Mana Cost:</label>
+                <select id="manaCost" name="manaCost">
+                    <option value="None"></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7+</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="power">Power:</label>
+                <select id="power" name="power">
+                    <option value="None"></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7+</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="toughness">Toughness:</label>
+                <select id="toughness" name="toughness">
+                    <option value="None"></option>
+                    <option value="0">0</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7+</option>
+                </select>
+            </div>
+        </div>
+    
+        <button id="searchButton" onclick="console.log('Inline click handler triggered')">Search</button>
+    </div>
+    
+    <div id="deckNameModal">
+        <h3>Enter Deck Name</h3>
+        <input type="text" id="deckNameInput" placeholder="Deck Name">
+        <button id="saveDeckNameButton">Save Deck</button>
+    </div>
+  
     <!-- Hidden Container for Text Input and Load Cards Button -->
     <div id="cardInputContainer" style="display: none;">
         <textarea id="cardTextInput" rows="4" cols="50"></textarea>
-        <button id="loadCards">Load Cards</button>
+        <button id="loadingCards">Load Cards</button>
         <!-- New deck name input added here -->
-        <input type="text" id="deckNameInput" placeholder="Enter new deck name" style="display: none;"/>
+        <input type="text" id="deckNameInput2" placeholder="Enter new deck name" style="display: none;"/>
     </div>
 
     <!-- Container for Add Card Text Input -->
@@ -76,40 +210,46 @@
     </div>
 
     <div id="cardImageContainer"></div>
+    <div id="searchImageContainer"></div>
 
-    <div class="deck-Image-Container">
+    <div class="deck-Image-Container" style="display: none;">
         <div id="deckSection" class="deck-section"></div>
     </div>
 
-    <div id="deckTabsContainer"></div>
+    <div class="search-Image-Container">
+        <div id="searchSection" class="search-section"></div>
+    </div>
 
-    <div id="LanddataContainer"><label>Card Data</label><br>
+    <div id="deckTabsContainer" style="display: none;"></div>
+    <div id="searchTabsContainer"></div>
+
+    <div id="LanddataContainer" style="display: none;">
+        <label>Card Data</label><br>
         <label><input type="checkbox" name="options" value="returnLand"> Return Land</label><br>
         <label><input type="checkbox" name="options" value="entersTapped"> Enters Tapped</label><br>
         <label><input type="checkbox" name="options" value="search"> Search</label><br>
-        <label><input type="checkbox" name="options" value="and">> 1 mana</label><br>
-        <label><input type="checkbox" name="options" value="or">= 1 mana</label>
+        <label><input type="checkbox" name="options" value="and"> > 1 mana</label><br>
+        <label><input type="checkbox" name="options" value="or"> = 1 mana</label>
     </div>
 
-    <div id="manaCounter">
+    <div id="manaCounter" style="display: none;">
         <label for="whiteMana"></label>
         <input type="number" id="whiteMana" name="whiteMana" value="0"><br>
-    
+        
         <label for="blueMana"></label>
         <input type="number" id="blueMana" name="blueMana" value="0"><br>
-    
+        
         <label for="blackMana"></label>
         <input type="number" id="blackMana" name="blackMana" value="0"><br>
-    
+        
         <label for="redMana"></label>
         <input type="number" id="redMana" name="redMana" value="0"><br>
-    
+        
         <label for="greenMana"></label>
         <input type="number" id="greenMana" name="greenMana" value="0"><br>
-    
+        
         <label for="colorlessMana"></label>
         <input type="number" id="colorlessMana" name="colorlessMana" value="0"><br>
-
     </div>
 
     <div id="deckPopup" class="popup-container" style="display:none;">
@@ -124,7 +264,7 @@
         </div>
     </div>
 
-    <div class="mana-container">
+    <div class="mana-container" style="display: none;">
         <img src="css/white.jpg" alt="White Mana" class="mana-image">
         <img src="css/blue.jpg" alt="Blue Mana" class="mana-image">
         <img src="css/black.jpg" alt="Black Mana" class="mana-image">
@@ -133,24 +273,73 @@
         <img src="css/colorless.jpg" alt="Colorless Mana" class="mana-image">
     </div>
 
-    <div id="quantityContainer">
+    <div id="quantityContainer" style="display: none;">
         <label for="cardQuantity">Quantity:</label>
         <input type="number" id="cardQuantity" name="cardQuantity" value="0" min="0">
     </div>
 
-    <div id="searchContainer">
-        <div id="tabsContainer"></div> <!-- Container for tabs -->
-        <p>Search:</p>
-        <ul id="cardList"></ul>
+    <div id="searchQuantityContainer">
+        <label for="searchQuantity">Quantity:</label>
+        <input type="number" id="searchQuantity" name="searchQuantity" value="0" min="0">
     </div>
 
-    <button id="commanderButton">Commander: No</button>
+    <div class="layout-container" style="position: relative;">
+        <div id="searchContainer" style="display: none;">
+            <div id="tabsContainer"></div>
+            <p>Search:</p>
+            <ul id="cardList"></ul>
+        </div>
+    </div>
 
+    <button id="commanderButton" style="display: none;">Commander: No</button>
+    <button id="getSimilar">Set Similar Cards</button>
+
+    <div id="percentageTabsContainer">
+        <!-- Tabs will be inserted here by JavaScript -->
+    </div>
     
-    <div id="selectedCardImageContainer">
+    <div id="selectedCardImageContainer" style="display: none;">
         <!-- The selected card's image will be displayed here -->
     </div>
 
-    <script src="js/CardDetails.js"></script>
+    <div id="searchCardImageContainer" style="display: none;">
+        <!-- The selected card's image will be displayed here -->
+    </div>
+
+    <div id="similarCardImageContainer">
+        <!-- The selected card's image will be displayed here -->
+    </div>
+
+    <div id="wordFilterContainer"></div>
+
+    <button id="clearFilters">Clear Filters</button>
+
+    <div id="searchInfoDisplay">
+        Search Information will appear here.
+    </div>
+
+
+    <script src="js/CardDetailsnew.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#colorIdentity').select2({
+                placeholder: "Select color identity",
+                allowClear: true
+            });
+            $('#producedMana').select2({
+                placeholder: "Select produced mana",
+                allowClear: true
+            });
+            $('#colors').select2({
+                placeholder: "Select colors",
+                allowClear: true
+            });
+            $('#type_line').select2({
+                placeholder: "Select type",
+                allowClear: true
+            });
+        });
+    </script>
+
 </body>
 </html>
