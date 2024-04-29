@@ -47,15 +47,7 @@ signInForm.addEventListener('submit', function(event) {
 document.addEventListener('DOMContentLoaded', function() {
     const guestSignInButton = document.getElementById('guestSignIn');
     guestSignInButton.addEventListener('click', function() {
-        const usernameInput = document.getElementById('username');
-        const passwordInput = document.getElementById('password');
-
-        // Set values to "Guest" and "Guest!"
-        usernameInput.value = 'Guest';
-        passwordInput.value = 'Guest!';
-
-        // Optionally, you could directly submit the form with these values
-        // and handle the response to redirect, or you can do it manually as follows:
+        // Directly send the guest credentials without using form inputs
         fetch('/api/signin', {
             method: 'POST',
             headers: {
@@ -65,19 +57,21 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => {
             if (!response.ok) {
-                throw new Error('Failed to sign in as guest');
+                // If the server responds with a non-200 status, parse the JSON for the message
+                return response.json().then(data => Promise.reject(new Error(data.message || 'Failed to sign in as guest')));
             }
             return response.json(); // Assuming the server responds with JSON including an access token
         })
         .then(data => {
-            localStorage.setItem('token', data.accessToken); // Save the provided token, if applicable
+            localStorage.setItem('token', data.accessToken); // Save the provided token
             window.location.href = '/Panels.html'; // Redirect on successful sign-in
         })
         .catch(error => {
             console.error('Error during guest sign-in:', error);
-            alert('Guest sign-in failed');
+            alert('Guest sign-in failed: ' + error.message); // Display a more informative error message
         });
     });
 });
+
 
 
