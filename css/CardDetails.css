@@ -418,9 +418,9 @@ input, button {
     background-color: #f2f2f2;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    top: -453px;
+    top: 377px;
     left: 734px;
-    position: relative;
+    position: absolute;
     width: 20%;
   }
 
@@ -555,13 +555,13 @@ input, button {
     border-radius: 4px;
     cursor: pointer;
     margin-top: 10px;
-    position: relative;
+    position: absolute;
     display: block;
-    top: -468px;
+    top: 322px;
     left: 810px;
-    border-bottom: 4px solid #b71c1c; /* Darker shade for 3D effect */
-    transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transition for hover and click */
-}
+    border-bottom: 4px solid #b71c1c;
+    transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s;
+  }
 
 #getSimilar:hover {
     background-color: #0056b3; /* Slightly darker shade on hover */
@@ -711,19 +711,19 @@ input, button {
 }
 
 .search-section {
-  position: absolute;
-  border: 2px solid #007bff;
-  padding: 10px;
-  margin: 5px;
-  text-align: center;
-  background-color: #f0f0f066;
-  border-radius: 5px;
-  width: 125px;
-  height: 600px;
-  box-sizing: border-box;
-  overflow-y: auto;
-  overflow-x: hidden;
-}
+    position: relative;
+    border: 2px solid #007bff;
+    padding: 10px;
+    margin: 5px;
+    text-align: center;
+    background-color: #f0f0f066;
+    border-radius: 5px;
+    width: 125px;
+    height: 600px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
 
 .search-section img {
     max-width: 120%; /* Ensures the image width does not exceed the section width */
@@ -736,9 +736,9 @@ input, button {
 
 /* Example of re-positioning */
 #searchSection {
-  top: -131px;
-  right: -16px;
-}
+    top: -11px;
+    right: -16px;
+  }
 
   #CardSearch {
     position: relative;
@@ -887,8 +887,8 @@ input, button {
 
 
 #wordFilterContainer {
-    position: relative;
-    top: -420px;
+    position: absolute;
+    top: 530px;
     left: 10px;
     display: flex;
     flex-wrap: wrap;
