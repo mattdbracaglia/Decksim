@@ -29,7 +29,7 @@ input, button {
     justify-content: center;
     align-items: center; /* Center content vertically within the popup */
     transform: translate(-50%, -50%); /* Shift back to perfectly center */
-    z-index: 1008;
+    z-index: 3008;
     
 }
 
@@ -79,7 +79,7 @@ button:hover {
 /* General style for horizontally scrolling sections */
 /* General style for horizontally scrolling sections */
 #library, #hand, #land, #battlefield, #choice {
-    position: relative;
+    position: absolute;
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
@@ -97,7 +97,7 @@ button:hover {
 }
 
 #choice {
-  position: relative;
+  position: absolute;
   border: 2px solid #007bff;
   padding: 10px;
   margin: 5px;
@@ -131,7 +131,7 @@ button:hover {
 
 /* Specific styles for sections with unique dimensions */
 #graveyard, #exile, #commander, #move {
-    position: relative;
+    position: absolute;
     border: 2px solid #007bff;
     padding: 10px; /* Adjust padding as needed */
     margin: 5px; /* Adjust margin as needed */
@@ -154,48 +154,61 @@ button:hover {
 
 
 #info { top: 15px; right: 5px; }
+
 #library {
-  bottom: 487px;
-  left: 20px;
+  top: 520px;
+  left: 0px;
 }
 #land {
-  bottom: 1119px;
-  left: 20px;
+  top: 174px;
+  left: 0px;
 }
 #hand {
-  bottom: 801px;
-  left: 20px;
+  top: 347px;
+  left: 0px;
 }
 #battlefield {
-  bottom: 1436px;
-  left: 20px;
+  top: 0px;
+  left: 0px;
 }
 #graveyard {
-  bottom: 1413px;
-  left: 745px;
+  top: 342px;
+  left: 720px;
 }
 #exile {
-  bottom: 1736px;
-  left: 745px;
+  top: 169px;
+  left: 720px;
 }
 #commander {
-  bottom: 1541px;
-  left: 745px;
+  top: 514px;
+  left: 720px;
 }
 #move {
-  bottom: 1523px;
-  left: 744px;
+  top: -6px;
+  left: 720px;
 }
 #choice {
-  bottom: 1674px;
-  left: 958px;
+  top: 519px;
+  left: 950px;
 }
 /* Wrapper for both sets of sections */
 
 #sectionButtons {
-    text-align: center;
-    margin-top: 20px;
-    
+  position: absolute;
+  top: 34px;
+  left: 271px;
+  height: 640px;
+  width: 955px;
+  text-align: center;
+  margin-top: 0;
+}
+
+.current-player-sections {
+  position: absolute;
+  top: 67px;
+  left: 0px;
+  height: 610px;
+  width: 1530px;
 }
 
 #sectionButtons button {
@@ -225,58 +238,57 @@ button:hover {
 
 
 #libraryBtn {
-  position: relative;
-  top: 462px;
-  left: 224px;
-  z-index: 1005;
+  position: absolute;
+  top: 520px;
+  left: 37px;
+  z-index: 1505;
 }
 
 #handBtn {
-  position: relative;
-  top: 291px;
-  left: 140px;
+  position: absolute;
+  top: 347px;
+  left: 41px;
   z-index: 1005;
 }
 
 #landBtn {
-  position: relative;
-  top: 118px;
-  left: -61px;
+  position: absolute;
+  top: 173px;
+  left: 40px;
   z-index: 1005;
 }
-
 #battlefieldBtn {
-  position: relative;
-  top: -53px;
-  left: 20px;
+  position: absolute;
+  top: 0px;
+  left: 22px;
   z-index: 1005;
 }
 
 #graveyardBtn {
-  position: relative;
-  top: 119px;
-  left: -258px;
+  position: absolute;
+  top: 347px;
+  left: 456px;
   z-index: 1005;
 }
 
 #exileBtn {
-  position: relative;
-  top: -53px;
-  left: -177px;
+  position: absolute;
+  top: 173px;
+  left: 455px;
   z-index: 1005;
 }
 
 #commanderBtn {
-  position: relative;
-  top: 291px;
-  left: -45px;
+  position: absolute;
+  top: 521px;
+  left: 455px;
   z-index: 1005;
 }
 
 #gameControls {
-  position: relative;
-  top: -31px;
-  left: 77px;
+  position: absolute;
+  top: 0px;
+  left: 417px;
   display: flex;
   flex-direction: row;
   gap: 10px;
@@ -353,14 +365,17 @@ button:hover {
   padding: 10px;
   background-color: #f0f0f000;
   border-radius: 5px;
-  margin-top: 10px;
-  position: relative;
-  bottom: -70px;
-  left: 212px;
+  position: absolute;
+  top: 209px;
+  left: 402px;
+  width: 310px;
+  height: 20px;
+  flex-shrink: 0;
+  flex-grow: 0;
 }
-
 #manaCounter span {
-    font-weight: bold;
+  font-weight: bold;
+  font-size: 14px;
 }
 
 #editDecksButton {
@@ -372,7 +387,7 @@ button:hover {
     border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s;
-    position: relative;
+    position: absolute;
     top: 75px; /* Distance from the top of the viewport */
     left: 15px; /* Distance from the left of the viewport */
     z-index: 1000;
@@ -389,9 +404,9 @@ button:hover {
 
 
 html, body {
-    overflow: hidden; /* Prevents scrolling on the entire webpage */
+
     /*overflow: inherit; */
-    height: 100%; /* Ensures the body takes up the full viewport height */
+    height: 80%; /* Ensures the body takes up the full viewport height */
     margin: 0; /* Removes the default margin */
     padding: 0; /* Removes the default padding */
 }
@@ -421,28 +436,28 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  position: relative;
-  bottom: -39px;
-  right: 409px;
+  position: absolute;
+  top: 218px;
+  left: 392px;
   z-index: 1000;
+  gap: 0px;
 }
-
 .mana-image {
-    width: 20px;
-    height: auto;
-    margin: 0 15.7px;
+  width: 20px;
+  height: auto;
+  margin: 0px 13.2px;
 }
 
 #scrollboxContainer {
-  position: relative;
+  position: absolute;
   display: block;
   margin-top: 20px;
-  width: 100%;
-  height: 25px;
+  width: 140px;
+  height: 45px;
   z-index: 1;
-
+  top: 357px;
+  left: 568px;
 }
-
 .scrollbox {
     display: flex; /* Use flexbox layout */
     align-items: center; /* Align items vertically in the center */
@@ -452,6 +467,7 @@ html, body {
 
 .scrollbox label {
     white-space: nowrap; /* Prevents the label from wrapping */
+    font-size: 10px;
 }
 
 
@@ -462,19 +478,21 @@ html, body {
 
 #player1Scrollbox {
   position: absolute;
-  top: 154px;
-  left: 285px;
+  top: 0px;
+  left: 0px;
 }
 
 .switch-container {
-  position: relative;
-  top: -16px;
-  left: 543px;
-  width: 468px;
+  position: absolute;
+  top: 385px;
+  left: 453px;
+  width: 108px;
+  height: 37px;
+  z-index: 2000;
 }
 
 .switch {
-position: relative;
+position: absolute;
 display: inline-block;
 width: 60px;
 height: 34px;
@@ -523,13 +541,13 @@ transform: translateX(26px);
 }
 
 .label {
-position: absolute;
-top: 50%;
-transform: translateY(-50%);
-font-size: 12px;
-font-weight: bold;
-color: rgb(0, 0, 0);
-text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 10px;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 .label-left {
@@ -541,7 +559,7 @@ right: 70px;
 }
 
 #autoPlaySwitchContainer {
-  position: relative;
+  position: absolute;
   top: -396px;
   left: 501px;
   width: 468px;
@@ -574,6 +592,7 @@ right: 70px;
 .marked {
     border: 2px solid red;
 }
+
 #player1Mulligan {
   padding: 12px 24px;
   font-size: 18px;
@@ -583,15 +602,17 @@ right: 70px;
   border-radius: 5px;
   box-shadow: 0 4px #b71c1c;
   transition: all 0.3s;
-  position: relative;
-  top: 128px;
-  left: 159px;
+  position: absolute;
+  top: 376px;
+  left: 173px;
   height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 109px;
+  z-index: 1100;
 }
+
 #player1Mulligan:hover {
   background-color: #d32f2f; /* Slightly darker on hover */
   box-shadow: 0 2px #b71c1c; /* Adjusted shadow for hover */
@@ -604,9 +625,9 @@ right: 70px;
 }
 
 #startGame {
-  position: relative;
-  top: 88px;
-  left: 25px;
+  position: absolute;
+  top: 375px;
+  left: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -636,22 +657,23 @@ right: 70px;
 }
 
 #cycleButtons {
-  position: relative;
-  top: 198px;
-  left: 18px;
+  position: absolute;
+  top: 550px;
+  left: -3px;
   display: flex;
-  gap: 33px;
-  margin-top: 8px;
-  padding: 8px;
+  gap: 83px;
+  margin-top: 0px;
+  padding: 6px;
   font-size: 16px;
-  width: 791px;
-  height: 50px;
+  width: 711px;
+  height: 28px;
   align-items: center;
+  z-index: 1500;
 }
 
 #cycleButtons button {
   padding: 10px;
-  font-size: 16px;
+  font-size: 14px;
   cursor: pointer;
   background-color: #007bff;
   color: white;
@@ -681,7 +703,7 @@ right: 70px;
   flex-wrap: wrap;
   justify-content: inherit;
   margin-bottom: 20px;
-  position: relative;
+  position: absolute;
   top: -472px;
   left: 726px;
   width: 814px;
@@ -717,7 +739,7 @@ right: 70px;
 }
 
 .deck-Image-Container {
-    position: relative;
+    position: absolute;
     width: 100%;
     display: flex;
     flex-wrap: wrap;
@@ -728,7 +750,7 @@ right: 70px;
 }
 
 .deck-section {
-  position: relative;
+  position: absolute;
   border: 2px solid #007bff;
   padding: 10px;
   margin: 5px;
@@ -753,14 +775,13 @@ right: 70px;
 
 /* Example of re-positioning */
 #deckSection {
-  top: -493px;
-  left: 982px;
+  top: 37px;
+  left: 952px;
 }
-
 #cardImageContainer {
   position: absolute;
-  bottom: 220px;
-  left: 1150px;
+  top: 40px;
+  left: 1130px;
   width: 360px;
   height: 450px;
   overflow: hidden;
@@ -776,7 +797,7 @@ right: 70px;
 
 
 .current-player-section {
-    position: relative; /* Use relative instead of absolute to keep in document flow */
+    position: absolute; /* Use absolute instead of absolute to keep in document flow */
     width: 700px;
     height: 140px;
     margin: 5px auto; /* Center horizontally */
@@ -787,7 +808,7 @@ right: 70px;
 
 
 #BacktoGame {
-  position: fixed;
+  position: absolute;
   top: -9px;
   left: 5px;
   display: flex;
