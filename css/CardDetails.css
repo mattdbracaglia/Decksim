@@ -1035,8 +1035,8 @@ input, button {
     position: absolute;
     top: 495px;
     left: 1119px;
-    min-height: 38px;
-    min-width: 146px;
+    height: 40px;
+    width: 246px;
   }
   #cardInfo .select2-container {
     width: 60% !important; /* Overrides the width and ensures it takes full width */
