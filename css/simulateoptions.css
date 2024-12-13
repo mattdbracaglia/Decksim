@@ -132,7 +132,7 @@ button:hover {
 }
 
 #library img, #hand img, #land img, #battlefield img {
-    max-height: 140px; /* Adjust based on your container's height */
+    max-height: 117px; /* Adjust based on your container's height */
     object-fit: contain; /* Ensure the image fits nicely without distortion */
     margin-right: 5px;
     flex: 0 0 auto;
@@ -174,7 +174,7 @@ button:hover {
 #info { top: 15px; right: 5px; }
 
 #library {
-  top: 33px;
+  top: 213px;
   left: 0px;
 }
 #land {
@@ -182,31 +182,31 @@ button:hover {
   left: 0px;
 }
 #hand {
-  top: 34px;
+  top: 208px;
   left: 0px;
 }
 #battlefield {
-  top: -140px;
+  top: 34px;
   left: 0px;
 }
 #graveyard {
-  top: -151px;
+  top: 34px;
   left: 0px;
 }
 #exile {
-  top: -151px;
-  left: -3px;
+  top: 34px;
+  left: 0px;
 }
 #commander {
-  top: -146px;
-  left: -4px;
+  top: 34px;
+  left: 0px;
 }
 #move {
-  top: -146px;
-  left: -7px;
+  top: 34px;
+  left: 0px;
 }
 #choice {
-  top: -141px;
+  top: 34px;
   left: 0px;
 }
 /* Wrapper for both sets of sections */
@@ -223,9 +223,9 @@ button:hover {
 
 .current-player-sections {
   position: absolute;
-  top: 300px;
-  left: 400px;
-  height: 190px;
+  top: 220px;
+  left: 230px;
+  height: 360px;
   width: 713px;
 }
 #sectionButtons button {
@@ -383,9 +383,9 @@ button:hover {
   background-color: #f0f0f000;
   border-radius: 5px;
   position: absolute;
-  top: 209px;
-  left: 402px;
-  width: 310px;
+  top: 6px;
+  left: 372px;
+  width: 320px;
   height: 20px;
   flex-shrink: 0;
   flex-grow: 0;
@@ -454,8 +454,8 @@ html, body {
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 218px;
-  left: 392px;
+  top: 15px;
+  left: 362px;
   z-index: 1000;
   gap: 0px;
 }
@@ -675,7 +675,7 @@ right: 70px;
 
 #cycleButtons {
   position: absolute;
-  top: -6px;
+  top: 170px;
   left: -2px;
   display: flex;
   gap: 2px;
@@ -799,14 +799,18 @@ right: 70px;
 
 #cardImageContainer {
   position: absolute;
-  Top: 94px;
-  left: 844px;
-  width: 360px;
-  height: 450px;
+  top: 94px;
+  left: 870px;
+  width: 315px;
+  height: 438px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 2px solid #007bff;
+  border-radius: 5px;
+  background-color: #f0f0f059;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 #cardImageContainer img {
@@ -815,14 +819,6 @@ right: 70px;
 }
 
 
-.current-player-section {
-    position: absolute; /* Use absolute instead of absolute to keep in document flow */
-    width: 700px;
-    height: 140px;
-    margin: 5px auto; /* Center horizontally */
-    border: 2px solid #007bff;
-    overflow: hidden; /* Hide overflow within each section */
-}
 
 
 
@@ -906,6 +902,8 @@ right: 70px;
   overflow: hidden; /* Prevents content from spilling out */
   width: 100%; /* Full width */
   height: 100vh; /* Full viewport height */
+  z-index: 1000; /* Ensure the zoomable plane is beneath the sections */
+  pointer-events: auto; /* Prevent interactions when sections are layered above */
 }
 
 .current-player-sections {
@@ -974,7 +972,7 @@ right: 70px;
   overflow-y: hidden;
   white-space: nowrap;
   z-index: 1005;
-  top: -140px;
+  top: 34px;
   left: 0px;
 }
 
@@ -995,6 +993,14 @@ right: 70px;
   margin: 5px auto;
   border: 2px solid #007bff;
   overflow: hidden;
+  z-index: 1005; /* Ensure sections themselves are above the zoomable plane */
+  pointer-events: auto; /* Allow interactions within the sections */
+}
+
+.current-player-section img {
+  position: relative; /* Ensure images are part of the flow but interactive */
+  z-index: 1010; /* Place above the zoomable plane */
+  cursor: pointer; /* Indicate interactivity */
 }
 
 
@@ -1019,3 +1025,89 @@ right: 70px;
 #switchButtons button:hover {
   background-color: #0056b3;
 }
+
+#turnsScrollbox {
+  position: absolute;
+  top: 0;
+  left: 50px;
+  width: 120px;
+  height: 25px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background-color: #fff0;
+  border: 1px solid #ccc0;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0);
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.choice-button {
+  margin: 5px;
+  padding: 10px;
+  border: 1px solid #007bff;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.choice-separator {
+  width: 90%;
+  border: 1px dashed #ccc;
+}
+
+.choice-button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #007bff; /* Consistent blue color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 4px #999; /* Slight 3D effect */
+  z-index: 5000;
+}
+
+.choice-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+  box-shadow: 0 2px #666;   /* Adjust shadow for hovered state */
+  transform: translateY(2px); /* Button moves down slightly when hovered */
+}
+
+.choice-button:active {
+  transform: translateY(4px); /* Button moves further down when clicked */
+  box-shadow: 0 1px #666; /* Less shadow to simulate button being pressed */
+}
+
+#choiceButtonContainer {
+  position: relative;
+  z-index: 9999;
+  pointer-events: auto; /* Allow interactions within the sections */
+}
+
+#choiceTreeContainer button {
+  z-index: 10000;
+  pointer-events: auto; /* Allow interactions within the sections */
+}
+
+#turnLabel {
+  position: absolute;
+  top: 10px;
+  left: 480px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #f4f4f4;
+  border: 1px solid #ccc;
+  padding: 5px 10px;
+  border-radius: 5px;
+  z-index: 10000;
+}
+
