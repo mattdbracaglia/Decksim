@@ -32,6 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
     let nonlandchoiceMade = false; // Flag to indicate if a choice has been made
     let cardPlayed = false;  // Variable to track if a card has been played
     let tappedLands = [];
+    let currentTurn = 0; // Initialize turn count
+    let choicesCreatedTwice = false; // Declare the variable
+    const choicesData = {}; // Independent storage for choice player data
 
 
 
@@ -56,6 +59,7 @@ document.addEventListener('DOMContentLoaded', function() {
             totalManaOr: 0,
             selectedImageData: null,
             markedCards: {},
+            currentTurn: 1, // Add the current turn property here
         },
         Player2: {
             libraryImages: {images: [], scrollOffset: 0},
@@ -408,7 +412,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     function updatePlayerDisplay(playerKey) {
         const playerData = playersData[playerKey];
-        const sectionsToUpdate = ['library', 'hand', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'choice']; // Land intentionally excluded
+        const sectionsToUpdate = ['library', 'hand', 'battlefield', 'graveyard', 'exile', 'commander', 'move', 'choice']; // Land intentionally excluded here for separate handling
     
         sectionsToUpdate.forEach(sectionId => {
             const sectionElement = document.getElementById(sectionId);
@@ -426,16 +430,25 @@ document.addEventListener('DOMContentLoaded', function() {
                 img.setAttribute('data-card', JSON.stringify(item.cardData));
     
                 // Check if the card is marked and apply the appropriate CSS class and styling
-                if (playerData.markedCards[item.cardData.name]) {
+                if (playerData.markedCards?.[item.cardData.name]) {
                     img.classList.add('marked');
                     img.style.border = '2px solid red';
+                }
+    
+                // Add click event for 'choice' section cards
+                if (sectionId === 'choice') {
+                    img.addEventListener('click', () => {
+                        choiceCards = [item.cardData.name]; // Record the chosen card
+                        choiceMade = true; // Mark choice as made
+                        console.log(`Choice made: ${item.cardData.name}`);
+                    });
                 }
     
                 sectionElement.appendChild(img);
             });
         });
     
-        // Ensure land section remains untouched
+        // Ensure land section is handled separately
         const landSection = document.getElementById('land');
         if (landSection) {
             const landImages = playerData.landImages?.images || [];
@@ -486,31 +499,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-  
-    
-
- 
-  
-   
- 
-    // Add event listener for the section buttons container
-    // Add event listener for the section buttons container
-   
-
-    
-    
-
-    
-
-
-
-   
-
-    // Attach event listeners to player buttons if needed
-
-    
-
-   
 
     const startGameButton = document.getElementById('startGame');
     if (startGameButton) {
@@ -1173,7 +1161,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const autoButton = document.getElementById('autoTurns');
     
         if (autoTurnIntervalId === null) {
-            autoTurnIntervalId = setInterval(simulate1Turn, 1000);
+            autoTurnIntervalId = setInterval(simulate1Turn, 100);
             autoButton.textContent = 'Stop Auto';
         } else {
             clearInterval(autoTurnIntervalId);
@@ -1212,7 +1200,7 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         if (autoChoicesIntervalId === null) {
-            autoChoicesIntervalId = setInterval(simulateChoicesTurn, 1000);
+            autoChoicesIntervalId = setInterval(simulateChoicesTurn, 100);
             autoChoicesButton.textContent = 'Stop Auto Choices';
             choicesTurn = true; // Ensure choicesTurn is set to true when auto choices are running
     
@@ -1239,11 +1227,100 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Starting simulateChoicesTurn...');
         console.log(`Current step before action: ${currentChoicesTurnStep}`);
     
+        if (!choicesCreated) {
+            // Normal simulation when no choices have been created
+            switch (currentChoicesTurnStep) {
+                case 0:
+                    console.log("Case 0: Drawing a card from the library to the hand.");
+                    tappedLands = [];
+                    drawCardFromLibraryToHand(currentPlayerId);
+                    if (!choiceMade) {
+                        currentChoicesTurnStep++;
+                        console.log("Moving to next step after drawing a card.");
+                    } else {
+                        console.log("Choice required, pausing step increment.");
+                    }
+                    break;
+                case 1:
+                    console.log("Case 1: Moving the first land from hand to land.");
+                    
+                    // Check the status of the auto-play switch to determine which function to run
+                    if (document.getElementById('autoPlaySwitch').checked) {
+                        console.log("Auto Play Switch is on, running auto land move.");
+                        moveFirstLandFromHandToLandAuto(currentPlayerId);
+                    } else {
+                        console.log("Auto Play Switch is off, running manual land move.");
+                        moveFirstLandFromHandToLandChoice(currentPlayerId);
+                    }
+    
+                    if (!choiceMade) {
+                        currentChoicesTurnStep++;
+                        console.log("Moving to next step after moving land.");
+                    } else {
+                        console.log("Choice required, pausing step increment.");
+                    }
+                    break;
+                case 2:
+                    console.log("Case 2: Playing a card from hand to the battlefield.");
+                    cardPlayed = false;
+    
+                    playCardFromHandToBattlefieldAuto(currentPlayerId);
+                    // Check if the action is completed, then move to the next step or reset
+                    if (choiceMade) {
+                        console.log("Choice made, waiting for action to complete.");
+                    } else {
+                        currentChoicesTurnStep = 0; // Or advance to the next step as needed
+                        console.log("Resetting to step 0 after playing a card.");
+                    }
+                    break;
+                default:
+                    console.log("Unknown step encountered. Resetting to step 0.");
+                    currentChoicesTurnStep = 0;
+                    break;
+            }
+        } else {
+            // Simulate choices for each choice player when choices have been created
+            console.log("Choices already created. Simulating choices for each choice player...");
+            Object.keys(playersData).forEach(playerId => {
+                if (playerId.startsWith("Choice")) {
+                    console.log(`Simulating for ${playerId}...`);
+                    simulateChoicesTurnForPlayer(playerId);
+                }
+            });
+            console.log("Finished simulating choices for all choice players.");
+        }
+    
+        console.log(`Current step after action: ${currentChoicesTurnStep}`);
+        choiceMade = false; // Reset the choiceMade flag after processing the step
+    }
+
+    function simulateChoicesTurnForAllPlayers() {
+        console.log("Simulating turns for all players in choicesData...");
+        
+        // Iterate over all keys in choicesData
+        Object.keys(choicesData).forEach(choicePlayerId => {
+            console.log(`Simulating turn for ${choicePlayerId}...`);
+            simulateChoicesTurnForPlayer(choicePlayerId);
+        });
+    
+        console.log("Finished simulating turns for all players in choicesData.");
+    }
+
+    function simulateChoicesTurnForPlayer(choicePlayerId) {
+        console.log(`Starting simulateChoicesTurnForPlayer for ${choicePlayerId}...`);
+        console.log(`Current step before action: ${currentChoicesTurnStep}`);
+    
+        // Validate if choicePlayerId exists in choicesData
+        if (!choicesData[choicePlayerId]) {
+            console.error(`Player ID ${choicePlayerId} does not exist in choicesData.`);
+            return;
+        }
+    
         switch (currentChoicesTurnStep) {
             case 0:
-                console.log("Case 0: Drawing a card from the library to the hand.");
+                console.log(`Case 0: Drawing a card from the library to the hand for ${choicePlayerId}.`);
                 tappedLands = [];
-                drawCardFromLibraryToHand(currentPlayerId);
+                drawCardFromLibraryToHandChoice(choicePlayerId); // Use the new choice-specific function
                 if (!choiceMade) {
                     currentChoicesTurnStep++;
                     console.log("Moving to next step after drawing a card.");
@@ -1252,15 +1329,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             case 1:
-                console.log("Case 1: Moving the first land from hand to land.");
-                
-                // Check the status of the auto-play switch to determine which function to run
+                console.log(`Case 1: Moving the first land from hand to land for ${choicePlayerId}.`);
+    
                 if (document.getElementById('autoPlaySwitch').checked) {
                     console.log("Auto Play Switch is on, running auto land move.");
-                    moveFirstLandFromHandToLandAuto(currentPlayerId);
+                    moveFirstLandFromHandToLandAutoChoice(choicePlayerId); // Use the new choice-specific function
                 } else {
                     console.log("Auto Play Switch is off, running manual land move.");
-                    moveFirstLandFromHandToLandChoice(currentPlayerId);
+                    moveFirstLandFromHandToLandChoice(choicePlayerId, choicesData); // Modify if you add a manual choice function
                 }
     
                 if (!choiceMade) {
@@ -1271,15 +1347,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
                 break;
             case 2:
-                console.log("Case 2: Playing a card from hand to the battlefield.");
+                console.log(`Case 2: Playing a card from hand to the battlefield for ${choicePlayerId}.`);
                 cardPlayed = false;
-
-                playCardFromHandToBattlefieldAuto(currentPlayerId);
-                // Check if the action is completed, then move to the next step or reset
+    
+                playCardFromHandToBattlefieldAuto(choicePlayerId, choicesData); // Use the updated auto play function for choices
                 if (choiceMade) {
                     console.log("Choice made, waiting for action to complete.");
                 } else {
-                    currentChoicesTurnStep = 0;  // Or advance to the next step as needed
+                    currentChoicesTurnStep = 0;  // Reset to the beginning or as needed
                     console.log("Resetting to step 0 after playing a card.");
                 }
                 break;
@@ -1289,10 +1364,123 @@ document.addEventListener('DOMContentLoaded', function() {
                 break;
         }
     
-        console.log(`Current step after action: ${currentChoicesTurnStep}`);
+        console.log(`Current step after action for ${choicePlayerId}: ${currentChoicesTurnStep}`);
         choiceMade = false; // Reset the choiceMade flag after processing the step
     }
+    
+    
+    function drawCardFromLibraryToHandChoice(choicePlayerId) {
+        const libraryImages = choicesData[choicePlayerId].libraryImages.images;
+        const handImages = choicesData[choicePlayerId].handImages.images;
+    
+        console.log('Before drawing a card, library:', libraryImages.slice(0, 1)); // Log the first card in the library
+    
+        if (libraryImages.length > 0) {
+            const drawnCard = libraryImages.shift();
+            console.log('Drawn card:', drawnCard); // Confirm the structure of the drawn card
+    
+            handImages.push(drawnCard);
+            updatePlayerDisplay(choicePlayerId, choicesData); // Update the UI for the choice player
+            
+            // Increment the turn count
+            currentTurn++;
+            updateTurnLabel();
+            console.log(`Turn ${currentTurn} completed.`);
+        } else {
+            console.log('No cards left in the library to draw');
+        }
+    }
 
+    function moveFirstLandFromHandToLandAutoChoice(choicePlayerId) {
+        const handImages = choicesData[choicePlayerId].handImages.images;
+        const libraryImages = choicesData[choicePlayerId].libraryImages.images;
+        const landCards = handImages.filter(card => isLandCard(card.cardData));
+    
+        if (landCards.length === 0) {
+            console.log('No land cards found in hand');
+            return;
+        }
+    
+        // Check for land cards with uiState.checkboxes.search set to true
+        const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
+    
+        if (searchableLandCards.length > 0) {
+            const searchableLandCard = searchableLandCards[0];
+            const highlightedCardNames = searchableLandCard.cardData.uiState.highlightedCards;
+    
+            // Search the library for a card that matches one of the highlighted card names
+            const matchingLibraryCard = libraryImages.find(card => highlightedCardNames.includes(card.cardData.name));
+    
+            if (matchingLibraryCard) {
+                // Move the matching library card to the landImages
+                const libraryIndex = libraryImages.indexOf(matchingLibraryCard);
+                const [landCard] = libraryImages.splice(libraryIndex, 1);
+                choicesData[choicePlayerId].landImages.images.push(landCard);
+    
+                // Check if the land enters tapped
+                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
+                    tappedLands.push(landCard.cardData.id);
+                    console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
+                }
+    
+                // Move the searchable land card from the hand to the graveyardImages
+                const handIndex = handImages.indexOf(searchableLandCard);
+                const [discardedLandCard] = handImages.splice(handIndex, 1);
+                choicesData[choicePlayerId].graveyardImages.images.push(discardedLandCard);
+    
+                updatePlayerDisplay(choicePlayerId, choicesData);
+                updateManaCounter();
+                calculateBattlefieldMana();
+                return;
+            }
+        }
+    
+        // If no searchable or matching library cards, proceed with the original logic
+        const nonLandCards = handImages.filter(card => !isLandCard(card.cardData));
+        const unplayableCards = nonLandCards.filter(card => !canPlayCard(card.cardData.mana_cost, choicesData[choicePlayerId].manaCounter, card.cardData.cmc, card.cardData.name));
+    
+        if (unplayableCards.length === 0) {
+            // If all non-land cards are playable, just play the first land card
+            const [landCard] = landCards.splice(0, 1);
+            choicesData[choicePlayerId].landImages.images.push(landCard);
+    
+            if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
+                tappedLands.push(landCard.cardData.id);
+                console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
+            }
+        } else {
+            // Find the unplayable card with the lowest CMC
+            const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
+    
+            // Find a land card that produces the required mana for the lowest CMC card
+            const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, choicesData[choicePlayerId].manaCounter);
+            const prioritizedLandCard = landCards.find(card => canProduceMana(card.cardData, requiredMana));
+    
+            if (prioritizedLandCard) {
+                // If a prioritized land card is found, play it
+                const index = handImages.indexOf(prioritizedLandCard);
+                const [landCard] = handImages.splice(index, 1);
+                choicesData[choicePlayerId].landImages.images.push(landCard);
+                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
+                    tappedLands.push(landCard.cardData.id);
+                    console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
+                }
+            } else {
+                // If no prioritized land card is found, just play the first land card
+                const [landCard] = landCards.splice(0, 1);
+                choicesData[choicePlayerId].landImages.images.push(landCard);
+                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
+                    tappedLands.push(landCard.cardData.id);
+                    console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
+                }
+            }
+        }
+    
+        updatePlayerDisplay(choicePlayerId, choicesData);
+        updateManaCounter();
+        calculateBattlefieldMana();
+    }
+    
 
    
     function drawCardFromLibraryToHand(playerId) {
@@ -1307,6 +1495,11 @@ document.addEventListener('DOMContentLoaded', function() {
     
             handImages.push(drawnCard);
             updatePlayerDisplay(playerId); // Update the entire UI for consistency
+            
+            // Increment the turn count
+            currentTurn++;
+            updateTurnLabel();
+            console.log(`Turn ${currentTurn} completed.`);
         } else {
             console.log('No cards left in the library to draw');
         }
@@ -1740,19 +1933,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
+    let choicesCreated = false; // Global flag to track if choices have been created for the current step
 
-     function playCardFromHandToBattlefieldAuto(playerId) {
+    function playCardFromHandToBattlefieldAuto(playerId) {
         const handCards = playersData[playerId].handImages.images;
-        const commanderCards = playersData[playerId].commanderImages.images;  // Assuming this is how you access commander cards
+        const commanderCards = playersData[playerId].commanderImages.images;
     
         console.log("Starting playCardFromHandToBattlefield");
     
         updateManaCounter();
         const manaCounter = playersData[playerId].manaCounter;
         console.log("Updated mana counter:", manaCounter);
-
-        const combinedCards = handCards.concat(commanderCards);
     
+        const combinedCards = handCards.concat(commanderCards);
     
         // Process choiceCards first if any card has been selected
         if (choiceCards.length) {
@@ -1760,7 +1953,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const cardToPlay = combinedCards.find(card => choiceCards.includes(card.cardData.name));
             if (cardToPlay) {
                 console.log(`Playing chosen card ${cardToPlay.cardData.name} onto battlefield.`);
-                // Determine where the card is from and remove it from the correct array
                 if (handCards.includes(cardToPlay)) {
                     handCards.splice(handCards.indexOf(cardToPlay), 1);
                 } else if (commanderCards.includes(cardToPlay)) {
@@ -1775,8 +1967,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         if (!cardPlayed) {
-            const playableCards = combinedCards.filter(card => 
-                canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) && 
+            const playableCards = combinedCards.filter(card =>
+                canPlayCard(card.cardData.settings.mana_cost, manaCounter, card.cardData.settings.cmc, card.cardData.name) &&
                 !card.cardData.settings.type_line.includes("Land") &&
                 !playersData[playerId].markedCards[card.cardData.name]);
     
@@ -1784,16 +1976,16 @@ document.addEventListener('DOMContentLoaded', function() {
     
             if (choicesTurn && playableCards.length > 1) {
                 console.log('Multiple playable cards available, presenting choices');
-                playersData[playerId].choiceImages.images = [...playableCards];
-                updatePlayerDisplay(playerId);
+                createChoicePlayerData(playerId, playableCards);
+                // Call the createChoiceButtons function
+                createChoiceButtons(playableCards);
+    
+                // Stop auto choices after creating buttons
                 toggleAutoChoices();
-                choiceMade = true;
-                cardPlayed = true;
                 return;
             } else if (playableCards.length === 1) {
                 console.log("One playable card found, playing it");
                 const cardToPlay = playableCards[0];
-                // Determine where the card is from and remove it from the correct array
                 if (handCards.includes(cardToPlay)) {
                     handCards.splice(handCards.indexOf(cardToPlay), 1);
                 } else if (commanderCards.includes(cardToPlay)) {
@@ -1809,17 +2001,15 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         }
     
-
         if (cardPlayed) {
-            choiceMade = false;  // Reset choiceMade only after successfully playing a card
+            choiceMade = false; // Reset choiceMade only after successfully playing a card
             console.log(`Card played: ${cardPlayed}`);
         } else {
             console.log(`No card was played.`);
         }
-    
-        console.log(`Card played: ${cardPlayed}`);
-        choiceMade = false; // Update choiceMade based on cardPlayed status
     }
+    
+    
 
 
 
@@ -1985,7 +2175,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (manaElements.redMana) manaElements.redMana.textContent = `R: ${playersData[currentPlayerId].manaCounter.R}`;
         if (manaElements.greenMana) manaElements.greenMana.textContent = `G: ${playersData[currentPlayerId].manaCounter.G}`;
         if (manaElements.colorlessMana) manaElements.colorlessMana.textContent = `C: ${playersData[currentPlayerId].manaCounter.C}`;
-        if (manaElements.totalMana) manaElements.totalMana.textContent = `T: ${finalTotalMana}`;
+        if (manaElements.totalMana) manaElements.totalMana.textContent = `TM: ${finalTotalMana}`;
     
         // Store total mana in playersData
         playersData[currentPlayerId].totalMana = finalTotalMana;
@@ -2498,12 +2688,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const zoomableContent = document.getElementById('zoomableContent');
 
     let scale = 1; // Initial zoom level
-    let isDragging = false; // Flag for drag state
-    let startX, startY; // Starting mouse position
-    let offsetX = 0, offsetY = 0; // Offset for panning
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let offsetX = 0;
+    let offsetY = 0;
 
     // Limits for translation
-    const LIMITS = {
+    const BASE_LIMITS = {
         minX: -1000,
         maxX: 1000,
         minY: -300,
@@ -2512,7 +2704,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Helper function to clamp values within a range
     function clamp(value, min, max) {
-        return Math.max(min, Math.min(value, max));
+        return Math.max(min, Math.min(max, value));
     }
 
     // Track Z key state
@@ -2530,49 +2722,71 @@ document.addEventListener('DOMContentLoaded', function() {
 
     zoomablePlane.addEventListener('wheel', (event) => {
         // Check if the Z key is pressed
-        if (!isZoomEnabled) {
-            // Allow normal scrolling if Z is not pressed
-            return;
-        }
-
-        // Prevent the default behavior
+        if (!isZoomEnabled) return;
+    
+        // Prevent the default scrolling behavior
         event.preventDefault();
-
-        // Adjust scale based on scroll direction with a smaller step size
-        const zoomStep = 0.005; // Reduce sensitivity by lowering the multiplier
-        scale += event.deltaY * -zoomStep;
-        scale = Math.min(Math.max(0.5, scale), 2); // Clamp the scale between 0.5x and 2x
-
-        // Apply the scale transform
-        zoomableContent.style.transform = `scale(${scale})`;
+    
+        // Adjust zoom scale
+        const zoomStep = 0.05; // Fixed zoom step for consistent scaling
+        if (event.deltaY < 0) {
+            scale = Math.min(scale + zoomStep, 2); // Zoom in, max scale = 2
+        } else if (event.deltaY > 0) {
+            scale = Math.max(scale - zoomStep, 0.05); // Zoom out, min scale = 0.05
+        }
+    
+        // Update the transform and dynamic limits
+        const dynamicLimits = getDynamicLimits(scale);
+        offsetX = clamp(offsetX, dynamicLimits.minX, dynamicLimits.maxX);
+        offsetY = clamp(offsetY, dynamicLimits.minY, dynamicLimits.maxY);
+    
+        // Apply updated transform
+        zoomableContent.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
     });
+    
+    
+    function getDynamicLimits(scale) {
+        const factor = 1 / scale; // Inverse of scale to expand limits as we zoom out
+        return {
+            minX: BASE_LIMITS.minX * factor,
+            maxX: BASE_LIMITS.maxX * factor,
+            minY: BASE_LIMITS.minY * factor,
+            maxY: BASE_LIMITS.maxY * factor,
+        };
+    }
+    
 
     // Drag functionality
     zoomablePlane.addEventListener('mousedown', (event) => {
+        // Check if the mouse is over an image
+        const element = document.elementFromPoint(event.clientX, event.clientY);
+        if (element.tagName === 'IMG') {
+            isDragging = false; // Prevent dragging if cursor is over an image
+            return;
+        }
+    
         isDragging = true;
         zoomablePlane.style.cursor = 'grabbing'; // Change cursor to grabbing
         startX = event.clientX - offsetX; // Initial mouse X relative to offset
         startY = event.clientY - offsetY; // Initial mouse Y relative to offset
     });
-
+    
     document.addEventListener('mousemove', (event) => {
         if (!isDragging) return;
-
+    
         // Calculate new offsets
-        offsetX = event.clientX - startX; // Update offset X
-        offsetY = event.clientY - startY; // Update offset Y
-
-        // Clamp offsets within specified limits
-        offsetX = clamp(offsetX, LIMITS.minX, LIMITS.maxX);
-        offsetY = clamp(offsetY, LIMITS.minY, LIMITS.maxY);
-
+        const dynamicLimits = getDynamicLimits(scale); // Use updated limits
+        offsetX = clamp(event.clientX - startX, dynamicLimits.minX, dynamicLimits.maxX);
+        offsetY = clamp(event.clientY - startY, dynamicLimits.minY, dynamicLimits.maxY);
+    
         // Apply transform for dragging
-        zoomableContent.style.transform = `scale(${scale}) translate(${offsetX}px, ${offsetY}px)`;
+        zoomableContent.style.transform = `translate(${offsetX}px, ${offsetY}px) scale(${scale})`;
     });
-
+    
     document.addEventListener('mouseup', () => {
+        if (!isDragging) return;
         isDragging = false;
-        zoomablePlane.style.cursor = 'grab'; // Revert cursor to grab
+        document.body.style.cursor = 'default'; // Reset cursor
     });
 
     const librarySection = document.getElementById('library');
@@ -2617,6 +2831,128 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    function createChoicePlayerData(basePlayerId, choices) {
+        let choiceCounter = 1; // Counter for naming the new choice playersData entries
+    
+        // Ensure the current player's choiceImages is updated
+        const basePlayerData = playersData[basePlayerId];
+        basePlayerData.choiceImages.images = [...choices]; // Retain all choices in the current player's choice section
+    
+        updatePlayerDisplay(basePlayerId); // Update the display to reflect choices for the current player
+    
+        // Create new choice-specific entries in choicesData
+        choices.forEach(choiceCard => {
+            console.log('Creating player data for choice:', choiceCard);
+    
+            // Create a deep copy of the player's data without affecting playersData
+            const newChoiceData = JSON.parse(JSON.stringify(playersData[basePlayerId]));
+            newChoiceData.choiceImages.images = [choiceCard]; // Only this specific choice in the new choice's choice section
+    
+            // Assign the new choice data to choicesData
+            const choicePlayerId = `Choice ${choiceCounter}`;
+            choicesData[choicePlayerId] = newChoiceData;
+    
+            console.log(`Choice player data created for ${choicePlayerId}:`, newChoiceData);
+            choiceCounter++;
+        });
+    
+        console.log('All choice player data created successfully in choicesData.');
+    }
+    
+    function createChoiceButtons(choices) {
+        // Reference to the container for the tree chart
+        const zoomableContent = document.getElementById('zoomableContent');
+        if (!zoomableContent) {
+            console.error('zoomableContent container not found.');
+            return;
+        }
+    
+        // Create or get the container for the buttons
+        let buttonContainer = document.getElementById('choiceButtonContainer');
+        if (!buttonContainer) {
+            buttonContainer = document.createElement('div');
+            buttonContainer.id = 'choiceButtonContainer';
+            buttonContainer.style.position = 'absolute'; // Set position to absolute
+            buttonContainer.style.top = '-200px'; 
+            buttonContainer.style.left = '-50px'; 
+            buttonContainer.style.zIndex = '10000'; // Ensure it appears above other elements
+            buttonContainer.style.width = '800px'; // Set desired width
+            buttonContainer.style.height = '60px'; // Set desired height
+            zoomableContent.appendChild(buttonContainer);
+    
+            // Add the center vertical line
+            const verticalLine = document.createElement('div');
+            verticalLine.id = 'centerLine';
+            verticalLine.style.position = 'absolute';
+            verticalLine.style.top = '0';
+            verticalLine.style.left = '50%';
+            verticalLine.style.transform = 'translateX(-50%)'; // Center the line horizontally
+            verticalLine.style.width = '2px'; // Thin line
+            verticalLine.style.height = '200px'; // Adjust height as needed
+            verticalLine.style.backgroundColor = 'green';
+            buttonContainer.appendChild(verticalLine);
+        }
+    
+        // Clear any existing buttons to avoid duplication
+        buttonContainer.innerHTML = '';
+        
+        // Re-add the center vertical line (clear removes it)
+        const verticalLine = document.createElement('div');
+        verticalLine.id = 'centerLine';
+        verticalLine.style.position = 'absolute';
+        verticalLine.style.top = '20px';
+        verticalLine.style.left = '50%';
+        verticalLine.style.transform = 'translateX(-50%)';
+        verticalLine.style.width = '2px';
+        verticalLine.style.height = '200px';
+        verticalLine.style.backgroundColor = 'green';
+        buttonContainer.appendChild(verticalLine);
+    
+        let choiceCounter = 0; // Start at 0 for the first button
+        const buttonWidth = 155; // Button width
+        const buttonSpacing = 500; // Increase this value to add more space between buttons
+        const totalButtonWidth = (buttonWidth + buttonSpacing) * choices.length - buttonSpacing; // Total width occupied by buttons
+        const startOffset = (buttonContainer.offsetWidth - totalButtonWidth) / 2; // Offset to center buttons within the container
+    
+        choices.forEach(choiceCard => {
+            console.log('Creating button for choice:', choiceCard);
+    
+            // Create the button
+            const choiceButton = document.createElement('button');
+            choiceButton.textContent = `Turn ${currentTurn}, Choice ${choiceCounter + 1}`;
+            choiceButton.className = 'choice-button'; // Assign CSS class
+    
+            // Center buttons inside the container
+            choiceButton.style.position = 'absolute';
+            choiceButton.style.left = `${startOffset + choiceCounter * (buttonWidth + buttonSpacing)}px`; // Spread buttons evenly within the container
+            choiceButton.style.top = `0px`; // Keep buttons at the top of the container
+            choiceButton.style.transform = 'none';
+            choiceButton.style.width = `${buttonWidth}px`;
+            choiceButton.style.height = '40px';
+    
+            // Add connecting horizontal line
+            if (choiceCounter > 0) {
+                const horizontalLine = document.createElement('div');
+                horizontalLine.className = 'horizontal-line';
+                horizontalLine.style.position = 'absolute';
+                horizontalLine.style.top = '20px'; // Center vertically relative to buttons
+                horizontalLine.style.left = `${startOffset + (choiceCounter - 1) * (buttonWidth + buttonSpacing) + buttonWidth}px`;
+                horizontalLine.style.width = `${buttonSpacing}px`;
+                horizontalLine.style.height = '2px'; // Thin line
+                horizontalLine.style.backgroundColor = 'green';
+                buttonContainer.appendChild(horizontalLine);
+            }
+    
+            // Append the button to the buttonContainer
+            buttonContainer.appendChild(choiceButton);
+            choiceCounter++;
+        });
+        choicesCreated = true;
+    
+        console.log('Choice buttons created successfully in their container.');
+    }
+    
+
     // Attach event listeners for toggling specific sections
     document.getElementById('switchToLand').addEventListener('click', () => showOnlySection('land'));
     document.getElementById('switchToBattlefield').addEventListener('click', () => showOnlySection('battlefield'));
@@ -2625,6 +2961,41 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('switchToCommander').addEventListener('click', () => showOnlySection('commander'));
     document.getElementById('switchToMove').addEventListener('click', () => showOnlySection('move'));
     document.getElementById('switchToChoice').addEventListener('click', () => showOnlySection('choice'));
+
+    document.getElementById('startGame').addEventListener('click', () => {
+        const player1Scrollbox = document.getElementById('player1Scrollbox');
+        const turnsScrollbox = document.getElementById('turnsScrollbox');
     
+        // Hide Player 1 Scrollbox and show Turns Scrollbox
+        if (player1Scrollbox) {
+            player1Scrollbox.style.display = 'none';
+        }
+        if (turnsScrollbox) {
+            turnsScrollbox.style.display = 'flex';
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key.toLowerCase() === 'c') {
+            console.log('Printing all choice players data from choicesData:');
+            
+            // Iterate and log the data stored in choicesData
+            Object.keys(choicesData).forEach(choiceKey => {
+                console.log(`Data for ${choiceKey}:`, choicesData[choiceKey]);
+            });
+    
+            console.log('End of choice players data.');
+        }
+    });
+    
+    
+    function updateTurnLabel() {
+        const turnLabel = document.getElementById('turnLabel');
+        if (turnLabel) {
+            turnLabel.textContent = `Turn: ${currentTurn}`;
+        } else {
+            console.error('Turn label element not found.');
+        }
+    }
 
 });
