@@ -25,6 +25,7 @@ input, button {
     gap: 10px;
     width: 980px;
     height: 60px;
+    z-index: 2500;
   }
 #LoadCards button {
     padding: 10px 20px;
@@ -226,10 +227,11 @@ input, button {
     border: 1px solid #ddd;
     border-radius: 5px;
     position: absolute;
-    top: 170px;
+    top: 130px;
     left: 20px;
     width: 150px;
     background-color: #f0f0f0c9;
+    z-index: 2005;
   }
 
 #manaCounter {
@@ -253,7 +255,7 @@ input, button {
 #manaCounter input {
     width: 50px; /* Adjust input field width */
     margin-left: 5px;
-    z-index: 2000;
+    z-index: 2005;
 }
 
 .popup-container {
@@ -268,7 +270,7 @@ input, button {
     justify-content: center;
     align-items: center;
     transform: translate(-50%, -50%);
-    z-index: 1000;
+    z-index: 5000;
     overflow: auto; /* Add scrolling to the entire popup container */
     background-color: rgba(0, 0, 0, 0.8); /* Slightly darker background for better readability */
 }
@@ -321,15 +323,16 @@ input, button {
 
 #searchContainer {
     position: absolute;
-    top: 151px;
-    left: 210px;
+    top: 61px;
+    left: 250px;
     width: 300px;
-    height: 200px;
+    height: 390px;
     margin: 20px;
     padding: 10px;
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 5px;
+    z-index: 2005;
   }
 
 #searchContainer {
@@ -361,8 +364,8 @@ input, button {
 
 #selectedCardImageContainer {
     position: absolute; /* Or 'fixed' depending on your needs */
-    top: 160px; /* Adjust as needed */
-    left: 550px; /* Adjust as needed */
+    top: 210px;
+    left: 600px;
     width: 200px; /* Set a specific width */
     height: 300px; /* Set a specific height */
     overflow: hidden; /* Hide overflow */
@@ -428,6 +431,7 @@ input, button {
     left: 734px;
     position: absolute;
     width: 300px;
+    z-index: 2005;
   }
 
 
@@ -457,6 +461,7 @@ input, button {
     box-sizing: border-box;
     overflow-y: auto;
     overflow-x: hidden;
+    z-index: 2005;
   }
 
 .deck-section img {
@@ -470,7 +475,7 @@ input, button {
 
 /* Example of re-positioning */
 #deckSection {
-    top: 98px;
+    top: -22px;
     left: 1395px;
   }
 /* Adjusted Container for the tabs to change its location */
@@ -483,6 +488,7 @@ input, button {
     top: 12px;
     left: 1020px;
     width: 500px;
+    z-index: 2005;
   }
 
 /* Style for each tab */
@@ -524,7 +530,8 @@ input, button {
     border-bottom: 4px solid #b71c1c; /* Darker shade for 3D effect */
     transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transition for hover and click */
     width: 138px;
-    height: 39px;;
+    height: 39px;
+    z-index: 2005;
 }
 
 #commanderButton:hover {
@@ -560,6 +567,7 @@ input, button {
     height: 39px;
     border-bottom: 4px solid #b71c1c;
     transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s;
+    z-index: 2005;
   }
 
 #getSimilar:hover {
@@ -581,7 +589,7 @@ input, button {
     position: absolute;
     top: 630px;
     left: -45px;
-    z-index: 500;
+    z-index: 2500;
   }
 
 .mana-image {
@@ -604,6 +612,7 @@ input, button {
     margin-bottom: 10px;
     width: 150px;
     height: 45px;
+    z-index: 2500;
   }
 #cardQuantity {
     width: 60px; /* You can adjust the width as needed */
@@ -621,6 +630,7 @@ input, button {
     box-sizing: border-box;
     top: -30px;
     left: 1370px;
+    z-index: 2005;
   }
 
 /* Adjusted Container for the tabs to change its location */
@@ -669,6 +679,7 @@ input, button {
     margin-bottom: 10px;
     height: 38px;
     width: 146px;
+    z-index: 2005;
   }
   
 #searchQuantity {
@@ -741,7 +752,7 @@ input, button {
 /* Example of re-positioning */
 #searchSection {
     top: 40px;
-    right: -9px;
+    left: 31px;
   }
   #CardSearch {
     position: absolute;
@@ -756,6 +767,7 @@ input, button {
     gap: 10px;
     border-bottom: 4px solid #b71c1c; /* Darker shade for 3D effect */
     transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transition for hover and click */
+    z-index: 5000;
 }
 
 #CardSearch:hover {
@@ -814,6 +826,7 @@ input, button {
     height: 450px;
     box-sizing: border-box;
     overflow-y: auto;
+    z-index: 2001;
   }
 
 /* General styles for all form groups, ensuring space between them */
@@ -902,6 +915,7 @@ input, button {
     border-radius: 5px;
     box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.1);
     width: 1080px;
+    z-index: 2005;
   }
 
 .word-filter {
@@ -1012,6 +1026,7 @@ input, button {
     transition: background-color 0.3s, transform 0.3s, border-bottom 0.3s; /* Smooth transition for hover and click */
     height: 38px;
     width: 106px;
+    z-index: 2005;
 }
 
 #clearFilters:hover {
@@ -1035,10 +1050,418 @@ input, button {
     position: absolute;
     top: 495px;
     left: 1119px;
-    height: 40px;
-    width: 246px;
+    min-height: 40px;
+    min-width: 246px;
+    z-index: 2005;
   }
   #cardInfo .select2-container {
     width: 60% !important; /* Overrides the width and ensures it takes full width */
     margin: 3px 0; /* Custom margin */
+}
+
+
+#featureDescriptionsContainer {
+    position: relative;
+    margin: 20px;
+    text-align: center;
+    position: absolute;
+    top: -9px;
+    left: 105px;
+    z-index: 10000;
+    width: 700px;
+    height: 0px;
+  }
+  
+  .feature-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 8px 30px;
+    font-size: 18px;
+    background-color: #007BFF;
+    border: none; /* Removes other borders */
+    border-bottom: 4px solid #004080; /* Keeps the bottom border */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    top: -33px;
+    left: 397px;
+    z-index: 10000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-bottom 0.2s ease;
+  }
+  
+  .feature-button:hover {
+      background-color: #0056b3;
+      border-bottom: 1px solid #003366; /* Slightly change for hover state */
+      transform: translateY(3px); /* Move the button down slightly on hover */
+    }
+  .feature-button:active {
+    transform: translateY(3px); /* Simulates button press by moving it down */
+    border-bottom: 1px solid #004080; /* Reduces border thickness to simulate being pressed */
+    background-color: #004080; /* Darker blue for the active state */
+  }
+  
+  /* Text areas for features */
+  .feature-description {
+    position: absolute;
+    color: #000;
+    font-size: 12.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    z-index: 2001; /* Ensure it appears above the overlay */
+  }
+  
+  .feature-line {
+    position: absolute;
+    background-color: green;
+    width: 2px;
+    height: 100px;
+    transform-origin: top left;
+    pointer-events: none; /* Ensure lines are non-interactive */
+    z-index: 2001;
+  }
+  /* When active, text areas will show */
+  .feature-description.active {
+    display: block;
+  }
+  
+
+  .quantity-description {
+    position: absolute;
+    top: 200px;
+    left: 960px;
+    width: 130px;
+    height: 85px;
+    z-index: 2005;
+  }
+
+  
+  .oneTurn-description {
+    position: absolute;
+    top: -60px;
+    left: 376px;
+    width: 170px;
+    height: 43px;
+    z-index: 2005;
+  }
+  
+
+  .similarcards-description {
+    position: absolute;
+    top: 25px;
+    left: 591px;
+    width: 215px;
+    height: 100px;
+    z-index: 2005;
+  }
+  .wordfilter-description {
+    position: absolute;
+    top: 529px;
+    left: -93px;
+    width: 500px;
+    height: 54px;
+    z-index: 2005;
+  }
+  .modeSwitch-description {
+    position: absolute;
+    top: 332px;
+    left: 250px;
+    width: 300px;
+    height: 60px;
+    z-index: 2005;
+  }
+  .autoPlaySwitch-description {
+    position: absolute;
+    top: -101px;
+    left: 729px;
+    width: 320px;
+    height: 60px;
+    z-index: 2005;
+  }
+
+  .sections-description {
+    position: absolute;
+    top: 445px;
+    left: 820px;
+    width: 140px;
+    height: 140px;
+    z-index: 2005;
+  }
+  .feature-line {
+    position: absolute;
+    background-color: green;
+    width: 2px; /* Default thickness of the line */
+    height: 100px; /* Default length of the line */
+    transform-origin: top left; /* Set rotation origin */
+  }
+  
+
+  
+  .quantity-line {
+    top: 353px;
+    left: 1094px;
+    transform: rotate(150deg);
+    height: 70px;
+  }
+
+
+  .oneTurn-line {
+    top: -60px;
+    left: 222px;
+    transform: rotate(285deg);
+    height: 160px;
+  }
+
+  
+  .similarcards-line {
+    top: 210px;
+    left: 770px;
+    transform: rotate(180deg);
+    height: 90px;
+  }
+  
+  .wordfilter-line {
+    top: 438px;
+    left: 340px;
+    transform: rotate(65deg);
+    height: 280px;
+  }
+  .modeSwitch-line {
+    top: 300px;
+    left: 350px;
+    transform: rotate(310deg);
+    height: 70px;
+  }
+  .autoPlaySwitch-line {
+    top: 91px;
+    left: 1260px;
+    transform: rotate(110deg);
+    height: 320px;
+  }
+  .sections-line {
+    top: 460px;
+    left: 1002px;
+    transform: rotate(25deg);
+    height: 60px;
+  }
+
+  
+  #featureOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Black with 80% opacity */
+    z-index: 999; /* Ensure it covers other elements */
+    display: none; /* Initially hidden */
+  }
+  
+  #featureDescriptionsContainer {
+    position: relative;
+    z-index: 1000; /* Ensure it appears above the overlay */
+  }
+  #deckFeatureContainer {
+    position: relative;
+    margin: 20px;
+    text-align: center;
+
+}
+
+#deckFeatureDescriptionsContainer {
+    position: relative;
+    z-index: 3000;
+    margin: 20px;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+.deck-feature-button {
+    display: block;
+    margin: 20px auto;
+    padding: 8px 30px;
+    font-size: 18px;
+    background-color: #007BFF;
+    border: none;
+    border-bottom: 4px solid #004080;
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    z-index: 11000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-bottom 0.2s ease;
+    top: -12px;
+    left: -333px;
+    z-index: 10000;
+}
+
+.deck-feature-button:hover {
+    background-color: #0056b3;
+    border-bottom: 1px solid #003366;
+    transform: translateY(3px);
+}
+
+.deck-feature-button:active {
+    transform: translateY(3px);
+    border-bottom: 1px solid #004080;
+    background-color: #004080;
+}
+
+/* Text areas for deck features */
+.deck-feature-description {
+    position: absolute;
+    color: #000;
+    font-size: 12.5px;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    z-index: 3002;
+}
+
+/* Feature overlay */
+#deckFeatureOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: none; /* Initially hidden */
+}
+
+
+.deck-quantity-description { 
+    top: 90px;
+    left: 960px;
+    width: 130px;
+    height: 207px;
+}
+
+.deck-oneTurn-description { 
+    top: -220px;
+    left: 576px;
+    width: 240px;
+    height: 26px;
+}
+
+.deck-similarcards-description { 
+    top: 265px;
+    left: -19px;
+    width: 195px;
+    height: 240px;
+}
+.deck-wordfilter-description {
+    top: 299px;
+    left: 647px;
+    width: 200px;
+    height: 70px;
+}
+
+.deck-autoPlaySwitch-description { 
+    top: 349px;
+    left: 1039px;
+    width: 180px;
+    height: 30px;
+}
+
+.deck-sections-description { 
+    top: 445px;
+    left: 760px;
+    width: 140px;
+    height: 140px;
+}
+
+#deckFeatureDescriptionsContainer {
+    position: relative;
+    z-index: 3000;
+    margin: 20px;
+    text-align: center;
+    display: none; /* Initially hidden */
+}
+
+/* General line style for deck features */
+.deck-feature-line {
+    position: absolute;
+    background-color: green;
+    width: 2px; /* Default thickness of the line */
+    transform-origin: top left; /* Set rotation origin */
+    pointer-events: none; /* Non-interactive */
+    z-index: 3001;
+}
+
+/* Individual line positions and styles */
+.deck-quantity-line {
+    top: 13px;
+    left: 1004px;
+    transform: rotate(0deg);
+    height: 120px;
+}
+
+.deck-oneTurn-line {
+    top: -200px;
+    left: 412px;
+    transform: rotate(270deg);
+    height: 160px;
+}
+
+.deck-similarcards-line {
+    top: 313px;
+    left: 60px;
+    transform: rotate(180deg);
+    height: 90px;
+}
+
+.deck-wordfilter-line {
+    top: 368px;
+    left: 532px;
+    transform: rotate(270deg);
+    height: 150px;
+}
+
+.deck-modeSwitch-line {
+    top: 181px;
+    left: 1350px;
+    transform: rotate(50deg);
+    height: 290px;
+}
+
+.deck-autoPlaySwitch-line {
+    top: 181px;
+    left: 1350px;
+    transform: rotate(50deg);
+    height: 290px;
+}
+
+.deck-sections-line {
+    top: 530px;
+    left: 682px;
+    transform: rotate(245deg);
+    height: 170px;
+  }
+
+/* Overlay for deck features */
+#deckFeatureOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Black with 80% opacity */
+    z-index: 2000;
+    display: none; /* Initially hidden */
+}
+
+.deck-loaddeck-description { 
+    top: 149px;
+    left: 609px;
+    width: 180px;
+    height: 100px;
+}
+
+.deck-loaddeck-line {
+    top: 31px;
+    left: 590px;
+    transform: rotate(320deg);
+    height: 180px;
 }
