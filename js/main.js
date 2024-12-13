@@ -31,8 +31,188 @@ document.addEventListener('DOMContentLoaded', function() {
     let choiceMade = false; // Flag to indicate if a choice has been made
     let nonlandchoiceMade = false; // Flag to indicate if a choice has been made
     let cardPlayed = false;  // Variable to track if a card has been played
-    let tappedLands = [];
     let lastHoveredCardData = null;
+
+    
+    const simulatedDeckFeatures = {
+        chooseDecks: "Provides a popup for selecting a deck from a list of available decks.",
+        restart: "Restarts the game, putting all cards back into library.",
+        oneTurn: "Use these buttons to play. 1 Turn simulates a single turn. A turn will draw a card, play a land, then try to play a card. Auto simulates multiple turns, press again to pause the simulation. Auto Choices will automate turns until there is more then one card you can play, then it pauses until you choose a card to play.",
+        manaCounter: "Tracks and updates the mana pool for the player. For each color, the number represents the max number of mana of that type you can produce. The TM is the total mana you are able to produce.",
+        startGame: "These player buttons will switch all sections to that players sections. The scroll boxes and switch are for the minimum or maximum number of lands in the players hands, and the M buttons will mulligan the hands. Press start game to have each player draw their starting hand.",
+        cycleButtons: "Use these 4 buttons to cycle through your hand. The first two buttons can shuffle and draw the same number of cards or shuffle and draw 7 cards. The last two can discard and draw the same number or discard and draw 7 cards. You can also shuffle the library.",
+        autoPlaySwitch: "If the switch is on choose lands, the autochoices will ask you to choose what lands to play if there is more then 1 in hand. If it is set to Auto Lands, it will look for the card with the lowest mana cost, and will prioritize playing lands that produce the colors of those you can't currently produce.",
+        sections: "Each section here will display the cards in each players section. You can switch between sections with the arrow buttons above.",
+        sectionbuttons: "Pressing the shift button while hovering over an image will move the card to the Move section above the battlefield. Clicking the section buttons will move all cards in the move section to the target section. If you press the number-key for each section while your mouse is on a card, it will move that card to the corrisponding section."
+    };
+    // Function to show feature descriptions with overlay
+    function displayFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        container.innerHTML = ''; // Clear previous content
+
+        // Set z-index to 3000
+        container.style.zIndex = '3000';
+
+        // Update all labels to match the desired style
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            label.style.color = 'rgb(255, 255, 255)';
+            label.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            label.style.fontWeight = 'bold';
+            label.style.zIndex = '2001'; // Ensure it is above other elements
+        });
+
+        // Update #manaCounter font styles
+        const manaCounter = document.getElementById('manaCounter');
+        if (manaCounter) {
+            manaCounter.style.color = 'rgb(255, 255, 255)';
+            manaCounter.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            manaCounter.style.fontWeight = 'bold';
+        }
+
+        // Update .scrollbox label font styles
+        const scrollboxLabels = document.querySelectorAll('.scrollbox label');
+        scrollboxLabels.forEach(label => {
+            label.style.color = 'rgb(255, 255, 255)';
+            label.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            label.style.fontWeight = 'bold';
+        });
+
+        // Update #navigation span font styles
+        const navigationSpans = document.querySelectorAll('#navigation span');
+        navigationSpans.forEach(span => {
+            span.style.color = 'rgb(255, 255, 255)';
+            span.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+        });
+
+        // Create a semi-transparent overlay if it doesn't exist
+        let overlay = document.getElementById('featureOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'featureOverlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            overlay.style.zIndex = '2000';
+            overlay.style.pointerEvents = 'none'; // Make overlay non-interactive
+            document.body.appendChild(overlay);
+        }
+        overlay.style.display = 'block'; // Show the overlay
+
+        // Dynamically populate feature descriptions
+        Object.keys(simulatedDeckFeatures).forEach((featureId) => {
+            // Create description div
+            const description = document.createElement('div');
+            description.className = `${featureId}-description feature-description`;
+            description.textContent = simulatedDeckFeatures[featureId];
+
+            // Style the description
+            description.style.position = 'absolute';
+            description.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            description.style.padding = '10px';
+            description.style.borderRadius = '5px';
+            description.style.zIndex = '3002';
+            description.style.pointerEvents = 'auto'; // Make descriptions interactive
+
+            // Position descriptions dynamically (if needed, set fixed positions instead)
+            const descriptionPosition = document.querySelector(`.${featureId}-description`)?.getBoundingClientRect();
+            if (descriptionPosition) {
+                description.style.top = `${descriptionPosition.top}px`;
+                description.style.left = `${descriptionPosition.left}px`;
+            }
+
+            // Append description
+            container.appendChild(description);
+
+            // Create line element
+            const line = document.createElement('div');
+            line.className = `${featureId}-line feature-line`;
+            line.style.zIndex = '3001';
+
+            // Position lines dynamically
+            const linePosition = document.querySelector(`.${featureId}-line`)?.getBoundingClientRect();
+            if (linePosition) {
+                line.style.top = `${linePosition.top}px`;
+                line.style.left = `${linePosition.left}px`;
+            }
+
+            container.appendChild(line); // Append the line to the container
+        });
+
+        container.style.display = 'block'; // Show the container
+    }
+
+    // Function to hide feature descriptions and overlay
+    function hideFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        container.style.display = 'none'; // Hide the container and its contents
+
+        // Reset z-index to 1000
+        container.style.zIndex = '1000';
+
+        // Reset all labels to their original styles
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            label.style.color = ''; // Reset to default
+            label.style.textShadow = ''; // Reset to default
+            label.style.fontWeight = ''; // Reset to default
+            label.style.zIndex = ''; // Reset to default
+        });
+
+        // Reset #manaCounter font styles
+        const manaCounter = document.getElementById('manaCounter');
+        if (manaCounter) {
+            manaCounter.style.color = ''; // Reset to default color
+            manaCounter.style.textShadow = ''; // Reset to default text shadow
+            manaCounter.style.fontWeight = ''; // Reset to default weight
+        }
+
+        // Reset .scrollbox label font styles
+        const scrollboxLabels = document.querySelectorAll('.scrollbox label');
+        scrollboxLabels.forEach(label => {
+            label.style.color = ''; // Reset to default
+            label.style.textShadow = ''; // Reset to default
+            label.style.fontWeight = ''; // Reset to default
+        });
+
+        // Reset #navigation span font styles
+        const navigationSpans = document.querySelectorAll('#navigation span');
+        navigationSpans.forEach(span => {
+            span.style.color = ''; // Reset to default
+            span.style.textShadow = ''; // Reset to default
+        });
+
+        const overlay = document.getElementById('featureOverlay');
+        if (overlay) {
+            overlay.style.display = 'none'; // Hide the overlay
+        }
+    }
+
+    // Function to toggle feature descriptions and overlay
+    function toggleFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        const isVisible = container.style.display === 'block';
+
+        if (isVisible) {
+            hideFeatureDescriptions(); // Hide descriptions and overlay
+        } else {
+            displayFeatureDescriptions(); // Show descriptions and overlay
+
+            // Ensure all feature-description elements are visible
+            const descriptions = container.querySelectorAll('.feature-description');
+            descriptions.forEach((desc) => {
+                desc.style.display = 'block'; // Explicitly unhide each description
+            });
+        }
+    }
+
+    // Attach the toggle function to the button click event
+    document.getElementById('showFeaturesButton').addEventListener('click', toggleFeatureDescriptions);
+
+
 
 
     const playersData = {
@@ -1195,23 +1375,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('discardDrawSeven').addEventListener('click', function() {
         discardDrawSeven();
     });
-    document.getElementById('1Draw').addEventListener('click', drawOneCard);
-
-    function drawOneCard() {
-        const playerKey = currentPlayerId;
-        const libraryCards = playersData[playerKey].libraryImages.images;
-        const handCards = playersData[playerKey].handImages.images;
-    
-        // Check if the library has cards to draw
-        if (libraryCards.length > 0) {
-            const card = libraryCards.shift(); // Remove the top card from the library
-            handCards.push(card); // Add the removed card to the hand
-        }
-    
-        updatePlayerDisplay(playerKey);
-        updateAllPlayersSectionDisplay();
-    }
-
 
 
     function shuffleDrawEqual() {
@@ -1501,7 +1664,6 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (oneTurnStep) {
             case 0:
                 console.log("Case 0: Drawing a card from the library to the hand.");
-                tappedLands = [];
                 drawCardFromLibraryToHand(currentPlayerId);
                 console.log(`After drawing a card, hand:`, playersData[currentPlayerId].handImages.images.map(card => ({
                     name: card.cardData.name,
@@ -1592,7 +1754,6 @@ document.addEventListener('DOMContentLoaded', function() {
         switch (currentChoicesTurnStep) {
             case 0:
                 console.log("Case 0: Drawing a card from the library to the hand.");
-                tappedLands = [];
                 drawCardFromLibraryToHand(currentPlayerId);
                 if (!choiceMade) {
                     currentChoicesTurnStep++;
@@ -1705,139 +1866,82 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     function moveFirstLandFromHandToLand(playerId) {
-        console.log(`Starting moveFirstLandFromHandToLand for ${playerId}`);
         const handImages = playersData[playerId].handImages.images;
-        const landImages = playersData[playerId].landImages.images;
-    
-        const landCards = handImages.filter(card => isLandCard(card.cardData) && !playersData[playerId].markedCards[card.cardData.name]);
-        console.log(`Found ${landCards.length} land cards in hand for ${playerId}`);
+        const libraryImages = playersData[playerId].libraryImages.images;
+        const landCards = handImages.filter(card => isLandCard(card.cardData));
     
         if (landCards.length === 0) {
-            console.log('No land cards found in hand for', playerId);
+            console.log('No land cards found in hand');
             return;
         }
     
+        // Check for land cards with uiState.checkboxes.search set to true
         const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
-        console.log(`Found ${searchableLandCards.length} searchable land cards for ${playerId}`);
     
         if (searchableLandCards.length > 0) {
-            console.log('Processing searchable land cards...');
             const searchableLandCard = searchableLandCards[0];
-            console.log(`Selected searchable land card: ${searchableLandCard.cardData.name} for ${playerId}`);
-    
             const highlightedCardNames = searchableLandCard.cardData.uiState.highlightedCards;
-            console.log(`Highlighted card names for search: ${highlightedCardNames.join(', ')} for ${playerId}`);
     
-            const matchingLibraryCard = playersData[playerId].libraryImages.images.find(card => highlightedCardNames.includes(card.cardData.name));
+            // Search the library for a card that matches one of the highlighted card names
+            const matchingLibraryCard = libraryImages.find(card => highlightedCardNames.includes(card.cardData.name));
+    
             if (matchingLibraryCard) {
-                console.log(`Found matching library card: ${matchingLibraryCard.cardData.name} for ${playerId}`);
-    
-                const libraryIndex = playersData[playerId].libraryImages.images.indexOf(matchingLibraryCard);
-                const [landCard] = playersData[playerId].libraryImages.images.splice(libraryIndex, 1);
+                // Move the matching library card to the landImages
+                const libraryIndex = libraryImages.indexOf(matchingLibraryCard);
+                const [landCard] = libraryImages.splice(libraryIndex, 1);
                 playersData[playerId].landImages.images.push(landCard);
-                console.log(`Moved ${landCard.cardData.name} from library to land for ${playerId}`);
     
+                // Move the searchable land card from the hand to the graveyardImages
                 const handIndex = handImages.indexOf(searchableLandCard);
                 const [discardedLandCard] = handImages.splice(handIndex, 1);
                 playersData[playerId].graveyardImages.images.push(discardedLandCard);
-                console.log(`Moved ${discardedLandCard.cardData.name} from hand to graveyard for ${playerId}`);
     
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 updateManaCounter();
                 calculateBattlefieldMana();
                 return;
             }
         }
     
-        console.log(`No searchable land cards matched. Continuing for ${playerId}`);
-        const unplayableCards = handImages.filter(card => !isLandCard(card.cardData) && !canPlayCard(card.cardData.mana_cost, playersData[playerId].manaCounter, card.cardData.cmc, card.cardData.name));
-        console.log(`Found ${unplayableCards.length} unplayable cards for ${playerId}`);
+        // If no searchable or matching library cards, proceed with the original logic
+        const nonLandCards = handImages.filter(card => !isLandCard(card.cardData));
+        const unplayableCards = nonLandCards.filter(card => !canPlayCard(card.cardData.mana_cost, playersData[playerId].manaCounter, card.cardData.cmc, card.cardData.name));
     
         if (unplayableCards.length === 0) {
-            console.log('All non-land cards are playable, playing first land card for', playerId);
+            // If all non-land cards are playable, just play the first land card
             const [landCard] = landCards.splice(0, 1);
-            handImages.splice(handImages.indexOf(landCard), 1);
             playersData[playerId].landImages.images.push(landCard);
-            console.log(`Moved ${landCard.cardData.name} from hand to land for ${playerId}`);
-    
-            // Check if the land enters tapped
-            if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                tappedLands.push(landCard.cardData.id);
-                console.log(`${landCard.cardData.id} enters the battlefield tapped and added to tappedLands.`);
-            }
-    
-            // Handle returnLand logic
-            if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.returnLand) {
-                const returnableLand = landImages.find(l => !l.cardData.uiState.checkboxes.entersTapped && !l.cardData.uiState.checkboxes.returnLand && l.cardData.id !== landCard.cardData.id);
-                if (returnableLand) {
-                    landImages.splice(landImages.indexOf(returnableLand), 1);
-                    handImages.push(returnableLand);
-                    console.log(`Returned ${returnableLand.cardData.name} from land to hand for ${playerId}`);
-                }
-            }
         } else {
-            console.log('Finding land card that matches the mana requirements for unplayable cards for', playerId);
+            // Find the unplayable card with the lowest CMC
             const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
-            const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, playersData[playerId].manaCounter);
-            console.log(`Lowest CMC card: ${lowestCMCCard.cardData.name}, Required mana: ${requiredMana} for ${playerId}`);
     
+            // Find a land card that produces the required mana for the lowest CMC card
+            const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, playersData[playerId].manaCounter);
             const prioritizedLandCard = landCards.find(card => canProduceMana(card.cardData, requiredMana));
+    
             if (prioritizedLandCard) {
-                console.log(`Playing prioritized land card: ${prioritizedLandCard.cardData.name} for ${playerId}`);
+                // If a prioritized land card is found, play it
                 const index = handImages.indexOf(prioritizedLandCard);
                 const [landCard] = handImages.splice(index, 1);
                 playersData[playerId].landImages.images.push(landCard);
-                console.log(`Moved ${landCard.cardData.name} from hand to land for ${playerId}`);
-    
-                // Check if the land enters tapped
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} enters the battlefield tapped and added to tappedLands.`);
-                }
-    
-                // Handle returnLand logic
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.returnLand) {
-                    const returnableLand = landImages.find(l => !l.cardData.uiState.checkboxes.entersTapped && !l.cardData.uiState.checkboxes.returnLand && l.cardData.id !== landCard.cardData.id);
-                    if (returnableLand) {
-                        landImages.splice(landImages.indexOf(returnableLand), 1);
-                        handImages.push(returnableLand);
-                        console.log(`Returned ${returnableLand.cardData.name} from land to hand for ${playerId}`);
-                    }
-                }
             } else {
-                console.log('No prioritized land card found, playing first land card for', playerId);
+                // If no prioritized land card is found, just play the first land card
                 const [landCard] = landCards.splice(0, 1);
-                handImages.splice(handImages.indexOf(landCard), 1);
                 playersData[playerId].landImages.images.push(landCard);
-                console.log(`Moved ${landCard.cardData.name} from hand to land for ${playerId}`);
-    
-                // Check if the land enters tapped
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} enters the battlefield tapped and added to tappedLands.`);
-                }
-    
-                // Handle returnLand logic
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.returnLand) {
-                    const returnableLand = landImages.find(l => !l.cardData.uiState.checkboxes.entersTapped && !l.cardData.uiState.checkboxes.returnLand && l.cardData.id !== landCard.cardData.id);
-                    if (returnableLand) {
-                        landImages.splice(landImages.indexOf(returnableLand), 1);
-                        handImages.push(returnableLand);
-                        console.log(`Returned ${returnableLand.cardData.name} from land to hand for ${playerId}`);
-                    }
-                }
             }
         }
     
         updatePlayerDisplay(playerId);
-        console.log(`Updated display for ${playerId}`);
+        updateAllPlayersSectionDisplay();
         updateManaCounter();
         calculateBattlefieldMana();
     }
 
     function moveFirstLandFromHandToLandChoice(playerId) {
-        console.log("Starting moveFirstLandFromHandToLandChoice for", playerId);
         const handImages = playersData[playerId].handImages.images;
+    
+        console.log("Starting moveFirstLandFromHandToLandChoice");
     
         // Check for a chosen land card
         const choiceLand = handImages.find(card => choiceCards.includes(card.cardData.name) && isLandCard(card.cardData));
@@ -1845,15 +1949,9 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log(`Playing chosen land card: ${choiceLand.cardData.name}`);
             playersData[playerId].landImages.images.push(choiceLand);
             handImages.splice(handImages.indexOf(choiceLand), 1);
-    
-            // Check if the chosen land enters tapped and add to tappedLands if so
-            if (choiceLand.cardData.uiState && choiceLand.cardData.uiState.checkboxes.entersTapped) {
-                tappedLands.push(choiceLand.cardData.id);
-                console.log(`${choiceLand.cardData.id} will enter tapped and has been added to tappedLands.`);
-            }
-    
             choiceCards = [];
             updatePlayerDisplay(playerId);
+            updateAllPlayersSectionDisplay();
             updateManaCounter();
             calculateBattlefieldMana();
             choiceMade = false;
@@ -1861,24 +1959,25 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         const landCards = handImages.filter(card => isLandCard(card.cardData) && !playersData[playerId].markedCards[card.cardData.name]);
-        console.log(`Found ${landCards.length} land cards in hand for ${playerId}`);
+        console.log(`Found ${landCards.length} land cards in hand`);
     
         if (landCards.length === 0) {
-            console.log('No land cards found in hand for', playerId);
+            console.log('No land cards found in hand');
             return;
         }
     
         if (choicesTurn && landCards.length > 1) {
-            console.log('Multiple lands available for choice, presenting choices for', playerId);
+            console.log('Multiple lands available for choice, presenting choices');
             playersData[playerId].choiceImages.images = [...landCards];
             updatePlayerDisplay(playerId);
+            updateAllPlayersSectionDisplay();
             toggleAutoChoices();
             choiceMade = true;
             return;
         }
     
         const searchableLandCards = landCards.filter(card => card.cardData.uiState && card.cardData.uiState.checkboxes.search);
-        console.log(`Found ${searchableLandCards.length} searchable land cards for ${playerId}`);
+        console.log(`Found ${searchableLandCards.length} searchable land cards`);
     
         if (searchableLandCards.length > 0) {
             const searchableLandCard = searchableLandCards[0];
@@ -1886,7 +1985,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const matchingLibraryCard = playersData[playerId].libraryImages.images.find(card => highlightedCardNames.includes(card.cardData.name));
     
             if (matchingLibraryCard) {
-                console.log(`Found matching library card: ${matchingLibraryCard.cardData.name} for ${playerId}`);
+                console.log(`Found matching library card: ${matchingLibraryCard.cardData.name}`);
                 const libraryIndex = playersData[playerId].libraryImages.images.indexOf(matchingLibraryCard);
                 const [landCard] = playersData[playerId].libraryImages.images.splice(libraryIndex, 1);
                 playersData[playerId].landImages.images.push(landCard);
@@ -1896,6 +1995,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 playersData[playerId].graveyardImages.images.push(discardedLandCard);
     
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 updateManaCounter();
                 calculateBattlefieldMana();
                 return;
@@ -1903,49 +2003,32 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     
         const unplayableCards = handImages.filter(card => !isLandCard(card.cardData) && !canPlayCard(card.cardData.mana_cost, playersData[playerId].manaCounter, card.cardData.cmc, card.cardData.name));
-        console.log(`Found ${unplayableCards.length} unplayable cards for ${playerId}`);
+        console.log(`Found ${unplayableCards.length} unplayable cards`);
     
         if (unplayableCards.length === 0) {
-            console.log('All non-land cards are playable, playing first land card for', playerId);
+            console.log('All non-land cards are playable, playing first land card');
             const [landCard] = landCards.splice(0, 1);
             playersData[playerId].landImages.images.push(landCard);
-    
-            // Check if the land enters tapped and add to tappedLands if so
-            if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                tappedLands.push(landCard.cardData.id);
-                console.log(`${landCard.cardData.id} will enter tapped and has been added to tappedLands.`);
-            }
         } else {
-            console.log('Finding land card that matches the mana requirements for unplayable cards for', playerId);
+            console.log('Finding land card that matches the mana requirements for unplayable cards');
             const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
             const requiredMana = getRequiredMana(lowestCMCCard.cardData.mana_cost, playersData[playerId].manaCounter);
             const prioritizedLandCard = landCards.find(card => canProduceMana(card.cardData, requiredMana));
     
             if (prioritizedLandCard) {
-                console.log(`Playing prioritized land card: ${prioritizedLandCard.cardData.name} for ${playerId}`);
+                console.log(`Playing prioritized land card: ${prioritizedLandCard.cardData.name}`);
                 const index = handImages.indexOf(prioritizedLandCard);
                 const [landCard] = handImages.splice(index, 1);
                 playersData[playerId].landImages.images.push(landCard);
-    
-                // Check if the land enters tapped and add to tappedLands if so
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} will enter tapped and has been added to tappedLands.`);
-                }
             } else {
-                console.log('No prioritized land card found, playing first land card for', playerId);
+                console.log('No prioritized land card found, playing first land card');
                 const [landCard] = landCards.splice(0, 1);
                 playersData[playerId].landImages.images.push(landCard);
-    
-                // Check if the land enters tapped and add to tappedLands if so
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} will enter tapped and has been added to tappedLands.`);
-                }
             }
         }
     
         updatePlayerDisplay(playerId);
+        updateAllPlayersSectionDisplay();
         updateManaCounter();
         calculateBattlefieldMana();
     }
@@ -1975,19 +2058,14 @@ document.addEventListener('DOMContentLoaded', function() {
                 const libraryIndex = libraryImages.indexOf(matchingLibraryCard);
                 const [landCard] = libraryImages.splice(libraryIndex, 1);
                 playersData[playerId].landImages.images.push(landCard);
-
-                // Check if the land enters tapped
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
-                }
-        
+    
                 // Move the searchable land card from the hand to the graveyardImages
                 const handIndex = handImages.indexOf(searchableLandCard);
                 const [discardedLandCard] = handImages.splice(handIndex, 1);
                 playersData[playerId].graveyardImages.images.push(discardedLandCard);
     
                 updatePlayerDisplay(playerId);
+                updateAllPlayersSectionDisplay();
                 updateManaCounter();
                 calculateBattlefieldMana();
                 return;
@@ -2002,11 +2080,6 @@ document.addEventListener('DOMContentLoaded', function() {
             // If all non-land cards are playable, just play the first land card
             const [landCard] = landCards.splice(0, 1);
             playersData[playerId].landImages.images.push(landCard);
-
-            if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                tappedLands.push(landCard.cardData.id);
-                console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
-            }
         } else {
             // Find the unplayable card with the lowest CMC
             const lowestCMCCard = unplayableCards.reduce((prev, current) => prev.cardData.cmc < current.cardData.cmc ? prev : current);
@@ -2020,22 +2093,15 @@ document.addEventListener('DOMContentLoaded', function() {
                 const index = handImages.indexOf(prioritizedLandCard);
                 const [landCard] = handImages.splice(index, 1);
                 playersData[playerId].landImages.images.push(landCard);
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
-                }
             } else {
                 // If no prioritized land card is found, just play the first land card
                 const [landCard] = landCards.splice(0, 1);
                 playersData[playerId].landImages.images.push(landCard);
-                if (landCard.cardData.uiState && landCard.cardData.uiState.checkboxes.entersTapped) {
-                    tappedLands.push(landCard.cardData.id);
-                    console.log(`${landCard.cardData.id} enters tapped and is added to tappedLands.`);
-                }
             }
         }
     
         updatePlayerDisplay(playerId);
+        updateAllPlayersSectionDisplay();
         updateManaCounter();
         calculateBattlefieldMana();
     }
@@ -2368,7 +2434,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-   function updateManaCounter() {
+    function updateManaCounter() {
         // Initialize the mana counter object for the current player
         playersData[currentPlayerId].manaCounter = {
             W: 0,
@@ -2385,16 +2451,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Access the land section for the current player
         const landCards = playersData[currentPlayerId].landImages.images;
     
-        // Iterate over each land card and update the manaCounter object if not in tappedLands
+        // Iterate over each land card and update the manaCounter object
         landCards.forEach(card => {
-            if (!tappedLands.includes(card.cardData.id)) {
-                const manaCounter = card.cardData.uiState.manaCounter;
-                Object.keys(manaCounter).forEach(manaType => {
-                    const manaAmount = manaCounter[manaType];
-                    playersData[currentPlayerId].manaCounter[manaType] += manaAmount;
-                    tempTotalMana += manaAmount; // Add to the total mana count
-                });
-            }
+            const manaCounter = card.cardData.uiState.manaCounter;
+            Object.keys(manaCounter).forEach(manaType => {
+                const manaAmount = manaCounter[manaType];
+                playersData[currentPlayerId].manaCounter[manaType] += manaAmount;
+                tempTotalMana += manaAmount; // Add to the total mana count
+            });
         });
     
         // Access the battlefield section for the current player
@@ -2426,12 +2490,12 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("colorlessMana").textContent = `C: ${playersData[currentPlayerId].manaCounter.C}`;
         // Assuming you have an element to display total mana
         playersData[currentPlayerId].totalMana = finalTotalMana; // Store total mana in playersData
-        document.getElementById("totalMana").textContent = `Total: ${finalTotalMana}`;
+        document.getElementById("totalMana").textContent = `T: ${finalTotalMana}`;
+    
         // Log the total mana to the console
-        //console.log(`FinalTotalMana: ${finalTotalMana}`);
-
+        console.log(`FinalTotalMana: ${finalTotalMana}`);
     }
-
+    
     function calculateLandOrMana() {
         let landOrMana = 0; // Initialize the counter for the total mana produced by "or" lands
         let orLandsCount = 0; // Initialize the counter for the number of lands with 'or' set to true
@@ -2441,13 +2505,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Iterate over each land card
         landCards.forEach(card => {
-            // Skip this land if it is in the tappedLands array
-            if (tappedLands.includes(card.cardData.id)) {
-                return;
-            }
-    
             if (card.cardData.uiState.checkboxes.or) {
-                orLandsCount++; // Increment the count of 'or' lands only if not tapped
+                orLandsCount++; // Increment the count of 'or' lands
                 // Accumulate the total mana produced by this land
                 Object.values(card.cardData.uiState.manaCounter).forEach(manaAmount => {
                     landOrMana += manaAmount;
@@ -2455,13 +2514,12 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     
-        // Adjust the total mana for 'or' lands
-        // Here, you might need to adjust the logic based on how you want to count 'or' lands
+        // Subtract the number of 'or' lands from the total mana produced by 'or' lands
         landOrMana -= orLandsCount;
     
+        console.log(`Total land_or_mana: ${landOrMana}`);
         return landOrMana; // Return this value for further use
     }
-    
 
     function calculateBattlefieldMana() {
         // Initialize the mana counter object for the current player
@@ -2483,20 +2541,12 @@ document.addEventListener('DOMContentLoaded', function() {
         // Iterate over each battlefield card and update the battlefieldManaCounter object
         battlefieldCards.forEach(card => {
             if (card.cardData.uiState && card.cardData.uiState.manaCounter) {
-                // Check if the card enters tapped and if so, add to tappedLands array
-                if (card.cardData.uiState.checkboxes.entersTapped && !tappedLands.includes(card.cardData.id)) {
-                    tappedLands.push(card.cardData.id);
-                }
-    
-                // Only count the mana for untapped cards
-                if (!tappedLands.includes(card.cardData.id)) {
-                    const manaCounter = card.cardData.uiState.manaCounter;
-                    Object.keys(manaCounter).forEach(manaType => {
-                        const manaAmount = manaCounter[manaType];
-                        battlefieldManaCounter[manaType] += manaAmount;
-                        tempTotalMana += manaAmount; // Add to the total mana count
-                    });
-                }
+                const manaCounter = card.cardData.uiState.manaCounter;
+                Object.keys(manaCounter).forEach(manaType => {
+                    const manaAmount = manaCounter[manaType];
+                    battlefieldManaCounter[manaType] += manaAmount;
+                    tempTotalMana += manaAmount; // Add to the total mana count
+                });
             }
         });
     
@@ -2518,13 +2568,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
         // Iterate over each battlefield card
         battlefieldCards.forEach(card => {
-            // Skip this card if it is in the tappedLands array (assuming battlefield cards can also be lands or have a tapped state)
-            if (tappedLands.includes(card.cardData.id)) {
-                return;
-            }
-    
             if (card.cardData.uiState && card.cardData.uiState.checkboxes && card.cardData.uiState.checkboxes.or) {
-                orCardsCount++; // Increment the count of 'or' battlefield cards only if not tapped
+                orCardsCount++; // Increment the count of 'or' battlefield cards
                 // Accumulate the total mana produced by this card
                 Object.values(card.cardData.uiState.manaCounter).forEach(manaAmount => {
                     battlefieldOrMana += manaAmount;
@@ -2535,8 +2580,14 @@ document.addEventListener('DOMContentLoaded', function() {
         // Subtract the number of 'or' battlefield cards from the total mana produced by 'or' cards
         battlefieldOrMana -= orCardsCount;
     
+        console.log(`Total battlefield_or_mana: ${battlefieldOrMana}`);
         return battlefieldOrMana; // Return this value for further use
     }
+    
+    // Add event listener to all images in the current player sections
+
+      // Function to limit checkbox selections to 4
+
 
 
 
