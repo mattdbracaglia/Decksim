@@ -29,7 +29,7 @@ input, button {
     justify-content: center;
     align-items: center;
     transform: translate(-50%, -50%);
-    z-index: 2000;
+    z-index: 2100;
   }
 
 .popup-content {
@@ -124,6 +124,7 @@ input, button {
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 2001;
   }
 
 #playerButtons button:hover {
@@ -275,18 +276,22 @@ button:hover {
 #playerSection1 {
     top: 0px;
     right: 435px;
+    z-index: 2005;
   }
   #playerSection2 {
     top: 0px;
     right: 290px;
+    z-index: 2005;
   }
   #playerSection3 {
     top: 0px;
     right: 145px;
+    z-index: 2005;
   }
   #playerSection4 {
     top: 0px;
     right: 0px;
+    z-index: 2005;
   }
 
 
@@ -299,7 +304,7 @@ button:hover {
 #graveyard { top: 470px; left: 625px; }
 #exile { top: 600px; left: 625px; }
 #commander { top: 340px; left: 625px; } /* Further down if more space is needed */
-#move { top: 90px; left: 415px; }
+#move { top: 90px; left: 415px; z-index: 2005; }
 
 /* Wrapper for both sets of sections */
 .sections-wrapper {
@@ -327,7 +332,7 @@ button:hover {
     color: white;
     border: none;
     border-radius: 5px;
-    z-index: 1000;
+    z-index: 2001;
     box-shadow: 0 4px #0056b3; /* Darker blue for shadow, adds depth */
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for effects */
 }
@@ -377,7 +382,7 @@ button:hover {
     align-items: center;
     justify-content: center;
     gap: 20px;
-    z-index: 2000;
+    z-index: 2001;
     width: 50px;
   }
   
@@ -409,6 +414,7 @@ button:hover {
 #navigation span {
     min-width: 100px; /* Ensure the display doesn't jump sizes when changing text */
     text-align: center;
+    z-index: 2001;
 }
 
 
@@ -420,7 +426,7 @@ button:hover {
     justify-content: space-around;
     gap: 20px;
     padding: 10px;
-    background-color: #f0f0f0;
+    background-color: #f0f0f000;
     border-radius: 5px;
     margin-top: 10px;
     position: absolute;
@@ -429,6 +435,7 @@ button:hover {
     width: 337px; /* Fixed width */
     height: 15px; /* Adjust height as needed */
     overflow: hidden; /* Prevents overflow if content grows */
+    z-index: 2001;
   }
 #manaCounter span {
     font-weight: bold;
@@ -526,50 +533,50 @@ html, body {
 #libraryBtn {
     position: absolute;
     top: 394px;
-    left: 0px;
-    z-index: 1000;
+    left: -6px;
+    z-index: 2001;
   }
 
   #handBtn {
     position: absolute;
     top: 265px;
     left: 0px;
-    z-index: 1000;
+    z-index: 2001;
   }
 
   #landBtn {
     position: absolute;
     top: 133px;
     left: -1px;
-    z-index: 1000;
+    z-index: 2001;
   }
 
 #battlefieldBtn {
     position: absolute;
     top: 3px;
     left: 0px;
-    z-index: 1000;
+    z-index: 2001;
   }
 
 #graveyardBtn {
     position: absolute;
     top: 264px;
     left: 607px;
-    z-index: 1000;
+    z-index: 2001;
 }
 
 #exileBtn {
     position: absolute;
     top: 393px;
     left: 606px;
-    z-index: 1000;
+    z-index: 2001;
   }
 
 #commanderBtn {
     position: absolute;
     top: 133px;
     left: 606px;
-    z-index: 1000;
+    z-index: 2001;
   }
 
 .mana-container {
@@ -579,7 +586,7 @@ html, body {
   position: absolute;
   top: 325px;
   left: 143px;
-  z-index: 1000;
+  z-index: 2001;
 }
 
 .mana-image {
@@ -594,7 +601,7 @@ html, body {
     margin-top: 20px;
     width: 680px;
     height: 40px;
-    z-index: 1000;
+    z-index: 2001;
     top: 595px;
     left: 840px;
   }
@@ -614,28 +621,32 @@ html, body {
 #player1Scrollbox {
     top: 0px;
     right: 547px;
+    z-index: 2001;
 }
 
 #player2Scrollbox {
     top: 0px;
     right: 394px;
+    z-index: 2001;
 }
 
 #player3Scrollbox {
     top: 0px;
     right: 243px;
+    z-index: 2001;
   }
 
 #player4Scrollbox {
     top: 0px;
     right: 87px;
+    z-index: 2001;
 }
 
 .switch-container {
     position: absolute;
     top: 672px;
     left: 1217px;
-    z-index: 2000;
+    z-index: 2001;
     height: 37px;
     width: 100px;
   }
@@ -712,6 +723,7 @@ right: 70px;
   top: 10px;
   left: 441px;
   width: 118px;
+  z-index: 2001;
 }
 
 #autoPlaySwitch + .slider {
@@ -760,6 +772,7 @@ right: 70px;
     border-radius: 5px;
     box-shadow: 0 4px #0056b3; /* Darker blue for shadow, adds depth */
     transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s; /* Smooth transition for hover effects */
+    z-index: 2001;
 }
 
 #mulliganButtons button:hover {
@@ -778,14 +791,14 @@ right: 70px;
 #cycleButtons {
     position: absolute;
     top: 553px;
-    left: 121px;
+    left: 140px;
     display: flex;
-    gap: 80px;
+    gap: 38px;
     margin-top: 8px;
     padding: 8px;
     font-size: 16px;
     width: 500px;
-    z-index: 2000;
+    z-index: 2001;
   }
 #cycleButtons button {
     padding: 10px;
@@ -951,3 +964,245 @@ right: 70px;
   top: 610px;
   left: 858px;
 }
+
+#featureDescriptionsContainer {
+    position: relative;
+    margin: 20px;
+    text-align: center;
+    position: absolute;
+    top: -9px;
+    left: 105px;
+    z-index: 10000;
+    width: 700px;
+    height: 0px;
+  }
+  
+  .feature-button {
+    display: inline-block;
+    margin: 20px auto;
+    padding: 8px 30px;
+    font-size: 18px;
+    background-color: #007BFF;
+    border: none; /* Removes other borders */
+    border-bottom: 4px solid #004080; /* Keeps the bottom border */
+    color: #fff;
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+    top: -33px;
+    left: 167px;
+    z-index: 10000;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-bottom 0.2s ease;
+  }
+  
+  .feature-button:hover {
+      background-color: #0056b3;
+      border-bottom: 1px solid #003366; /* Slightly change for hover state */
+      transform: translateY(3px); /* Move the button down slightly on hover */
+    }
+  .feature-button:active {
+    transform: translateY(3px); /* Simulates button press by moving it down */
+    border-bottom: 1px solid #004080; /* Reduces border thickness to simulate being pressed */
+    background-color: #004080; /* Darker blue for the active state */
+  }
+  
+  /* Text areas for features */
+  .feature-description {
+    position: absolute;
+    color: #000;
+    font-size: 12.5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    pointer-events: auto;
+    z-index: 2001; /* Ensure it appears above the overlay */
+  }
+  
+  .feature-line {
+    position: absolute;
+    background-color: green;
+    width: 2px;
+    height: 100px;
+    transform-origin: top left;
+    pointer-events: none; /* Ensure lines are non-interactive */
+    z-index: 2001;
+  }
+  /* When active, text areas will show */
+  .feature-description.active {
+    display: block;
+  }
+  
+  .chooseDecks-description {
+    position: absolute;
+    top: 120px;
+    left: -123px;
+    width: 160px;
+    height: 45px;
+    z-index: 2005;
+  }
+  .restart-description {
+    position: absolute;
+    top: 20px;
+    left: 70px;
+    width: 130px;
+    height: 45px;
+    z-index: 2005;
+  }
+
+  
+  .oneTurn-description {
+    position: absolute;
+    top: 100px;
+    left: 86px;
+    width: 360px;
+    height: 75px;
+    z-index: 2005;
+  }
+  
+  
+  .manaCounter-description {
+    position: absolute;
+    top: 263px;
+    left: 152px;
+    width: 360px;
+    height: 45px;
+    z-index: 2005;
+  }
+  
+  .startGame-description {
+    position: absolute;
+    top: 385px;
+    left: 591px;
+    width: 133px;
+    height: 184px;
+    z-index: 2005;
+  }
+  .cycleButtons-description {
+    position: absolute;
+    top: 535px;
+    left: -93px;
+    width: 380px;
+    height: 54px;
+    z-index: 2005;
+  }
+  .modeSwitch-description {
+    position: absolute;
+    top: 332px;
+    left: 250px;
+    width: 300px;
+    height: 68px;
+    z-index: 2005;
+  }
+  .autoPlaySwitch-description {
+    position: absolute;
+    top: -101px;
+    left: 729px;
+    width: 320px;
+    height: 70px;
+    z-index: 2005;
+  }
+  
+  .sectionbuttons-description {
+    position: absolute;
+    top: 345px;
+    left: 50px;
+    width: 330px;
+    height: 85px;
+    z-index: 2005;
+  }
+  .sections-description {
+    position: absolute;
+    top: 15px;
+    left: 1230px;
+    width: 130px;
+    height: 101px;
+    z-index: 2005;
+  }
+  .feature-line {
+    position: absolute;
+    background-color: green;
+    width: 2px; /* Default thickness of the line */
+    height: 100px; /* Default length of the line */
+    transform-origin: top left; /* Set rotation origin */
+  }
+  
+  /* Lines pointing to individual features */
+  .chooseDecks-line {
+    top: -20px;
+    left: -110px;
+    transform: rotate(2deg);
+    height: 140px;
+  }
+  
+  .restart-line {
+    top: -17px;
+    left: 74px;
+    transform: rotate(1deg);
+    height: 80px;
+  }
+
+
+  .oneTurn-line {
+    top: -10px;
+    left: 220px;
+    transform: rotate(-20deg);
+    height: 120px;
+  }
+  .manaCounter-line {
+    top: 240px;
+    left: 220px;
+    transform: rotate(-68deg);
+    height: 70px;
+  }
+  
+  .startGame-line {
+    top: 560px;
+    left: 850px;
+    transform: rotate(80deg);
+    height: 130px;
+  }
+  
+  .cycleButtons-line {
+    top: 498px;
+    left: 230px;
+    transform: rotate(74deg);
+    height: 130px;
+  }
+  .modeSwitch-line {
+    top: 300px;
+    left: 350px;
+    transform: rotate(310deg);
+    height: 70px;
+  }
+  .autoPlaySwitch-line {
+    top: -99px;
+    left: 440px;
+    transform: rotate(270deg);
+    height: 410px;
+  }
+  .sections-line {
+    top: 150px;
+    left: 1122px;
+    transform: rotate(245deg);
+    height: 170px;
+  }
+  .sectionbuttons-line {
+    top: 240px;
+    left: -40px;
+    transform: rotate(308deg);
+    height: 180px;
+  }
+  #featureOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Black with 80% opacity */
+    z-index: 999; /* Ensure it covers other elements */
+    display: none; /* Initially hidden */
+  }
+  
+  #featureDescriptionsContainer {
+    position: relative;
+    z-index: 1000; /* Ensure it appears above the overlay */
+  }
+  
