@@ -32,6 +32,294 @@ document.addEventListener('DOMContentLoaded', function() {
         words: new Set()
     };
 
+    const simulatedDeckFeatures = {
+        quantity: "Whichever card is being shown above the Quantity number will be added to the deck when you increase the number greater then 0.",
+        oneTurn: "Use these to switch between searching for cards and editing your deck.",
+        similarcards: "Press the Set Similar Cards button to set the card displayed to the right if you want to sort the cards in the search section by whichever cards are the most similar to the selected card. It will sort by most percentage of words in common with the selected card.",
+        wordfilter: "When you select a card with the Set Similar Cards button, all the key words in the card description will be populated here. Each word will have a plus or minus sign on each side. The plus sign will populate the search sections with cards that have that same word in the descripter, and pressing the minus sign will exclude any cards that have that word.",
+        autoPlaySwitch: "The cards that fit your search parameters will be populated in this section. They will be sorted by converted mana cost, lowest to highest, unless using other sorting features.",
+        sections: "This search area will tell you how many cards fit your search parameters, including cards that are similar to the card selected with the Set Similar Cards button, and what words should be included or excluded from the search section.",
+    };
+    // Function to show feature descriptions with overlay
+    function displayFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        container.innerHTML = ''; // Clear previous content
+
+        // Set z-index to 3000
+        container.style.zIndex = '3000';
+
+        // Update all labels to match the desired style
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            label.style.color = 'rgb(255, 255, 255)';
+            label.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            label.style.fontWeight = 'bold';
+            label.style.zIndex = '2001'; // Ensure it is above other elements
+        });
+
+        // Update #manaCounter font styles
+        const manaCounter = document.getElementById('manaCounter');
+        if (manaCounter) {
+            manaCounter.style.color = 'rgb(255, 255, 255)';
+            manaCounter.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            manaCounter.style.fontWeight = 'bold';
+        }
+
+        // Update .scrollbox label font styles
+        const scrollboxLabels = document.querySelectorAll('.scrollbox label');
+        scrollboxLabels.forEach(label => {
+            label.style.color = 'rgb(255, 255, 255)';
+            label.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            label.style.fontWeight = 'bold';
+        });
+
+        // Update #navigation span font styles
+        const navigationSpans = document.querySelectorAll('#navigation span');
+        navigationSpans.forEach(span => {
+            span.style.color = 'rgb(255, 255, 255)';
+            span.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+        });
+
+        // Create a semi-transparent overlay if it doesn't exist
+        let overlay = document.getElementById('featureOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'featureOverlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            overlay.style.zIndex = '2000';
+            overlay.style.pointerEvents = 'none'; // Make overlay non-interactive
+            document.body.appendChild(overlay);
+        }
+        overlay.style.display = 'block'; // Show the overlay
+
+        // Dynamically populate feature descriptions
+        Object.keys(simulatedDeckFeatures).forEach((featureId) => {
+            // Create description div
+            const description = document.createElement('div');
+            description.className = `${featureId}-description feature-description`;
+            description.textContent = simulatedDeckFeatures[featureId];
+
+            // Style the description
+            description.style.position = 'absolute';
+            description.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            description.style.padding = '10px';
+            description.style.borderRadius = '5px';
+            description.style.zIndex = '3002';
+            description.style.pointerEvents = 'auto'; // Make descriptions interactive
+
+            // Position descriptions dynamically (if needed, set fixed positions instead)
+            const descriptionPosition = document.querySelector(`.${featureId}-description`)?.getBoundingClientRect();
+            if (descriptionPosition) {
+                description.style.top = `${descriptionPosition.top}px`;
+                description.style.left = `${descriptionPosition.left}px`;
+            }
+
+            // Append description
+            container.appendChild(description);
+
+            // Create line element
+            const line = document.createElement('div');
+            line.className = `${featureId}-line feature-line`;
+            line.style.zIndex = '3001';
+
+            // Position lines dynamically
+            const linePosition = document.querySelector(`.${featureId}-line`)?.getBoundingClientRect();
+            if (linePosition) {
+                line.style.top = `${linePosition.top}px`;
+                line.style.left = `${linePosition.left}px`;
+            }
+
+            container.appendChild(line); // Append the line to the container
+        });
+
+        container.style.display = 'block'; // Show the container
+    }
+
+    // Function to hide feature descriptions and overlay
+    function hideFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        container.style.display = 'none'; // Hide the container and its contents
+
+        // Reset z-index to 1000
+        container.style.zIndex = '1000';
+
+        // Reset all labels to their original styles
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            label.style.color = ''; // Reset to default
+            label.style.textShadow = ''; // Reset to default
+            label.style.fontWeight = ''; // Reset to default
+            label.style.zIndex = ''; // Reset to default
+        });
+
+        // Reset #manaCounter font styles
+        const manaCounter = document.getElementById('manaCounter');
+        if (manaCounter) {
+            manaCounter.style.color = ''; // Reset to default color
+            manaCounter.style.textShadow = ''; // Reset to default text shadow
+            manaCounter.style.fontWeight = ''; // Reset to default weight
+        }
+
+        // Reset .scrollbox label font styles
+        const scrollboxLabels = document.querySelectorAll('.scrollbox label');
+        scrollboxLabels.forEach(label => {
+            label.style.color = ''; // Reset to default
+            label.style.textShadow = ''; // Reset to default
+            label.style.fontWeight = ''; // Reset to default
+        });
+
+        // Reset #navigation span font styles
+        const navigationSpans = document.querySelectorAll('#navigation span');
+        navigationSpans.forEach(span => {
+            span.style.color = ''; // Reset to default
+            span.style.textShadow = ''; // Reset to default
+        });
+
+        const overlay = document.getElementById('featureOverlay');
+        if (overlay) {
+            overlay.style.display = 'none'; // Hide the overlay
+        }
+    }
+
+    // Function to toggle feature descriptions and overlay
+    function toggleFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        const isVisible = container.style.display === 'block';
+
+        if (isVisible) {
+            hideFeatureDescriptions(); // Hide descriptions and overlay
+        } else {
+            displayFeatureDescriptions(); // Show descriptions and overlay
+
+            // Ensure all feature-description elements are visible
+            const descriptions = container.querySelectorAll('.feature-description');
+            descriptions.forEach((desc) => {
+                desc.style.display = 'block'; // Explicitly unhide each description
+            });
+        }
+    }
+
+    // Attach the toggle function to the button click event
+    document.getElementById('showFeaturesButton').addEventListener('click', toggleFeatureDescriptions);
+
+    const simulatedEditDeckFeatures = {
+        quantity: "You can sort the cards in your deck by card type by clicking the corrisponding tab. You can also set the current card being shown as the commander by clicking the Commander button. You can set the number of the selected card in your deck with the number box to the right.",
+        oneTurn: "Use these to switch between searching for cards and editing your deck.",
+        similarcards: "This is where you can set the card data. It is mostly used for cards that either produce mana or search for other cards. First check is for if the card returns a land to you hand, the second is if the card enters tapped and can't produce mana the first turn, the third is for if the card searches for something, the fourth is if the card produces all the mana that is put in the quantites below, and the last check is if the card only produces 1 mana. There may be certain cards that don't work perfectly with this, so you may need to watch for those cases.",
+        wordfilter: "This will be populated with all the cards in your deck, and you can select any card as a card that is able to be searched by the selected card to the right.",
+        autoPlaySwitch: "The cards in your deck will be populated here.",
+        loaddeck: "Use these buttons to load in your deck, or open up a deck you have saved. You can also remove the card, save the details of all the cards, and clear the selected cards details and clear all the deck details.",
+        sections: "This is where you can set what mana the selected card can produce. This refers to the max type of mana it can produce, not the total mana. If a card can produce 1 red OR 1 green, you would put 1 for both red or green.",
+    };
+    
+    // Updated function to show deck feature descriptions with overlay
+    // Function to show deck feature descriptions with overlay
+function displayDeckFeatureDescriptions() {
+    const container = document.getElementById('deckFeatureDescriptionsContainer');
+    container.innerHTML = ''; // Clear previous content
+
+    // Set z-index to make it visible
+    container.style.zIndex = '3000';
+
+    // Create and display the overlay
+    let overlay = document.getElementById('deckFeatureOverlay');
+    if (!overlay) {
+        overlay = document.createElement('div');
+        overlay.id = 'deckFeatureOverlay';
+        overlay.style.position = 'fixed';
+        overlay.style.top = '0';
+        overlay.style.left = '0';
+        overlay.style.width = '100%';
+        overlay.style.height = '100%';
+        overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+        overlay.style.zIndex = '2000';
+        overlay.style.pointerEvents = 'none';
+        document.body.appendChild(overlay);
+    }
+    overlay.style.display = 'block';
+
+    // Populate the descriptions and lines
+    Object.keys(simulatedEditDeckFeatures).forEach((featureId) => {
+        // Create description div
+        const description = document.createElement('div');
+        description.className = `deck-${featureId}-description deck-feature-description`;
+        description.textContent = simulatedEditDeckFeatures[featureId];
+
+        // Style the description
+        description.style.position = 'absolute';
+        description.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+        description.style.padding = '10px';
+        description.style.borderRadius = '5px';
+        description.style.zIndex = '3002';
+        description.style.pointerEvents = 'auto';
+
+        // Position descriptions dynamically
+        const descriptionPosition = document.querySelector(`.deck-${featureId}-description`)?.getBoundingClientRect();
+        if (descriptionPosition) {
+            description.style.top = `${descriptionPosition.top}px`;
+            description.style.left = `${descriptionPosition.left}px`;
+        }
+
+        container.appendChild(description);
+
+        // Create line element
+        const line = document.createElement('div');
+        line.className = `deck-${featureId}-line deck-feature-line`;
+
+        // Style the line
+        line.style.position = 'absolute';
+        line.style.backgroundColor = 'green';
+        line.style.width = '2px';
+        line.style.zIndex = '3001';
+        line.style.pointerEvents = 'none';
+
+        // Position lines dynamically
+        const linePosition = document.querySelector(`.deck-${featureId}-line`)?.getBoundingClientRect();
+        if (linePosition) {
+            line.style.top = `${linePosition.top}px`;
+            line.style.left = `${linePosition.left}px`;
+        }
+
+        container.appendChild(line); // Append the line to the container
+    });
+
+    container.style.display = 'block';
+}
+
+// Function to hide deck feature descriptions
+function hideDeckFeatureDescriptions() {
+    const container = document.getElementById('deckFeatureDescriptionsContainer');
+    container.style.display = 'none'; // Hide the descriptions
+
+    const overlay = document.getElementById('deckFeatureOverlay');
+    if (overlay) {
+        overlay.style.display = 'none'; // Hide the overlay
+    }
+}
+
+// Function to toggle deck feature descriptions
+function toggleDeckFeatureDescriptions() {
+    const container = document.getElementById('deckFeatureDescriptionsContainer');
+    const isVisible = container.style.display === 'block';
+
+    if (isVisible) {
+        hideDeckFeatureDescriptions();
+    } else {
+        displayDeckFeatureDescriptions();
+    }
+}
+
+// Attach event listener to the button
+document.getElementById('showDeckFeaturesButton').addEventListener('click', toggleDeckFeatureDescriptions);
+
+    
+    
+
     if (searchButton) {
         searchButton.addEventListener('click', function() {
             console.log('Search button clicked outside DOMContentLoaded');
@@ -58,8 +346,6 @@ document.addEventListener('DOMContentLoaded', function() {
         editDeckButton.addEventListener('click', function() {
             console.log('EditDeck button clicked'); // This will log when the EditDeck button is clicked
             makeElementsVisible();
-            // Optionally, click the BacktoGame button if needed here
-            // backToGameButton.click();
         });
     } else {
         console.error('EditDeck button not found');
@@ -1646,7 +1932,9 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('selectedCardImageContainer').style.display = 'block';
         document.getElementById('searchCardImageContainer').style.display = 'block';
         document.getElementById('cardImageContainer').style.display = 'block';
-    
+        
+        document.getElementById('showFeaturesButton').style.display = 'none';
+        document.getElementById('showDeckFeaturesButton').style.display = 'block';
         // Update quantity display based on the current card
         if (currentCard) {
             document.getElementById('cardQuantity').value = currentCard.quantity || 0;
@@ -1684,16 +1972,22 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById('searchContainer').style.display = 'none';
         document.getElementById('searchCardImageContainer').style.display = 'none';
         document.getElementById('cardImageContainer').style.display = 'none';
-    
+        document.getElementById('searchInfoDisplay').style.display = 'none'; // Added here
+
+
+        document.getElementById('showFeaturesButton').style.display = 'inline-block';
+        document.getElementById('showDeckFeaturesButton').style.display = 'none';
+
         // Making the search section visible
         document.querySelector('.search-section').style.display = 'block';
         document.getElementById('searchQuantityContainer').style.display = 'block';
         document.getElementById('cardInfo').style.display = 'block';
         document.getElementById('percentageTabsContainer').style.display = 'flex';
-        document.getElementById('wordFilterContainer').style.display = 'block';
+        document.getElementById('wordFilterContainer').style.display = 'flex';
         document.getElementById('getSimilar').style.display = 'block';
         document.getElementById('searchImageContainer').style.display = 'flex';
         document.getElementById('similarCardImageContainer').style.display = 'block';
+        document.getElementById('searchInfoDisplay').style.display = 'block'; // Added here
     
         // Update the search quantity to match the card in the search image container, if present
         const searchImageContainer = document.getElementById('searchImageContainer');
@@ -1707,6 +2001,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('All elements are hidden except the search section');
         populateDeckSection(currentCards);
     }
+    
     
 
     function handleSearch() {
