@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Webpage</title>
+    <link rel="stylesheet" href="/css/simulateoptions.css">
+</head>
+<body>
+
+    <h1></h1>
+
+    <!-- Toggle Button for Game Container -->
+    <!-- Toggle Button for Game Container -->
+    <button id="toggleGameContainer">&#x25B6;</button> <!-- Right arrow initially -->
+
+
+
+    <!-- Game Container -->
+    <div id="gameContainer" style="display: block;">
+        <!-- Game Controls -->
+        <div id="gameControls">
+            <button id="chooseDecks">Choose Decks</button>
+            <button id="restart">Restart</button>
+            <button id="shuffle">Shuffle</button>
+            <button id="oneTurn">1 Turn</button>
+            <button id="autoTurns">Auto</button>
+            <button id="choiceTurns">Auto Choices</button>
+        </div>
+
+         <!-- Deck Filter Tabs -->
+        <div id="deckTabsContainer">
+            <button class="deck-tab" data-type="All">All</button>
+            <button class="deck-tab" data-type="Land">Land</button>
+            <button class="deck-tab" data-type="Creature">Creature</button>
+            <button class="deck-tab" data-type="Artifact">Artifact</button>
+            <button class="deck-tab" data-type="Enchantment">Enchantment</button>
+            <button class="deck-tab" data-type="Sorcery">Sorcery</button>
+            <button class="deck-tab" data-type="Instant">Instant</button>
+            <button class="deck-tab" data-type="Planeswalker">Planeswalker</button>
+            <button class="deck-tab" data-type="Legendary">Legendary</button>
+        </div>
+
+        <!-- Start Game Button -->
+        <button id="startGame">Start Game</button>
+
+        <!-- Player 1 Mulligan -->
+        <button id="player1Mulligan">Mulligan</button>
+
+        <!-- Switch Container -->
+        <div class="switch-container">
+            <label class="switch">
+                <input type="checkbox" id="modeSwitch">
+                <span class="slider"></span>
+                <span class="label label-left">Exact</span>
+                <span class="label label-right">Minimum</span>
+            </label>
+        </div>
+
+        <div class="switch-container" id="autoPlaySwitchContainer">
+            <label class="switch" id="autoPlayLabel">
+                <input type="checkbox" id="autoPlaySwitch">
+                <span class="slider" id="autoPlaySlider"></span>
+                <span class="label label-left" id="autoLabelLeft">Auto Lands</span>
+                <span class="label label-right" id="autoLabelRight">Choose Lands</span>
+            </label>
+        </div>
+
+        <!-- Scrollbox Container -->
+        <div id="scrollboxContainer">
+            <div class="scrollbox" id="player1Scrollbox">
+                <label>Starting Lands:</label>
+                <input type="number" id="player1" class="scrollbox-input" min="0" max="7" value="0">
+            </div>
+            <div class="scrollbox" id="turnsScrollbox" style="display: none;">
+                <label>Turns:</label>
+                <input type="number" id="turns" class="scrollbox-input" min="0" value="1">
+            </div>
+        </div>
+
+        <div id="cardImageContainer"></div>
+
+        
+    </div>
+
+    <!-- Popup -->
+    <div id="deckPopup" class="popup-container" style="display:none;">
+        <div class="popup-content">
+            <span id="closePopup" class="close-btn">&times;</span>
+            <p>Decks:</p>
+            <button id="loadDecksButton" style="display: none;">Load Decks</button>
+        </div>
+    </div>
+
+
+    <!-- Back to Game Button -->
+    <button id="BacktoGame">Back</button>
+
+
+
+   
+
+
+    <!-- Deck Section -->
+    <div id="deckSection" class="deck-section" style="display: block;"></div>
+
+    <!-- Zoomable Plane Container -->
+    <!-- Zoomable Plane Container -->
+    <div id="zoomablePlane">
+        <div id="zoomableContent" class="current-player-sections">
+            <div id="library" class="current-player-section"></div> <!-- Kept visible -->
+            <div id="hand" class="current-player-section"></div>    <!-- Kept visible -->
+            <div id="land" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+            <div id="battlefield" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+            <div id="graveyard" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+            <div id="exile" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+            <div id="commander" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+            <div id="move" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+            <div id="choice" class="current-player-section"></div> <!-- Hidden by default in CSS -->
+
+            <!-- Other Cycle Buttons -->
+            <div id="cycleButtons">
+                <button id="toggleSectionButton">Library</button>
+                <button id="shuffleDrawEqual">Shuffle/Draw =</button>
+                <button id="shuffleDrawSeven">Shuffle/Draw 7</button>
+                <button id="discardDrawEqual">Discard/Draw =</button>
+                <button id="discardDrawSeven">Discard/Draw 7</button>
+                <div id="turnLabel">Turn: 1</div>
+            </div>
+
+            <div id="manaCounter">
+                <span id="whiteMana">W: 0</span>
+                <span id="blueMana">U: 0</span>
+                <span id="blackMana">B: 0</span>
+                <span id="redMana">R: 0</span>
+                <span id="greenMana">G: 0</span>
+                <span id="colorlessMana">C: 0</span>
+                <span id="totalMana">TM: 0</span>
+            </div>
+        
+            <div class="mana-container">
+                <img src="css/white.jpg" alt="White Mana" class="mana-image">
+                <img src="css/blue.jpg" alt="Blue Mana" class="mana-image">
+                <img src="css/black.jpg" alt="Black Mana" class="mana-image">
+                <img src="css/red.jpg" alt="Red Mana" class="mana-image">
+                <img src="css/green.jpg" alt="Green Mana" class="mana-image">
+                <img src="css/colorless.jpg" alt="Colorless Mana" class="mana-image">
+            </div>
+        </div>
+    </div>
+
+    <div id="switchButtons">
+        <button id="switchToLand">Switch to Land</button>
+        <button id="switchToBattlefield">Switch to Battlefield</button>
+        <button id="switchToGraveyard">Switch to Graveyard</button>
+        <button id="switchToExile">Switch to Exile</button>
+        <button id="switchToCommander">Switch to Commander</button>
+        <button id="switchToMove">Switch to Move</button>
+        <button id="switchToChoice">Switch to Choice</button>
+    </div>
+    
+
+
+    <div id="shortcutsContainer" class="shortcuts-fixed">
+        <h3>Keyboard Shortcuts</h3>
+        <ul>
+            <li><b>Shift + Hover:</b> Move hovered card to the "move" section.</li>
+            <li><b>1:</b> Move hovered card to the Library.</li>
+            <li><b>2:</b> Move hovered card to the Hand.</li>
+            <li><b>3:</b> Move hovered card to Lands.</li>
+            <li><b>4:</b> Move hovered card to the Battlefield.</li>
+            <li><b>5:</b> Move hovered card to Exile.</li>
+            <li><b>6:</b> Move hovered card to the Graveyard.</li>
+            <li><b>7:</b> Move hovered card to Commander.</li>
+            <li><b>Z + Mouse Wheel:</b> Zoom in/out on the gameplay area.</li>
+        </ul>
+    </div>
+
+
+    <script src="js/simulateoptions.js"></script>
+</body>
+</html>
