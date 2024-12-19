@@ -34,6 +34,175 @@ document.addEventListener('DOMContentLoaded', function() {
     let tappedLands = [];
     createDeckFilterTabs();
 
+    const simulatedDeckFeatures = {
+        chooseDecks: "Provides a popup for selecting a deck from a list of available decks.",
+        restart: "Restarts the game, putting all cards back into library.",
+        oneTurn: "Use these buttons to play. 1 Turn simulates a single turn. A turn will draw a card, play a land, then try to play a card. Auto simulates multiple turns, press again to pause the simulation. Auto Choices will automate turns until there is more then one card you can play, then it pauses until you choose a card to play.",
+        manaCounter: "Tracks and updates the mana pool for the player. For each color, the number represents the max number of mana of that type you can produce. The TM is the total mana you are able to produce.",
+        startGame: "The first button starts the game, shuffling the deck and dealing the starting hand to the player. You can also mulligan the hand, redrawing the same number of cards.",
+        cycleButtons: "Use these 4 buttons to cycle through your hand. The first two buttons can shuffle and draw the same number of cards or shuffle and draw 7 cards. The last two can discard and draw the same number or discard and draw 7 cards. You can also shuffle the library.",
+        modeSwitch: "This allows you to set if there is a minimum or exact number of lands in the starting hand. This way you don't need to redraw your starting hand until you get a playable hand.",
+        autoPlaySwitch: "If the switch is on choose lands, the autochoices will ask you to choose what lands to play if there is more then 1 in hand. If it is set to Auto Lands, it will look for the card with the lowest mana cost, and will prioritize playing lands that produce the colors of those you can't currently produce.",
+        sections: "Each section is labeled with their button above, Except these three. The section above the Exile section is the Move section. You can press the shift button while the mouse is over an image to move that image to the move section, if they are temperarily exiled or you want to move multiple cards to sections at the same time. If you press the zone buttons while cards are in the move section, they will all be moved to that section. Your whole library will be listed in the vertical section, in alphabetical order. The last horizontal section is where you can click on the cards you are able to play while doing the Auto Choices feature. ",
+        sectionbuttons: "Clicking the section buttons will move all cards in the move section to the target section. If you press the number-key for each section while your mouse is on a card, it will move that card to the corrisponding section."
+    };
+    
+    // Function to show feature descriptions with overlay
+    function displayFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        container.innerHTML = ''; // Clear previous content
+
+        // Set z-index to 3000
+        container.style.zIndex = '3000';
+
+        // Update all labels to match the desired style
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            label.style.color = 'rgb(255, 255, 255)';
+            label.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            label.style.fontWeight = 'bold';
+            label.style.zIndex = '2001'; // Ensure it is above other elements
+        });
+
+        // Update #manaCounter font styles
+        const manaCounter = document.getElementById('manaCounter');
+        if (manaCounter) {
+            manaCounter.style.color = 'rgb(255, 255, 255)';
+            manaCounter.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            manaCounter.style.fontWeight = 'bold';
+        }
+
+        // Update .scrollbox label font styles
+        const scrollboxLabels = document.querySelectorAll('.scrollbox label');
+        scrollboxLabels.forEach(label => {
+            label.style.color = 'rgb(255, 255, 255)';
+            label.style.textShadow = '1px 1px 2px rgba(0, 0, 0, 0.4)';
+            label.style.fontWeight = 'bold';
+        });
+
+        // Create a semi-transparent overlay if it doesn't exist
+        let overlay = document.getElementById('featureOverlay');
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.id = 'featureOverlay';
+            overlay.style.position = 'fixed';
+            overlay.style.top = '0';
+            overlay.style.left = '0';
+            overlay.style.width = '100%';
+            overlay.style.height = '100%';
+            overlay.style.backgroundColor = 'rgba(0, 0, 0, 0.8)';
+            overlay.style.zIndex = '2000';
+            overlay.style.pointerEvents = 'none'; // Make overlay non-interactive
+            document.body.appendChild(overlay);
+        }
+        overlay.style.display = 'block'; // Show the overlay
+
+        // Dynamically populate feature descriptions
+        Object.keys(simulatedDeckFeatures).forEach((featureId) => {
+            // Create description div
+            const description = document.createElement('div');
+            description.className = `${featureId}-description feature-description`;
+            description.textContent = simulatedDeckFeatures[featureId];
+
+            // Style the description
+            description.style.position = 'absolute';
+            description.style.backgroundColor = 'rgba(255, 255, 255, 0.9)';
+            description.style.padding = '10px';
+            description.style.borderRadius = '5px';
+            description.style.zIndex = '3002';
+            description.style.pointerEvents = 'auto'; // Make descriptions interactive
+
+            // Position descriptions dynamically (if needed, set fixed positions instead)
+            const descriptionPosition = document.querySelector(`.${featureId}-description`)?.getBoundingClientRect();
+            if (descriptionPosition) {
+                description.style.top = `${descriptionPosition.top}px`;
+                description.style.left = `${descriptionPosition.left}px`;
+            }
+
+            // Append description
+            container.appendChild(description);
+
+            // Create line element
+            const line = document.createElement('div');
+            line.className = `${featureId}-line feature-line`;
+            line.style.zIndex = '3001';
+
+            // Position lines dynamically
+            const linePosition = document.querySelector(`.${featureId}-line`)?.getBoundingClientRect();
+            if (linePosition) {
+                line.style.top = `${linePosition.top}px`;
+                line.style.left = `${linePosition.left}px`;
+            }
+
+            container.appendChild(line); // Append the line to the container
+        });
+
+        container.style.display = 'block'; // Show the container
+    }
+
+    // Function to hide feature descriptions and overlay
+    function hideFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        container.style.display = 'none'; // Hide the container and its contents
+        
+        // Reset z-index to 1000
+        container.style.zIndex = '1000';
+
+        // Reset all labels to their original styles
+        const labels = document.querySelectorAll('.label');
+        labels.forEach(label => {
+            label.style.color = ''; // Reset to default
+            label.style.textShadow = ''; // Reset to default
+            label.style.fontWeight = ''; // Reset to default
+            label.style.zIndex = ''; // Reset to default
+        });
+
+        // Reset #manaCounter font styles
+        const manaCounter = document.getElementById('manaCounter');
+        if (manaCounter) {
+            manaCounter.style.color = ''; // Reset to default color
+            manaCounter.style.textShadow = ''; // Reset to default text shadow
+            manaCounter.style.fontWeight = ''; // Reset to default weight
+        }
+
+        // Reset .scrollbox label font styles
+        const scrollboxLabels = document.querySelectorAll('.scrollbox label');
+        scrollboxLabels.forEach(label => {
+            label.style.color = ''; // Reset to default
+            label.style.textShadow = ''; // Reset to default
+            label.style.fontWeight = ''; // Reset to default
+        });
+
+        const overlay = document.getElementById('featureOverlay');
+        if (overlay) {
+            overlay.style.display = 'none'; // Hide the overlay
+        }
+    }
+
+    // Function to toggle feature descriptions and overlay
+    function toggleFeatureDescriptions() {
+        const container = document.getElementById('featureDescriptionsContainer');
+        const isVisible = container.style.display === 'block';
+
+        if (isVisible) {
+            hideFeatureDescriptions(); // Hide descriptions and overlay
+        } else {
+            displayFeatureDescriptions(); // Show descriptions and overlay
+
+            // Ensure all feature-description elements are visible
+            const descriptions = container.querySelectorAll('.feature-description');
+            descriptions.forEach((desc) => {
+                desc.style.display = 'block'; // Explicitly unhide each description
+            });
+        }
+    }
+
+    // Attach the toggle function to the button click event
+    document.getElementById('showFeaturesButton').addEventListener('click', toggleFeatureDescriptions);
+
+
+            
+    
 
     const playersData = {
         Player1: {
@@ -888,22 +1057,6 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('discardDrawSeven').addEventListener('click', function() {
         discardDrawSeven();
     });
-    
-    document.getElementById('1Draw').addEventListener('click', drawOneCard);
-
-    function drawOneCard() {
-        const playerKey = currentPlayerId;
-        const libraryCards = playersData[playerKey].libraryImages.images;
-        const handCards = playersData[playerKey].handImages.images;
-    
-        // Check if the library has cards to draw
-        if (libraryCards.length > 0) {
-            const card = libraryCards.shift(); // Remove the top card from the library
-            handCards.push(card); // Add the removed card to the hand
-        }
-    
-        updatePlayerDisplay(playerKey);
-    }
 
 
     function shuffleDrawEqual() {
@@ -1219,7 +1372,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (autoTurnIntervalId === null) {
             autoTurnIntervalId = setInterval(simulate1Turn, 1000);
-            autoButton.textContent = 'Stop Auto';
+            autoButton.textContent = 'Stop';
         } else {
             clearInterval(autoTurnIntervalId);
             autoTurnIntervalId = null;
@@ -1238,7 +1391,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
         if (autoChoicesIntervalId === null) {
             autoChoicesIntervalId = setInterval(simulateChoicesTurn, 1000);
-            autoChoicesButton.textContent = 'Stop Auto Choices';
+            autoChoicesButton.textContent = 'Stop Choices';
             choicesTurn = true;  // Ensure choicesTurn is set to true when auto choices are running
         } else {
             clearInterval(autoChoicesIntervalId);
@@ -2019,7 +2172,7 @@ document.addEventListener('DOMContentLoaded', function() {
         document.getElementById("colorlessMana").textContent = `C: ${playersData[currentPlayerId].manaCounter.C}`;
         // Assuming you have an element to display total mana
         playersData[currentPlayerId].totalMana = finalTotalMana; // Store total mana in playersData
-        document.getElementById("totalMana").textContent = `Total: ${finalTotalMana}`;
+        document.getElementById("totalMana").textContent = `T: ${finalTotalMana}`;
         // Log the total mana to the console
         //console.log(`FinalTotalMana: ${finalTotalMana}`);
 
